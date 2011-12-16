@@ -1,0 +1,135 @@
+simplest:
+ 1. Cleaning up
+    $ autoscan
+    $ mv configure.scan configure.ac
+    $edit configure.ac
+ATTENTION: following items are at least required
+############################
+AC_PREREQ([2.67])
+AC_INIT(wang, 0.1, roover.wd@gmail.com)
+AM_INIT_AUTOMAKE(foreign)
+AC_PROG_FC
+AC_CONFIG_FILES(Makefile src/Makefile)
+AC_OUTPUT
+############################
+    $edit Makefile.am
+ATTENTION: following items are at least required
+############################
+SUBDIRS = src/
+############################
+    $edit src/Makefile.am
+############################
+bin_PROGRAMS=eulerwwd
+eulerwwd_SOURCES=module.f90 <all the source files>
+############################
+    $aclocal && autoconf && automake --add-missing
+DONE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  * sources in src/
+  * documentation in doc/
+  * man pages in man/
+  * some scripts in scripts/ (in general, stuff to be installed but not
+    compiled)
+  * examples in examples/
+
+ 1. Cleaning up
+    Move away every possible Makefile you have in the package
+
+ 2. Generating configure.ac
+    $ autoscan
+    $ mv configure.scan configure.ac
+
+ 3. Adjusting things
+    $ vim configure.ac
+    look in the very first lines for the following:
+    AC_INIT(FULL-PACKAGE-NAME, VERSION, BUG-REPORT-ADDRESS)
+    and replace with your stuff, e.g.:
+    AC_INIT(pippo, 2.6, paperino@staff.pippo.org)
+
+ 4. Generating a first configure script
+    $ autoconf
+    This produces two files: autom4te.cache and configure.
+
+ 5. Generating suitable Makefiles
+    $ vim Makefile.am
+    AUTOMAKE_OPTIONS = foreign
+    SUBDIRS = src doc examples man scripts
+    $ vim src/Makefile.am
+    CFLAGS = --pedantic -Wall -std=c99 -O2
+    LDFLAGS =
+    bin_PROGRAMS = targetbinary1 targetbinary2 [...] targetbinaryN
+    targetbinary1_SOURCES = targetbinary1.c myheader.h [...]
+    targetbinary2_SOURCES = targetbinary2.c
+
+ 6. Integrating the checking (autoconf) part and the building (automake) part
+    $ vim configure.ac
+    right after AC_INIT(), let initialize automake:
+    AM_INIT_AUTOMAKE(pippo, 2.6)
+    Then, let autoconf generate a configure script that will output Makefiles
+    for all of the above directories:
+    AC_OUTPUT(Makefile src/Makefile doc/Makefile examples/Makefile man/Makefile scripts/Makefile)
+
+ 7. Making tools output the configure script and Makefile templates
+    $ aclocal
+    $ automake --add-missing
+    $ autoconf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RoadMap:
+Makefile.am configure.ac <sourefiles>
+     to
+ ./configure
+
+No.1 creat file Makefile.am with following contents.
+AUTOMAKE_OPTIONS=foreign
+bin_PROGRAMS=f1303
+f1303_SOURCES=date.cpp  date.h  f1303.cpp  idate.h
+
+No.2 execute autoscan for configure.scan
+
+No.3 mv configure.scan configure.ac
+
+No.4 edit configure.ac.
+AM_INIT_AUTOMAKE
+AC_OUTPUT(Makefile #!!if AC_CONFIG_FILES([Makefile]) not defined)
+are always needed, or automake will suggest you to do so.
+
+No.5 aclocal && autoconf && automake --add-missing
+
+No.6 Now, you get what you needed: configure. Have fun.

@@ -1,0 +1,975 @@
+
+　　crate three new files：
+
+　　　helloworld.c
+　　　configure.in
+　　　Makefile.am
+
+　　execute：
+
+aclocal; autoconf; automake --add-missing; ./configure; make; ./helloworld
+details:
+$ mkdir helloword
+$ cd helloworld
+
+　　3、generate configure file
+
+　　use command autoscan to generate a template of configure.in
+
+$ autoscan
+$ ls
+configure.scan helloworld.c
+
+raname configure.scan to configure.(in,ac), then edit it.
+
+# -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_INIT(helloworld.c)
+AM_INIT_AUTOMAKE(helloworld, 1.0)
+
+# Checks for programs.
+AC_PROG_CC
+
+# Checks for libraries.
+
+# Checks for header files.
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+AC_OUTPUT(Makefile)
+============================configure.in=========================================
+then execute following commands:
+$ aclocal
+$ls
+aclocal.m4 configure.in helloworld.c
+$ autoconf
+$ ls
+aclocal.m4 autom4te.cache configure configure.in helloworld.c
+
+
+aclocal will generate macros needed by autoconf
+
+
+4: Makefile.am
+
+$ vi Makefile.am
+
+
+
+AUTOMAKE_OPTIONS=foreign
+bin_PROGRAMS=helloworld
+helloworld_SOURCES=helloworld.c
+
+
+
+　　5、运行automake
+
+　　命令：
+
+
+$ automake --add-missing
+configure.in: installing `./install-sh'
+configure.in: installing `./mkinstalldirs'
+configure.in: installing `./missing'
+Makefile.am: installing `./depcomp'
+
+
+　　AC_INIT(FILE)
+
+　　这个宏用来检查源代码所在的路径。
+
+AM_INIT_AUTOMAKE(PACKAGE, VERSION)
+
+　　 这个宏是必须的，它描述了我们将要生成的软件包的名字及其版本号：PACKAGE是软件包的名字，VERSION是版本号。当你使用make dist命令时，它会给你生成一个类似helloworld-1.0.tar.gz的软件发行包，其中就有对应的软件包的名字和版本号。
+
+AC_PROG_CC
+
+　　这个宏将检查系统所用的C编译器。
+
+AC_OUTPUT(FILE)
+
+　　这个宏是我们要输出的Makefile的名字。
+
+　　我们在使用automake时，实际上还需要用到其他的一些宏，但我们可以用aclocal 来帮我们自动产生。执行aclocal后我们会得到aclocal.m4文件。
+
+　　产生了configure.in和aclocal.m4 两个宏文件后，我们就可以使用autoconf来产生configure文件了。
+
+　　5、 Makefile.am
+
+　　Makefile.am是用来生成Makefile.in的，需要你手工书写。Makefile.am中定义了一些内容：
+
+AUTOMAKE_OPTIONS
+
+　　这个是automake的选项。在执行automake时，它会检查目录下是否存在标准GNU软件包中应具备的各种文件，例如AUTHORS、ChangeLog、NEWS等文件。我们将其设置成foreign时，automake会改用一般软件包的标准来检查。
+
+bin_PROGRAMS
+
+　　这个是指定我们所要产生的可执行文件的文件名。如果你要产生多个可执行文件，那么在各个名字间用空格隔开。
+
+helloworld_SOURCES
+
+　　这个是指定产生“helloworld”时所需要的源代码。如果它用到了多个源文件，那么请使用空格符号将它们隔开。比如需要helloworld.h，helloworld.c那么请写成helloworld_SOURCES= helloworld.h helloworld.c。
+
+　　如果你在bin_PROGRAMS定义了多个可执行文件，则对应每个可执行文件都要定义相对的filename_SOURCES。
+
+　　6、 automake
+
+　　我们使用automake --add-missing来产生Makefile.in。
+
+　　选项--add-missing的定义是“add missing standard files to package”，它会让automake加入一个标准的软件包所必须的一些文件。
+
+　　我们用automake产生出来的Makefile.in文件是符合GNU Makefile惯例的，接下来我们只要执行configure这个shell 脚本就可以产生合适的 Makefile 文件了。
+
+
+软件根目录 Makefile.am
+src/Makefile.am
+data/Makefile.am
+docs/Makefile.am
+fonts/Makefile.am
+images/Makefile.am
+music/Makefile.am
+sound/Makefile.am
+
+· 运行 autotools
+· SDL 库的侦测
+· 软件使用的数据文件
+· configure 选项
+· autotools 脚本
+· 使用 configure 产生的 Makefile
+· 最终的 configure.ac 文件
+· 结束语
+
+示例项目
+
+这里借用了 Wei Mingzhi <whistler_wmz@users.sf.net> 开发的麻将游戏来进行演示，在
+此，先对他表示感谢!
+
+示例软件下载:
+
+
+
+软件布局
+
+将下载的软件包解压到一个目录
+
+$ cd ~/work
+$ tar xjf mahjong.tar.bz2
+
+可以看到这是一个典型的 Windows 风格的软件项目布局，在 mahjong 目录下放着程序的
+源码，程序运行时使用的数据文件放在子目录下面
+
+作者还提供了一个 Makefile，一个 DOS 风格的 !play.bat 批处理文件，一个编译好的
+mj.exe 可执行文件在 Win32 平台上运行 !play.bat 就可以直接运行程序在 Unix/
+Linux 系统上，进入 mahjong 目录，键入 make 命令，如果一切顺利的话，将生成 mj 可
+执行文件，然后在命令行上运行 ./mj 程序，也可以启动麻将游戏
+
+对于一个 Windows 程序来讲，该软件布局可以说非常清晰明了但在 Unix/Linux 系统
+上，执行 make 命令就可能遇到问题：编译找不到头文件，或者连接找不到库文件而在
+make 成功以后，运行麻将程序必须先进入该 majiong 目录，才能执行程序如果要像
+其他的程序一样，可以在任意目录使用，就要专门为这一个程序修改 PATH 环境变量，或
+者再写一个启动脚本，并将它复制到 /usr/bin 这样的目录下
+
+Makefile 分析
+
+1 #
+2 # Copyright (c) 2005, Wei Mingzhi. All rights reserved.
+3 #
+4 # Use, redistributions and modifications of this file is
+5 # unrestricted provided the above copyright notice is
+6 # preserved.
+7 #
+8
+9 OBJ = \
+10 bot.o config.o game.o general.o hand.o ini.o main.o \
+11 player.o text.o tile.o util.o
+12
+13 HEADERS = \
+14 bot.h game.h general.h hand.h ini.h main.h player.h \
+15 tile.h
+16
+17 CC = gcc
+18 CXX = g++
+19
+20 TARGET = mj
+21
+22 BASEFLAGS = -g3 -D_DEBUG=1
+23 #BASEFLAGS = -s -O3
+24
+25 CFLAGS = ${BASEFLAGS} `sdl-config --cflags`
+26 LDFLAGS = ${BASEFLAGS} `sdl-config --libs` -lSDL_image -lSDL_mixer -lSDL_ttf
+27
+28 all: ${TARGET}
+29
+30 ${TARGET}: ${OBJ}
+31 ${CXX} ${LDFLAGS} -o ${TARGET} ${OBJ}
+32
+33 clean:
+34 rm -f *.o ${TARGET}
+35
+36 distclean:
+37 rm -f *.o ${TARGET}
+38
+39 %.o: %.cpp ${HEADERS}
+40 ${CXX} ${CFLAGS} -c $< -o $@
+41
+42 %.o: %.c ${HEADERS}
+43 ${CC} ${CFLAGS} -c $< -o $@
+
+Makefile 很清楚：第 20 行定义 TARGET 变量为 mj，第 28 行表明 make 默认的 target
+也就是生成 `mj'；第 22 行加入编译时的调试信息；第 2526 行使用了 sdl-config 工
+具侦测 SDL 开发库编译链接信息，在 26 行还指明需要连接 SDL_imageSDL_mixser 和
+SDL_ttf 库
+
+GNU 的软件风格
+
+一个标准的 GNU 软件，编译安装都是使用下面三个步骤:
+
+$ ./configure
+$ make
+$ make install
+
+configure 脚本运行时可以侦测系统的环境，确定软件安装目录，然后生成 Makefile 文
+件make 调用系统中的编译器进行编译和连接make install 将软件安装到设定的目录
+
+
+用户执行 configure 时可以通过它的命令行参数指定自己所需的编译选项，比如安装目录
+通过 --prefix=PREFIX 设置，如果不指定，缺省情况下 PREFIX 是 /usr/local默认安
+装时，执行文件安装到 /usr/local/bin 目录，库安装到 /usr/local/lib 目录，数据文
+件安装到 /usr/local/share 目录
+
+由于 GNU 的软件风格方便易用，通用性好，可移植性高，现在大多数 Unix/Linux 系统上
+的自由软件都采用这种方式分发软件
+
+准备 autotools
+
+GNU autotools 主要包含三个软件： autoconf，automake 和 libtool当前流行的有新
+旧两个版本，本例采用的是新版本，分别对应的是： autoconf 2.59， automake 1.9.6
+和 libtool 1.5.18
+
+很多 linux 发行版都会默认安装这几个工具本例是在 NetBSD 下进行操作，安装这几个
+软件包是通过 pkgsrc，它们在 pkgsrc 目录为 devel/autoconf devel/automake 和
+devel/libtool
+
+改造文件布局
+
+原来软件的根目录下面放的是程序的源码，按照 GNU 的习惯，将它们放到 src 子目录，
+根目录留给 configure 这类文件使用，其他的数据文件保持不变，仍然放在各自的子目录
+
+
+先创建一个目录 majiang，然后根据需要将 mahjong 目录下的文件复制过来由于是为
+Unix/Linux 系统进行改写，原目录里的 win32 相关文件就不用复制到新目录
+
+$ cd ~/work/majiang
+$ ls
+data/ docs/ fonts/ images/ music/ sound/ src/
+
+autoscan
+
+autoconf 软件包里面的 autoscan 工具可以扫描工作目录，生成一个 configure.ac 的
+模板文件 configure.scan
+
+$ cd ~/work/majiang
+$ autoscan
+
+autoscan 命令在当前目录生成的 configure.scan 文件内容为:
+
+1 # -*- Autoconf -*-
+2 # Process this file with autoconf to produce a configure script.
+3
+4 AC_PREREQ(2.59)
+5 AC_INIT(FULL-PACKAGE-NAME, VERSION, BUG-REPORT-ADDRESS)
+6 AC_CONFIG_SRCDIR([src/bot.h])
+7 AC_CONFIG_HEADER([config.h])
+8
+9 # Checks for programs.
+10 AC_PROG_CXX
+11 AC_PROG_CC
+12
+13 # Checks for libraries.
+14
+15 # Checks for header files.
+16 AC_HEADER_STDC
+17 AC_CHECK_HEADERS([limits.h malloc.h stdlib.h string.h unistd.h])
+18
+19 # Checks for typedefs, structures, and compiler characteristics.
+20 AC_HEADER_STDBOOL
+21 AC_C_CONST
+22 AC_C_INLINE
+23
+24 # Checks for library functions.
+25 AC_FUNC_MALLOC
+26 AC_FUNC_REALLOC
+27 AC_CHECK_FUNCS([memset strcasecmp strchr strdup])
+28 AC_OUTPUT
+
+# 号开始的行是注释，其他都是 m4 宏命令将它改名为 configure.ac，然后在此基础上
+进行修改
+
+configure.ac 的基本结构
+
+configure.ac 文件是 autoconf 的输入文件，经过 autoconf 处理，展开里面的 m4 宏，
+输出的是 configure 脚本
+
+第 4 行声明本文件要求的 autoconf 版本，因为本例使用了新版本 2.59，所以在此注明
+
+
+第 5 行 AC_INIT 宏用来定义软件的名称和版本等信息，本例写成:
+
+AC_INIT(majiang, 1.0)
+
+这里省略了 BUG-REPORT-ADDRESS 参数，它是可选项，一般写成作者的邮件地址
+
+第 6 行 AC_CONFIG_SRCDIR 宏通过侦测所指定的源码文件是否存在，来确定源码目录的有
+效性可以选择源码目录中的任何一个文件作为代表，比如将 autoscan 选择的 bot.h
+文件改成 main.cpp:
+
+AC_CONFIG_SRCDIR([src/main.cpp])
+
+宏参数中使用 `[ ]'，是为了表明其中的字符串是一个整体
+
+第 7 行的 AC_CONFIG_HEADER 宏用于生成 config.h 文件，里面存放 configure 脚本侦
+测到的信息如果程序需要使用其中的定义，就在源码中加入
+
+#include <config.h>
+
+其他的一些宏是标准的侦测过程，可以保留不动
+
+configure.ac 文件要求 AC_INIT 宏必须放在开头位置，AC_OUTPUT 放在文件末，中间用
+来检测编译环境的各种宏没有特别的先后次序要求，由宏之间相互关系决定
+
+Makefile 文件的产生
+
+前面 configure.ac 里面的宏，主要作用是侦测系统，并没有编译相关的设置因为这些
+信息是写在 Makefile.am 里面，然后用 automake 工具转换成 Makefile.in，configure
+脚本执行时再读取 Makefile.in，并与侦测信息一起写到 Makefile 文件
+
+在 autotools 的命名习惯中，后缀 ac 的文件是 autoconf 的输入文件，后缀 am 的文
+件是 automake 的输入文件，后缀 in 的文件是 configure 的输入文件 autoconf 旧版
+本中 configure.in 等同于 configure.ac，虽然新版本也可以识别，但它不符合命名规则
+，所以新版本的文件应该使用 ac 后缀
+
+简单的 Makefile.in 可以手动编写，如果使用 automake 产生，需要在 configure.ac
+里面加入 AM_INIT_AUTOMAKE 宏进行声明
+
+要输出 Makefile，还需要在 configure.ac 中使用 AC_CONFIG_FILES 宏指明该宏并不
+是只处理 Makefile，而是将 FILE.in 文件转换为 FILE 文件因为 make 可以遍历子目
+录，如果子目录中存在 Makefile，也将同时处理在本例中 src 目录下是源码，其他是
+数据文件，可以使用单独一个 Makefile 放在根目录下面，也可以用多个 Makefile由于
+每个子目录的 Makefile 只处理本目录的文件，分工明确，是模块化的方法，推荐使用
+因此在 configure.ac 里面增加下面的宏，表示软件根目录和子目录中都需要生成
+Makefile 文件:
+
+AC_CONFIG_FILES([Makefile
+src/Makefile
+data/Makefile
+docs/Makefile
+fonts/Makefile
+images/Makefile
+music/Makefile
+sound/Makefile])
+
+编写 Makefile.am
+
+软件根目录 Makefile.am
+
+由于该目录下面保存的是与 autotools 相关的文件，没有需要编译安装的文件，所以只注
+明需要进一步处理的子目录信息:
+
+SUBDIRS = src data docs fonts images music sound
+
+src/Makefile.am
+
+此目录里是源代码，最终生成 mj 可执行文件，在其 Makefile.am 中写入
+
+bin_PROGRAMS = mj
+
+mj_SOURCES = bot.h \
+bot.cpp \
+config.cpp \
+game.h \
+game.cpp \
+general.h \
+general.cpp \
+hand.h \
+hand.cpp \
+ini.h \
+ini.cpp \
+main.h \
+main.cpp \
+player.h \
+player.cpp \
+text.cpp \
+tile.h \
+tile.cpp \
+util.cpp
+
+am 文件里变量通过命名判断其含义，保留的字符串间用下划线分隔
+
+bin_PROGRAMS 表示列出二进制的程序，值为多个空格分开的程序列表，这里仅有一个 mj
+
+
+mj_SOURCES 列出的是组成 mj 程序的文件，文件比较多的时候，每个文件写成一行容易看
+清楚
+
+data/Makefile.am
+
+本目录的文件是 mj 运行时读取的数据，它的 Makefile.am 可以这样写
+
+mjdatadir = $(pkgdatadir)/data
+mjdata_DATA = mj.ini titles.txt
+EXTRA_DIST = $(mjdata_DATA)
+
+因为 datadir 是保留的关键字，所以用 mjdatadir 代替，pkgdatadir 指向 $prefix/
+share/FULL-PACKAGE-NAME 目录，因为在 AC_INIT 中已经声明 FULL-PACKAGE-NAME 为
+majiang，pkgdatadir 就等于 $prefix/share/majiang 目录
+
+其中 mjdatadir 让 data 目录下的文件安装到 $prefix/share/majiang/data 目录里面
+
+mjdata_DATA 列出此目录下需要安装的文件，然后用 EXTRA_DIST 变量注明
+
+余下几个子目录都与 data 目录类似
+
+docs/Makefile.am
+
+docsdir = $(pkgdatadir)/docs
+docs_DATA = gkai00mp.txt gpl.html readme.txt
+EXTRA_DIST = $(docs_DATA)
+
+fonts/Makefile.am
+
+fontsdir = $(pkgdatadir)/fonts
+fonts_DATA = brush.ttf gkai00mp.ttf
+EXTRA_DIST = $(fonts_DATA)
+
+images/Makefile.am
+
+imagesdir = $(pkgdatadir)/images
+images_DATA = bgame.jpg \
+mjgirl1a.jpg \
+mjgirl2a.jpg \
+mjgirl3a.jpg \
+mjgirl4a.jpg \
+tiles.jpg \
+electron.jpg \
+mjgirl1b.jpg \
+mjgirl2b.jpg \
+mjgirl3b.jpg \
+mjgirl4b.jpg \
+gameover.jpg \
+mjgirl1c.jpg \
+mjgirl2c.jpg \
+mjgirl3c.jpg \
+mjgirl4c.jpg
+EXTRA_DIST = $(images_DATA)
+
+music/Makefile.am
+
+musicdir = $(pkgdatadir)/music
+music_DATA = bet.ogg \
+bonus.ogg \
+music.ogg \
+musicb.ogg \
+musice.ogg \
+win.ogg \
+bgame.ogg \
+gameover.ogg \
+music1.ogg \
+musicc.ogg \
+musicp.ogg
+EXTRA_DIST = $(music_DATA)
+
+sound/Makefile.am
+
+sounddir = $(pkgdatadir)/sound
+sound_DATA = boom.wav \
+ding.wav \
+discard.wav \
+discard2.wav \
+flash.wav \
+snd1.wav \
+snd2.wav \
+snd3.wav \
+snd4.wav
+EXTRA_DIST = $(sound_DATA)
+
+运行 autotools
+
+准备好 configure.ac 和 Makefile.am，就可以用 autotools 的命令处理这些文件开始
+可能会出现错误，不过没关系，可以按照错误信息的提示逐步进行修正
+
+首先要使用的是 aclocal 命令，它根据 configure.ac 的定义，将需要使用的 m4 宏定
+义复制到 aclocal.m4 里面缺省时，搜索 m4 宏是从 autoconf 的安装目录和系统的
+aclocal 目录如果需要使用其他路径下的宏，可以通过命令行的 -I 选项指定
+
+接着使用 autoheader 命令，它负责生成 config.h.in 文件，这里面的 C 语言宏定义也
+是通过解析 configure.ac 产生
+
+下来运行 automake 命令处理 Makefile.am，生成 Makefile.inGNU 对自己发布的软件
+有严格的规范，比如必须附带许可证声明文件 COPYING 等等，否则 automake 执行时会
+报错automake 提供了三种软件等级： foreigngnu 和 gnits，让用户选择采用，默认
+等级为 gnu本例使用 foreign 等级，它只检测必须的文件有一些必需的脚本文件可以
+从 automake 软件包里复制过来，在执行时使用 --add-missing 选项可以让 automake 自
+动添加，默认方式是采用符号链接，如加上 --copy 选项则可以使用复制方式本例中，
+automake 的命令如下:
+
+$ automake --foreign --add-missing --copy
+
+最后，使用 autoconf 命令生成 configure 脚本文件
+
+SDL 库的侦测
+
+这个麻将游戏是基于 SDL 库开发的，一般系统默认不会安装，因此 configure 脚本的一
+个任务就是检查用户的系统中是否有该软件包
+
+autoconf 提供了很多宏可以实现侦测功能，但首先应该查看 SDL 软件包是否已经提供相
+应的宏通过 pkgsrc 的工具可以看到:
+
+$ pkg_info -L SDL|grep m4
+/usr/pkg/share/aclocal/sdl.m4
+
+即 SDL 软件包提供了一个 sdl.m4 宏，放在系统的 aclocal 目录下
+
+在这个宏文件的注释中说明了使用的方法:
+
+dnl AM_PATH_SDL([MINIMUM-VERSION,[ACTION-IF-FOUND[,ACTION-IF-NOT-FOUND]]])
+dnl Test for SDL, and define SDL_CFLAGS and SDL_LIBS
+
+也就是说在 configure.ac 里面调用 AM_PATH_SDL 宏，就可以侦测 SDL找到 SDL 库以
+后，该宏还输出 SDL_CFLAGS 和 SDL_LIBS 编译连接选项，它们实际上就是调用
+`sdl-config --cflags` 和 `sdl-config --libs`
+
+于是在 configure.ac 里面加入 AM_PATH_SDL 宏
+
+# Checks for libraries.
+SDL_VERSION=1.2.0
+AM_PATH_SDL($SDL_VERSION,
+:,
+AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
+)
+
+当前 SDL 的版本为 1.2.9，于是 MINIMUM-VERSION 就设为 1.2.0如果在系统中侦测到
+需要的库，没什么额外的操作，假如没有找到，则给出错误信息
+
+AM_PATH_SDL 输出 SDL_CFLAGS 和 SDL_LIBS 编译参数，需要添加到 src/Makefile.am 里
+面:
+
+mj_CPPFLAGS = @SDL_CFLAGS@
+mj_LDFLAGS = @SDL_LIBS@
+
+用 `@' 包围的变量会在 configure 执行时被替换
+
+从 mahjong 的 Makefile 中看到，这个软件还要使用 SDL_imageSDL_mixser 和
+SDL_ttf 库，但它们不属于 SDL 软件包，需要另外安装由于这些库在 sdl.m4 中也没
+有进行侦测，所以自己要写一些脚本
+
+autotools 提供了一个 AC_CHECK_LIB 宏可以用来检测库，现在就使用它来检测这几个
+SDL 库该宏的语法为:
+
+AC_CHECK_LIB (LIBRARY, FUNCTION, [ACTION-IF-FOUND],
+[ACTION-IF-NOT-FOUND], [OTHER-LIBRARIES])
+
+第一个参数是库名，第二个参数是库中的一个函数，第三个参数是检测到以后进行的动作
+，第四个参数是未检测到以后的动作，第五个参数是其他的库
+
+对于 SDL_imageSDL_mixer 和 SDL_ttf 对应的使用方法如下:
+
+# Check for SDL_image library
+AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, , AC_MSG_ERROR([
+*** Unable to find SDL_image libary with PNG support
+(http://www.libsdl.org/projects/SDL_image/)
+]), `sdl-config --libs`)
+
+# Check for SDL_mixer library
+AC_CHECK_LIB(SDL_mixer, Mix_LoadOGG_RW, , AC_MSG_ERROR([
+*** Unable to find SDL_mixer libary with OGG support
+(http://www.libsdl.org/projects/SDL_mixer/)
+]), `sdl-config --libs`)
+
+# Check for SDL_ttf library
+AC_CHECK_LIB(SDL_ttf, TTF_OpenFont, , AC_MSG_ERROR([
+*** Unable to find SDL_ttf libary
+(http://www.libsdl.org/projects/SDL_ttf/)
+]), `sdl-config --libs`)
+
+软件使用的数据文件
+
+原来 mj 读取数据是从执行时目录的子目录中读取，但现在将数据放到 $prefix/share/
+majiang 目录下，需要通过一种途径让程序可以知道数据文件被安放的位置
+
+要达到这个目的有很多方法，这里采用最直接的一种：将数据文件安装目录变量通过
+CPPFLAGS 编译参数传递给程序
+
+于是修改 src/Makefile.am 的 CPPFLAGS:
+
+mj_CPPFLAGS = @SDL_CFLAGS@ -DDATA_DIR=\"${datadir}/majiang\"
+
+相应地修改 src 目录下的源码，在读取数据文件的地方，将读取的路径改成 DATA_DIR
+里对应的子目录例如，原先 config.cpp 中是:
+
+void LoadCfg()
+{
+cfg.Load("data/mj.ini");
+}
+
+现改成:
+
+void LoadCfg()
+{
+char ini_file[260];
+sprintf(ini_file, "%s/data/mj.ini", DATA_DIR);
+cfg.Load(ini_file);
+}
+
+configure 选项
+
+原来 mahjong 的 Makefile 第 22 行定义了 debug 调试选项，虽然也可以照样放到 src/
+Makefile.am 的 CPPFLAGS 里面实现，但 autotools 提供了一种更灵活的机制
+
+configure 脚本可以通过选项来设置编译参数，现增加一个 --enable-debug 选项，需要
+DEBUG 时，在命令行上加上它来打开，默认则关闭
+
+这项功能是使用 AC_ARG_ENABLE 宏实现:
+
+AC_ARG_ENABLE (FEATURE, HELP-STRING, [ACTION-IF-GIVEN],
+[ACTION-IF-NOT-GIVEN])
+
+其中 FEATURE 是名称，HELP_STRING 为说明信息，在使用 ./configure --help 时可以看
+到最后两个分别对应打开和关闭时的操作
+
+现在将 DEBUG 功能加入 configure.ac:
+
+AC_ARG_ENABLE(debug,
+[ --enable-debug turn on debug],
+CXXFLAGS="$CXXFLAGS -g3 -D_DEBUG=1")
+
+autotools 脚本
+
+每次修改了 configure.ac 或 Makefile.am 等 autotools 输入文件后都需要再次运行
+aclocalautomakeautoconf 这些命令，为了方便起见，可以将他们放到一个 shell
+脚本里面，例如:
+
+#! /bin/sh
+set -x
+aclocal
+autoheader
+automake --foreign --add-missing --copy
+autoconf
+
+将上面内容保存到 autogen.sh 文件，并修改文件属性为 755每次需要重新生成
+configure 脚本时，执行 ./autogen.sh 即可
+
+使用 configure 产生的 Makefile
+
+现在执行 ./autogen.sh 得到的 configure 脚本已经可以正常工作了，进入 ~/work/
+majiang 目录，执行 ./configure，可以看到它检查系统的过程，包括 SDL 和
+SDL_image 等库的侦测结果使用 ./configure --help 可以看到 autotools 提供的帮
+助信息
+
+configure 执行的完毕，输出软件根目录和几个子目录下面的 Makefile 文件这些
+Makefile 有几个常用的 target:
+
+· make all
+
+不加任何 target，默认就是 all，作用是编译软件
+
+· make install
+
+安装软件包，如果安装到系统目录，需要 root 权限
+
+· make clean
+
+清除编译产生的目标文件
+
+· make distclean
+
+可以同时清除编译的结果和 configure 输出的文件
+
+· make tags
+
+生成 etags 使用的 TAGS 文件
+
+· make dist
+
+生成软件发布包，为 tar.gz 格式的压缩包，文件名由软件包名和版本组成
+
+最终的 configure.ac 文件
+
+# -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ(2.59)
+AC_INIT([majiang], [1.0])
+AC_CONFIG_SRCDIR([src/main.cpp])
+AC_CONFIG_HEADER([config.h])
+
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+AM_INIT_AUTOMAKE
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_CC
+
+AC_LANG(C++)
+
+# Checks for libraries.
+SDL_VERSION=1.2.0
+AM_PATH_SDL($SDL_VERSION,
+:,
+AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
+)
+
+# Check for SDL_image library
+AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, , AC_MSG_ERROR([
+*** Unable to find SDL_image libary with PNG support
+(http://www.libsdl.org/projects/SDL_image/)
+]), `sdl-config --libs`)
+
+# Check for SDL_mixer library
+AC_CHECK_LIB(SDL_mixer, Mix_LoadOGG_RW, , AC_MSG_ERROR([
+*** Unable to find SDL_mixer libary with OGG support
+(http://www.libsdl.org/projects/SDL_mixer/)
+]), `sdl-config --libs`)
+
+# Check for SDL_ttf library
+AC_CHECK_LIB(SDL_ttf, TTF_OpenFont, , AC_MSG_ERROR([
+*** Unable to find SDL_ttf libary
+(http://www.libsdl.org/projects/SDL_ttf/)
+]), `sdl-config --libs`)
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS([limits.h malloc.h stdlib.h string.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_CONST
+AC_C_INLINE
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+AC_FUNC_REALLOC
+AC_CHECK_FUNCS([memset strcasecmp strchr strdup])
+
+AC_ARG_ENABLE(debug,
+[ --enable-debug turn on debug],
+CXXFLAGS="$CXXFLAGS -g3 -D_DEBUG=1")
+
+AC_CONFIG_FILES([Makefile
+src/Makefile
+data/Makefile
+docs/Makefile
+fonts/Makefile
+images/Makefile
+music/Makefile
+sound/Makefile])
+AC_OUTPUT
+
+结束语
+
+GNU 的很多工具经常给人一种感觉: 功能很强大，但也很难学autotools 可以说是这类
+工具的一个典型，它需要用户对 shellmake软件编译m4 宏语言，以及 Unix/Linux
+操作系统各方面知识都有一定的了解使用时又要 autoconf automakelibtool 多个
+工具相互配合^1，如果要给软件增加国际化功能，还要再了解和掌握 gettextpo 等工具
+和规则
+
+与学习其他知识一样，所谓难，其实是不了解，不熟悉本文通过一个范例演示使用
+autotools 的过程，是让不了解的人熟悉这个工具但真正的理解，还需要将它运用到自
+己的软件项目当中，不断地实践，不断地思考和总结
+
+
+
+
+脚注
+
+... 多个工具相互配合^1
+由于本例软件中没有生成库文件，所以没有涉及 libtool 工具的使用
+本文介绍了在 linux 系统中，通过 Gnu autoconf 和 automake 生成 Makefile 的方法。主要探讨了生成 Makefile 的来龙去脉及其机理，接着详细介绍了配置 Configure.in 的方法及其规则。
+引子
+无论是在Linux还是在Unix环境中，make都是一个非常重要的编译命令。不管是自己进行项目开发还是安装应用软件，我们都经常要用到make或 make install。利用make工具，我们可以将大型的开发项目分解成为多个更易于管理的模块，对于一个包括几百个源文件的应用程序，使用make和 makefile工具就可以轻而易举的理顺各个源文件之间纷繁复杂的相互关系。
+但是如果通过查阅make的帮助文档来手工编写Makefile,对任何程序员都是一场挑战。幸而有GNU 提供的Autoconf及Automake这两套工具使得编写makefile不再是一个难题。
+本文将介绍如何利用 GNU Autoconf 及 Automake 这两套工具来协助我们自动产生 Makefile文件，并且让开发出来的软件可以像大多数源码包那样，只需"./configure", "make","make install" 就可以把程序安装到系统中。
+
+
+
+
+回页首
+模拟需求
+假设源文件按如下目录存放，如图1所示，运用autoconf和automake生成makefile文件。
+图 1文件目录结构
+
+
+假设src是我们源文件目录，include目录存放其他库的头文件，lib目录存放用到的库文件，然后开始按模块存放，每个模块都有一个对应的目录，模块下再分子模块，如apple、orange。每个子目录下又分core，include，shell三个目录，其中core和shell目录存放.c文件，include的存放.h文件，其他类似。
+样例程序功能：基于多线程的数据读写保护（联系作者获取整个autoconf和automake生成的Makefile工程和源码，E-mail：
+normalnotebook@126.com
+）。
+
+
+
+
+回页首
+工具简介
+所必须的软件：autoconf/automake/m4/perl/libtool（其中libtool非必须）。
+autoconf是一个用于生成可以自动地配置软件源码包，用以适应多种UNIX类系统的shell脚本工具，其中autoconf需要用到 m4，便于生成脚本。automake是一个从Makefile.am文件自动生成Makefile.in的工具。为了生成Makefile.in，automake还需用到perl，由于automake创建的发布完全遵循GNU标准，所以在创建中不需要perl。libtool是一款方便生成各种程序库的工具。
+目前automake支持三种目录层次：flat、shallow和deep。
+1) flat指的是所有文件都位于同一个目录中。
+就是所有源文件、头文件以及其他库文件都位于当前目录中，且没有子目录。Termutils就是这一类。
+2) shallow指的是主要的源代码都储存在顶层目录，其他各个部分则储存在子目录中。
+就是主要源文件在当前目录中，而其它一些实现各部分功能的源文件位于各自不同的目录。automake本身就是这一类。
+3) deep指的是所有源代码都被储存在子目录中；顶层目录主要包含配置信息。
+就是所有源文件及自己写的头文件位于当前目录的一个子目录中，而当前目录里没有任何源文件。 GNU cpio和GNU tar就是这一类。
+flat类型是最简单的，deep类型是最复杂的。不难看出，我们的模拟需求正是基于第三类deep型，也就是说我们要做挑战性的事情：)。注：我们的测试程序是基于多线程的简单程序。
+
+
+
+
+回页首
+生成 Makefile 的来龙去脉
+首先进入 project 目录，在该目录下运行一系列命令，创建和修改几个文件，就可以生成符合该平台的Makefile文件，操作过程如下：
+1) 运行autoscan命令
+2) 将configure.scan 文件重命名为configure.in，并修改configure.in文件
+3) 在project目录下新建Makefile.am文件，并在core和shell目录下也新建makefile.am文件
+4) 在project目录下新建NEWS、 README、 ChangeLog 、AUTHORS文件
+5) 将/usr/share/automake-1.X/目录下的depcomp和complie文件拷贝到本目录下
+6) 运行aclocal命令
+7) 运行autoconf命令
+8) 运行automake -a命令
+9) 运行./confiugre脚本
+可以通过图2看出产生Makefile的流程，如图所示：
+图 2生成Makefile流程图
+
+
+
+
+
+
+回页首
+Configure.in的八股文
+当我们利用autoscan工具生成confiugre.scan文件时，我们需要将confiugre.scan重命名为confiugre.in文件。confiugre.in调用一系列autoconf宏来测试程序需要的或用到的特性是否存在，以及这些特性的功能。
+下面我们就来目睹一下confiugre.scan的庐山真面目：
+# Process this file with autoconf to produce a configure script.
+AC_PREREQ(2.59)
+AC_INIT(FULL-PACKAGE-NAME, VERSION, BUG-REPORT-ADDRESS)
+AC_CONFIG_SRCDIR([config.h.in])
+AC_CONFIG_HEADER([config.h])
+# Checks for programs.
+AC_PROG_CC
+# Checks for libraries.
+# FIXME: Replace `main' with a function in `-lpthread':
+AC_CHECK_LIB([pthread], [main])
+# Checks for header files.
+# Checks for typedefs, structures, and compiler characteristics.
+# Checks for library functions.
+AC_OUTPUT
+每个configure.scan文件都是以AC_INIT开头，以AC_OUTPUT结束。我们不难从文件中看出confiugre.in文件的一般布局：
+AC_INIT
+测试程序
+测试函数库
+测试头文件
+测试类型定义
+测试结构
+测试编译器特性
+测试库函数
+测试系统调用
+AC_OUTPUT
+上面的调用次序只是建议性质的，但我们还是强烈建议不要随意改变对宏调用的次序。
+现在就开始修改该文件：
+$mv configure.scan configure.in
+$vim configure.in
+修改后的结果如下：
+
+#                                -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+AC_PREREQ(2.59)
+AC_INIT(test, 1.0, normalnotebook@126.com)
+AC_CONFIG_SRCDIR([src/ModuleA/apple/core/test.c])
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(test,1.0)
+# Checks for programs.
+AC_PROG_CC
+# Checks for libraries.
+# FIXME: Replace `main' with a function in `-lpthread':
+AC_CHECK_LIB([pthread], [pthread_rwlock_init])
+AC_PROG_RANLIB
+# Checks for header files.
+# Checks for typedefs, structures, and compiler characteristics.
+# Checks for library functions.
+AC_OUTPUT([Makefile
+                src/lib/Makefile
+                src/ModuleA/apple/core/Makefile
+                src/ModuleA/apple/shell/Makefile
+                ])
+
+其中要将AC_CONFIG_HEADER([config.h])修改为：AM_CONFIG_HEADER(config.h), 并加入AM_INIT_AUTOMAKE(test,1.0)。由于我们的测试程序是基于多线程的程序，所以要加入AC_PROG_RANLIB，不然运行automake命令时会出错。在AC_OUTPUT输入要创建的Makefile文件名。
+由于我们在程序中使用了读写锁，所以需要对库文件进行检查，即AC_CHECK_LIB([pthread], [main])，该宏的含义如下：
+
+
+其中，LIBS是link的一个选项，详细请参看后续的Makefile文件。由于我们在程序中使用了读写锁，所以我们测试pthread库中是否存在pthread_rwlock_init函数。
+由于我们是基于deep类型来创建makefile文件，所以我们需要在四处创建Makefile文件。即：project目录下，lib目录下，core和shell目录下。
+Autoconf提供了很多内置宏来做相关的检测，限于篇幅关系，我们在这里对其他宏不做详细的解释，具体请参看参考文献1和参考文献2，也可参看autoconf信息页。
+
+
+
+
+回页首
+实战Makefile.am
+Makefile.am是一种比Makefile更高层次的规则。只需指定要生成什么目标，它由什么源文件生成，要安装到什么目录等构成。
+表一列出了可执行文件、静态库、头文件和数据文件，四种书写Makefile.am文件个一般格式。
+表 1Makefile.am一般格式
+
+
+对于可执行文件和静态库类型，如果只想编译，不想安装到系统中，可以用noinst_PROGRAMS代替bin_PROGRAMS，noinst_LIBRARIES代替lib_LIBRARIES。
+Makefile.am还提供了一些全局变量供所有的目标体使用：
+表 2 Makefile.am中可用的全局变量
+
+
+在Makefile.am中尽量使用相对路径，系统预定义了两个基本路径：
+表 3Makefile.am中可用的路径变量
+
+
+在上文中我们提到过安装路径，automake设置了默认的安装路径：
+1) 标准安装路径
+默认安装路径为：$(prefix) = /usr/local，可以通过./configure --prefix=的方法来覆盖。
+其它的预定义目录还包括：bindir = $(prefix)/bin, libdir = $(prefix)/lib, datadir = $(prefix)/share, sysconfdir = $(prefix)/etc等等。
+2) 定义一个新的安装路径
+比如test, 可定义testdir = $(prefix)/test, 然后test_DATA =test1 test2，则test1，test2会作为数据文件安装到$(prefix)/ /test目录下。
+我们首先需要在工程顶层目录下（即project/）创建一个Makefile.am来指明包含的子目录：
+SUBDIRS=src/lib src/ModuleA/apple/shell src/ModuleA/apple/core
+CURRENTPATH=$(shell /bin/pwd)
+INCLUDES=-I$(CURRENTPATH)/src/include -I$(CURRENTPATH)/src/ModuleA/apple/include
+export INCLUDES
+由于每个源文件都会用到相同的头文件，所以我们在最顶层的Makefile.am中包含了编译源文件时所用到的头文件，并导出，见蓝色部分代码。
+我们将lib目录下的swap.c文件编译成libswap.a文件，被apple/shell/apple.c文件调用，那么lib目录下的Makefile.am如下所示：
+noinst_LIBRARIES=libswap.a
+libswap_a_SOURCES=swap.c
+INCLUDES=-I$(top_srcdir)/src/includ
+细心的读者可能就会问：怎么表1中给出的是bin_LIBRARIES，而这里是noinst_LIBRARIES？这是因为如果只想编译，而不想安装到系统中，就用noinst_LIBRARIES代替bin_LIBRARIES，对于可执行文件就用noinst_PROGRAMS代替bin_PROGRAMS。对于安装的情况，库将会安装到$(prefix)/lib目录下，可执行文件将会安装到${prefix}/bin。如果想安装该库，则Makefile.am示例如下：
+bin_LIBRARIES=libswap.a
+libswap_a_SOURCES=swap.c
+INCLUDES=-I$(top_srcdir)/src/include
+swapincludedir=$(includedir)/swap
+swapinclude_HEADERS=$(top_srcdir)/src/include/swap.h
+最后两行的意思是将swap.h安装到${prefix}/include /swap目录下。
+接下来，对于可执行文件类型的情况，我们将讨论如何写Makefile.am？对于编译apple/core目录下的文件，我们写成的Makefile.am如下所示：
+noinst_PROGRAMS=test
+test_SOURCES=test.c
+test_LDADD=$(top_srcdir)/src/ModuleA/apple/shell/apple.o $(top_srcdir)/src/lib/libswap.a
+test_LDFLAGS=-D_GNU_SOURCE
+DEFS+=-D_GNU_SOURCE
+#LIBS=-lpthread
+由于我们的test.c文件在链接时，需要apple.o和libswap.a文件，所以我们需要在test_LDADD中包含这两个文件。对于Linux下的信号量/读写锁文件进行编译，需要在编译选项中指明-D_GNU_SOURCE。所以在test_LDFLAGS中指明。而test_LDFLAGS只是链接时的选项，编译时同样需要指明该选项，所以需要DEFS来指明编译选项，由于DEFS已经有初始值，所以这里用+=的形式指明。从这里可以看出，Makefile.am中的语法与Makefile的语法一致，也可以采用条件表达式。如果你的程序还包含其他的库，除了用AC_CHECK_LIB宏来指明外，还可以用LIBS来指明。
+如果你只想编译某一个文件，那么Makefile.am如何写呢？这个文件也很简单，写法跟可执行文件的差不多，如下例所示：
+noinst_PROGRAMS=apple
+apple_SOURCES=apple.c
+DEFS+=-D_GNU_SOURCE
+我们这里只是欺骗automake，假装要生成apple文件，让它为我们生成依赖关系和执行命令。所以当你运行完automake命令后，然后修改apple/shell/下的Makefile.in文件，直接将LINK语句删除，即：
+…….
+clean-noinstPROGRAMS:
+        -test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
+apple$(EXEEXT): $(apple_OBJECTS) $(apple_DEPENDENCIES)
+        @rm -f apple$(EXEEXT)
+#$(LINK) $(apple_LDFLAGS) $(apple_OBJECTS) $(apple_LDADD) $(LIBS)
+…….
+通过上述处理，就可以达到我们的目的。从图1中不难看出为什么要修改Makefile.in的原因，而不是修改

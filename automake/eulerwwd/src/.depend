@@ -1,0 +1,15 @@
+FOBJ=adiss.o boundary.o ccexport.o cvexport.o fx.o main.o meshow.o module.o r_ktemporal.o super_far.o 
+
+foobar: $(FOBJ)
+	$(FC) -o $@ $(FFLAGS) $(LDFLAGS) $(FOBJ) $(LIBS)
+
+adiss.o : adiss.f90 module.o module.o 
+boundary.o : boundary.f90 module.o 
+ccexport.o : ccexport.f90 module.o 
+cvexport.o : cvexport.f90 module.o 
+fx.o : fx.f90 module.o module.o 
+main.o : main.f90 module.o module.o 
+meshow.o : meshow.f90 module.o 
+module.o : module.f90 
+r_ktemporal.o : r_ktemporal.f90 module.o 
+super_far.o : super_far.f90 module.o 
