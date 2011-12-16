@@ -1,0 +1,2853 @@
+____________________________________________________________________________
+           W A R C R A F T   I I I  | Pissed Off Unit Quote Collection
+                      [presented in THX surround sound]
+
+       written by MunkiBleedsGreen -  (linoleummunki@hotmail.com) ©2003
+                        {best viewed at full screen}
+____________________________________________________________________________
+
+
+-_-_-_-_-_-_-_-_-_
+|Table of Contents\__________
+|1. FAQ Information          \
+|     I Updates              /
+|    II Foreword             \
+|2. The Collection           /
+|     I Creeps               \
+|    II Demons               /
+|   III Naga                 \
+|    IV Neutral              /
+|     V Humans               \
+|    VI Night Elves          /
+|   VII Orcs                 \
+|  VIII Undead               /
+|3. Contact, Etc.            \
+|     I You're a Moron       /
+|    II Contact Information  \
+|   III Munki Plugs Himself  /
+|    IV Thanks               \
+|____________________________/
+
+______________________________________________________________________
+
+
+
+-_-_-_-_-_-_          __________
+|Section 1  \________/ FAQ Info \_____________________________________
+
+
+I.--UPDATES
+____________________
+
+
+    Version 2.7 - July 24th, 2003 - Another fairly routine update. Lots
+                of new references, and finally added the three new
+                quotes Illidan has in TFT. Wouldn't have noticed them if
+                it weren't for El Sabotender and EndlessInfinity.
+
+                Anyway, a brief edition of You're a Moron, standard e-mail
+                updates, corrections, and we're good to go.
+
+                Also, since I've had a lot of people ask me about why
+                some lines are not included in the FAQ, I figured I'd
+                define what a "Pissed Quote" is. This is a quote spouted
+                by the unit only after it has been clicked upon multiple
+                times in succession. In other words, under normal play,
+                you'd only hear attack confirmation quotes or those said
+                when the unit is finished training. And since you're likely
+                to hear any of these lines during a standard game, I only
+                list the Pissed Quotes, which you'd otherwise have to go
+                out of your way to hear.
+
+                Eventually, within a few months when the FAQ just has
+                nothing more to be added to it, I might go about and
+                added the notable confirmation/creation lines. But until
+                then, please don't e-mail me about them.
+
+                Expect the next update within the next two weeks.
+
+
+    Version 2.6 - July 15th, 2003 - Well, I said I'd update next when they
+                gave the Sea Witch a soundset... but then when I finally
+                picked up TFT, I noticed that she didn't have one still.
+                In any case, fully updated the guide with the Pissed Quotes
+                of all the Campaign Heroes and units. Also, for easier
+                reference to those who've just come across the guide,
+                since it should be in the TFT section soon, I've inserted
+                a marker next to all units, heroes, and characters new
+                to the expansion. To find these fastest, use Find (Ctrl+F)
+                to look for *NEW TFT* . This was even added to all quote
+                sets added to this guide during the Beta. Most notable would
+             be the new section given to the Naga race. Did I miss
+	anything? Please, feel free to tell me.
+
+                Special thanks to Arrlaari who went through the effort of
+                sending me a fairly lengthy list of quotes from TFT units,
+                but I had already prepared this FAQ with my own research
+                by the time I had checked his e-mail. Sorry, but thanks.
+
+                Went through the usual e-mail updates and I'm preparing for
+                another huge hit when this FAQ is added to the TFT section.
+                Top 10 FAQs List = Headache.
+
+                Next matter of importance: My inferiority.org e-mail has
+                been down for a while now. But it was only a forwarder in
+                any case. Send any e-mail to me at linoleummunki@hotmail.com
+                from now on.
+
+                And finally, inaugurating a new section finally to the guide.
+                After arguing over the title for sometime, I've decided to
+                settle for "You're a Moron". You'll find it in as the
+                first part of the third section of the guide, Contact, Etc.
+                After having to deal with the occasional raging idiot for
+                the last year with this guide, I figured it was finally
+                time to vent a little rage. I'll keep this updated with
+                every new version, unless I just can't find anyone
+                stupid enough to bash. And trust me, I'm hoping I can't.
+
+                In any case, next update will probably becoming within a week
+                or two, or else I'm going to fall behind like crazy and let
+                my Hotmail box get filled up again...
+
+
+
+    Version 2.5 - April 17th, 2003 - With the 308 build of Beta comes
+                another update. Didn't even think to check for anything
+                new this patch until I noticed "new media for some units"
+                listed among the changes on the Blizz forums. And from
+                what I've gathered this far, they've redone the Faerie
+                Dragon and Pit Lords sound sets and added a set for
+                the Beastmaster.
+
+		So, aside from the addition of the Beastie and Pit Lord
+                qutoes (Nope, Faerie Dragons still only shriek), added
+                some more sources, notably for the Spirit Walker, which
+                I forgot to add in before sending in the last version
+                of the FAQ. So sorry to those of you who sent in credits
+                for them, but I already had them. You'll still be
+                added to the thanks list at the bottom.
+
+		And that's that, for now at least. If you happen to
+                notice any other units aside from the three listed above
+                whom have had their sound sets updated as of 308, please
+                inform me of it. Expect the next update by the next
+                major patch, as that seems to be the next time any media
+                updates will come.
+
+
+    Version 2.4 - April 8th, 2003 - Back once more for a fairly large
+                update. Tons of new Beta references this time around.
+                And, by the way, yes, the Orc's Tauren Spirit Walker now
+                has his own sound set, and it's certainly worth checking
+                out. Blizzard keeps up its high standards of actually
+                making me laugh at fart jokes. The new Neutral Hero,
+                the Naga Sea Witch, lacks a sound set as of yet, but I'll
+                obviously update once she gets one.
+
+		Also of note this time around is that I was recently
+                contacted by a person far more credible than anyone else
+                when it comes to the pissed unit quotes. I'll leave this
+                person's identity anonymous, as they requested, but I will
+                be using the nickname "Deepthroat" for them when it comes
+                to creditting source additions or quote corrections. And
+                no, don't bother e-mailing me asking for this person's
+                identity, as I wish to respect their wishes.
+
+                Next update? Probably when the Sea Witch gets her sound
+                set. Until then, I'm going to make a more direct attempt
+                at getting this guide listed under the Frozen Throne
+                FAQ section.
+
+
+    Version 2.3 - March 10th, 2003 - Standard updates, for the most part.
+                Immediately after uploading the last version, I noticed
+                my most obvious fallacy; calling Spellbreakers Spell
+                Stealers. I felt rather idiotic for that, but c'est la vie.
+                Anyway, the update worth noting is the addition of the
+                Pandaren Brewmaster's pissed quotes, in the neutral
+                heroes section. He's not yet available normally as of
+                this FAQ being written, but he can be used in a few
+                custom maps, including an FT Hero Arena.
+
+                As always, if you sent something in and you do not
+                notice your name listed as the credit for the source,
+                then someone likely beat you to the punch, and your name
+                is instead listed in the Group Thanks at the bottom of
+                the FAQ. Next update will likely come within 2 weeks. See
+                you guys then.
+
+    Version 2.2 - March 5th, 2003 - Guess who got the beta? Obviously,
+                Blizzard has recognized me as the only person on the 'net
+                willing to waste hours of his life to transcribe the
+                pissed off quotes of their units, and have rewarded me
+                justly. No sir, had nothing to do with blind, dumb,
+                incredibly random lucky. Not at all. In celebration
+                of this event, it's time to update this guide. First up,
+                I had a handful of large e-mail updates to add to the
+                guide. A lot more clarification, and a few mysteries
+                finally solved. Secondly, I've added all of the Frozen
+                Throne units currently available in the beta to their
+                proper sections. This covers the following:
+
+                Neutral - Dark Ranger
+                Human - Blood Mage, Dragon Hawk, Spell Stealer
+                Night Elf - Warden
+                Orc - Shadow Hunter, Batrider
+                Undead - Crypt Lord
+
+                Obviously, this is not every unit available in the beta.
+                However, as of yet, the Orc's Spirit Walker has the same
+                pissed sound bite set as the standard Tauren, and also
+                the Obsidian Statue, Black Sphinx, Faerie Dragon, and
+                Mountain Giant only make noises. The Dragon, I should
+                note, sounds much akin to a pair of Zerglings hatching.
+                Only several thousand times more shrill. Quite the
+                nuisance. If I've made any mistakes with the FT quotes,
+                please drop me a line, since I jotted down many of the
+                shorter quotes after only one listening.
+
+                Anyway, that's that. See you guys next time.
+
+
+    Version 2.1 - February 23rd, 2003 - Haha, alright alright, an update.
+                I had one prepared in October actually, after going
+                through nearly 500 pieces of mail, which was then lost
+                when my rebellious computer decided to freeze. After that,
+                I was somewhat discouraged from updating again, despite
+                my Hotmail box (to which all my inferiority.org mail gets
+                sent) being completely backed up. However, in an effort
+                to finish what I've started, I'm picking this FAQ back
+                up again. However, as implied previously, my Hotmail
+                box, for the most part, has flushed out most of my
+                mail, and I accidentally wiped out the entire first page
+                of my box the other day, which has resulted in utter chaos.
+
+                Anyway, this update isn't so much an ACTUAL update. Aside
+                from a few outstanding typographical errors made, there is
+                no new content here. However, if you've been dissuaded from
+                e-mailing me due to the lack of updates, let this
+                basically be the notice to start sending mail again.
+                However, I've something I intended to say a while ago,
+                when I actually had the multi-hour update prepared.
+                Many people have gone to great lengths to try and attain
+                sources for some of these quotes which are, to say the
+                least, rather silly. Trying to credit an old saying to
+                an Austin Powers movie, for example, is not advised.
+                Use your brain and better judgment when sending something
+                in.
+
+                Again, I apologize for the ridiculous delay, and sincerely
+                wish to restart this once more, and try to make this FAQ
+                as complete as possible before the expansion pack is
+                released. -Munki
+
+
+    Version 2.0 - July 10th, 2002 - Damn, in one day I get about twice as
+                much mail as I'd get in a month for my old FAQ. Anyway,
+                I should point out that a) I'm not a Star Wars fan,
+                and b) I usually overlooked very obvious ones, so I missed
+                out on a large load of those references. Secondly,
+                I checked my mail starting with the oldest letter,
+                so I simply credited the first person with their addition,
+                and anyone who reported the same thing later was added to
+                the Thanks list. Oh, and in the future, try to give me
+                your GameFAQs alias, if any, to credit you with, for
+                simplicity's sake. Sorry for not responding to the
+                great bulk of the letters, but I wanted to try and get
+                this updated as swiftly as possible. Next update, I'll
+                probably add other various unit quotes (ie. not quotes
+                activated by multiple clicking) along with the standard
+                additions. -Munki
+
+    Version 1.0 - July 8th, 2002 - First version obviously enough.
+                Finished the entire FAQ up in about three hours time.
+                There'll still be a bit of work ahead, but this is
+                really more of a one or two update FAQ anyway.
+                Now back to wasting time on B-Net -MunkiBleedsGreen
+
+
+
+II.--FOREWORD
+____________________
+
+
+    The best way to enjoy Warcraft 3 is to click EVERYTHING many many
+  times. Warcraft vets should be used to the units yelling back at
+  their infernal masters in the skies, but WC3 really takes the
+  concept to the next level. More phrases, more humour, lots of insanity.
+  And so, since I was quite bored this morning, I've decided to compile
+  every "Pissed" quote every intelligible unit says. In other words,
+  the units that just growl were ignored.
+
+    So, read away, but remember that many of them are infinitely more
+  entertaining when being spoken by the units. The easiest way to get
+  access to the sound files is through World Edit, by the way.
+
+    I've also provided, just to show off my massive amount of useless
+  knowledge, whatever sources some lines may be lifted from, like
+  a movie or some such. There's a few quotes that are partially
+  unintelligible though, so if you want to help out, wherever you see
+  a <?> throughout the FAQ, try deciphering that line. I haven't
+  placed a few of the sources for quotes either, so if you know any,
+  feel free to report that too. E-mail me at munki@inferiority.org.
+  I'll be sure to credit you in the Collection.
+
+    Lastly, a source marked with ~ is an exact quote, while > is either
+  a reference to the source or a modified quote, and ones marked with ?
+  have unknown sources, if any source at all. Why did I bother with
+  this? Because there's nothing good on TV.
+
+    Without further ado, darkness calls. Over and over again. He
+  abuses speed dial apparently.
+
+______________________________________________________________________
+
+
+-_-_-_-_-_-_                        _____________
+|Section 2  \______________________/ Collection  \____________________
+
+
+  --Again, if you supplied me with info, but your name isn't listed--
+          -with the quote, it's in the ending thanks section-
+
+
+I.--CREEP
+___________________
+
+  Bandit
+
+	-"What we have here is a failure to communicate."
+	 ~Movie: 'Cool Hand Luke'.
+
+	-"I usually work alone."
+
+	-"Roamer, wanderer, nomad, vagabond; call me what you will."
+	 ~Music: Metallica's 'Wherever I May Roam'
+        Thanks to A Reys
+
+	-"I don't want FOP! I'm a Dapper Dan Man, dammit."
+	 ~Movie: 'O Brother Where Art Thou', George Clooney's character.
+
+	-"And this one time, at bandit camp..."
+	 >Movie: 'American Pie', Alysson Hannigan's character.
+
+-----
+
+  *NEW TFT* Blood Elf Peasant
+
+  ?-Why is this in the Creep section?
+   Because Neutral doesn't sound right and it's sound files are found in the
+   Creep folder. Happy?
+
+	-"Look, I'm an Engineer. My time is valuable."
+
+	-"Why don't you bother someone else with your incessant clicking?"
+
+	-"If it's really THAT urgent, why don't you do it yourself?.'
+
+	-"It's simple. Just take the hydraulic phase shift emulator and
+        attach it to the trans-dimensional photon emitter. Bam, new tower."
+
+	-" 'I'll have it up in no time.' is an official term of the United
+        Blood Elf Engineers' Union and should not be taken as a reasonable
+        actual estimation of the actual time it will take to complete a
+        task in any way, shape, or form."
+
+	-"Hmm... Tower Defense? No, that's a silly idea, it'd never work."
+         >Other: Works as both a reference to the mammoth amounts of TD
+         custom games created for WC3, and as a in-game reference to
+         the hidden Tower Defense mission in the Human Campaign.
+
+-----
+
+  *NEW TFT* Draenei
+
+  ?-Why is this in the Creep section?
+   Because I thought that "Campaign Units" would be a stupid section
+   for the Scourge to have. Also, they CAN be found as creeps...
+
+  >Correct me if I'm wrong, but all Draenei units share these quotes.
+
+	-"Our blood shall mingle on the battle field."
+
+	-"I'm too old for this... ugh."
+
+	-"I remember when the ale was strong and the wenches were fresh."
+
+	-"I can fight just like a.... *snores*"
+
+	-"It's cold! And there are wolves after me!"
+	>TV: Famous quote from the ever quotable Grandpa Abe Simpson, of
+        course from 'The Simpsons'.
+
+	-"Better hurry... before I die."
+
+	-"Who's that guy with the sickle? Why's he beckoning? Why is
+        my grandfather with him?"
+
+
+-----
+
+  Forest Troll
+
+	-"Say hello to my lil' frien'."
+	 ~Movie: Al Pacino's 'Scarface'.
+         ~Other: Tu Cuc notes that this was a line of the Troll Axethrower's
+         in Warcraft II.
+
+	-"Hassan - CHOP!"
+	~TV: Line from the Bugs Bunny short "A-Lad-In His Lamp".
+        Thanks to Brian Kern for the spelling correction and the title.
+
+	-"Oh, just like that, you filthy swine."
+	>Other: Crimson Hellkite has this as a quote of Lothar's to Zul'jin
+        in Warcraft 2, but I can't confirm that.
+
+-----
+
+  Goblin Sappers
+
+	-"Are you our daddy?"
+       ~Movie: 'Don't Be a Menace To South Central While Drinking Your
+       Juice In The Hood'. Thanks to kgamble8@comcast.net.
+
+	-*fart*
+        -Goblin1: "Wasn't me!"
+        -Goblin2: "Wasn't me!"
+        -Goblin3: "...Sorry."
+
+	-Goblin1: "Where's the mini map?"
+	-Goblin2: "I threw it in the lake!"
+	-Goblin1: "Are you crazy?!"
+	 >Movie: Blair Witch Project
+
+	-Goblin1: "Got a match?"
+	-Goblin2: "Your face, my ass."
+
+	-"Candygram."
+       ~TV: SNL Chevy Chase skit 'Land Shark' from the earlier years.
+       Thanks to Corkscrew for pointing it out first, and writing up a
+       lovely little summary ^^
+       ->kgamble8@comcast.net also credits this to Mel Brook'
+       'Blazing Saddles'.
+
+	-"Package for Mr. Rizzum...flizzum *mumbles*."
+       ~See above.
+
+	-"Flowers for Mrs. Cockantoestinder... *mumbles*."
+       ~See above.
+       >Movie: kgamble8@comcast.net says this is approximately one of the
+       names Chevy Chase used in his movie 'Fletch', which coincides with
+       Chase being in the Land Shark sketch. There's some trivia for ya'...
+
+-----
+
+  Goblin Zeppelin
+
+	-"AHHH! You scared me."
+
+	-"They all look like ants from here."
+
+	-"Mmm, shiny buttons."
+
+	-"Where's the Equator?"
+
+	-"You worry about the towers, I'll worry about the mini map."
+       >Movie: Play on Luke's line from 'Star Wars' during the Death Star
+       scene. Thanks to Brain Stew.
+
+	-"I'm going... to die."
+
+-----
+
+  Harpy
+
+	-Three different shrill screams.
+
+	-"Ohhh... whack me."
+
+-----
+
+  Ice Troll
+
+	-"I'm... too cool."
+
+	-"I shoulda' brought a sweater."
+
+	-"Chill out."
+
+	-"Oh we gonna' get along jus' fine."
+
+-----
+
+  Ogre
+
+	-Head1: "So angry!"
+	-Head2: "So hungry..."
+
+	-Head1: "That way!"
+	-Head2: "No, that way!"
+
+	-Head1: "I'm with stupid."
+	-Head2: "Me too!"
+
+	-*belch*
+	-Head1: "He did it..."
+	-Head2: "No! He did it!"
+         >Other: Tu Cuc notes this as a quote of the Ogre's from Warcraft 2.
+
+	-*fart*
+	-*Beavis and Butthead like giggling*
+
+-----
+
+  Satyr
+
+	-"I await the Legion's coming."
+
+	-"The Night Elves shall suffer."
+
+	-"For Zamfir."
+       ~Other: Reference to an 80's artist by that name who played the
+       pan flute, the traditional instrument of a Satyr. [Deepthroat]
+
+	-"DON'T TOUCH ME!"
+
+	-"Ouuuuuch."
+
+-----
+
+  Wind Serpent
+
+	-"I shall ride my bird to victory!"
+
+	-"I don't use my lance a lot."
+       ->Since Flaggle took the time to shiver in pain at this horrible
+       pun as well, figure I should as well. Note the Lancelot pun. Now
+       groan in pain.
+
+	-"Tell Blizzard I'd make a great action figure!"
+
+	-"I'm going for an even BIGGER role in the expansion pack!"
+
+	-"We're currently hovering at a comfortable altitude of 15 feet."
+
+-----
+
+
+II.--DEMON
+____________________
+
+  Chaos Warlord
+
+	-"Hey, you want to hear a joke?"
+
+	-"Sorry, I got nothin'."
+       >TV: Derek K. credits this as a Seinfeld reference.
+
+-----
+
+  *NEW TFT* Demoness
+
+	-"Hmm, do you work out?"
+
+	-"Mmhmm, you're so... deviant."
+
+	-"Wanna... buy me a drink?"
+
+	-"Oh, that's naughty!"
+
+	-"We could talk more in the champagne room."
+
+	-"Sorry, time's up."
+
+  ->Every other Demon unit only growls and grumbles.
+
+-----
+
+
+
+III.--Naga
+____________________
+
+  //Campaign Characters
+
+  *NEW TFT* Lady Vashj
+
+	-"Soon we will reclaim the surface world and take vengeance upon
+        the Night Elves."
+
+	-"Illidan will show us the path to power!"
+
+	-"Keep... tripping over this damn tail."
+
+	-"Damn sea water, I'll never get these coils out of my hair."
+
+	-"It's far too bright in this surface world and this... *sniffs*
+        fresh air is irritating my eyes."
+
+-----
+
+  //Units
+
+  *NEW TFT* Myrmidon
+
+	-"After 10,000 years, our revenge is at hand."
+
+	-"I think I just slithered in something..."
+
+	-"I can't smell, I bit my tongue."
+        >BILL NYE FACTOID #1: SNAKES SENSE SCENTS THROUGH THEIR TONGUES.
+
+	-"COOBRAAA!!!"
+	~TV: The battle cry of the Cobra forces from the 80's cartoon GI Joe.
+        And now you know. And knowing's half the battle.
+
+	-"Ahh... going... into... torpor... *snores*"
+	>BILL NYE FACTOID #2: TORPOR IS THE INACTIVE STATE OF A
+        HIBERNATING ANIMAL.
+
+	-"OOOOH, it's kind of... cold... in... *snores*"
+	>BILL NYE FACTOID #3: TORPOR IS INDUCED IN SNAKES THROUGH EXPOSURE
+        TO LOW TEMPERATURES.
+
+	-"My next plan for world domination is... *snores*...*gasp* MY HAIR!"
+        >BILL NYE FACTOID #4: KAY, LOST ME ON THAT ONE. ANY HELP?
+        >Movie: Noah Lombardo mentions that George Clooney's character
+        in 'O Brother Where Art Thou?' gasps "My hair!" everytime he wakes
+        up. Not positive if that's what the Sound Team was shooting for,
+        but worth a mention.
+
+-----
+
+  *NEW TFT* Royal Guard
+
+	-"A tide is rising..."
+
+	-"In the depths, no one can hear you scream. Well, they can, but it's
+        really muffled."
+	>Other: Since I know I'll get e-mail about it, a play on the ever
+        so played saying of "In space, no one can hear you scream.".
+        >Movie: Outlaw01 also notes that the phrase was the tagline of the
+        movie 'Alien'.
+
+	-"I think I have swimmer's ear!"
+
+	-"This world will be mine, and I'll start with the swimming pools."
+
+	-"No sink shall be safe from world domination."
+
+	-"Ice Tea is part of a two-pronged offensive."
+
+	-"The day of our invasion shall be known as 'Bidet'."
+       >Thanks to Joseph Szepelak, who first corrected me on this one.
+       A Bidet, of course, is the bathroom fixture which squirts water
+       upwards for uh... cleansing purposes. More popular in Europe and
+       super upper class yuppie homes, I'd imagine. Water Rising Up ->
+       Naga Invasion should be obvious, which is why I must be an idiot
+       to have misheard it.
+
+-----
+
+  *NEW TFT* Siren
+
+	-"I'll sing a requiem for the land-walkers."
+
+	-"Don't be so shallow."
+
+	-"Did you do that on purpose, or was it a fluke?"
+       >David Jensen points out that I missed another cheesey fish pun.
+       >Other: JC also notes that a Fluke is a water born parasite, which
+       links well with the Siren's own Parasite ability.
+
+	-"Do you find me a-LURE-ing?"
+        >Bless the Blizzard Sound Staff and their love for cheesey puns.
+
+	-"My cousin was killed in a swim-by."
+
+	-"Would you like to feel the ocean spray in your face?"
+	-*SPITS*
+
+-----
+
+
+
+IV.--NEUTRAL
+___________________
+
+  *NEW TFT* Dark Ranger
+
+	-"I hate what I've become."
+
+	-"The living haunt me."
+
+	-"Men are from Mars. I'm from the grave."
+       >Literature: Obvious play on the title of the craptacular 'guide'
+       to love, "Men are from Mars, Women are from Venus".
+
+	-"I went on a job interview the other day and they were like 'Ohhh,
+        what's that smell?', and I'm like, 'Oh, sorry, it's me.' And then
+        they figured I wouldn't be able to fit in with the other employees
+        because they're living and I'm, y'know, dead, so I wouldn't be a
+        team player. But then I said that I could work 24 hours and they
+        were like 'Alright, you can work the graveyard shift!'"
+
+-----
+
+  *NEW TFT* Pandaren Brewmaster
+
+      	-"Ale is my bear necessity."
+       ~Movie: Although it could just as easily be written off as a bear-pun
+       Da Dinictus convinces me to also list the reference to Baloo's song
+       "Bear Necessities" from the Disney movie "The Jungle Book".
+
+	-"Last call before closing!"
+
+	-"Come drown your sorrows."
+
+	-"This'll put hair all over you!"
+
+	-"I'd kiss you, but I've got puke breath."
+       >Movie: A line from the Rick Moranis/Dave Thomas film "Strange Brew".
+       [Deepthroat]
+
+	-"My dad, he was bipolar."
+
+	-"I can't breed in captivity."
+       ~Other: Da Dinictus decides to clarify this for the uninformed.
+       Simply put, Pandas have been documented to be terribly reluctant to
+       mate when not in the wild (and not even terribly inclined to do so
+       IN the wild). Scientists refuse to give up on the asexual teddy
+       bears though, and have gone as far as showing the pandas videos of
+       other pandas humping to try and give the would-be couples an idea.
+       Not much success with that, surprisingly.
+
+	-*belch* "Sorry."
+
+  **The Following Are Classified As Attack Quotes, But Too Good To Pass On
+
+	-"This will be GRIZZLY!"
+
+	-"Now YOU'RE endangered."
+
+	-"I bring PANDAMONIUM!"
+
+	-"Prepare to get TRASHED!"
+	 *Man, does Blizzard love bear and alcohol puns or what?
+
+-----
+
+  *NEW TFT* Pit Lord
+
+	-"You know what burns my ass? A flame about this high."
+
+	-"Eh, I think I have someone stuck in my teeth."
+
+	-"HEY HEY HEY!"
+         >TV: The catchphrase of the main character from the old
+          Bill Cosby cartoon "Fat Albert".
+
+	-"I think a certain... finesse is called for here.
+         GUWAAAHRAAGHAGHAGHAGHA!"
+
+	-*cheesey talk show theme music plays*
+	-Announcer: "Welcome back to 'Jaina In the Morning'."
+	-Jaina: "We're here with Malvindroth, Hunter of Night, and his
+         girlfriend Kim. Now Kim, you think you're here for a makeover,
+         right?"
+	-Kim: "Umm... yeah?"
+	-Jaina: "Mal, why don't you tell us why you're really here."
+	-Malvindroth: "Well, Kim-cake, I love you. But I have something to
+         tell you. Uh... I'm a Demon."
+	-*audience gasps and boos*
+	-Malvindroth: "Actually, more of a Pitlord."
+	-Kim: "What? I don't understand."
+	-Crowd: "HE'S A BUM, THROW HIM OUT!"
+	-Kim: "I thought you said you work for the post office."
+	-Malvindroth: "Well... I moonlight."
+       *Just remember kids, Blizzard always goes the extra mile.
+       Genius work here.
+       ->Thanks to Some Guy for correcting me on mishearing "Jaina", and
+       Shaoron the Wolf for clearing up another typo.
+
+-----
+
+  *NEW TFT* Beastmaster
+
+	-"Where I lay my head is home. See that rock? That's my pillow"
+       ~Music: Boerampen points out the Metallica lyric in this quote.
+       Go ahead, just guess where.
+
+	-"The beasts around me are nothing compared to the beast within."
+
+	-"I will now summon the Efeet Dwantoar [wtfsp?]."
+	 ?> Source Unknown
+
+	-"I summon the... ACHOO!"
+	_*beast roar*
+
+	-"Don't have a cow."
+	-*cow moos*
+	-"Oh, dear."
+	-*deer yelps*
+	-"Oops, please, bear with me."
+	-*bear roars*
+	-"Oh rats..."
+	-*rats chatter*
+
+
+
+V.--HUMAN
+___________________
+
+  //Campaign Characters
+
+  Footman Captain
+
+	-"I should have been a farmer like my father wanted."
+
+	-"Lousy pay, constant danger."
+
+	-"Well... at least I get to hobnob with royalty."
+
+-----
+
+  Jaina Proudmoore
+
+	-"I'm no warrior."
+
+	-"All I ever wanted was to study."
+
+	-"The currents of magic are in upheaval."
+
+	-"I pray my father is safe."
+
+	-"Things are starting to get a little weird."
+
+-----
+
+  *NEW TFT* Lord Garithos
+
+  ?-Why is this here?
+    Although he is used in the Scourge missions, he first appears in the
+    Human campaign. He's in the Creep folder for sound files anyway.
+
+	-"These inhuman dogs must be slain."
+
+	-"The _lesser_ races must be purged from the kingdom."
+
+	-"The only good Non-Human is a dead Non-Human."
+       >Movie: Curt Rapala notes this as a play on General Ursus's line
+       from 'Beneath the Planet of the Apes'.
+       >Other: Kenny also credits this as a play on the line of the pig's
+       from the novel 'Animal Farm'.
+
+	-"If you want something done right, leave it to a Human."
+
+	-"NEVER TRUST AN ELF!"
+       ~Movie: Rune998 was the first to attribute this to the character
+       Gimli from the first 'Lord of the Rings' movie.
+
+	 >Okay, so it's quite clear Garithos is a bit.. racist. Please do
+         not send me e-mail about what common bigoted-phrase each of these
+         is a play on.
+
+-----
+
+  Muradin Bronzebeard
+
+	-"My older brother Magni is King of the Dwarves."
+
+	-"My younger brother Brand is a reknowned explorer."
+
+	-"If I didn't kick so much ass, I'd feel a tad awkward."
+
+	-"I'll play your game, you rogue."
+       ~TV: SNL Celebrity Jeopardy Skit with Sean Connery.
+       Corrected this myself :P But thanks to about 20 people who pointed
+       out that I didn't credit this one.
+
+	-"I'll take 'The Rapists' for 500."
+	 ~See above.
+
+	-"I'm onto you Trebek!"
+	 ~See above.
+
+	-"Heh heh. Come on, you nancy boy!"
+	 ~See above.
+
+	-"You wanna' get the Undead? I'll tell you how to get the Undead.
+        One of their men pulls a knife, your man pulls a gun. They send
+        your man to the hospital, you send their man to the morgue. That's
+        how you get the Undead."
+	  >Movie: 'The Untouchables' - Sean Connery's character, of course.
+
+-----
+
+  Prince Arthas
+
+	-"It isn't easy being the Prince."
+
+	-"I will bring honor to my father, and my kingdom."
+
+	-"Light, guide my path."
+
+	-"Light, give me strength."
+
+	-"I should be in command..."
+
+	-"I know what I'm doing."
+
+	-"There's no need to bow."
+
+-----
+
+ *NEW TFT* Prince Kael-thas
+
+	-"Nothing of my homeland remains... but ash, and sorrow."
+
+	-"My hunger for magic is clouding my judgment."
+
+	-"All I feel is hate and rage."
+
+	-"The Alliance has failed my people."
+
+-----
+
+  Uther the Lightbringer
+
+	-"I'm getting too old for this."
+       ~Movie: The 'Lethal Weapon' series. It's practically Danny Glover's
+       catchphrase. Thanks to sitemaster@conversawang.com for the reminder.
+
+	-"As if the Orcs weren't enough."
+
+	-"My church is the field of battle."
+
+	-"My strength is the holy light."
+
+-----
+
+  //Heroes
+
+  Arch Mage
+
+	-"Don't you have a strategy?"
+
+	-"Your prattle begins to annoy me."
+      Thanks to Knightmare for clearing that up.
+
+	-"You'd best stay clear of me, or I'll turn you into a mindless
+        sheep"
+
+	-"I don't waste my magic on just anything."
+
+-----
+
+  *NEW TFT* Blood Mage
+
+	-"The blood of the High Born is my birth right."
+
+	-"The ghosts of Quel'thalas cry out for vengeance."
+
+	-"I find your insolence... disturbing."
+       ~Movie: Garou1982 gets this one in first, crediting it properly as
+       a play on Darth Vader's line from Star Wars Episode IV.
+
+	-"If you don't master your anger, your anger will master you.
+        I should know."
+         ~Movie: Kulsakidis and Matt Bruce almost simultaneously point out
+         that this is a possible reference to the (in my opinion) god awful
+         Ben Stiller movie "Mystery Men". Wes Studi's character repeats
+         a similar line to Stiller's.
+
+	-Blood Mage: "Hi, my name is Roy. I'm a Magic-Addict."
+        -Magic-Addicts Anonymous Crowd: "Hi Roy."
+       ~Other: For those unaware, this is basically a parody of how
+       new AA members (Alcoholic's Anonymous) introduce themselves.
+
+	-"My blood cries out for the vengeance of my people's blood, which
+        can only be repaid with twice as much blood! Or maybe three times
+        as much blood! Like, if you went to hell and it was full of blood,
+        and that blood was on fire, and it was raining blood, then maybe
+        THAT would be enough blood. But, uh... probably not."
+
+-----
+
+  Mountain King
+
+	-"Could yeh' put some bonus points in mah' drinkin' skills?"
+
+	-"Any fish and chip shops about here?"
+
+	-"I think it's time for a... nippy sweetie."
+
+	-"What the bloody hell are you playing at?"
+
+	-"There's nothin' more motivating than fightin' with a
+        bad hangover."
+
+	-"Where's the pub?"
+
+	-"LET'S GET PISSED!"
+       ~Movie: Mike Myer's 'So I Married An Axe Murderer'. Thanks to
+       UnSub for that.
+
+-----
+
+  Paladin
+
+	-"It's hammer time!"
+	 >Music: MC Hammer's 'Can't Touch This', of course.
+
+	-"I want to be your sledgehammer."
+       >Music: 80's track 'Sledgehammer' by Peter Gabriel, not Michael
+       Gabriel as I originally said, who may or may not exist. Thanks to
+       Hoblin for the name edit, also Chris Coffee and Jason for further
+       convincing me that Michael Gabriel does not exist and that
+       I'm clearly an idiot ^^
+
+	-"Touch me naught! I am chaste."
+       ~Movie: This one was apparently grazed over by most for a while,
+       however, Plynch117@aol.com notes that this is a line uttered by
+       Sir Gallahad when he enters the lusty maiden's chapel, a scene from
+       the commonly quoted 'Monty Python and the Holy Grail'.
+
+	-"No? Is that your final answer?"
+	 ~TV: Who Wants To Be A Millionaire, obviously.
+
+	-"I have bad brethren."
+       ->Thanks to HappyHamster for a spellcheck.
+
+	-"Is that a sword? LUXURY! Is that a horse? SLOTH! Is that a
+        helmet? VANITY!"
+       >TV: UnSub credits this to a 'Monty Python's Flying Circus' skit,
+       with the crew as coal miners complaining about how having a house
+       (and other necessities, etc.) was LUXURY since in their day, they
+       lived in cardboard boxes. I remember seeing the very same skit but
+       neither of us are sure on this one.
+       ->Brian Kern validates our assumption, and credits the reference
+       to a skit entitled "The Four Yorkshiremen".
+
+-----
+
+
+  //Units
+
+  *NEW TFT* Dragon Hawk
+
+    !-Note, the Dragon Hawk was originally the "Wind Serpent" unit in
+    Reign of Chaos. This was a unit from the original planning stages of
+    WC3 that inevitably went unused for the release. The Hawk shares two
+    pissed quotes with the Wind Serpent from the original, but the voice
+    is completely different.
+
+	-"I'll hit the brakes, and he'll fly right by."
+        ~Movie: A line of Tom cruise's in 'Top Gun'. Thanks to Ed Fu for
+        the source and correcting a typo.
+
+	-"Tell Blizzard I'd make a great action figure!"
+       *One of the original Wind Serpent pissed quotes. New voice.
+
+ 	-"That's right Pal..adin., I am dangerous."
+	>Movie: Altered 'Top Gun' Tom Cruise quote. Thanks to Ed Fu.
+	->Chris Watson also notes a possible reference to the Wing Commander
+        series, which features a pilot by the name of Paladin, and notes
+        that the series' creator is a huge 'Top Gun' fan.
+
+	-"Permission to buzz the tower."
+	>Movie: Yet another line from Top Gun. Thanks to Ed Fu.
+
+	-"Get that filthy cursor away from me!"
+
+	-"We're currently hovering at a comfortable altitude of 15 feet."
+       *One of the original Wind Serpent pissed quotes. New voice.
+
+	-*goat baas*
+ 	-What's a mountain goat doing up here?!
+	-*THWACK*
+       >Other: Leon_resd2 credits this to a Farside comic with a similar
+       joke., with Lim-WCIII noting the same only minutes after.
+
+	-*scream of pain*
+	-"Drop the villager! Drop it! Drop it!"
+	-*dragon roars*
+       >Movie: -Chimera- has this as a reference to the Sean
+       Connery-as-a-God-Damned-Dragon movie 'Dragonheart'. Having never
+       seen it, and due to his own lack of confidence, I'll leave it up
+       to you guys to decide.
+
+-----
+
+  Footman
+
+	-"Don't ask, don't tell."
+	 >Other: US Military Policy torwards homosexuality.
+
+	-"Grab your sword and fight The Horde!"
+	>Other: Play on words of the World War II propaganda slogan,
+        "Grab your gun and fight the Hun". Thanks to Brian Kern.
+         ->One more thanks to Brandon Lee for a typo correction.
+
+	-"Uncle Lothar wants YOU!"
+	 >Other: Those "Uncle Sam Wants YOU!" draft posters, of course.
+
+	-"Tis' only a flesh wound."
+	 ~Movie: 'Monty Python and the Holy Grail', the Black Knight scene.
+
+-----
+
+  Gryphon Rider
+
+	-"Judge meh' by mah' size, do yeh'?"
+	 >Movie: 'The Empire Strikes Back', apparently from Yoda.
+	 Again, thanks to A Reys.
+
+	-"It's not the size of the hammer that count, it's how you wield it."
+
+	-"Someone gave meh' the bird!"
+
+	-"This warhammer cost 40k, heh heh."
+	 ~Other: Reference to Warhammer 40K, duh.
+
+	-"Half this beast is endangered, but the other half IS danger."
+       Thanks to Mike Morgan for the correction, and Brian Kern for pointing
+       out the typo.
+
+-----
+
+  Gyrocopter
+
+	-"Oops, I dropped something."
+	-*explosion*
+
+	-"Stay on target!"
+       >Movie: One of the 'Star Wars' movies... Phil Wong, among others,
+       says the original, A Reys says Empire. Brian Kern, among others
+       provides the proof. It's the original 'Star Wars: A New Hope'.
+
+	-"I'd rather be flying... uh... oh."
+	 >Other: Reference to those stupid bumper stickers.
+
+	-"You can be my wingman anytime!"
+       ~Movie: 'Top Gun', Val Kilmer's character to Tom Cruise's.
+       Thanks to Phil Wong for that.
+
+	-"Pilot to bombardier! Bombardier here, go ahead pilot."
+       >Movie: Kubrick's 'Dr. Strangelove'. Thanks to GV for that.
+       ->Josh credits this to 'Catch-22', which I've yet to see ><
+
+	-"I will now demonstrate the doppler effect."
+	-*echoing* "Doppler..."
+
+	-"There's, something, on, the wing."
+       ~TV: Twilight Zone Episode, William Shatner's character.
+       ->Brian Kern points out that this episode was reenacted in the
+       80's Twilight Zone movie, with John Lithgow in Shatner's role.
+
+	-"I'm on a different PLANE of existence. Get it? PLANE!"
+
+-----
+
+  Knight
+
+	-"My favourite colour is blue. NO! YELLOW!"
+	 ~Movie: 'Monty Python and the Holy Grail'.
+
+	-"Victory for Lor" *helmet's face piece falls*
+	-*muffled* "daeron."
+       >Movie: Bo Koch points out this could be a nod to a similar scene
+       in 'Spaceballs'.
+
+	-"Dost thou speak unto me?"
+
+	-"By the GODS you're annoying."
+
+	-"I never say Ni."
+	 >Movie: 'Monty Python and the Holy Grail'.
+
+	-*muffled* "Damn... helmet. Can't seem to get... this... thing..."
+	-*horse whinnies*
+       >Movie: Again, a nod to 'Space Balls', as pointed out by Josh.
+
+-----
+
+  Mortar Team
+
+	-Dwarf1: "It's you and me pal!"
+	-Dwarf2: "We've got the synergy."
+
+	-Dwarf1: "I'm TNT."
+	-Dwarf2: "I'm dynomite!"
+	 >Music: AC/DC's 'TNT'
+
+	-Dwarf1: "We must defeat the dwarves!"
+	-Dwarf2: "Ugh... We ARE the dwarves."
+	-Dwarf1: "...Oh."
+
+	-Dwarf1: "You've got a chip on yer' shoulder."
+	-Dwarf2: "Oooh, yes, and a bit of fish too."
+
+	-Dwarf1: "And that's how baby dwarves are made."
+	-Dwarf2: "Gwah!"
+
+	-"Clearly Tassadar has failed us. You must not."
+	 >Other: Starcraft Reference.
+
+	-Dwarf1: "What's that?"
+	-Dwarf2: "Get your finger out of that bunghole."
+	-*finger popping free*
+
+	-*hums* "Burnin', lootin'. Bombin', shootin'."
+       >Music... Sorta: Referencing a song from the British parodic rock
+       band Bad News. [Deepthroat]
+
+	-"TAKE THIS YOU BASTARD!"
+	-*explosion*
+
+-----
+
+  Peasant
+
+	-"You're the King? Well I didn't vote for you."
+	 ~Movie: 'Monty Python and the Holy Grail', town square scene.
+
+	-"We found a witch! May we burn her?"
+	 ~Movie: 'Monty Python and the Holy Grail', town square scene.
+
+	-"Help! Help! I'm being repressed!"
+	 ~Movie: 'Monty Python and the Holy Grail'. Pattern? What pattern.
+
+	-"A horse kicked me once. It hurt."
+       >Movie: Python once more, referring to the Elk/Llama bit in the
+       opening credits. Thanks to Matt Hylan for the reminder, and Brian
+       Kern for final validation.
+       ->Bo Koch credits this to the gangster parody 'Johnny Dangerously',
+       but after seeing the film recently, it doesn't quite fit.
+
+	-"D'oh."
+       ~TV: Oh seriously now, if you don't know this...
+       ->Oh boy... well seeing as I've received about a dozen e-mail thus
+       far actually asking about this one, for the uninformed, those
+       without televisions, or people living on Mars for the last decade,
+       in a cave, with their eyes shut and fingers in their ears, this is
+       Homer Simpsons trademark interjection, from the animated TV series,
+       "The Simpsons". How's that for crafty, a Simpsons reference while
+       crediting a Simpsons source. I'm so awesome.
+       -Thanks to Martin Lee for pointing out a typo here.
+
+-----
+
+  Priest
+
+	-"Scalpel. Sponge. Magic wand."
+
+	-"There is peace and serenity within the light."
+        ~Movie: Vlad Divac credits this to 'Poltergeist'.
+
+	-"CLEAR!"
+	-*zap*
+
+	-"Cross over children. Cross over into the light!"
+       ~Movie: Vlad again says this is from 'Poltergeist'.
+
+	-"I have been chosen by the big metal hand in the sky!"
+        >Movie: Originally I passed it off as a reference to the metal
+        hand icon used by the humans, but A Reys reminded me of the
+        crane machine scene from 'Toy Story'.
+
+	-"Side effects may include: dry mouth, nausea, vomiting, water
+        retention, painful rectal itch, hallucination, dementia, psychosis,
+        coma, death, and halitosis. Magic is not for everyone. Consult your
+        doctor before use."
+        Thanks to Negs for the edit, and Martin Lee for the typo fix.
+
+-----
+
+  Rifleman
+
+	-"This... is... my... BOOMSTICK!"
+	 ~Movie: Army of Darkness, Bruce Campbell's Ash.
+
+	-"Where's meh' drink?"
+
+	-"I can't shoot straight unless ah've had a pint."
+
+	-"Ah, there's meh' drink. GET IN MAH' BELLY."
+	 >Movie: 'Austin Powers: The Spy Who Shagged Me'.
+
+	-"Guns don't kill people. I DO! HAHA!"
+       >Other: Jim Phillips credits this to the slogan which adornes so
+       many bumper stickers, hats, t-shirts, etc. of crazy mountain people.
+       Boba1213 also spotted the phrase on a shirt worn by Richard Kiel's
+       character in the Adam Sandler movie 'Happy Gilmore', and any Richard
+       Kiel reference is always worth noting.
+
+	-"Don't shoot, shoot, shoot that thing at me!"
+	 ~Music: The Violent Femmes 'Add It Up'.
+
+	-"I shot the sheriff, and the deputy, and your wee doggy too!"
+	 >Music: 'I Shot The Sheriff', still not sure of the original
+       artist, and it's been reported as either Bob Marley, or Eric
+       Clapton. Thanks to thehilander@hotmail.com and Negs for those
+       though.
+       ->Brian Kern clears things up for us. The song was originally
+       written by Marley in 1973, and brought stateside by Clapton in '74.
+       ->And lastly, Logan agrees with everything Brian just said.
+
+	-"You'll take meh' blunderbuss when you PRY IT FROM MY COLD
+       DEAD HANDS!"
+       >Movie: Possible reference to Edgar's line in 'Men In Black'.
+       Thanks to Matt Hylan.
+       >Other: From the NRA 'slogan' of sorts "You can take my gun when
+       you pry it from my cold dead fingers." Thanks to Brian Kern for that,
+       and Charlton Heston for being a jackass.
+
+-----
+
+  Sorceress
+
+	-"Click me, baby, one more time."
+	 >Music: Britney Spears 'Baby One More Time'.
+
+	-"Maybe you should get a strategy guide."
+
+	-"I don't remember casting slow on you..."
+
+	-"You don't get out much, do you?"
+
+	-"Let's chat on Battle Net sometime."
+
+	-"For the end of the world spell, press Control, Alt, Delete."
+
+-----
+
+  *NEW TFT* Spellbreaker
+
+	-"Be quick. Time is mana."
+       >Other: Obviously, a play on words of the saying "Time is money."
+       Honestly, I don't want to put these sort of basic explanations, but
+       I fear that if I don't, I'll get at least a dozen e-mails pointing
+       it out.
+
+	-"I'm a magic man. I got magic hands."
+       >Music: A lyric from Heart's 'Magic Man'. Thanks to El Sabotender.
+
+	-"I never stole any buffs. I got receipts for everything."
+
+	-"I smell magic in the air. Or maybe barbecque."
+
+	-"I stole your precious."
+       >Literature: Reference to the Gollum character from the Lord of the
+       Rings series and overproduced action film super hype movies.
+
+	-"Yeah, you'll get a nickel for boosting Starfall, but jacking
+        Heal's a ten day stint in county. Now, lifting Faerie Fire, they
+        just let you go for that, it's not even worth the paper work.
+        But Reincarnate? Man, that'll get you life."
+       *I hope Blizzard is ashamed of this pun.
+
+-----
+
+
+VI.--Night Elf
+____________________
+
+  //Campaign Characters
+
+  Illidan Stormrage (Normal and Demon forms have same quotes)
+
+	-"I've been caged in darkness."
+
+	-"My soul longs for vengeance."
+
+	-"I've been alone for ten thousand years."
+
+	-"My brother will pay dearly for his betrayal."
+
+	-"None of them know my true power."
+
+        *NEW TFT* Thanks to El Sabotender and EndlessInfinity for pointing
+        out these new lines.
+
+        -"I see... absolutely nothing."
+
+	-"Wings, horns, hooves. What are we saying, is this Diablo?"
+       >Other: Another in-Blizzard reference to their other series, Diablo.
+
+	-"Bah Weep Granah Weep Ninny-Bong! It's a universal greeting."
+       >Movie: Thanks to El Sabotender and EndlessInfinity for also
+       creditting this as a reference to 'Transformers: The Movie', and to
+       Google for giving me the correct spelling.
+
+-----
+
+  *NEW TFT* Maeiv
+
+	-"I watched the barrow prisons for over ten thousand years."
+
+	-"Yet I'm the one who feels caged."
+
+	-"I feel hollow inside. Vengeance is all I have left."
+
+	-"Tyrande will pay for setting Illidan free."
+
+	-"I will recapture Illidan, or die trying."
+
+-----
+
+  Malfurion Stormrage
+
+	-"I sensed darkness in the dream ways."
+
+	-"The Legion has returned, at last."
+
+	-"This will be difficult without Cenaurius's guidance."
+
+	-"Our sins have returned... to haunt us."
+
+	-"Kalimdor must be saved. At all costs."
+
+-----
+
+  *NEW TFT* Naisha
+
+	-"Exercise, stunning scenery. Hmph, this beats prison duty anyday."
+
+	-"I've spent so long underground, I forgot what the stars look
+        like."
+
+	-"I fear for Maiev. She feels responsible for Ilidan's escape."
+
+	-"
+
+-----
+
+  Shandris
+
+	-"Was there something you wanted?"
+
+	-"Look, I don't have time for this nonsense."
+
+	-"I wonder why I never run out of arrows."
+
+	-"I wish my bow was socketed..."
+       >Other: Reference to Diablo 2 weapons. Thanks to Macolio for
+       reminding, and Brian Kern for the typo correction and specifically
+       labelling it as a D2 reference.
+
+-----
+
+  Sylvanas Windrunner
+
+	-"I am the ranger-general of this land."
+
+	-"I can hit a bird in the eye, flying."
+
+	-"None may threaten the Elf Lands."
+
+	-"You'll regret ever entering my forests."
+
+	-"Come taste the wrath of the Elves."
+
+
+-----
+
+  Tyrande Whisperwind
+
+	-"We keep our long vigil and wait."
+
+	-"While the druids sleep peacefully, in their dens."
+
+	-"Elune, give me strength."
+
+	-"My heart sleeps in the Emerald Dream."
+
+-----
+
+  //Heroes
+
+  Demon Hunter (Normal and Demon forms have the same quotes)
+
+	-"I shall fight fire... with fire."
+
+	-"Chaos boils in my veins."
+
+	-"Demon blood is thicker than... regular... blood."
+
+	-"I like my enemies dead, and my blades flaming."
+       ~TV: A play on Homer's always quotable line of "I like my beer cold,
+       my TV loud, and my homosexuals FLAMING!" from the John Waters
+       episode. [Deepthroat]
+
+	-*spoken backwards* "I love green trees."
+
+	-"YOU WILL PERISH IN FLAMES... *cough* *cough* Ahem, sorry."
+       >Movie: Corkscrew credits this to Rick Moranis in 'Ghostbusters'.
+
+	-"Darkness called... But I was on the phone, so I missed it.
+       I tried to star-69 Darkness, but his machine picked up. I yelled
+       'PICK UP THE PHONE, DARKNESS!', but he ignored me. Darkness
+       must have been screening his calls."
+	 *Best. Quote. EVER.*
+       ->Amanda pointed out a 'Fifth Element' connection, as Gary Oldman's
+       character gets called by one Mr. Darkness, but I think it's just
+       a general play on words of the generic "Darkness calls" line. Much
+       thanks anyway for reminding me of the movie though <3
+       ->Nail in the coffin on this one that I forget to put up but was
+       reminded of by Ted C. The character in 'Fifth Element' is Mr. Shadow,
+       not Mr. Darkness.
+
+-----
+
+  Keeper of the Grove
+
+	-"My father was mounted over someone's fireplace."
+
+	-"Feel natural! Nature's way!"
+
+	-"Don't let the doe hit you on the way out."
+       >Other: Just because explaining everything now is my way of things,
+       this is a play on the phrase 'Don't let the door hit you...'. Thanks
+       to Jason.
+
+	-"'When I Attack! Part Three'"
+	 >TV: A play on 'When Animals Attack!'.
+
+	-"Free rides, for the ladies."
+
+	-"Herd up!"
+
+-----
+
+  Priestess of the Moon
+
+	-"We always land on our feet."
+
+	-"My tiger was trained for war! He's GRRRRRREAT!"
+	 >Other: Tony the Tiger reference, of course.
+
+	-"Curiosity killed my last ride."
+       >Other: Derek K. persuaded me to point out that this refers to the
+       old saying 'Curiosity killed the cat'.
+
+	-"I got my tiger used from Siegfried and Roy."
+
+	-"Crouch tiger! I sense a hidden dragon."
+	 >Movie: Play on 'Crouching Tiger, Hidden Dragon'.
+
+	-"When a Treant falls in the forest, does it make a sound?"
+       >Other: Don Tonberry points out the reference to the famous
+       philosophical arguement 'If a tree falls in the forest...'.
+
+-----
+
+
+  *NEW TFT* Warden
+
+	-"Shall I be your executioner?"
+
+	-"Only the guilty need fear me."
+
+	-"Justice may be blind, but I'm not."
+
+	-"Truth, justice, and the Night Elf way."
+       >Other: The Crew of Creditting the Blatantly Obvious and Generic
+       urge me to credit this to Superman's slogan.
+
+	-"You think you're above the law?"
+       ~Movie: Reference to the Steven Seagal movie "Above the Law". I
+       recall seeing this sent in from someone else previously, but I
+       simply dismissed it. My apologies, as it has been confirmed.
+       [Deepthroat]
+
+	-"What we have here is a failure to communicate."
+       ~Movie: Exact quote from "Cool Hand Luke". Also used as a pissed
+       quote from the Bandit creep, without the impression. Lazy Blizzard!
+
+	-"I hold you in contempt."
+
+	-"He's no good to me if he's dead."
+       >Movie: Apparently my lack of 'Star Wars' knowledge has led to me
+       missing yet another. Alex Quayle attributes this to to a line of
+       Boba Fett's in 'The Empire Strikes Back'.
+       ->Chris Watson sent this same reference in soon after Alex, however
+       he then disputed his own claim when he said that Boba does not in
+       fact say this exact line. I checked in, and he's half correct.
+       The precise quote is "He's no good to me dead."
+
+-----
+
+  //Units
+
+  Archer
+
+	-"Oooh, I'm all aquiver."
+
+	-"Pheer my leet skillz."
+
+	-"Let's move. Five meter spread, no sound."
+	 ~Movie: 'Predator', Arnold Schwarzenegger's character.
+	 Thanks to RyuFouLou@aol.com for that one.
+       ->Brian Gates credits it to 'Aliens'.
+       ->Brian Kern definitesly credits it to 'Predator'.
+
+	-"I'm more than a ranger. I'm a Night Ranger."
+	 >Music: Reference to the hair metal band Night Ranger.
+
+	-"I'm not just some plucky girl you can string along."
+       ~Movie: 'Indiana Jones and the Temple of Doom', so sayeth UnSub,
+       but it's still also some silly bow and arrow humour.
+
+	-"My release date's been changed!"
+
+	-"Shot through the heart, and I'm to blame."
+	 ~Music: That damned Bon Jovi song.
+
+	-"I said a BOW string, not a G... Ugh, nevermind."
+
+-----
+
+  Druid of the Claw (Morphed version only growls)
+
+	-"Only you can prevent forest fires."
+	 >Other: Smokey The Bear, silly.
+
+	-"I'd rather be hibernating."
+
+	-"He wasn't Fuzzy, wuzz he?"
+	 >Other: You better know Fuzzy Wuzzy, dammit.
+
+	-"Da Bears."
+	 ~TV: SNL Super Fans skit.
+
+	-"Got any gummy humans?"
+
+	-"Can't... stop... dancing!"
+
+	-"Quit clicking on my bear ass."
+
+-----
+
+  Druid of the Talon (Morphed version only caws)
+
+	-"This outfit is for the birds."
+
+	-"I'd tell you more, but then I'd have to kill you."
+       ~Movie: SirStrudalPants points out that this is another line from
+       'Top Gun'.
+
+	-"I am the Dark Knight... elf."
+       >Other: Batman of course. Thanks to UnSub.
+       Thanks to Negs for the quote correction.
+
+	-"ACHOO. Ah don't tell me I'm allergic to feathers."
+
+	-"I ride on the great wings. I am silent... but deadly."
+       >Other: Silent but deadly, a notoriezed category of flatulence.
+       Tee hee, fart humour. Thanks to Derek K.
+
+	-"Talon. Druid of the Talon."
+       >Movie: Reference to James Bond's catch line. Thanks to Macolio for
+       turning me into a completist who must list everything <3
+
+	-"How about if I just stand over here?"
+
+-----
+
+  Dryad
+
+	-"I'm not the Dryad you're looking for."
+	 >Movie: Star Wars quote changed up.
+
+	-"D'oh!"
+       >Other: Thanks to Adrian Acuff for pointing out the wordplay here.
+       D'oh, Doe. Get it? Good.
+       ~TV: Again, if you don't know this one...
+       ->Oh boy... well seeing as I've received about a dozen e-mail thus
+       far actually asking about this one, for the uninformed, those
+       without televisions, or people living on Mars for the last decade,
+       in a cave, with their eyes shut and fingers in their ears, this is
+       Homer Simpsons trademark interjection, from the animated TV series,
+       "The Simpsons". How's that for crafty, a Simpsons reference while
+       crediting a Simpsons source. I'm so awesome.
+
+	-"Fear the fearsome fury of the forest fawn!"
+
+	-"You communicate by clicking on me, I communicate by doing what
+       you say."
+       >Movie: -K- credits this to 'Full Metal Jacket', I'll watch it
+       later to check ><
+       ->Never actually got around to remembering to listen for it, but
+       both I and Brian Kern deny the FMJ allegations.
+       ->And for those of you who continue to tout that this is an FMJ
+       line, take a breeze through the script with IE's Find command.
+
+       http://www.krug.org/scripts/fullmetal.html
+
+       Go ahead, just try.
+
+	-"I'm not in season!"
+
+	-"I got a few bucks set aside for later..."
+       Thanks to Negs for the correction, but I think I still prefer
+       the pot reference I originally heard ><
+
+	-"FALL LIKE LEAVES! ... In fall."
+
+	-"I don't reveal much on the mini map... It's all my fault."
+
+	-"I'll attract the enemy with my human call."
+	-"I'm so wasted! I'm so wasted!"
+
+-----
+
+  Huntress
+
+	-"I can blend."
+
+	-"Give a hoot. Don't pollute."
+       ~Other: Woodsy The Owl's grand anti pollution idiom. Thanks to Brain
+       Stew, since I forgot the damned Owl's name.
+
+	-"Frisbee anyone?"
+
+	-"This is my owl, there are many like it, but this one's mine."
+	 >Movie: 'Full Metal Jacket' line.
+
+	-"I'm here to work on my slice."
+
+	-"I'm caught between the moon and Night Elf city."
+	 >Music: Play on a line in the song 'Arthur's Theme', by Christopher
+       Cross. Thanks to Vlad Divac for that.
+
+	-"Fly Bubo!"
+       ~Movie: 'Clash of the Titans', Bubo being the mechanical owl's name.
+       Thanks to Lord Loren Soth for that.
+       ->Thanks to Chris Bailey for the correction on the spelling.
+
+	-"I'm not given to flights of fancy."
+
+-----
+
+  Hippogryph Rider
+
+	-"Born to ride."
+
+	-"Look at the rack on this thing..."
+
+	-"Who's a little fluffy wuffy?"
+	-*hippo roars*
+
+	-"The hippogryph is an amazing creature rarely seen outside of the
+        wild. The tricky thing about hippogryphs is their incredible jaw
+        strength. One terrible clamp of their beaks could rip a huge beast
+        apart in seconds. Let's see what happens when I stick my hand
+        inside..."
+	-*hippo roars and snaps*
+	-"ACK!"
+       >TV: Parodizing Steve Irwin, The Crocodile Hunter. Thanks to Negs
+       for persuading me to point out the obvious <3
+
+-----
+
+  *NEW TFT* Runner
+
+  ?-The special campaign unit used early on to deliver Furion a message.
+
+	-"Don't shoot the messenger."
+
+	-"When it absolutely, positively, has to be there in one
+        Day/Night cycle."
+        >Breaking the fourth wall is always cute.
+        >Other: Gordon Michael notes this as a play on the Fed/Ex slogan.
+
+	-"I was running through the Tauren Lands and traffic was horrible.
+        There were horns everywhere."
+       ->Thanks to Agent Pickle, among others, for fixing my foul up.
+
+	-"When you care enough to send the very best, send someone else."
+       >Other: Agent Pickle notes that this is a play on Hallmark's slogan.
+
+	-*clock ticking*
+	-"Hmm, a delivery from ACME Industries..."
+	-*BOOM*
+	>Other: A reference to the fabled ACME Industry of Warner Brothers
+        Cartoon lore. Makers of fine explosives and other contraptions
+        of destruction and anti-coyote devices.
+
+	-*gasping*
+	-*hurls*
+	-"Ugh, I hate these running gags."
+
+	-*chewing*
+	-"Sorry, I'm out to lunch."
+
+-----
+
+  *NEW TFT* Spirit of Vengeance
+
+  ?-This is the unit produced from the Warden's Ultimate.
+
+	-Spoken Backwards: "Illidan is out there somewhere."
+
+-----
+
+
+VII.--ORC
+____________________
+
+  //Campaign Characters
+
+  Cairne Bloodhoof
+
+	-"Will these troubles never cease?"
+
+	-"The warchief is burdened."
+
+	-"My tribe is proud and strong."
+
+	-"I pray this old body does not fail me."
+
+	-"The Earth Mother smiles upon us."
+-----
+
+  *NEW TFT* Drek'thar the Far Seer
+
+	-"I've been concocting a special potion that will aid our warriors
+        in battle."
+
+	-"We allied with the Humans at the battle of Mount Hy'jal." <sp?>
+
+	-"Our two races have been at peace ever since."
+
+-----
+
+  Grom Hellscream
+
+	-"The Warsong is supreme!"
+
+	-"Destiny is at hand."
+
+	-"I can see clearly, now the rain has gone."
+	 ~Music: Zhiva Sorrow, among others, credits this to Jimmy Cliff's
+       'I Can See Clearly Now'.
+       ->Andrew Gray credits the song to Johnny Nash, as do a few others...
+       ->ShadeMagus has the Nash album with the song, apparently, but the
+       number of 'Cliff' responses still outnumbers Nash. Yay for confusion.
+       ->Yay for Brian Kern. This is definitely a Jimmy Cliff song, but
+       it's been quite the cover whore over the years, as it can also be
+       accredited to Johnny Nash, Johnny Mathas, Gladys Knight, and others.
+
+-----
+
+  *NEW TFT* Nazgrel the Wolf Rider
+
+	-"I spoke to Thrall about the humans encroaching on our lands."
+
+	-"I don't trust them at all."
+
+-----
+
+  *NEW TFT* Rokhan the Shadow Hunter
+
+	-"I be spear-headin' dat right away."
+
+	-"Sadly, the name 'Pink Spear Tribe' was already taken."
+
+	-"I've lost my head! It was about, eh, yea-big. I was keeping it on
+        my spear. If you find it let me know."
+
+	-"I made a collage out of some of our little native friends. I call
+        it a Pygmy-Up Bouquet."
+       ->Thanks to Nicholas Lubbers for first clearing this quote up.
+
+	-"What do you mean what kinda' accent is dis? It's a TROLL accent.
+        I swear jamaican' meh crazy."
+       ->In case it wasn't clear, listed it as "jamaican" instead of
+       "jah' makin'" purely to make the wordplay more obvious. Thanks to
+        Greg Harris, among others, for pointing out it being vague.
+
+-----
+
+  Thrall, Son of Durotan
+
+	-"My people... are strong."
+
+	-"I will lead them... to their destiny."
+
+	-"The spirits will guide me."
+
+	-"I may have been raised by humans, but I'm no fool."
+
+-----
+
+  //Heroes
+
+  Blade Master
+
+	-"Snatch the pebble from my hand, grasshopper."
+	 ~TV: Line of the Sensei's from the 'Kung Fu' series.
+
+	-"My blade can cut through armor, and still cut a tomato."
+       >TV: Referring to the Ginsu Knife commercials. I'll credit myself
+       here since this is the first thing I added after I sent in the
+       FAQ, but Derek K.'s addition reminded me so :P
+
+	-"Twin blade action, for clean close shave every time."
+       >TV: Gillete razor commercials, thanks to ecoughlin@mac.com.
+
+	-"Waasaaabiii!"
+	 >TV: That OTHER idiotic Budweiser commercial.
+       Negs and FC said so, and MajinMiraiTrunkz@aol.com finally convinced
+       me. Just call me stubborn <3
+
+-----
+
+  Far Seer
+
+	-"I see dead people"
+	 ~Movie: 'The Sixth Sense'. Also an in-game cheat code.
+
+	-"Touch your tongue to mine."
+	 ~Other: Reference to 'Thumb Wars', a Star Wars parody. Stephen Hall
+       gave me the heads up on this one first.
+       ->Dakres3@aol.com lists this as a reference to a scene from
+       'Cruel Intentions' with Sarah Michelle Gellar teaching another girl
+       how to kiss. Which only makes the Far Seer saying it, followed by
+       the wolf's whimper, far more interesting.
+       ->Let's let Brian Kern field this one.
+
+	"In Cruel Intentions, the closest that they get is this line: `Let's
+         try it again, only this time I'm going to stick my tongue in your
+         mouth. When I do I want you to massage my tongue with yours."
+         --http://www.geocities.com/annete_hargrove/script.htm
+
+         The clever movie watcher will note that Cruel Intentions was
+         released in 1999, March 5th, while Thumb Wars was released on
+         November 2nd, 1999 at the Tokyo Film Festival. It was then
+         pushed to DVD in 2001.
+
+         Given that Thumb Wars is a parody of Star Wars and other films,
+         it's quite likely they're parodying Cruel Intentions with `Touch
+         your tongue to mine'. But the line itself is in fact from
+         Thumb Wars.
+
+         A quote of a parody of a remake of a good movie."
+
+       And if any of you can demerit that, I'll eat my socks.
+
+
+	-"Concentrate and ask again."
+	 >Other: Magic 8-Ball Answer.
+
+	-"Outlook not so good."
+	 >See above.
+
+	-"Reply hazy. Try again."
+	 >See above.
+
+-----
+
+  *NEW TFT* Shadow Hunter
+
+	-"Keepin' it real up in the field."
+       ~Other: A Howard Stern gag reference. [Deepthroat]
+
+	-"Call me for your free readin'."
+       ~TV: Everyone remembers Madame Cleo, right?
+
+	-"The commander is a foo'."
+       >TV: Da Dinictus swears that he recalls Mr. T's 'A-Team' character
+       B.A. Barrachus quipping this line in an episode. And until someone
+       can disprove it, mentioning Mr. T is enough proof for me.
+       >Movie: Andy Groth has this listed as a reference to 'Apocalypse Now'
+       said torwards Marlon Brando's Commander Kurtz.
+
+	-"You da' baddest soul in town, mon."
+
+	-"Humans. Dey' tink dey' know everytin'."
+       >Movie: Azadeth points out the similarity between this Hunter line,
+       along with his accent, to a line of Sebastian the Crab from
+       'The Little Mermaid'. And of course, animated caribbean sea crabs
+       and voodoo witch doctor trolls have everything to do with each other.
+       >Movie: Agumon09876 has this as a line from 'Star Wars: The
+       Phantom Menace', uttered by one of the Gungan leaders.
+       ->Thanks to HappyHamster for fixing my flubs on the quote.
+
+	-"You lack discipline."
+       ~Movie: Exact line from the Schwarzenegger 5 star comedic classic,
+       'Kindergarten Cop'. Thanks to El Sabotender.
+
+	-"Stop whining!"
+       ~Movie: Another line from 'Kindergarten Cop'. Once again,
+       El Sabotender is to thank.
+
+	-"Look at me, I'm happy."
+       ~Movie: Gary Mann notes that this could also be a 'KC' quote,
+       but I couldn't manage to find the script online to double check.
+       Sounds fairly likely though. I'm just curious as to why they chose
+       a rasta witch doctor to emulate Arnold Schwarzenegger quotes from
+       a movie about an undercover kindergarten teacher...
+       ->Simple follow-up here, as Gary Mann has found this to be a quote
+       from another Schwarzenegger classic, "Jingle All the Way".
+
+	-"Ooooh baby."
+
+-----
+
+  Tauren Chieftain
+
+	-"Pass the peace pipe."
+
+	-"Hey... 'puff, puff, give', that's the rule."
+       >Movie: Chris Tucker's character in 'Friday'. Thanks to FC for that.
+
+	-"Wooooa, I can see my ancestors."
+
+	-"Back in the old days, we didn't have plural."
+       Thanks to Daniel Greenberg for the correction.
+
+	-"Only two things come from Texas, and I've got horns."
+	 >Other: 'Only two things come out of Texas, steers and queers.'
+       ->The phrase is also in 'Full Metal Jacket', as Jason Chae notes.
+       ->Ted C. points out that while it was present in FMJ, the line
+       originated in 'An Officer and a Gentleman'.
+
+	-"Steer clear."
+
+-----
+
+
+  //Units
+
+  Grunt
+
+	-"Why you poking me again?"
+       >Other: Thanks to Bo Koch for pointing out that this is indeed a
+       follow up to the Grunt's "Stop poking me!" in WC2.
+
+	-"Why don't you lead an army instead of touching me?"
+
+	-"Poke poke poke. Is that all you do?"
+
+	-"Ooh, that was kind of nice."
+
+	-"Me so horned. Me hurt you long time."
+	 >Movie: Play on the prostitute's line in 'Full Metal Jacket'. Much
+       thanks to Chris Hall for the correction, your ears are working fine.
+
+	-"Me no sound like Yoda... Do I?"
+
+	-"It not easy being green."
+	 >Other: Kermit the Frog's signature song.
+
+-----
+
+  Head Hunter
+
+	-"Washu' botha' me for?"
+
+	-"Leave it to meh', I taka' big weight off his shouldas'."
+      Thanks to Hoblin for the correction.
+
+	-"'Chu wanna' buy a cigar?"
+
+	-"Luuucy..."
+	 ~TV: I Love Lucy.
+
+	-"Say hello to my lil' frien'."
+	 ~Movie: Al Pacino's 'Scarface'.
+
+-----
+
+  Kodo Beast
+
+	-"Here comes the beast again!"
+       >Music: Derek K. has it as a reference to The Eurythmics'
+       'Here Comes The Rain Again'.
+       >Music... Sorta: Byaggha clears this up by creditting the quote to
+       the song 'Bad Dreams', as performed by the mock British rock group,
+       Bad News.
+
+-----
+
+  Peon
+
+	-"Whaaaat?"
+
+	-"Me busy, leave me alone."
+
+	-"No time for play!"
+
+	-"Me not that kind of Orc!"
+
+-----
+
+  Raider
+
+	-*wolf barking*
+	-"Down boy!"
+
+	-"You're annoying my dog..."
+
+	-"What's that smell? OH BAD DOG!"
+	-*wolf whimpers*
+
+	-"I'm hungry like the wolf!"
+	 >Music: Duran Duran 'Hungry Like the Wolf'.
+
+-----
+
+  Shaman
+
+	-"You ever got hit by lightning where the sun don't shine?"
+
+	-"Back off, pup."
+
+	-"The sky, is falling."
+
+	-"Raindrops keep keep falling on my head."
+	 ~Music: The song... -_-
+
+	-"No time for play, we have war to fight."
+
+	-"Electrifying!"
+
+	-"Blame it on the rain, buwhahaha."
+	 >Music: Milli Vanilli song.
+
+-----
+
+  *NEW TFT* Spirit Walker
+
+	-"Death... is not the end."
+
+	-"We're all spirits in the material world."
+	 >Music: Precise refrain from The Police's song "Spirits in the
+         Material World".
+         ~Music: Could also be credited as a play on the lyrics of
+         Madonna's "Material Girl".
+
+	-"I say ya'll gonna' make me lose my mind, up in here."
+         ~Music: From DMX's song "Party Up".
+
+	-"My hoof and your ass have an appointment."
+
+	-"Fear my moo of fury!"
+	-*emfeebled moo*
+
+	-"Yes, the spirits are talking to me. *fart* Oh yes, they're coming
+        in clearly. *fart* Now they're forming into a gaseous material.
+	*fart* I can actually see them now. *fart* The spirits are very
+        powerful today."
+       >Other: Alex chimes in with this:
+
+		"The final annoyed quote of the Orc Spirit Walker is a
+                reference to the "Farting Preacher," a kooky
+                televangelist who some geniuses decided to spoof by
+                inserting fart sounds into his sermons at the most
+                opportune times. You can download a few of the
+                brilliant clips here:
+
+                www.religionisbullshit.com/fpreach.htm"
+
+
+-----
+
+  Tauren
+
+	-"Do not push me, or I will impale you on my horns."
+
+	-"Da Bulls."
+	 ~TV: SNL Super Fans skit.
+
+	-"Got milk?"
+       ~TV: American Dairy Association's slogan. LightPhoenix noted it first
+       after I decided to start listing the more obvious ones.
+
+	-"There's a lot at steak here."
+
+	-"Hey, what are these letters burned on my ass?"
+
+	-"Ole!"
+
+	-*glass shatters*
+	-Sorry.
+	 ~Other: Haven't you ever heard the "Bull in a China shop" saying?
+
+-----
+
+
+  *NEW TFT* Troll Batrider
+
+	-"What ja' want be burned?"
+
+	-"Ya, ya, what is it?"
+
+	-"Hey, shut up! The bat can't hear where it's going."
+       >Other: Thought I had this listed, but, thanks to Adrian Acuff
+       for noting that bat's have poor eyesight and basically "see" where
+       they're going by using high pitched noises and echoes. Warcraft 3
+       teaches you science!!!
+
+	-"I can see your house... BURNING!"
+
+	-*sung to the old batman theme*
+	-"Nana nana nana nana nana nana nana... HAH, me!"
+
+	-"Meh' balls are burnin'!"
+
+	-"TELL MY WIFE I..."
+	_*crash*
+	~TV: While not a guarantee here, Alex Quayle points out that these
+        are the final words of Arnie Pie as his chopper crashes in the
+        "Mr. Plow" episode of 'The Simpsons'. A bit commonplace, but
+        the Blizzard Sound crew references them enough already so I'll
+        stay openminded here.
+
+	-"The ends justify the means!"
+       *Not a pissed quote, but his kamikaze quote. Worth noting anyway.
+       ~Other: Might as well get this out of the way. Tundra mentions that
+       this concept is a quote from Machiavelli's book "The Prince".
+
+-----
+
+  Witch Doctor
+
+	-"Achum bokum." <?>
+       ~Other: Daniel Greenberg has this as one of the sayings of Mumbo
+        the Witch Doctor from Banjo Kazooie.
+
+	-"Do ya' be feelin' well?"
+
+	-"I may have sumtin' for ya'."
+
+	-"We be jammin'!"
+       ~Music: A Bob Marley song. Thanks to romeosaka@hotmail.com for that.
+
+	-"It's a cook book! A cook book!"
+	 >TV: Twilight Zone Episode 'To Serve Man'.
+
+	-"Soylent Grey is made from trolls!"
+	 >Movies: 'Soylent Green' reference.
+
+	-"Fukui-san"
+	-"Yes, go ahead."
+	-"What the Iron Troll is doing right now is putting heads into a pot.
+	 They have to boil for twenty minutes, so the eyes can be used in
+       the second dish, an Eye and Raspberry Sorbet!"
+	-"Mmm, sounds good."
+  	 >TV: Iron Chef parody. Thanks to Matt Leyendecker for the name
+       correction.
+
+-----
+
+  Wyvern Rider
+
+	-"Peter! I can fly!"
+	 ~Movies: Peter Pan.
+
+	-"I can see my house!"
+
+	-"The ONLY way to fly."
+
+	-"I'm getting a little dizzy..."
+       >Other: Knightmare points out that the Gnomish Flying Machine in
+       WC2 had this line.
+
+	-"Flash!"
+	-*wyvern roar*
+	-"Ah hah!"
+       >TV: Apparently a reference to the 'Flash Gordon' theme song.
+       Thanks to vince2682@yahoo.com for that.
+
+	-"Fly the friendly skies."
+       >Other: United Airlines' slogan. Thanks to Corkscrew.
+
+	-"Look! Up in the sky! It's a bird! It's a plane! It's me."
+       >Other: Play on the old Superman line. Thanks to Macolio for turning
+       me into a completist who has to list ones well known like this <3
+
+-----
+
+
+VIII.--UNDEAD
+____________________
+
+  //Campaign Characters
+
+  *NEW TFT* Akama, Draenei Chief
+
+	-"The Orcs slaughtered my people."
+
+	-"And their demon magics consumed our world."
+
+	-"We that are left will reclaim what we can."
+
+	-"Of life and honour amongst the ashes of our history."
+
+	-"We follow the Ancient Path."
+
+	-"I'm too old for this... *sighs*"
+
+	-"At my age, you see death everywhere. DEATH!"
+	~TV: Another potable quotable from Grandpa Simpson, of course from
+        the series 'The Simpsons'.
+
+	-"I can fight just like a.. *snores*"
+
+	-"TO BATTLE! ... Hold my teeth."
+
+-----
+
+  Arthas, Death Knight
+
+	-"I was a fool to trust in the light."
+
+	-"The Lich King has given me true power."
+
+	-"I'll be twice the king my father ever was."
+
+	-"Lordaeron will be reborn."
+
+	-"Who is this... Darkness anyway?"
+
+-----
+
+  Kel'Thuzad (Necro and Lich forms have same quotes)
+
+	-"The Cult of the Damned! ... I need to print more brochures."
+
+	-"I always wanted to start my own religion... so I did!."
+	>Other: This, and every other quote of Kel'Thuzad's is a tongue
+        in cheek reference to the pseudo-religion Scientology, referenced
+        again in this guide later. Alex Quayle, though, specifically links
+        this line to a quote of the "religion"'s founder, L. Ron Hubbard,
+        former trashy sci-fi novelist turned Jesus.
+
+          "Writing for a penny a word is ridiculous. If a man really wants
+          to make a million dollars, the best way would be to start his own
+      religion."
+
+        Check out the rest of the Scourge quotes for more.
+
+	-"I will await my eternal reward."
+
+	-*grumbles*
+	-"This... horn... thing... on my head is... killing me."
+
+	-"50,000 gold a year in child care and they call it a cult?!"
+
+-----
+
+  *NEW TFT* Sylvanas Windrunner
+
+	-"My will is my own."
+
+	-"I have my own reasons for seeking vengenace."
+
+	-"Arthas murdered my people and turned me into this... monstrosity."
+
+	-"What are we if not slaves to this torment?"
+
+-----
+
+  Tichondrius
+
+	-"Dreadlords... do it in the dark."
+
+	-"I get cranky when I haven't been fed."
+
+	-"I must feast on souls."
+
+	-"THE LEGION NEEDS... a better dental plan. These fangs are killing
+       me."
+
+	-"DARKNESS... needs to get DSL. His line is always busy."
+
+-----
+
+  *NEW TFT* Varimathras
+
+	-"I love it when a plan comes together."
+       ~TV: Renfield was the first to attribute this to George Peppard's
+       character "Hannibal" on the 80's tv show 'The A-Team'.
+
+	-"Sorry, I don't do interviews."
+       >Movie: Thanks to RedRaccoonDog for pointing out the play here.
+       Variamathras is of course, vampiric, making this a reference
+       to the Tom Cruise/Brad Pitt flick 'Interview with the Vampire'.
+
+	-"We're not a cult, so much as a maniacal group of  fanatical,
+        blade-wielding zealots."
+       >Other: While also another jab at Scientology, the "blade wielding
+       Zealots" phrase can be taken as a reference to the Protoss Zealots
+       from Blizzard's Starcraft. Thanks to Wiebbe for that.
+
+	-"I'll take a huge, juicy, bloody bite out of... what were we
+        talking about?"
+
+	-"I'm always on the winning side."
+
+	-"Join me, or die."
+
+	-"Don't worry about the fine print. The soul consumption clause
+        is never exercised."
+
+	-*screams, stabbing, blood splattering*
+	-"And that concludes our demonstration... any questions?"
+
+-----
+
+  //Heroes
+
+
+  *NEW TFT* Crypt Lord
+
+	-"The scourge will devour all!"
+
+	-"The strands of destiny weave only a web of death."
+
+	-"It was good to be the King."
+       >Movies: Reference to the line "It's good to be the King." from
+       Mel Brooks' "History of the World, Part 1".
+
+	-"Humans check-in. They don't check-out."
+       >Other: A reference to common catchphrase for bug traps, such as
+       roach motels. Of course, Crypt Lord is in fact a giant beetle, so
+       I suppose this is a bit out of left field. And come to think of
+       it, why is the lord of the Nerubian spider race a beetle anyway?
+       El Sabotender points this one out first.
+       ~Movie: Kenneth Chu credits this to one of the closing scenes in
+       'Men in Black', and until I have a chance to check, I'll take his
+       word for it.
+
+	-"And they say Blizzard games don't have bugs!"
+       *Haha what a horrible lie. Farm bug anyone?
+
+	-*in an english accent, uncommon for a monstrous insect*
+	-"I'm the fifth Beatle."
+
+-----
+
+  Death Knight
+
+	-"Has hell frozen over yet?"
+	>Other: Logan likens this to a pun from the "Preacher" comic series.
+        written by Garth Ennis, comparing it to the "Saint of Killers",
+        whose arrival litteraly freezes hell over. It's a bit of a stretch
+        but he gets points for bizzare effort.
+        >Other: Apparent Master of the Obvious, Optimus Prime, goes the low
+        road and makes the obvious connection of it being a play on the
+        spiteful reply of "When hell freezes over." Normally, I wouldn't
+        list it, but I just wanted to deduct points for lack of originality.
+
+	-"I am the One Horseman of the Apocalypse."
+
+	-"I hate people. But I love gatherings."
+       ~Movie: Line of Randall's from Kevin Smith's 'Clerks'.
+       Thanks to ecoughlin@mac.com.
+
+	-"I'm a Death Knight Rider. Muwahahahahaha."
+	 >TV: Knight Rider reference, you know, with the talking car.
+
+	-"Blucher!"
+      -*horse neighs*
+       ~Movie: Referring to a gag in Mel Brooks' 'Young Frankenstein',
+       where whenever a character said the name of Frau Blucher, a horse
+       would neigh. Thanks to Daniel Greenberg on that, and Agent Pickle
+       for clearing up a typo.
+
+	-"Don't touch me. I'm evil."
+       >Movie: 'Time Bandits', as juneteal@hotmail.com explains:
+       "This little kid was warning his parents not to touch a piece of
+       Pure Evil, which had broken apart. his line was, 'No, don't
+       touch it! It's evil!' They did, however, and exploded."
+	 -Of course, the one Gilliam flick I haven't seen ><
+
+
+-----
+
+  Dreadlord
+
+	-"If I have wings... why am I always walking?"
+
+	-*phone rings*
+	-"Yes? Agh, for the last time. I'm a DREADlord, not a DRUGlord."
+       >TV: Jason Chae also reminded me of the Geico Auto Insurance
+       commercials.
+
+	-"This is not a dress, it's the standard Dreadlord uniform."
+       ->Rich Burr passes along a bit of info about this one. The original
+       Dreadlord character image, from Alpha, was basically wearing a "gown"
+       similar to the one the Lich wears. The quote makes little sense
+       accompanying the current image, but is more suited to the old. And
+       for the curious, you can spot the old Dreadlord in this image
+
+       http://www.infoceptor.com/gallery/war3/gameshots/screenshot20.html
+
+       ~Movie: A play on an Emilio Estevez line from "The Breakfast Club",
+       in response to Judd Nelson poking fun at his wrestling tights.
+       [Deepthroat]
+
+	-"Dressed to kill. Bleh!"
+       >Music: After outright refusing to list any of the many deranged
+       or completely idiotic credits sent in by some people, Mattias
+       Sossna finally sends in something listing. 'Dressed to Kill'
+       is an album from the band KISS, which is good enough of a
+       reference to me, and far outweighs in intelligence and relevance
+       any of the claims previously made about the Jackie Chan cartoon.
+
+	-*phone rings*
+	-"Darkness! Hey, what's up? The Demon Hunter left you a message?
+       No I don't have his number."
+
+	-"And then, after I overthrow this fool... Oh hello! I didn't know
+       you were there!"
+
+	-"Imbecile."
+
+-----
+
+  Lich
+
+	-"Could you chew that up for me?"
+
+	-"I'm so poor, I don't even have calcium deposits."
+
+	-"I am the Ghost of Warcraft Past."
+	 >Other: Reference to Charles Dickens' 'A Christmas Carol'.
+       Thanks to Flaggle for that.
+
+	-"I hear the Banshee's a real screamer."
+
+	-"You should see the skeletons in my closet."
+
+	-"Imhotep..."
+	 >Movie: 'The Mummy'. Thanks to thehilander@hotmail.com for
+       the spelling correction, and Tasadar24 for further correction of an
+       oversight.
+
+	-"All the ladies dig rigor mortis."
+
+	-"You are the weakest lich, goodbye."
+	 >TV: Catchphrase of the host of 'The Weakest Link'. Thanks to
+       MajinMiraiTrunkz@aol.com for the correction.
+
+-----
+
+
+  //Units
+
+  Abomination
+
+	-"We come in peace...s."
+
+	-"Happy entrails."
+       >TV: ecoughlin@mac.com noted that this is a play on the song
+       'Happy Trails' from the Will Rogers television show.
+
+	-"You got us in stitches."
+
+	-"Us dead sexy."
+       >Movie: Referring to Fat Bastard's catchphrase from
+       'Austin Powers: The Spy Who Shagged Me'. Thanks to Stephen Hall.
+
+	-"Chunk!"
+       ~Movie: Azadeth both pointed out the existence of this quote and
+       properly creditted it as a reference to the memorable scene from
+       "The Goonies" where Sloth and Chunk share a tender moment of getting
+       to know each other. Can't believe I actually MISSED a quote like
+       that for so long. Much thanks again to Azadeth.
+
+-----
+
+  Acolyte
+
+	-"This is the hour of the Scourge."
+
+	-"Death shall cleanse the world."
+
+	-"All I see is darkness... Oh my hood's down."
+       ->Thanks to Ian Alexander for clearing up a mistake.
+
+	-"Let blood drown the weak."
+
+	-"My life for Aiur! ... Uh I mean Ner'Zhul."
+	 >Other: Starcraft Protoss reference.
+
+	-"The living be cursed!"
+
+	-"Would you like to know the secret to eternal happiness? Page 246."
+       >According to Trellin
+       "That is most likely a play on those Dianetics commercials of that
+        damned Scientology religion by that bloated ass L. Ron Hubbard."
+       And I'll have to agree with this above all, since I do recall
+       those pompous commercials.
+
+       sitemaster@conversawang.com and Jason noted the connection between
+       the Cult of the Damned and Scientology, so I'm further compelled to
+       believe it. By the way, I have a semi-lengthy little hate rant about
+       Scientology on my site <plug>www.inferiority.org</plug>, as well.
+       Now, just for completist sakes...
+
+	 >According to optimus137@hotmail.com
+	 "There is a Simpsons book in which on the first page it says to
+        find the secret to the meaning of life turn to page so and so and
+        it says on that page to go to another one eventually you go back
+        to the page you started on and don't find out any secret."
+
+       >And next, Matt Hylan credits this to 'Bart Simpson's Guide To Life:
+       A Wee Handbook for the Perplexed', which may be the title of the
+       book optimus referred to. To this one's still up in the air.
+
+       ->And lastly, asmor@attbi.com wasn't sure of this and ran a search
+       at google.com. He just noticed a very odd coincidence at this site:
+       http://www.holybible.com/resources/doctrine1/p246.asp
+       Check the question on the bottom. Strange, no?
+
+	-"Once you head down the dark path, forever will it dominate your
+       destiny... And you get dental."
+       >Movie: Apparently a play on a 'Star Wars' quote during Luke's
+       training. Thanks to thehilander@hotmail.com once more.
+
+-----
+
+  Banshee
+
+	-"Let this torment end!"
+
+	-"How long must I suffer?"
+
+	-"U-N-D-E-A-D, find out what it means to me."
+	 >Music: Play on 'Respect', by Aretha Franklin.
+
+	-"There is no Banshee, only Zuul."
+       >Movie: Zuul being the ancient war god from 'Ghostbusters'.
+       ->Thanks to Chris Bailey for the correction on the spelling.
+
+	-"I HATE YOU! I HATE YOU! ... Call me."
+
+-----
+
+  Crypt Fiend
+
+	-"What a tangled web we weave."
+       >Other: '...when we practice to deceive.' Derek K. reminds me here.
+
+	-"Spider Sense... tingling."
+	 ~Other: Spider-Man reference.
+
+	-"Last week my top half was on the Discovery Channel."
+
+	-"And my bottom half was on Animal Planet."
+
+	-"My ass always gets bloated during my spin cycle."
+
+	-"I like chicks who are into bandage."
+       Thanks to Negs for the correction but I think we both know the
+       other was a better <3
+
+	-"I'm stuck on bandages 'cause bandages are stuck on me."
+	 >TV: The Band-Aid commercials, damn well better know them, freak.
+
+-----
+
+  Ghoul
+
+ 	-"Me eat dead people."
+	 >Movie: Play on 'The Sixth Sense' catchphrase.
+
+	-"Me scary."
+
+	-"Me eat brains."
+
+	-"No guts, no gory."
+
+-----
+
+  Necromancer
+
+	-"Every man lives. Not every man truly dies."
+	 >Movie: Play on Mel Gibson's line in 'Braveheart'.
+       Thanks to thehilander@hotmail.com again.
+
+	-"I love the dead. Frequently."
+
+	-"I see undead people."
+	 >Movie: The THIRD 'Sixth Sense' reference to the same line.
+
+	-"Do you smell something? Oh, it's just the troops."
+
+	-"Right click for hot undead action."
+
+-----
+
+  Shade
+
+	-"I'm but a shadow of my former self."
+
+	-"What I do in death echoes in eternity."
+       >Movie: Play on the line "What we do in life echoes in eternity."
+       from 'Gladiator'. Thanks again to A Reys.
+
+	-"Death is its own reward."
+       >Other: Darklance credits this to a game by the name of
+       Warhammer: Dark Omen, but it's also a play on the phrase
+       'Life is its own reward.' So enjoy whichever you like.
+
+	-"I'm having a mid-death crisis."
+
+	-"I ain't got noooo body."
+	 >Music: David Lee Roth's 'Just A Gigolo'.
+	 Thanks to thehilander@hotmail.com for the song.
+       ->Achariyth also points out the nod to a gag in the Mel Brooks movie
+       'Young Frankenstein'.
+       ->Louie Brennan clears the situation up a bit, crediting the song
+       original to Louis Prima
+       ->Your friend and mine, Brian Kern, bombards me with link after
+       link, going at length to prove, in fact, that this song was written
+       originally in 1931, in a basic form, by Louis Armstrong. Louis Prima
+       would later adapt the song and take it in as his own in 1954. Unless
+       you believe Prima's former band member, Sam Butera, who claims that
+       he was the songwriter. So take that all as you will.
+
+	-"I'm invisible, gaseous, and deadly."
+
+______________________________________________________________________
+
+
+-_-_-_-_-_-_                                      ______
+|Section 3  \____________________________________/ Etc. \_____________
+
+
+I.--YOU'RE A MORON
+____________________
+
+ 7/24/03
+
+  The second entrant into these illustrious halls is...
+
+	Jason Malashevich <jasons073@yahoo.com>
+
+  Admiral Genius brings this to us...
+
+	"The quote from the death knight, "I am the One Horseman of the
+        Apocalypse." actually has to do with the Marvel X-men comic
+        series.  The Apocalypse had four mutants called "horsemen" who
+        were his chief liutennants."
+
+  Okay, so I'm not religious. However, if you're tracing the lineage of
+  "The Four Horseman" to Marvel Comics and not, say, the Bible, you should
+  probably re-think sending me any e-mail. Of course, as we all know,
+  'The Bible' was printed only months before the first Apocalypse story
+  arc in the X-Men, so I can see how he'd get confused.
+
+
+
+ 7/15/03
+
+  And the first inductee to the You're a Moron hall is none other than...
+
+	"The Night Falcon" <killer_mew@hotmail.com>
+
+  And our new hero drops me this delicious bite of insightful information.
+
+       "According to your FAQ, the Lich hero said this:
+
+	-"You should see the skeletons in my closet."
+
+	Since you have posted info on where phrases come from, I just want to 	tell
+you that the phrase was taken from Eminem's song: Cleaning out 	        my
+Closet.
+
+	Here's an extract of the song:
+
+	I got some skeletons in my closet
+	And I don't know if no one knows it
+
+	Just letting you know."
+
+  Well thank God for that. Never had I known that Marshall Maters infact
+  invented a phrase dating back to tales hundreds of years old now. Truly,
+  Eminem is a timeless artist. This is the basic equivalent of acrediting
+  for the invention of inhaling oxygen. He's using a cliched phrase, he's
+  not weaving a poetic wane for the eons.
+
+  And as a special "stfu", the album on which the song appears was released
+  just days before WC3 was. Good to see the Blizzard sound crew burning the
+  midnight oil, slaving into the wee hours of night, and halting the
+  production presses just to make sure that Eminem gets his "mad propz, yo".
+
+  Look guys, all I need here in this guide is some well thought out
+  references. If a quote seems FAR too obvious as a play or reference
+  to a TERRIBLY well known, common phrase, don't bother. You're either going
+  to just bother me with trivial obviousness, or make yourself out to look
+  like a jackass, like our friend here. Unless the play is TERRIBLY clever,
+  you should usually stick to referencing some types of media, like
+  television, movies, music, literate, or even world events. Thanks a lot.
+
+  And Night Falcon, congratulations. You're a Moron.
+
+
+
+II.--CONTACT INFO
+____________________
+
+  For any additions, corrections, or suggestions on the FAQ, mail me at...
+    -linoleummunki@hotmail.com
+
+  Username on B-Net, for WC3 and SC, East Gateways...
+    -Munki
+
+
+III.--MUNKI PLUGS HIMSELF
+____________________
+
+    -My other GameFAQs work I'm most well known for, the Final Fantasy
+    Tactics Straight Character Challenge. Damn well better check it out
+    if you own or plan on owning FFT. Love me.
+
+    -And my baby. www.inferiority.org. My beloved ranting site. If you
+    enjoy horrible cartoons, Jesus bashing, and occasional bursts of
+    intelligence all rolled up into a humourous ball, check it out.
+
+
+IV.--THANKS
+____________________
+
+  --Roo. For all the love <3
+  --Fenix. For breaking down and telling me where to get at the sounds.
+  --Blizzard. Since thanking the company's obligatory, right?
+  --Maruchan. For making life worth living.
+  --Seanbaby. All positive things in life can be linked to this man.
+  --CJayC. The other obligatory, but well deserved, thanks.
+  --Brian Kern. For clearing up mysteries, but not wanting to get any thanks.
+  --[Deepthroat]. For their time and attention.
+
+  -And to those who corrected my mistakes or cited various sources, but
+  came in late. 'Awards second placers' and such, since there's no losers
+  here <3 If you're not listed here but you supplied me something, your
+  name's somewhere in the FAQ.
+
+  -YHN1212@aol.com, charlesk03@aol.com, Magic12121@aol.com,
+   MikieP696@aol.com, euphmaster@excite.com, Starwrist@charter.net,
+   siamosi@yahoo.com, James Frost, Sophia, tamnier@cs.com, BeChan, Skyblade,
+   Darkzeid25@aol.com, Eryk Nielsen, Matt Crumrine, Harrison Ross, Lop,
+   Will Wei, Josh Batternik, Carla Hicks, Greg Keller, John McLean,
+   BuchanManX, MMasterM33, Chris Keeney, FATMIKE127, C K,
+   Vincentistheman@aol.com, Mr. Evil, J.G., Timothy The Raven, Eng Seng,
+   John Mazzie, Spyyak@aol.com, Lucas, Geno83, MistaFrezX@aol.com, Regan,
+   cough2@msn.com, FrozenShade0413@aol.com, RamzaHevenlyKnight,
+   Norman Caberto, Pete Haytko, Wade Jenkins, Rendvermin, El Sabotender,
+   Lord Zero, Andy Simmons, Fredrik, chronotriggerfreak, David M. Steward,
+   Sean Seyler, Arrlaari, Troe21@aol.com, Nathan Hruby, Jedi359,
+   Fernando Butzke, Chris W, El Scorcho, jkanz2005, Zengar Zonbolt,
+   Henaki Yamato, Krav, Hale Storm, Nammaps, Nobody, Espen Ovre, K' XIV,
+   Lord-of-Sorrow, Jittery, Blue Zilgen, Peter Tobin, Arithon Infinity,
+   Cody, Magister2005@aol.com, Mike, LemonAndLime. The Human Nade,
+   Andy Pan, Blade248, Chirag, Druce Lukasz Drozd, Vektor, Veggieboy,
+   Gregory Decoteaux, Christopher Rhoades, Richard Hilborn
+
+

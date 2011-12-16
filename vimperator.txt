@@ -1,0 +1,16 @@
+#####refer to :help xxx
+:t  <google> cjdby
+:t  bbs.newsmth.net, bbs.lqqm.net, news.sina.com.cn
+:2bd/:2tabc/2d #close tabs
+:3u[ndo]/3u
+:qall/:winclose/ZQ  #quit without save
+:xall/ZZ       #save and quit
+Element：2gi
+g0/:tabfirst <--> g$/:tablast
+c      /* caret mode
+/pattern<CR> <--> ?pattern<CR>
+* <--> #
+gu
+gU
+;y23
+;t35

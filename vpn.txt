@@ -1,0 +1,1128 @@
+Location: http://mickeywaley.appspot.com.sixxs.org/
+广陵散 `s ubuntu linux
+
+  * Home
+  * Regarding
+  * (RSS)
+  * Login
+  * [Search...           ] Search
+
+专业翻墙代理软件Puff http://www.erights.net.sixxs.org/ 九月 19th, 2009
+
+专业翻墙代理软件Puff http://www.erights.net.sixxs.org/
+
+十一期间封网严重.能用的软件不多了，我是用的IPV6+VPN+tor
+
+http://apitwitter.googlecode.com.sixxs.org/files/setup_puff_003.exe
+
+http://w
+
+Posted in 自由互联 | Comments(3)»
+
+GOOGLE的相关网页服务封锁严重，大家来用IPV6吧，修改HOSTS 九月 16th, 2009
+
+linux修改hosts文件，IPV6看本博客其他帖子
+
+sudo gedit /etc/hosts
+
+#＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+#我的hosts中相关的内容（不一定全，而且google说可能还会新增服务）：
+#Google
+2001:4860:c004::68    www.google.com
+2001:4860:c004::68    www.l.google.com
+
+#Images
+2001:4860:c004::68    images.google.com
+2001:4860:c004::68    tbn0.google.com
+2001:4860:c004::68    tbn1.google.com
+2001:4860:c004::68    tbn2.google.com
+2001:4860:c004::68    tbn3.google.com
+2001:4860:c004::68    tbn4.google.com
+2001:4860:c004::68    tbn5.google.com
+2001:4860:c004::68    tbn6.google.com
+
+#Shopping
+2001:4860:c004::68    base0.googlehosted.com
+2001:4860:c004::68    base1.googlehosted.com
+2001:4860:c004::68    base2.googlehosted.com
+2001:4860:c004::68    base3.googlehosted.com
+2001:4860:c004::68    base4.googlehosted.com
+2001:4860:c004::68    base5.googlehosted.com
+
+#Books
+2001:4860:c004::68    books.google.com
+2001:4860:c004::68    bks0.books.google.com
+2001:4860:c004::68    bks1.books.google.com
+2001:4860:c004::68    bks2.books.google.com
+2001:4860:c004::68    bks3.books.google.com
+2001:4860:c004::68    bks4.books.google.com
+2001:4860:c004::68    bks5.books.google.com
+2001:4860:c004::68    bks6.books.google.com
+2001:4860:c004::68    bks7.books.google.com
+2001:4860:c004::68    bks8.books.google.com
+2001:4860:c004::68    bks9.books.google.com
+
+#Video
+2001:4860:c004::68    video.google.com
+2001:4860:c004::68    0.gvt0.com
+2001:4860:c004::68    1.gvt0.com
+2001:4860:c004::68    2.gvt0.com
+2001:4860:c004::68    3.gvt0.com
+2001:4860:c004::68    4.gvt0.com
+2001:4860:c004::68    5.gvt0.com
+
+#Mail(POP3/SMTP)
+2001:4860:c004::68    pop.gmail.com
+2001:4860:c004::68    smtp.gmail.com
+2001:4860:c004::68    www.gmail.com
+2001:4860:c004::68    mail.google.com
+
+#WebMail
+2001:4860:c004::68    mail.google.com
+2001:4860:c004::68    www.gmail.com
+2001:4860:c004::68    googlemail.l.google.com
+
+#Docs
+2001:4860:c004::68    writely-china.l.google.com
+2001:4860:c004::68    writely.l.google.com
+2001:4860:c004::68    docs.google.com
+
+#Map
+2001:4860:c004::68    map.google.com
+2001:4860:c004::68    maps.google.com
+2001:4860:c004::68    khm.google.com
+2001:4860:c004::68    mt0.google.com
+2001:4860:c004::68    mt1.google.com
+2001:4860:c004::68    mt2.google.com
+2001:4860:c004::68    mt.l.google.com
+2001:4860:c004::68    maps.l.google.com
+
+#Scholar
+2001:4860:c004::68    scholar.google.com
+2001:4860:c004::68    scholar.l.google.com
+
+#Group
+2001:4860:c004::68    groups.google.com
+2001:4860:c004::68    groups.l.google.com
+
+#Picasa
+2001:4860:c004::68    picasa.google.com
+2001:4860:c004::68    photos.google.com
+2001:4860:c004::68    picasaweb.google.com
+2001:4860:c004::68    lh0.ggpht.com
+2001:4860:c004::68    lh1.ggpht.com
+2001:4860:c004::68    lh2.ggpht.com
+2001:4860:c004::68    lh3.ggpht.com
+2001:4860:c004::68    lh4.ggpht.com
+2001:4860:c004::68    lh5.ggpht.com
+2001:4860:c004::68    lh6.ggpht.com
+2001:4860:c004::68    lh7.ggpht.com
+
+#Translate
+2001:4860:c004::68    translate.google.com
+
+#Sites
+2001:4860:c004::68    sites.google.com
+
+#Code
+2001:4860:c004::68    code.google.com
+2001:4860:c004::68    code.l.google.com
+
+#Labs
+2001:4860:c004::68    www.googlelabs.com
+2001:4860:c004::68    appspot.l.google.com
+2001:4860:c004::68    labs.google.com
+
+#Knol
+2001:4860:c004::68    knol.google.com
+
+#Sketchup
+2001:4860:c004::68    sketchup.google.com
+
+#Pack
+2001:4860:c004::68    pack.google.com
+
+#News
+2001:4860:c004::68    news.google.com
+2001:4860:c004::68    nt0.ggpht.com
+2001:4860:c004::68    nt1.ggpht.com
+2001:4860:c004::68    nt2.ggpht.com
+2001:4860:c004::68    nt3.ggpht.com
+2001:4860:c004::68    nt4.ggpht.com
+2001:4860:c004::68    nt5.ggpht.com
+
+#Calendar
+2001:4860:c004::68    calendar.google.com
+
+#Blogger
+2001:4860:c004::68    www.blogger.com
+2001:4860:c004::68    blogger.l.google.com
+2001:4860:c004::68    blogger.google.com
+#Blogger 其他个人的一些博客常浏览的自己加上
+2001:4860:c004::68    chinafreenet.blogspot.com
+2001:4860:c004::68    用户名.blogspot.com
+
+#Orkut
+2001:4860:c004::68    www.orkut.com
+2001:4860:c004::68    orkut.google.com
+2001:4860:c004::68    orkut.l.google.com
+
+#Toolbar
+2001:4860:c004::68    toolbar.google.com
+
+#Apps
+2001:4860:c004::68    apps.google.com
+
+#Chrome
+2001:4860:c004::68    chrome.google.com
+
+#Finance
+2001:4860:c004::68    finance.google.com
+
+#Desktop
+2001:4860:c004::68    desktop.google.com
+
+#Ajax
+2001:4860:c004::68    ajax.googleapis.com
+2001:4860:c004::68    googleapis-ajax.l.google.com
+
+#Modules
+2001:4860:c004::68    1.ig.gmodules.com
+2001:4860:c004::68    2.ig.gmodules.com
+2001:4860:c004::68    3.ig.gmodules.com
+2001:4860:c004::68    4.ig.gmodules.com
+2001:4860:c004::68    5.ig.gmodules.com
+2001:4860:c004::68    6.ig.gmodules.com
+
+#Misc
+2001:4860:c004::68    id.l.google.com
+2001:4860:c004::68    skins.gmodules.com
+2001:4860:c004::68    googlehosted.l.google.com
+2001:4860:c004::68    img0.gmodules.com
+2001:4860:c004::68    blogsearch.google.com
+2001:4860:c004::68    www2.l.google.com
+2001:4860:c004::68    www.gstatic.com
+2001:4860:c004::68    www3.l.google.com
+2001:4860:c004::68    buttons.googlesyndication.com
+
+#YouTube
+2001:4860:c004::68    www.youtube.com
+2001:4860:c004::68    gdata.youtube.com
+2001:4860:c004::68    help.youtube.com
+2001:4860:c004::68    upload.youtube.com
+2001:4860:c004::68    insight.youtube.com
+2001:4860:c004::68    help.youtube.com
+2001:4860:c004::68    youtube.com
+
+Posted in 自由互联 | Comments(0)»
+
+目前已知的一些免费VPN翻墙利器九月 15th, 2009
+
+[top_im]
+
+免费翻墙软件 PacketiX VPN 官方网站：http://www.packetix.net.sixxs.org/
+
+ 
+
+免费翻墙软件 PacketiX VPN 官方下载页面：http://www.packetix.net.sixxs.org/en/secure/install/
+
+ 
+
++------------------------------------------------+
+|OS      |                                       |
+|Version |Installation File                      |
+|（系统版|                                       |
+|本）    |                                       |
+|--------+---------------------------------------|
+|Windows |                                       |
+|32 bit（|                                       |
+|windows |                                       |
+|32位系统|vpnclient-5351-en-win32-x86.exe        |
+|PacketiX|                                       |
+|VPN下载 |                                       |
+|地址）  |                                       |
+|--------+---------------------------------------|
+|Windows |                                       |
+|64 bit（|                                       |
+|windows |                                       |
+|64位系统|vpnclient-5351-en-win32-x64.exe        |
+|PacketiX|                                       |
+|VPN下载 |                                       |
+|地址）  |                                       |
+|--------+---------------------------------------|
+|Linux 32|                                       |
+|bit（   |                                       |
+|Linux 32|                                       |
+|位系统  |vpnclient-5350a-rtm-en-linux-x86.tar.gz|
+|PacketiX|                                       |
+|VPN下载 |                                       |
+|地址）  |                                       |
+|--------+---------------------------------------|
+|Linux 64|                                       |
+|bit（   |                                       |
+|Linux 64|                                       |
+|位系统  |vpnclient-5350a-rtm-en-linux-x64.tar.gz|
+|PacketiX|                                       |
+|VPN下载 |                                       |
+|地址）  |                                       |
++------------------------------------------------+
+
+The Windows 32 bit version is for Windows 98/SE/ME and Windows 2000/XP/Server 2003/Vista running on 32
+bit processors.
+The Windows 64 bit version is for Windows 2000/XP/Server 2003/Vista running on 64 bit processors.
+The Linux version has been tested on Red Hat Enterprise Linux AS 4, ES 4, Turbolinux 10 Server, Fedora
+Core 4, 5 and CentOS 4. Required are Kernel 2.4 or higher, zlib, OpenSSL, readline and ncurses.
+
+在Windows 32位版本的Windows 98/SE/ME和Windows 2000/XP/Server 2003/Vista上运行的32位处理器。
+在Windows 64位版本的Windows 2000/XP/Server 2003/Vista运行在64位处理器。
+Linux版本已经过测试在Red Hat Enterprise Linux 4 ，第ES 4 ，拓林思10服务器的Fedora Core 4 ，第5和CentOS
+4 。需要的是内核2.4或更高， zlib的， OpenSSL的， readline和ncurses 。
+
+ 
+
+免费翻墙代理软件 PacketiX VPN 配置文件secure.vpn
+
+下载地址：http://www.packetix.net.sixxs.org/en/secure/secure.vpn
+
+免费翻墙代理软件 PacketiX VPN 配置文件MobileFree.jp.vpn
+
+下载地址：http://www.mobilefree.jp.sixxs.org/jp/download/files/MobileFree.jp.vpn
+
+这个设置有点麻烦，参考教程http://hi.baidu.com/%B7%AD%C7%BD/blog/item/34ffe7fb503b919e59ee9041.html
+
+==================无敌分割线==================
+
+ 
+
+[e20099]
+
+ 
+
+Freedur（stackfile免费版）速度暴快的VPN，注意有时效性。
+
+Freedur(stackfile免费版)下载页面：http://www.stackfile.com/freedur.html
+
+Freedur(stackfile免费版)下载地址：http://www.stackfile.com/freedur/freedur-setup.exe
+
+大家赶紧下载这个freedur（stackfile免费版本）。以前我就用过一个月的Freedur免费版，速度是所有我用过的VPN
+里面最快的了，本来这软件是收费的，他们公司内斗出现，所以出了个stackfile免费版本有时效性，别说我没提醒
+你们。随时可能失效
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[z20099]
+
+GAppProxy windows版(为教育网用户提供的国际免费HTTPS代理软件)
+
+GAppProxy官方网站：http://code.google.com/p/gappproxy/
+
+GAppProxy windows版官方下载页面：http://code.google.com/p/gappproxy/downloads/list
+
+GAppProxy教育网免费代理软件下载地址:http://gappproxy.googlecode.com.sixxs.org/files/
+GAppProxy-1.0.0beta.exe
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[logo]
+
+ItsHidden(荷兰免费vpn代理,网站宣传测试阶段赶紧申请,以后说不定就没的免费用户申请了）
+
+ItsHidden vpn官方网站：http://www.ItsHidden.com
+
+ItsHidden vpn免费账号注册页面地址：http://www.itshidden.com/index.php?option=com_acctexp&task=
+subscribe&Itemid=
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[logo]
+
+blackVPN官方网站：http://www.blackvpn.com/
+
+这个VPN申请帐号后，请自行到网络连接内建立VPN链接，还不会在WindowsXP下建立VPN链接的请去凌霄论坛查看教程
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[protec]
+
+Free USA/UK VPN（免费获的美国或者英国vpn代理ip地址）
+
+Free USA/UK VPN 官方网站：http://thefreevpn.com/
+
+Free USA/UK VPN 官方下载地址：http://thefreevpn.com/freevpn_install.exe
+
+==================无敌分割线==================
+
+ 
+
+[f20099]
+
+使用P2P技术的德国代理软件 Your Freedom
+
+Your Freedom 官方网站地址：http://www.your-freedom.net （要用代理打开，被和谐了）
+
+Your Freedom 官方下载页面： http://www.your-freedom.net/index.php?id=3&L=0
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[ultrav]
+
+UltraVPN - A Free VPN Powered by the Community
+
+法国免费代理工具UltraVPN官方网站：
+
+https://www.ultravpn.fr/
+
+http://www.ultravpn.fr/
+
+法国免费代理软件UltraVPN注册页面地址：
+
+https://www.ultravpn.fr/account.htm
+
+http://www.ultravpn.fr/account.htm
+
+UltraVPN windows 客户端官方下载地址：
+
+http://www.ultravpn.fr/download/ultravpn-install.exe https://www.ultravpn.fr/download/
+ultravpn-install.exe
+
+UltraVPN Mac OS X 客户端官方下载地址：
+
+http://www.ultravpn.fr/download/ultravpn.dmg https://www.ultravpn.fr/download/ultravpn.dmg
+
+法国免费代理软件服务器UltraVPN官方下载页面： http://www.ultravpn.fr/download.htm
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[t20099]
+
+Alonweb（荷兰免费VPN代理软件）
+
+ 
+
+Alonweb（荷兰免费VPN代理软件）官方网站：http://alonweb.com
+
+Alonweb账号申请地址：http://alonweb.com/user/register
+
+免费vpn代理软件Alonweb客户端官方下载页面： http://alonweb.com/content/downloads
+
+免费vpn代理软件Alonweb客户端官方下载地址：http://static.alonweb.com/downloads/openvpn.exe
+
+==================无敌分割线==================
+
+ 
+
+[b20099]
+
+TUS (The untraceable Surfer)
+
+2009年8月最新免费翻墙工具TUS官方网站： https://www.tusurfer.com/tus/index.jsp
+
+2009年8月最新免费翻墙软件TUS（windows版）官方下载地址：https://www.tusurfer.com/tus/downloads/
+nxclient-win-3.2.0-10.exe
+
+2009年8月最新免费翻墙工具TUS（非windows操作系统）的下载页面：https://www.tusurfer.com/tus/download.do
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[l20099]
+
+专业翻墙代理软件Puff
+
+Puff the magic dragon 官方网站 http://www.erights.net/
+
+Puff 下载地址 http://www.erights.net/puff/setup_puff_003.exe
+
+安装运行后IE设置代理为：地址：127.0.0.1 端口号：1984
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[toonel]
+
+免费java程序 toonel.jar 翻墙
+
+toonel.net本意是用来压缩网络传输的数据量从而节省费用（比如按流量计费的手机上网），因为要经过它的服务器
+，所以也就可以当成一个代理了。
+
+toonel官方网站 http://www.toonel.net/
+
+toonel官方网站下载页面 http://www.toonel.net/downloads.html
+
+toonel.jar官方下载地址 http://www.toonel.net/generic/005050/toonel.jar
+
+Java runtime 官方下载地址：www.java.com
+
+Java runtime 绿色软件站下载地址 http://www.greendown.cn/soft/14041.html
+
+记住一定要先下载 Java runtime 安装好后才能运行 toonel.jar
+
+安装运行后IE设置代理为：地址：127.0.0.1 端口号：8080
+
+ 
+
+==================无敌分割线==================
+
+ 
+
+[45654]
+
+1.Hotspot Shield
+
+这款VPN估计大多数人都知道，速度还是不错的
+
+下载地址：http://anchorfree.com/
+
+ 
+
+==================无敌分割线==================
+
+一些SSL代理（支持最高128位加密强度的http/https代理）
+
+https://www.secure-tunnel.com.sixxs.org
+https://iceproxy.net.sixxs.org
+https://twolulu.com.sixxs.org
+https://2unblocksites.com.sixxs.org
+https://aniscartujo.com.sixxs.org/webproxy
+https://www.evadeunblock.com.sixxs.org
+https://externalsite.info.sixxs.org
+https://fishandchips.co.cc.sixxs.org
+https://how2unblock.com.sixxs.org
+https://sapportal.uni.cc.sixxs.org
+https://morphium.info.sixxs.org
+https://www.proxyweb.net.sixxs.org/antilog.php?url=
+https://savemoneyweb.info.sixxs.org
+https://snoopblock.com.sixxs.org
+https://sslunblock.com.sixxs.org
+https://surfdeppo.com.sixxs.org
+https://tataproxy.com.sixxs.org
+https://threatens.org.sixxs.org
+https://tor-proxy.net.sixxs.org
+https://www.youtubeunblock.biz.sixxs.org
+
+最后给大家一个不错的翻墙网站http://hi.baidu.com/翻墙
+
+原文：http://www.vsure.org/article.asp?id=432
+
+Posted in 自由互联 | Comments(0)»
+
+Tor 神奇的洋葱头，突破封锁还你自由网络空间九月 15th, 2009
+
+[h20098]
+
+Tor是一个强大的代理工具，他可以让你当前的IP变成任何正在使用TOR的用户所在的国家的IP，是否发现有时候去看
+BBC经典影视剧介绍他网页上会说“Sorry， Your IP address is not in Europe”，或者注册VoIP的时候上面写着
+“Sorry， We are unable to register with your IP address”，或者无法登陆大部分的国外新闻和媒体网站？这一
+部分是因为国外禁止国内IP，另一方面是中国的国家级防火长城GFW封锁了国外的网站，但是只要有Tor，你就可以将
+自己的IP切换成为英国之类的，便可以查阅他们网站的内容了。 同时，由于国内有GFW(Great FireWall of China)
+的封锁，造成我们无法采用google的ghs.google.com访问企业套件，不过有了Tor便可突破网络封锁。
+
+ 
+
+注意：国内有很多五毛党建立的虚假的TOR节点，自己去查维基百科，所以大家切换节点后注意看自己IP是否为国内
+的，如果是，请立即更换其他节点，否则还是被封锁的！
+
+ 
+
+Tor官方站 http://www.torproject.org （Need VPN to connect）（以下直接转官方解释）
+
+Tor 是一个软件项目，帮助你抵御流量分析，流量分析是一种对网络的监视行为，威胁到个人的自由与隐私、商业活
+动与业务关系的保密和国家的安全。Tor 将你的通信通过一个由遍及全球的志愿者运行的中继（relay）所组成的分
+布式网络转发，以此来保护你的安全：它令监视你的 Internet 连接的那些人无法知道你所访问的站点，它还令你所
+访问的站点无法知道你的物理位置。Tor 能与现有的许多应用程序配合工作，包括 Web 浏览器、即时通讯客户端、
+远程登录和基于 TCP 协议的其他应用程序。
+
+世界各地有几十万用户出于多种不同的原因在使用 Tor：记者和博客、人权工作者、执法人员、军人、公司、暴政之
+下的公民以及像你我一样的普通公民。谁使用 Tor？页面有典型的 Tor 用户的例子。概述页面对 Tor 的作用、这一
+用户多样性为什么重要以及 Tor 如何工作有更详细的解释。
+
+这里有三点容易忽略的细节需要你注意。
+
+ 1. 如果使用不当，Tor 便无法保护你的安全。请阅读我们列出的警告并请仔细遵照你所在平台的指导。
+ 2. 即使你正确地配置和使用 Tor，依然存在潜在的攻击，会损害 Tor 对你的保护。
+ 3. 目前没有匿名系统是完美的，Tor 也不例外：如果你确实需要强健的匿名，仅仅依靠现有的 Tor 网络或许并不
+    适合。
+
+ 
+
+Tor 的安全性随着用户群的扩大和更多的志愿者运行中继而增强。（设置中继并没有你想象中的那么困难，而且能显
+著提高你自身面对某些攻击的安全性。）如果你对运行中继没有兴趣，这一项目的其他许多方面同样需要帮助，我们
+也需要资金在保持好的安全性的同时持续使 Tor 网络更快更易于使用。请捐助。
+
+ 
+
+下载地址（建议用迅雷下载）：
+
+(你如果看不到下面列表中有[m20098]标志表示你的网络处于监视封锁状态中）
+
+ 
+
+Tor与Privoxy安装设置指南
+
+出自Ubuntu中文 
+
+目录
+
+[隐藏]
+
+  * 1 Tor与Privoxy安装设置指南
+      + 1.1 背景知识
+      + 1.2 安装与设置
+      + 1.3 外部链接
+
+[编辑] Tor与Privoxy安装设置指南
+
+------------------------------------------------------------------------------------------------------
+
+本文作者：XueCan
+授权许可：创作共享协议
+
+[编辑] 背景知识
+
+  * 什么是 tor ？
+
+Tor是第二代onion routing（洋葱路由）的一种实现，用户通过Tor可以在因特网上进行匿名交流。
+
+  * 什么是 privoxy ?
+
+Privoxy是一款带过滤功能的代理服务器，针对HTTP、HTTPS协议，经常跟Tor、Squid组合使用。通过Privoxy的超级
+过滤功能，用户从而可以保护隐私、对网页内容进行过滤、管理cookies，以及拦阻各种广告等。
+
+  * 我为什么要使用 tor 和 privoxy ?
+
+我不知道，如果你对这份短文感兴趣，多半你已经知道或者急切的想要使用它们。如果你只是无意中来到这里，多半
+你并不需要它们。
+
+[编辑] 安装与设置 http://apitwitter.googlecode.com/files/tor_0.2.0.35-1%7Elenny1_i386.deb
+
+  * 安装
+
+sudo apt-get install tor privoxy
+
+更新：由于9.04官方源中没有tor了，所以只能自行添加源
+
+sudo vim /etc/apt/sources.list 添加
+  deb     http://mirror.noreply.org.sixxs.org/pub/tor etch main
+  deb-src http://mirror.noreply.org.sixxs.org/pub/tor etch main
+
+更新：如果是9.04，可能还需要添加密钥：
+
+gpg --keyserver keys.gnupg.net --recv 94C09C7F
+gpg --export 94C09C7F | sudo apt-key add -
+
+来源：tor
+然后执行
+
+sudo apt-get update
+sudo apt-get install tor
+
+即可完成tor安装
+
+  * 使用你最喜欢的编辑器打开 /etc/privoxy/config 文件，在最前面加上下面这一行（别漏了那个不起眼的“.”）
+    ：
+
+forward-socks4a / localhost:9050 .
+
+你可能希望 privoxy 不要把什么事情都记录下来，找到下面的两行，通过在它们前面添加“#”注释掉它们：
+
+...
+logfile logfile
+...
+jarfile jarfile
+...
+
+保存修改了的 /etc/privoxy/config 文件。
+
+  * 重新启动 privoxy 服务
+
+sudo /etc/init.d/privoxy restart
+
+  * 设置你的软件使用 tor + privoxy
+
+在支持使用代理服务器的软件，设置代理服务器为：
+
+localhost:8118
+
+比如用firefox上网的可以这样设置编辑——首选项——高级——网络——设置——手动配置代理填写如下信息
+
+Sock主机代理 ：127.0.0.1 端口：9050
+SOCKS_v4
+
+点击 Tor 探测器看看它是否正常工作 https://check.torproject.org.sixxs.org/
+
+[screen]
+
+确定，可以去www.ip.cn 检查你的ip地址
+
+ 
+
+Posted in 自由互联 | Comments(0)»
+
+IPv6 与sixxs 九月 15th, 2009
+
+今天查看统计数据的时候，被访问主机多了一个www.ipv6home.cn.sixxs.org 还以为除了什么问题，查了一下原来与
+IPv6有关系！
+
+通过 www.SixXS.org 提供用 Ipv6 通道访问 Ipv6 站点的服务访问网站, 可以突破 GFW (目前 GFW 不封 Ipv6)，后
+缀 .sixxs.org 代表使用sixxs.org提供的IPv6网关，该网关将来自IPv6网络的http访问请求转换成IPv4的http请求
+，访问任何其他IPv4的 http都可以使用这个网关，在地址后面加上 .sixxs.org 即可！是条件限制的！
+
+你的系统开启 Ipv6 协议
+(XP 安装 Ipv6 方法: 开始菜单->运行-> Ipv6 install)
+(Vista 默认启用: 可在网络连接的属性里设置)
+你的 Isp 提供 Ipv6 支持
+(目前可能只有一些校园支持, 是进行 Ipv6 测试的. 如果你的 ISP 不支持, 那么这样后缀对你没用)
+(测试方法: 在本机开启 Ipv6 情况, 访问 http://www.ipv6home.cn.sixxs.org/, 如果能访问则表示正常)
+
+不支持Cookies
+
+Posted in 业内资讯 | Comments(0)»
+
+G.F.W.是.如.何.屏.蔽.网.络.的九月 15th, 2009
+
+刚看到个帖子共享之，做个普及吧
+
+GFW 建成之后，网民们也并不是呆子。随着不能访问的网站越来越多，用代理进行对比之后，网友们逐渐了解到一个
+阻碍他们访问网络的事物的存在。通过各种黑箱分析、测试、与国外友人的通力合作，大家对GFW的结构和原理已经
+有大概的了解。中间的种种细节略去不表，单说网友们得到的结论。
+GFW主要的网络屏蔽方式有：
+1、DNS劫持
+DNS服务器的功能，是把域名和IP地址对应起来。比如baidu.com可能对应某个或某几个IP地址，浏览器把baidu.com
+发给DNS服务器，服务器再告诉浏览器IP地址，然后浏览器再前往那个地址浏览。当然，用户一般不用关心这一步。
+
+全世界有13台最主要的DNS服务器，没有一台在中国，这是件好事。不过，中国有其中3台服务器的镜像服务器。在这
+13台根服务器下面，还有许许多多低等级的DNS服务器，它们会缓存一些地址数据，如果某个地址它们无法解析，就
+会向上级服务器发出询问。
+
+DNS 数据是通过UDP 43端口传送的，GFW现在并没有彻底封闭这个端口。不过，GFW会"污染"一些低等级的DNS服务器
+的缓存，比如你输入的是google.com，结果低级DNS服务器给你解析成了baidu.com，并且会把你带到baidu的页面，
+这种事情在05年大规模发生过，后来有所收敛。另外，GFW也会阻断某些特定站点的DNS请求，让我们无法解析地址，
+例如现在针对Youtube的封锁和今年针对Twitter的短时间封锁，都包括了DNS劫持的手段。一般中国的ISP商提供的
+DNS服务都有或多或少的劫持行为，有时候跟GFW并无关系，例如像四川电信这种地方ISP商搞什么114网址导航等等自
+动跳转的页面，都是通过DNS劫持实现的。
+
+针对DNS劫持，常用的办法是自己手动指定DNS解析服务器，例如指定为香港和记电讯DNS地址：202.45.84.58,
+202.45.84.59，以及著名的OpenDNS: 208.67.222.222, 208.67.220.220。使用它们可以保证解析的准确性。不过，
+香港的DNS访问iTunes Store容易超时，可能是商业原因；使用OpenDNS无法在谷歌音乐下载歌曲，所以需要时，也可
+以自己临时切换。最后，用户可以手动修改本地的 hosts文件来彻底避免劫持。
+
+2、域名封锁
+
+这是封锁特定的域名。比如说www.xe.com被列入了封锁名单，你以后每次输入这个地址就会被屏蔽。然而，这种封锁
+是比较低级的，有几种办法可以直接绕过。第一，你可以直接输入网站的IP地址，它就没用了。第二，如果网站支持
+https（如果支持的话），你就用https。Twitter有段时间就是这种待遇，如果输入 http://twitter.com.sixxs.org
+，没用；输入https://twitter.com.sixxs.org，访问就正常了。实际上，Twitter下面有很多二级地址仍然是这种待
+遇，用https统统可以绕过去。一般而言，浏览有https支持的网站应该尽量用https，这是为安全和个人隐私考虑，
+例如Gmail、 Google Reader等就该这样。
+
+3、IP封锁
+
+IP封锁是直接封锁某台服务器的IP，凡是访问对应于这个IP上的网站都不能看。这也是那些被"连累"的网站被屏蔽的
+主要原因。例如，如果他们是租用别人的主机，不幸和某个反动站点在同一台服务器上，那么GFW封掉这个IP会导致
+该IP上所有网站都挂掉。很多共享软件站点和外国技术论坛就是这么被屏蔽的，PyMOL公司的站点就是我遇到的一个
+例子。
+
+4、关键字审查与暂时访问限制
+用一般的www.google.com（而不是cn）搜索一个敏感字，会导致页面不能访问，并且接下来的一分多钟的时间里你也
+不能访问 google.com。这种关键字触发的屏蔽，是GFW的一个重要特征。这种特性相当于一种警告，一般是暂时让你
+没法访问，隔一会儿后恢复正常。
+
+我们知道Google.cn是会过滤搜索结果的，如果想要看没被过滤的结果，我们需要先点google.cn下方的Google in
+English，才能进入Google.com，然后你再把自己的Search Preferences（搜索偏好）设置为用简体中文显示，这样
+你就可以像使用cn一样正常使用Google.com原版了。或者，你可以直接输入这个地址：http://
+www.google.com.sixxs.org/ncr，这个地址会直接带你到原版Google页面。
+
+5、流量限制
+最新研究发现，如果某个外国网站在某段时间内访问量飙升，GFW会自动阻断国内对这个网站的访问！这是一项伟大
+的发明，这意味着中国国内已经没法对国外服务器实施DDOS攻击了。这个性质应该是今年才出来的，究竟是长期使用
+还是纯属实验性质，尚待观望。
+
+6、GFW屏蔽相关的奇闻轶事
+
+以上是GFW常用的网络屏蔽手段。还有一些和GFW的网络屏蔽息息相关的轶事，我列表在这里，供大家参考：?
+1、GFW是双向的，国外的同胞访问国内的咸湿站可能遭阻断。
+
+2、 GFW的地理位置，应该在几大海底光缆上岸的那些城市，以及重要的网络节点城市，这就应当包括上海（崇明、
+南汇）、北京、青岛、福建某地（实际出口在台北，GFW只能放在福建）、深圳（实际出口在香港）等等，但通常在
+我们测试GFW的实验中能够查到的、和Tor网络中一眼可以分辨的那种黑节点，基本都在北京和上海。
+
+3、至今似乎没有网友说认识过或搭讪过任何在GFW工作的人员并曝内幕。另外，在那些探测GFW的实验中，可以得到
+一些网络审查用仪器的设备信息，发现仍然是Cisco当年卖给贵国的那些东东。
+
+4、有理论认为，GFW并不是直接架设在主干网络上的，而是和主干网络进行并联。当数据来到服务器时，会被复制一
+份，然后两份数据同时通过出国端口和GFW设备。如果GFW认为这信息不良，会向主线路上追加发送数据包，阻断网络
+访问请求。这种"并联"的方式，应该说可以方便GFW的检修，减少对主干网的影响，也可以解释在某些高流量的状态
+下，GFW会偶尔顾不过来的情况。
+
+5、尽管如此，网络审查设备会老化，网络会发展，数据流量在猛增。近一两年来，每次GFW调整的那一两天，都会明
+显影响到平时本来不会封锁的那些国外网站，特别是整个网络访问国外网站的速度都在下降。不知道GFW会做出什么
+升级和改动。
+
+6、也许是因为这种审查负担不断地加大，以及高等公仆们对于视频、图像、声音信息过滤审查的需求，才导致了"绿
+坝"这种东东的出现。如果每个人机器上的数据都能预先审查屏蔽一番，GFW的压力会大大减轻。所以"绿坝"尽管很山
+寨很SB，却代表了一个很不好的方向，意味着在贵国言论尺度会不断收紧。这让人想起《1984》里，"The Big
+Brother is watching you."，或者马伯庸的那个山寨版作品《静寂之城》。
+
+7、为什么中国的IPV6网络普及很慢呢？因为GFW对IPV6是无效的！现在，中国教育网用户是有IPV6地址的，如果他们
+的操作系统也支持IPV6（例如 OS X，Vista及以上），他们可以在IPV6版的Google（ipv6.google.com）上搜索任何
+敏感字而不被临时屏蔽！所以，中国主干网要想用上IPV6，看来要先等GFW把IPV6的屏蔽搞定了再说。
+
+有时候，别人会告诉我说，我们不过下点动漫，不会惹事的。我对此的看法是，你当然可以不关心政治，但是政治会
+关心你，特别是由于"你不为任何人说话"而到了"没有人为你说话"的那一步的时候。对于我而言，让更多的人了解墙
+，教会更多的人翻墙，也正是防止自己落入那个地步的必做之事。
+
+Posted in 业内资讯 | Comments(0)»
+
+在 Ubuntu 8.10 (Intrepid) 中使用 vpn（转载）九月 12th, 2009
+
+上周把我的 T60 上的 Ubuntu 升级到了最新版本 Intrepid，对比上个版本的升级过程，相对顺利了很多。新版本中
+最大的改版之一，就是网络管理器的更换。新的管理器使用起来更加简单，不过在使用公司的 vpn 的时候却碰到了
+一些麻烦，在网上搜索了一下，大部分人都有类似的问题，不过还没有找到好的解决办法。
+
+趁着周末的时间，找了一些国外的相关资料，终于把 vpn 给搞定了，我下面描述下我的方法，不一定对所有人有效
+，大家权当参考。
+
+ 
+
+1.需要安装的软件包
+
+很多人反馈 vpn 添加的按钮是灰色不可用的，是因为你的相应的软件包没安装完整，使用新立得安装
+network-manager-pptp，或者使用以下命令行：
+
+sudo apt-get install network-manager-pptp
+
+也有些同学是像我这样从低版本升级上来的，可能也会有一些杂七杂八的问题，有碰到问题找不到头绪的时候，建议
+把以下软件包重新安装：
+
+network-manager、network-manager-gnome
+
+2.新建 VPN 连接
+
+按下面截图的步骤开始，新连接类型要选择  pptp
+
+[vpn1_Y]
+
+3.设置 VPN 属性
+
+按下图所示，“Getway”  是你的网关地址，“User name” 也不能为空，注意密码这里先暂时保持为空，连接的时候会
+提示你填写，这里填写的话可能会导致连接失败。
+
+[vpn2_V]
+
+然后点击 “Advanced”，打开高级选项，选中 “Use Point-to-Point encryption(MPPE)”，如下图所示，其它选项不
+用改动：
+
+[vpn3_U]
+
+到这里就配置结束了，不出意外的话，连接应该是正常的。
+
+4.路由问题
+
+正常情况下，拔上  vpn 后，本地的网络会不正常，这是因为本地网络默认会走 vpn 的路由的关系，我们需要设置
+只有远程地址才需要走远程的网关。
+
+在设置对话框中选择 “IPV4 Setting”，然后点击 “Route”，参考下面的截图：
+
+我这里是设置了 172.20.1.x 和 172.20.2.x 的网段才通过远程网关，你需要根据你的情况来做相应的修改：
+
+[vpn4_S]
+
+到这里如果你还有问题，还可以通过查看系统日志（dmesg 或 cat /var/log/syslog）来进一步判断问题所在。
+
+原文：http://avenger.name.sixxs.org/blog/ubuntu-810-intrepid-vpn/
+
+Tags: Ubuntu 8.10 Intrepid 使用 vpn
+
+Posted in 自由互联 | Comments(0)»
+
+Ubuntu配置ADSL拨号上网九月 10th, 2009
+
+1.打开应用程序菜单，依次选择附件 - 终端。
+
+2.在弹出终端窗口後，输sudo pppoeconf，输入完成後回车。
+
+3.然后会提示您输入当前Ubuntu管理员用户的密码，输入完成後回车。
+
+[200804]
+
+询问你的网络设备，一般选择是，进行检测，然后一直选择是。
+
+4.之后会提示您输入您的ADSL用户名（也就是帐号）和密码，在输入帐号时把原来的user删掉，其它的除密码之外的
+问题全部回答“是”（Yes）就可以了.
+
+5.最後会提示您是否开机自动拨号，选择Y的话，默认开机会没有任何提示的情况下拨号，直接可以上网。如果选择N
+的话，需要拨号时请手工进入终端输入pon dsl-provider拨号命令进行手动拨号。
+6. 在终端输入
+sudo gedit /etc/ppp/options
+将弹出的文档中的 lcp-echo-failure 4 改为 lcp-echo-failure 40 这是因为Ubutnu默认的设置有个很明显的缺陷
+，lcp-echo-failure次数被设为4,而lcp-echo-interval设为30秒。也就是说，如果120秒钟之内，ADSL服务器没有给
+回echo-reply信号，Ubuntu便会认为网络已经出了问题，马上中断重联，搞得人非常不爽。
+
+[200804]
+
+如果你用XP拨号上ADSL是正常的，而在Ubuntu拨号上ADSL，却是不停断线，有可能是DHCP问题。这个问题，可能是你
+的MODEM自动给你的，某些MODEM是能自动拨号上去呢，比如我的MODEM大亚DB102-C 。你可以在浏览器输入：
+192.168.1.1去检测你的MODEM是否带路由功能，能自动拨号，如果输入后会有一个界面弹出，叫你输入用户名同密码
+的话，这就说明你的MODEM是带路由功能的，当然你可以直接上网查你MODEM的型号和功能。如果是的这样话，你可以
+进入你MODEM关闭它自己的 DHCP功能（如何进入你的MODEM关闭它的DHCP，请根据你的MODEM型号上网查询），关了
+DHCP之后，我在Ubuntu下ADSL的拨号就没有短过线了，还有关了MODEM的DHCP功能后，你进入XP用ADSL拨号会好慢，
+所以你要把本地连接按下图设置一下，这样就OK。
+
+Ubutnu 官方论坛（forum.ubuntu.org.cn）上有个方法是：给你的eth设置一个固定IP，比如10.0.0.1或者
+192.168.0.1就可以了。还有如果你的MODEM可以拨号上网，你可以在Ubuntu就不用设PPPOE ，只需要设一下你的网卡
+，并将网关指向它就OK了。
+
+让网络重新连接断网命令是poff 如果ADSL拨号还是有问题的话，大家可以到Ubutnu论坛使用搜索功能查找解决办法
+，又或者可以到Ubuntu WIKI或者参考 ADSL拨号指南河南网通拨号程序安装指南如果原来在XP下是使用星空极速上网
+的，可以参考Ubuntu Linux 和 Windows 下完全破解星空极速的方法如果是校园网的用户可以参考华为802.1x认证上
+网-5.18
+
+其它常用网络配置
+图形界面有时候配置网络不能生效，可以用命令行配置
+IP命令行配置如下
+sudo gedit /etc/network/interfaces
+DHCP
+DHCP配置如下（假设通过eth1上网）
+# The primary network interface - use DHCP to find our address
+auto eth1
+iface eth1 inet dhcp //指定为dhcp
+然后重启
+sudo /etc/init.d/networking restart
+Static IP
+静态IP地址配置如下(假设通过eth1上网)
+# The primary network interface
+auto eth1
+iface eth1 inet static //指定为static
+address 192.168.3.90 //IP地址
+gateway 192.168.3.1 //网关
+netmask 255.255.255.0 //子网掩码
+同样需要重启
+sudo /etc/init.d/networking restart
+DNS
+如果有必要，配置DNS
+sudo gedit /etc/resolv.conf
+nameserver 192.168.3.2
+
+Tags: ubuntu ADSL 上网终端命令
+
+Posted in 安装配置 | Comments(2)»
+
+Ubuntu翻墙方法-免费的VPN-itshidden 九月 10th, 2009
+
+最近被墙的网站越来越多，翻墙需求越来越大,一直在找在ubuntu中翻墙的方法，试了很多，都没有成功
+今天终于给我找出一个简单速度又还可以的办法，使用免费的VPN-itshidden
+使用它只需安装一个插件，下面是具体的安装方法：
+
+1.到itshidden网站申请一个帐号,点击注册
+
+2.在ubuntu安装一个小插件：
+
+    sudo apt-get install network-manager-pptp
+
+3.配置VPN
+点击右上角网络管理的图标-VPN-配置VPN
+
+[388050]
+
+在弹出窗口中选择VPN选项，点击添加，看到一个让你选择VPN类型，这里默认的就是你刚刚所安装的PPTP，点击建立
+
+[387970]
+
+在VPN选项中，网关地址填写：vpn.itshidden.com，并在下面填写你刚刚申请的VPN帐号密码
+
+[388050]
+
+然后，点击高级选项，把使用到点对点加密和允许有状态的加密都勾选上
+
+[388050]
+
+点击确定退出，设置就完成了！
+
+如果需要连接，点击网络选择VPN进行连接
+
+[387970]
+
+我这里2M的宽带，连上VPN大概只有五秒钟的时间，访问网页速度还不错
+
+[388050]
+
+    原创文章转载时请勿必以链接形式转载并注明原始出处！！！
+    原文出处:www.ubuntuhome.com
+    原文链接地址:http://www.ubuntuhome.com/ubuntu-vpn-itshidden.html
+
+Tags: Ubuntu 翻墙方法免费的VPN itshidden
+
+Posted in 自由互联 | Comments(0)»
+
+ubuntu-itshidden.com-免费的高速荷兰VPN-一个账号5G流量-免邮箱验证+解决网络管理器小红叉九月 10th, 2009
+
+公共测试账号：每个有5G流量，大家测试够用了，看视频就要每天注册了，呵呵
+VPN服务器：vpn.itshidden.com
+账号：ubuntuvpn
+密码：ubuntuvpn
+VPN服务器：vpn.itshidden.com
+账号：ubuntuvpn1
+密码：ubuntuvpn1
+VPN服务器：vpn.itshidden.com
+账号：ubuntuvpn2
+密码：ubuntuvpn2
+VPN服务器：vpn.itshidden.com
+账号：ubuntuvpn3
+密码：ubuntuvpn3
+VPN服务器：vpn.itshidden.com
+账号：ubuntuvpn4
+密码：ubuntuvpn4
+VPN服务器：vpn.itshidden.com
+账号：ubuntuvpn5
+密码：ubuntuvpn5
+VPN服务器：vpn.itshidden.com
+账号：1000010000
+密码：1000010000
+登录可查流量
+
+[screen]
+注册方法很简单，验证码都不用
+
+[screen]
+
+首先登陆http://www.itshidden.com，
+然后点击上方的"Free Signup"，接着点击"Free"进入注册页面，
+也可以直接点击这里进入注册页面。 http://www.itshidden.com/index.php?opti ... &Itemid=54
+
+[screen]
+
+在注册页面填上你的用户名，邮箱和密码，
+然后选上"I accept the terms and condition."再点击"Register"提交。
+
+[screen]
+
+再点continue（继续）就OK了
+
+代码:
+Thank you for registering for our Free Service, your account has been set up.
+
+Please click on the FAQS link above to set up your computer.
+
+然后看到这个就可以用了哈
+速度很不错哈
+上 http://www.youtube.com/ 看视频都不卡的。 :em11
+
+sudo apt-get install network-manager-pptp(安装网络管理小程序的PPTP插件)
+sudo killall NetworkManager (结束网络管理小程序)
+sudo NetworkManager(从新启动)
+
+以上三个命令就完成了
+然后对着网络链接图标点左键 VPN-配置VPN 添加你的VPN账号密码即可
+记得在高级里面把启用点到点加密开启
+
+[screen]
+配置好以后还是按照上面点击网络连接图标 VPN-选中你需要链接的VPN 登录即可
+(注销一下才可以使用)
+
+引用:
+添加VPN连接
+1）右击面板上的网络图标->VPN连接->配置VPN
+2）点击“添加”
+3）选择默认的PPTP VPN连接类型，点击“建立”
+4）连接名称随便取一个。填入网关和用户名、密码
+5）点击“高级”，在“允许以下人证方法”中取消选中“EAP”，选上“使用点到点加密(MPPE)”
+这个步骤是必须的，否则会连接不上。
+6) 确定，保存
+
+代码:
+您查询的IP:94.75.220.29
+本站主数据：RIPE
+参考数据一：RIPE
+参考数据二：荷兰阿姆斯特丹市
+
+===============================
+===============================
+其他问题：网络管理器小红叉
+对于网络连接的图标一直显示无线标志，而且上面还有个小红叉，无法进行网络配置，配置完成后也没有显示。
+
+在终端下输入
+
+代码:
+sudo gedit /etc/NetworkManager/nm-system-settings.conf
+
+把其中的false改成true
+
+代码:
+[main]
+plugins=ifupdown,keyfile
+
+no-auto-default=00:E0:0C:77:28:E3,
+
+[ifupdown]
+managed=true
+
+保存退出
+
+重启之后就可以进行配置了
+
+[screen]
+
+Tags: ubuntu itshidden.com 免费高速荷兰 VPN 解决网络管理器小红叉
+
+Posted in 自由互联 | Comments(0)»
+« Older Entries
+
+  * Recent Comments
+
+      + adult:欢迎网络翻墙代理爱好者加入超级500人免...
+      + adult:欢迎网络翻墙代理爱好者加入超级500人免...
+      + adult:欢迎大家加入msn群免费成人翻墙代理交流...
+      + mickeywaley:没啊，只是图片挡住了部分，没到底下去啊，...
+      + houkai:这里两张图片过大倒置侧边栏沉到底部...
+  * Categories
+
+      + 未分类(0)
+      + 多媒体(0)
+      + 游戏娱乐(0)
+      + 安装配置(6)
+      + 网络(1)
+      + Appspot(8)
+      + 业内资讯(5)
+      + 自由互联(11)
+  * Blog roll
+
+      + China appspot blog
+      + MY Googlecode
+      + 广陵散 `s Blog
+
+广陵散 `s ubuntu linux is proudly powered by Micolog. Theme by Bob
+
+top
+
+I
+

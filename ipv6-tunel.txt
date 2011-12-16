@@ -1,0 +1,180 @@
+利用隧道感受IPV6
+
+马路遥 (maluyao@163.com), 工程师, 北京生命科学研究所，黄牛博士实验室
+马路遥，2002年获得大陆的第一张RHCE证书(Red Hat Certified Engineer)，同时拥有IBM DB2数据库管理员证书
+(701)，现在是北京生命科学研究所，黄牛博士实验室的 Linux Cluster Administrator。他平时喜欢研究Linux的相
+关技术，例如IPV6、均衡负载、高性能计算和网格计算等。您可以通过maluyao@163.com和他联系，或者访问他的博
+客网站。
+
+简介： 本文简单介绍了IPV6的相关知识，描述了如何通过Hurricane Electric提供的免费IPV6隧道，连接到IPV6网
+络的方法。
+
+标记本文！
+
+发布日期： 2007 年 8 月 23 日
+级别： 中级
+访问情况： 8472 次浏览
+评论： [ci]*
+
+IPV6 是新一代网络技术，提供 2^128的超大地址空间，换算成十进制就是 3.4x10^38。相当于地球上每平方米有
+6.7x10^23个地址(对比一下，阿佛加德罗常数是 6.02x10^23，是一升气体所含的分子数)。和 IPV4 相似，IPV6 地
+址也会有所浪费，但即使最保守的估计，每平方米也有 1600 个地址。在可以预见的将来，完全能满足人类的需求。
+
+主流的操作系统的最新版本，例如 Linux、Windows、FreeBSD、OpenBSD、NetBSD、Solaris、Aix，以及 Cisco、
+Juniper 和华为等公司生产的路由器，目前都已经能够支持 IPV6 了。
+
+IPV6 和 IPV4 最明显的区别，当然就在于地址的长度不同。IPV4 中 IP 地址的长度是 32 位，有 2^32 -1 个地址
+，IPV4 的地址长度为 128 位，有 2^128 -1 个地址。
+
+IPV6地址的表示方法
+
+一个IPV6地址有16字节，共128位。把这个地址分为8个组，每个组由4个16进制无符号整数组成，用冒号分隔，不区
+分大小写，例如：
+
+fe80:0000:0000:0000:020d:61ff:fe9b:1234
+
+每个组中的16进制数如果是以零开头，则可以省略开头的零。这样，上述地址亦可表示为：
+
+fe80:0:0:0:20d:61ff:fe9b:1234
+
+如果一个组或连续的几个组的内容都是零，可以用双冒号代替。上述地址可继续简写为：
+
+fe80::20d:61ff:fe9b:1234
+
+明显地，双冒号只能出现一次，否则无法得知双冒号代表的是多少个零。例如:
+
+2001:1234:0000:0000:ABCD:0000:0000:5678
+
+可简写为
+
+2001:1234::ABCD:0:0:5678
+
+或
+
+2001:1234:0:0:ABCD::5678
+
+上面的两种简写都是合法和正确的。
+
+和IPV4相似，IPV6中也定义了一些特殊地址。例如:
+
+::/1
+
+代表回环地址，大致相当于IPV4中的127.0.0.1。
+
+隧道技术简介
+
+IPV6目前还在实验阶段，没有走入寻常百姓家，但我们隐约已经可以听到IPV6的脚步声了。例如世界上最大的IPV6实
+验网--教育网CERNET2已经全面建成，清华大学的很多学生宿舍已经可以使用IPV6地址了。
+
+虽然如此，但中国大陆的多数ISP还不支持直接的IPV6接入，普通网民如果想体验IPV6，需要使用隧道技术。
+
+隧道，是一种在IPV4升级到IPV6期间的过渡技术。可以将IPV6数据包进行封装，通过现有的IPV4网络进行传输，并利
+用隧道代理接入IPV6网络。目前在国内外有不少研究机构和商业公司提供可以免费使用IPV6隧道代理，常见的有:
+
+ 1. 上海交通大学(http://ipv6.sjtu.edu.cn.sixxs.org/news/041231.php)，无需申请，可以直接使用。
+ 2. 泰国的NECTEC(http://tb.ipv6.nectec.or.th.sixxs.org/tb/index.php )，免费申请，立即生效。
+ 3. Hurricane Electric ( http://tunnelbroker.net.sixxs.org/tunnel_detail.php )，以下简称HENET，免费申
+    请，申请24小时后生效。
+
+不论使用哪一个隧道，都需要有一个真实的外部IP地址才可以，下面以HENET为例，介绍一下在Linux下建立和使用隧
+道访问IPV6网络的方法。
+
+首先在HENET的网页上注册并申请一条隧道，注意申请的时候您的IPV4地址必须能被HENET所"ping"到。等待24小时后
+，就可以看到自己隧道的详情了。例如笔者隧道的详细情况如下:
+
+表 1. 隧道两端的地址
+服务器IPV4地址             64.71.128.83
+服务器IPV6地址             2001:470:1F03:EE1::1/64
+笔者的IPv4地址             125.96.98.198
+笔者的IPV6地址             2001:470:1F03:EE1::2/64
+
+如果您的IPV4地址发生了变化，则在HENET网站上重新建立隧道即可。网页中点击"Example Configs"链接，即可看到
+相对应的配置命令，HENET提供了Linux、FreeBSD、Windows、Solaris等操作系统下对应的命令。
+
+笔者的使用Fedora Core 5 Linux，默认就支持IPV6，建立上述隧道的命令是:
+
+#ifconfig sit0 up
+#ifconfig sit0 inet6 tunnel ::64.71.128.83
+#ifconfig sit1 up
+#ifconfig sit1 inet6 add 2001:470:1F03:EE1::2/64
+#route -A inet6 add ::/0 dev sit1
+
+首先启用sit0隧道接口，隧道另一端的地址是HENET的64.71.128.83。然后启用sit1隧道接口，并且设置本身的隧道
+接口。最后一个命令设定系统访问所有IPV6地址时，都从sit1接口出去。
+
+上述命令需要以root用户的身份执行，执行完毕后立即生效。这时就尝试访问IPV6网络了。但重新启动系统后，上述
+隧道的配置配置全部会丢失。如果想使得隧道的配置总是能够在开机后自动生效，则可手工建立下列两个文件，其内
+容如下:
+
+#cat /etc/sysconfig/static-routes-ipv6
+sit1 ::/0
+
+#cat /etc/sysconfig/network-scripts/ifcfg-sit1
+DEVICE=sit1
+ONBOOT=yes
+IPV6INIT=yes
+IPV6TUNNELIPV4=64.71.128.83
+IPV6ADDR=2001:470:1F03:EE1::2/64
+
+另外在/etc/sysconfig/network 文件中添加一行如下:
+
+NETWORKING_IPV6=yes
+
+感受IPV6
+
+Linux下的多数网络工具都可以支持IPV6，例如Firefox浏览器。Firefox在访问一个网站时，如果同时解析到IPV4和
+IPV6地址时，在系统支持IPV6的情况下，会优先使用IPV6地址。您可以尝试访问下列地址：
+
+ 1. http://www.kame.net.sixxs.org/，如果你使用IPV4地址去访问，可以看到一个静止海龟，一旦你使用IPV6地址
+    ，则这个海龟会动。
+ 2. http://www.deepspace6.net.sixxs.org/，网页下方会显示你的IPV4或IPV6地址。
+ 3. http://ipv6.sjtu.edu.cn.sixxs.org/ ，上海交大的IPV6首页，会在页面的右上方显示您的IPV6或IPV4地址。
+ 4. http//mirrors.bieringer.de/Linux+IPv6-HOWTO/，Linux下的IPV6 Howto文档，页面下方会显示您的IPV4或
+    IPV6地址。
+
+其他可用的网络工具还有host、dig、ping6、tcpdump、links、lynx、traceroute6等命令，其中前两个命令无需操
+作系统支持IPV6，亦可使用。
+
+支持IPV6的Linux系统上，host命令在查询域名地址的时候，会同时返回IPV4和IPV6地址。
+
+$host www.deepspace6.net
+www.deepspace6.net has address 192.167.219.83
+www.deepspace6.net has IPv6 address 2001:760:2e01:1::dead:beef
+$
+
+如果只想看IPV6地址，则使用命令:
+
+$host -t AAAA www.deepspace6.net
+www.deepspace6.net has IPv6 address 2001:760:2e01:1::dead:beef
+$
+
+这是由于在支持IPV6的DNS服务器中，用AAAA记录(简称4A，Quad-A)代替了原来的A记录。相似的，dig命令也可以使
+用"-t AAAA" 参数。
+
+ping6命令用来在IPV6环境下取代原有的ping命令。
+
+$ping6 -c 4 www.6bone.net
+PING www.6bone.net(classical.hexago.com) 56 data bytes
+64 bytes from classical.hexago.com: icmp_seq=0 ttl=57 time=673 ms
+64 bytes from classical.hexago.com: icmp_seq=1 ttl=57 time=668 ms
+64 bytes from classical.hexago.com: icmp_seq=2 ttl=57 time=672 ms
+64 bytes from classical.hexago.com: icmp_seq=3 ttl=57 time=743 ms
+
+--- www.6bone.net ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3007ms
+rtt min/avg/max/mdev = 668.738/689.558/743.326/31.104 ms, pipe 2
+$
+
+traceroute6命令就是IPV6环境下的traceroute。可以跟踪当前的IPV6路由信息。
+
+$traceroute6  www.6bone.net
+traceroute to www.6bone.net (2001:5c0:0:2::24), 30 hops max, 40 byte packets
+ 1  2001:470:1f03:ee1::1 (2001:470:1f03:ee1::1)  297.786 ms  300.323 ms 301.071 ms
+ 2  2001:470:1fff:2::26 (2001:470:1fff:2::26)  304.122 ms  305.512 ms  315.105 ms
+ 3  2001:470:0:9::2 (2001:470:0:9::2)  317.708 ms  319.274 ms  319.999 ms
+ 4  paix6.ttnet.ad.jp (2001:504:d::e)  322.116 ms  322.795 ms  323.521 ms
+ 5  2001:2a0:3:7::6175 (2001:2a0:3:7::6175)  557.583 ms  558.293 ms  558.981 ms
+ 6  sl-bb1v6-nyc-t-11.sprintv6.net (2001:440:1239::1)  666.972 ms 655.402 ms  669.479 ms
+ 7  2001:440:eeee:ffca::2 (2001:440:eeee:ffca::2)  676.343 ms  664.283 ms 670.184 ms
+ 8  classical.hexago.com (2001:5c0:0:2::24)  671.037 ms  676.618 ms  677.437 ms
+$

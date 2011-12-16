@@ -1,0 +1,182 @@
+第一个GLIB
+第二个ATK
+第三个CAIRO
+第四个PANGO
+第五个GTK
+(安装指令统一为：./configure --prefix=/usr && make && make install)
+
+安装GTK的时候参数参考http://www.gtk.org （./configure --prefix=/opt/gtk）
+
+安装完GTK之后记得将gtk+-2.0.pc 复制到/usr/lib/pkgconfig下
+
+CAIRO的下载
+http://cairographics.org/snapshots/LATEST-cairo-0.9.2
+GTK相关安装软件下载
+http://www.gtk.org
+
+PANGO 的安装路径：
+默认安装在/usr/local下对pango来说不行，
+这样比较全面./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc
+
+注意：编译第一个例子时
+gcc base.c -o base `pkg-config --cflags --libs gtk+-2.0`
+注意上面编译命令中使用的单引号类型是很重要的。(译者注：这里使用了“命令替换”。命令替换(command substitution)使得可以捕获一个命令的输出而在另一个命令中替换它。这个单引号不是回车键左边的那个，而是ESC键下面的那个。) 
+
+
+ChangeLog :
+05/02/06 :编译dosbox make时出现找不到头文件错误，类似的错误曾经碰到过.记录。
+LD_LIBRARY_PATH的作用。
+从源码编译安装东东，不是很容易，想想在使用lfs之前，源码编译安装软件从来没
+成功过，甚至出现错误都无从下手，只能放弃  
+经过lfs的洗礼，总算对源码编译安装有了一点认识，可惜当初没有把这些经验写下来 
+不过现在开始写也不迟  将编译中遇到的问题及解决的方法记下来，积累经验，
+也可以让来往的newbie对源码安装软件了解一些，多一些成功机率，毕竟从源码包编译
+东东还是有一定好处的 ^_^
+先说一下源码编译的基本方法及源码编译过程中几个重要的文件，以及重要变量
+PKG_CONFIG_PATH 的设定，经常在论坛看到有人源码编译失败，都是这个东东搞的鬼 ^_^ 
+
+
+
+如何从源码包安装软件？ 
+
+从源码包安装软件最重要的就是仔细阅读README INSTALL等说明文件
+它会告诉你怎样才能成功安装  
+通常从源码包安装软件的步骤是：
+tar jxvf gtk+-2.4.13.tar.bz2 解开源码包 
+cd gtk+-2.4.13/ 进入源码目录
+./configure 似乎在某些环境下./configure会造成终端退出
+而使用. configure则会正常运行,如果有这个现象，就试试 . configure
+
+通过configure程序猜测主机信息，最终建立Makefile,以完成make，所以如果./configure不成功
+而去make的话,就会出现"make: *** No targets specified and no makefile found. Stop."
+make 当./configure成功结束后，就开始正式编译程序了.
+make install 编译成功后使用make install安装 
+make uninstall 某些软件支持卸载，可能使用该方法卸载，如果支持的话，通常会在README中写到(似乎比较少)
+
+configure程序带有很多参数，可以通过 ./configure --help 查看详细内容,通常位于前面的是常规configure的
+参数说明，末尾是该程序的可用参数说明。 
+./configure --prefix=/usr 指定安装目录，通常从源码包编译安装的软件默认会放在/usr/local下
+因为这是FHS(Filesystem Hierarchy Standard)的规定，不知道什么是FHS？看看这篇文章吧：
+http://www.pathname.com/fhs/pub/fhs-2.3.html 相信它会让你对linux系统结构有更好的理解，很值得读读。
+
+再说一下几个关系到能否成功编译的东东：/etc/ld.so.conf ldconfig PKG_CONFIG_PATH 
+
+首先说下/etc/ld.so.conf: 
+这个文件记录了编译时使用的动态链接库的路径。
+默认情况下，编译器只会使用/lib和/usr/lib这两个目录下的库文件
+如果你安装了某些库，比如在安装gtk+-2.4.13时它会需要glib-2.0 >= 2.4.0,辛苦的安装好glib后
+没有指定 --prefix=/usr 这样glib库就装到了/usr/local下，而又没有在/etc/ld.so.conf中添加/usr/local/lib
+这个搜索路径，所以编译gtk+-2.4.13就会出错了  
+对于这种情况有两种方法解决：
+一：在编译glib-2.4.x时，指定安装到/usr下，这样库文件就会放在/usr/lib中，gtk就不会找不到需要的库文件了  
+对于安装库文件来说，这是个好办法，这样也不用设置PKG_CONFIG_PATH了 (稍后说明)
+
+二：将/usr/local/lib加入到/etc/ld.so.conf中，这样安装gtk时就会去搜索/usr/local/lib,同样可以找到需要的库  
+将/usr/local/lib加入到/etc/ld.so.conf也是必须的，这样以后安装东东到local下，就不会出现这样的问题了。
+将自己可能存放库文件的路径都加入到/etc/ld.so.conf中是明智的选择 ^_^ 
+添加方法也极其简单，将库文件的绝对路径直接写进去就OK了，一行一个。例如：
+/usr/X11R6/lib
+/usr/local/lib
+/opt/lib
+
+
+再来看看ldconfig是个什么东东吧 ：
+它是一个程序，通常它位于/sbin下，是root用户使用的东东。具体作用及用法可以man ldconfig查到
+简单的说，它的作用就是将/etc/ld.so.conf列出的路径下的库文件 缓存到/etc/ld.so.cache 以供使用
+因此当安装完一些库文件，(例如刚安装好glib)，或者修改ld.so.conf增加新的库路径后，需要运行一下/sbin/ldconfig
+使所有的库文件都被缓存到ld.so.cache中，如果没做，即使库文件明明就在/usr/lib下的，也是不会被使用的，结果
+编译过程中抱错，缺少xxx库，去查看发现明明就在那放着，搞的想大骂computer蠢猪一个。 ^_^ 
+我曾经编译KDE时就犯过这个错误，(它需要每编译好一个东东，都要运行一遍)，所以
+
+切记改动库文件后一定要运行一下ldconfig，在任何目录下运行都可以。
+
+
+再来说说 PKG_CONFIG_PATH这个变量吧:
+经常在论坛上看到有人问"为什么我已经安装了glib-2.4.x，但是编译gtk+-2.4.x 还是提示glib版本太低阿？
+为什么我安装了glib-2.4.x，还是提示找不到阿？。。。。。。"都是这个变量搞的鬼。
+先来看一个编译过程中出现的错误 (编译gtk+-2.4.13):
+
+checking for pkg-config... /usr/bin/pkg-config
+checking for glib-2.0 >= 2.4.0 atk >= 1.0.1 pango >= 1.4.0... Package glib-2.0 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `glib-2.0.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'glib-2.0' found
+
+configure: error: Library requirements (glib-2.0 >= 2.4.0 atk >= 1.0.1 pango >= 1.4.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them.
+[root@NEWLFS gtk+-2.4.13]# 
+很明显，上面这段说明，没有找到glib-2.4.x,并且提示应该将glib-2.0.pc加入到PKG_CONFIG_PATH下。
+究竟这个pkg-config PKG_CONFIG_PATH glib-2.0.pc 是做什么的呢？ let me tell you ^_^ 
+先说说它是哪冒出来的，当安装了pkgconfig-x.x.x这个包后，就多出了pkg-config，它就是需要PKG_CONFIG_PATH的东东
+pkgconfig-x.x.x又是做什么的？ 来看一段说明： 
+
+The pkgconfig package contains tools for passing the include path and/or library paths to build tools during the make file execution.
+
+pkg-config is a function that returns meta information for the specified library.
+
+The default setting for PKG_CONFIG_PATH is /usr/lib/pkgconfig because of the prefix we use to install pkgconfig. You may add to PKG_CONFIG_PATH by exporting additional paths on your system where pkgconfig files are installed. Note that PKG_CONFIG_PATH is only needed when compiling packages, not during run-time.
+
+
+我想看过这段说明后，你已经大概了解了它是做什么的吧。
+其实pkg-config就是向configure程序提供系统信息的程序，比如软件的版本啦，库的版本啦，库的路径啦，等等
+这些信息只是在编译其间使用。你可以 ls /usr/lib/pkgconfig 下，会看到许多的*.pc,用文本编辑器打开
+会发现类似下面的信息：
+
+prefix=/usr
+exec_prefix=$
+libdir=$/lib
+includedir=$/include
+
+glib_genmarshal=glib-genmarshal
+gobject_query=gobject-query
+glib_mkenums=glib-mkenums
+
+Name: GLib
+Description: C Utility Library
+Version: 2.4.7
+Libs: -L$ -lglib-2.0
+Cflags: -I$/glib-2.0 -I$/glib-2.0/include
+
+明白了吧，configure就是靠这些信息判断你的软件版本是否符合要求。并且得到这些东东所在的位置，要不去哪里找呀。
+不用我说你也知道为什么会出现上面那些问题了吧。
+
+解决的办法很简单，设定正确的PKG_CONFIG_PATH，假如将glib-2.x.x装到了/usr/local/下，那么glib-2.0.pc就会在
+/usr/local/lib/pkgconfig下，将这个路径添加到PKG_CONFIG_PATH下就可以啦。并且确保configure找到的是正确的
+glib-2.0.pc,就是将其他的lib/pkgconfig目录glib-2.0.pc干掉就是啦。(如果有的话 ^-^)
+设定好后可以加入到~/.bashrc中，例如：
+PKG_CONFIG_PATH=/opt/kde-3.3.0/lib/pkgconfig:/usr/lib/pkgconfig:/usr/local/pkgconfig:
+/usr/X11R6/lib/pkgconfig
+[root@NEWLFS ~]#echo $PKG_CONFIG_PATH
+/opt/kde-3.3.0/lib/pkgconfig:/usr/lib/pkgconfig:/usr/local/pkgconfig:/usr/X11R6/lib/pkgconfig
+
+
+从上面可以看出，安装库文件时，指定安装到/usr，是很有好处的，无论是/etc/ld.so.conf还是PKG_CONFIG_PATH
+默认都会去搜索/usr/lib的，可以省下许多麻烦，不过从源码包管理上来说，都装在/usr下
+管理是个问题，不如装在/usr/local下方便管理
+其实只要设置好ld.so.conf，PKG_CONFIG_PATH路径后，就OK啦 ^_^ 
+
+
+另外某些软件因为版本原因(比如emacs-21.3)，在gcc-3.4.x下编译无法成功,(make 出错)
+使用低版本的gcc就可能编译通过。
+可能是因为gcc-3.3.x和gcc-3.4.x变化很大的缘故吧。 
+
+
+暂时想到了这么多，先记下这些吧，如果你对源码包编译有了一点的了解，就不枉我打了这么半天字啦。 ^_^ 
+
+
+另外./configure 通过，make 出错，遇到这样的问题比较难办，只能凭经验查找原因，比如某个头文件没有找到，
+这时候要顺着出错的位置一行的一行往上找错，比如显示xxxx.h no such file or directory 说明缺少头文件
+然后去google搜。
+或者找到感觉有价值的错误信息，拿到google去搜，往往会找到解决的办法。还是开始的那句话，要仔细看README,INSTALL 
+程序如何安装，需要什么依赖文件，等等。
+
+另外对于newbie来说，编译时，往往不知道是否成功编译通过，而编译没有通过就去make install
+必然会出错，增加了解决问题的复杂性，可以通过下面方法检查是否编译成功：
+
+一：编译完成后，输入echo $? 如果返回结果为0,则表示正常结束，否则就出错了  
+echo $? 表示 检查上一条命令的退出状态，程序正常退出 返回0,错误退出返回非0。
+
+二：编译时，可以用&&连接命令， && 表示"当前一条命令正常结束，后面的命令才会执行"，就是"与"啦。
+这个办法很好，即节省时间，又可防止出错。例：
+./configure --prefix=/usr && make && make install
+
+本文来自: (www.91linux.com) 详细出处参考：http://www.91linux.com/html/article/install/20070417/1683.html

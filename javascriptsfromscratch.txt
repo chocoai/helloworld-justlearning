@@ -1,0 +1,298 @@
+Location: http://greasemonkey.mozdev.org/authoring.html
+mozdev.org
+
+  * Saturday November 19th 2011
+  * Do you want fries with that project?
+
+Skip to Content
+
+  * Donate
+
+Search
+
+Skip to Projects
+
+Loading
+
+Projects
+
+  * Skip to Resources
+  * Top 50 Projects
+  * Active Projects
+  * Other Projects
+  * Start a Project…
+
+Resources
+
+  * Skip to Community
+  * Bug Tracking
+  * Source Hosting
+  * Mailing Lists
+  * Documentation
+  * All Resources...
+
+Community
+
+  * Skip to Content
+  * About
+  * Books
+  * FAQ
+  * Jobs
+  * Logos
+  * Shop
+  * Supporters
+
+greasemonkey
+
+New homepage      Old stuff: Home Source Code Members Bugs
+
+Writing User Scripts
+
+Mark Pilgrim has given the Greasemonkey community Dive into Greasemonkey, the best reference
+imaginable. The stuff below might be slightly more up-to-date.
+
+------------------------------------------------------------------------------------------------------
+
+You can write your very own shiny user script with just a few steps:
+
+1. Create the file
+
+Open a new text file in your favorite editor and throw some javascript in there. Note that there are
+many good resources available if you're not sure exactly what javascript you need.
+
+For example, you might create this simple script:
+
+alert("Hello, world!");
+
+2. Save the file
+
+You can choose any name, but it has to end with .user.js.
+
+3. Test the file
+
+Drag the file onto Firefox (or open it any other way) and select "Install User Script..." from the
+Tools menu. Note that this option will be disabled if you forgot to name your file ending with
+".user.js". Refresh the browser to see any changes to the current page.
+
+4. Debug the file
+
+Press the Edit button in the Manage Userscripts screen to edit a live copy of the script. When you
+save changes, you will be able to reload and see their effects immediately. You can also use the
+GM_log function to write output to the JavaScript Console.
+
+5. (optional) Add metadata
+
+By default, scripts will be installed with a name based on their filename, a namespace based on the
+URL they were downloaded from, and will be executed on every webpage. You can override these settings
+by adding metadata to your script.
+
+This is done with special javascript comments, like so:
+
+// ==UserScript==
+// @name          Say Hello!
+// @namespace     http://youngpup.net/userscripts
+// @description   Greets the world
+// @include       http://google.com/*
+// @include       http://www.google.com/*
+// @include       http://maps.google.tld/*
+// @exclude       http://gmail.google.com/*
+// ==/UserScript==
+// Notes:
+//   * is a wildcard character
+//   .tld is magic that matches all top-level domains (e.g. .com, .co.uk, .us,
+etc.)
+
+alert("Hello, world!");
+
+Here is a short reference of the available metadata tags:
+
++----------------------------------------------------------------------------------------------------+
+|  Property  |                 Description                 |Multiplicity|          Default           |
+|------------+---------------------------------------------+------------+----------------------------|
+|@name       |A friendly name for the script.              |0-1         |The script's filename       |
+|            |                                             |            |without the extension.      |
+|------------+---------------------------------------------+------------+----------------------------|
+|@namespace  |A scope within which @name should be unique. |0-1         |The domain of the script's  |
+|            |                                             |            |file.                       |
+|------------+---------------------------------------------+------------+----------------------------|
+|@description|A, uhm, description.                         |0-1         |none                        |
+|------------+---------------------------------------------+------------+----------------------------|
+|@include    |A url to include the script with. There can  |0+          |one, set to *               |
+|            |be more than one.                            |            |                            |
+|------------+---------------------------------------------+------------+----------------------------|
+|@exclude    |A url to explicitly exclude the script from. |0+          |none                        |
+|            |There can be more than one.                  |            |                            |
++----------------------------------------------------------------------------------------------------+
+
+Tips
+
+  * User scripts are executed after the DOM is fully loaded, but before onload occurs. This means that
+    your scripts can begin immediately and don't need to wait for onload. However, replacing large
+    parts of the DOM (e.g. using innerHTML or outerHTML) at this early stage of rendering is known to
+    cause Firefox some trouble. In this case, you'll have more success if you call your code in
+    response to the load event instead:
+
+    window.addEventListener("load", function(e) {
+      document.innerHTML = "Hello, world!";
+    }, false);
+
+  * Mozilla has a bunch of advanced features that you can take advantage of to make your job easier.
+    These typically aren't practical for DHTML authors because they don't exist in any other browser,
+    but since your user scripts will only run on firefox, you're free to use such goodies as xpat h
+    support (for HTML as well as XHTML), treewal kers, mutation events, xmlhttp, etc.
+
+API
+
+Greasemonkey scripts are executed in an environment very much like regular DHTML scripts are. With a
+few exceptions, Greasemonkey scripts have access to the exact same DOM API that the scripts on the
+website do. See the Gecko DOM Reference for an introduction to this API.
+
+As of Greasemonkey 0.6.4, however, user scripts now have their own JavaScript context and execute
+completely separately from the content document. This means that except by noticing changes the
+changes which they make to the DOM, content scripts can neither detect Greasemonkey scripts, nor
+interfere with them.
+
+Sometimes, you will want to access the global variables in the content document. For example, maybe
+the content document defines a function which you want to call. In these cases, you can access the
+content document's global scope with the unsafeWindow variable. Just be aware that accessing the
+members of this variable means that content scripts can detect your script and potentially interfere
+with it if they choose.
+
+Greasemonkey also defines several special APIs which are not available to content scripts.
+
+GM_registerMenuCommand
+
+Userscripts can call GM_registerMenuCommand(commandName, commandFunc, accelKey, accelModifiers,
+accessKey) to add a menu command to the tools > User Script Commands submenu. The first two arguments
+are required; the reamining ones are optional.
+
+commandName
+    Name to display in the menu
+commandFunc
+    Function to call
+accelKey
+    A single character (e.g. 'g') or keycode that can trigger the command
+accelKey
+    A string listing modifiers that must be pressed with the accelKey. If there's more than one, then
+    they should be separated with spaces. For example, 'shift' or 'ctrl alt'. Available modifiers are:
+    shift, alt, meta, control, and accel.
+accessKey
+    A single character (e.g. 'g') that can be used to jump to the command when the menu is open. It
+    should be a letter in commandName
+
+Example calls:
+GM_registerMenuCommand( "Hello world!", hello, "e", "control", "h" );
+GM_registerMenuCommand( "Hello world! (again)", hello2, "e", "shift alt", "w" );
+GM_registerMenuCommand( "Hello world (simple)", helloSimple );
+
+GM_xmlhttpRequest
+
+Userscripts can call GM_xmlhttpRequest(details) to make an xmlhttp request to other domains.
+
+The details parameter is an object having the following fields: method, url, headers, onload,
+onreadystatechange, onerror, data. All fields are optional except method and url. The headers field is
+an object which should be the name-value pairs of the headers to send, for instance
+{"User-Agent":"Mozilla"}. The onload, onreadystatechange, and onerror parameters are callback
+functions which are called when the corresponding events occur.
+
+Callback functions should accept a single object parameter having the following fields: responseText,
+status, statusText, readyState, and responseHeaders. The responseHeaders is the string representation
+of response headers returned by XMLHTTPRequest.getAllResponseHeaders().
+
+Here's an example:
+
+GM_xmlhttpRequest({
+  method:"GET",
+  url:"http://youngpup.net/",
+  headers:{
+    "User-Agent":"monkeyagent",
+    "Accept":"text/monkey,text/xml",
+    },
+  onload:function(details) {
+    alert([
+      details.status,
+      details.statusText,
+      details.readyState,
+      details.responseHeaders,
+      details.responseText
+    ].join("\n"))
+  }
+});
+
+GM_setValue(name, value)
+
+Allows user script authors to persist simple values locally. Strings, booleans, and integers are the
+only allowed datatypes. For example:
+
+GM_setValue("foo", "bar");
+
+GM_getValue(name, default)
+
+Retrieve a value set with setValue. If the value is not found, default is returned instead. If default
+is not supplied, undefined is returned.
+
+alert(GM_getValue("foo"));
+
+GM_log(message, level)
+
+Allows script authors simple access to logging informational messages in the JS Console. This can be
+helpful for debugging. Level is optional and defaults to 0. Valid values are: 0 - info, 1 - warning, 2
+- error.
+
+GM_log("Hello, World!")
+
+GM_openInTab(url)
+
+Opens the specified URL in a new tab.
+
+GM_openInTab("http://greasemonkey.mozdev.org/")
+
+GM_addStyle(css)
+
+Adds a string of CSS to the document.
+
+GM_addStyle("body { color:red; }");
+
+unsafeWindow
+
+A reference to the content document's javascript window object. This is where the content document's
+global variable and functions are defined.
+
+// list all the variables in the content's global scope
+for (var p in unsafeWindow) {
+  GM_log(p + ": " + unsafeWindow[p] + "\n");
+}
+
+Note that accessing any variables in unsafeWindow yields control to the page's scripts. This means
+they can get acccess to the user script's source.
+
+If you call browser APIs from this window, they might be redefined to mean something different than
+you expect. For example, a content script which wanted to trip up a Greasemonkey script could redefine
+unsafeWindow.document.getElementById to do nothing, or throw an error. This is one reason why you
+should not use unsafeWindow unless there is no other way to accomplish what you want to.
+
+Also, content functions you call can walk back up the call stack to get any parameters you passed to
+higher-level calling functions. Consider this hypothetical example:
+
+// DONT DO THIS.
+function a(gmxhr) {
+ // do something with gmxhr
+ unsafeWindow.foo();
+}
+
+function b() {
+  a(GM_xmlhttpRequest);
+}
+
+b();
+
+Here, we pass a reference to GM_xmlhttpRequest to a user script function, which calls a content
+function. In this example, the content function foo could walk up the call stack to retrieve a
+reference to GM_xmlhttpRequest, which would be bad.
+
+In general, it's probably best practice to avoid passing GM_* to any functions as parameters. In the
+future, there will be a better way to call content functions.
+
+The greasemonkey project can be contacted through the mailing list or the member list.
+Copyright © 2000-2011. All rights reserved. Terms of Use & Privacy Policy.
+

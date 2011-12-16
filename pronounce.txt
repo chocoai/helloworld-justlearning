@@ -1,0 +1,40 @@
+rub sound f,h,x,sh,s,r
+explosive p,b,t,d,k,g
+rubexp ts dz tr dr dF dV
+1.continue
+1.1 vowel+consonant
+1.2 consonant+h $what wil(l he) [wili] do?
+2.join
+d+j would you? t+j can't you? s+j Miss you?
+3.lost
+sit down
+contact lens
+big cake
+dad told me
+huge change
+good night
+4.consonant after s
+discussion
+stand
+expression
+4.1 usa [t]-->[d]
+writer
+5 a an
+a university $u is a vowel but pronounce [ju]
+7 word pronounce
+a [ei] open syllable $name plane
+  [@] colse syllable $bag
+e ..... [i:] $these chinese me
+  ..... [e]  $bed let
+i ..... [ai] $bike fly
+  ..... [i]  $fish big sit
+o ..... [ou] $those
+  ..... [o]  $clock not
+u ..... [ju:] $student [u:] after j l r s $June blue rule super
+  ..... [^]   $bus
+7.1 special
+a [o] after [w] want what watch
+  [a:] before f n sk ph sp s st th $grasp
+i [ai] before nd ld gh $find child light high
+o [ou] before st ld most postcard old
+  [^] before m n v th $come monkey

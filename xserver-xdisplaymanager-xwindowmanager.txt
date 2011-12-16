@@ -1,0 +1,43 @@
+the start process of xsession on ubuntu:
+put your costumed scripts in /etc/X11/Xsession.d and it will do the trick. Then an  alternative display manager e.g. xdm, kdm could just run . /etc/X11/Xsession to take care. This trick will automaticly call gnome-session, the window-manager, to finish the works after.
+#sum(display/monitor)>=sum(screen)==sum({virtual|actual}videocard/divice) hostname:displaynumber.screennumber
+#The phrase "display" is usually used to  refer to  collection of monitors that share a common set of input devices (keyboard, mouse, tablet, etc.).
+#    % setenv DISPLAY myws:0
+#    $ DISPLAY=myws:0; export DISPLAY
+#    % xeyes -display joesws:0 -geometry 1000x1000+0+0
+#    % rsh big xterm -display myws:0 -ls </dev/null &
+#% xlsfonts -fn '-*-courier-medium-r-normal--*-100-*-*-*-*-*-*'
+#   xterm -fn 6x10 -geometry 80x24+30+200 &
+#The ssh program can be used to start an X program on a remote  machine;  it  automatically  sets  the DISPLAY variable correctly.
+# local
+#         The hostname part of the display  name  should
+#         be  the  empty  string.  For example:  :0, :1,
+#         and :0.1.  The most efficient local  transport
+#         will be chosen.
+# TCPIP
+#         The  hostname  part of the display name should
+#         be  the  server  machine's  hostname   or   IP
+#         address.   Full  Internet  names,  abbreviated
+#         names, IPv4 addresses, and IPv6 addresses  are
+#         all  allowed.   For  example: x.org:0, expo:0,
+#         [::1]:0,  198.112.45.11:0,  bigmachine:1,  and
+#         hydra:0.1.
+# DECnet
+#         The  hostname  part of the display name should
+#         be the server machine's nodename, followed  by
+#         two  colons  instead  of  one.   For  example:
+#         myws::0, big::1, and hydra::0.1.
+# :displaynumber
+#         The  X server runs as the given displaynumber,
+#         which by default is 0.  If multiple X  servers
+#         are to run simultaneously on a host, each must
+#         have a unique display number.  See the DISPLAY
+#         NAMES section of the X(7) manual page to learn
+#         how to specify which  display  number  clients
+#        should try to use.
+#clone is alias to abs(+0,+0)
+#screen axis:(0,0)(1,0)
+#            (0,1)(1,1)
+       # Administrators  unfamiliar  with the Bourne shell will
+       # likely find the Xsession.options(5) configuration file
+       # easier to deal with than Xsession itself.

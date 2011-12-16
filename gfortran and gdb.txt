@@ -1,0 +1,173 @@
+編譯器（與除錯器）的使用
+
+ 
+
+為什麼需要 compiler（編譯器）？
+
+程式依在電腦中運行的直接或間接之別，分直譯語言與編譯語言。
+
+像 BASIC 就是直譯器。
+
+ 
+
+編譯器的使用上會遇到的相關術語
+
+原始碼、源碼（source code）
+
+編譯（compile）
+
+物件檔（object file）
+
+鍊結（link）
+
+程式庫（library） 
+
+可執行檔（executable）
+
+ 
+
+在 UNIX 中使用 Fortran Compiler 之方法
+
+Note : the following example use "f77" as name offortran compiler, depends on different compilers in different systems, the name sof fortran compiler can be
+
+f77 or g77
+ifort or ifc 
+pgf77 or pgf90
+gfortran
+fort77
+xlf
+
+若是系統公用目錄中沒有 gfortran，會看到訊息 bash: gfortran: command not found 或 gfortran: Command not found. 從螢幕輸出。
+
+欲知道系統公共目錄中中有沒有某個特定指令，比方說 gfortran，可在 shell 提示符號下打 which gfortran <Enter> 或 whereis gfortran <Enter> ，在一般 Linux 版本下，g77 常有安裝。
+
+請注意，你的 fortran 程式檔案一定要叫乍 *.f 這種各稱，不能沒有延伸檔名或是叫 *.txt 這樣。 
+
+標準操作範例：
+
+gfortran my_program_file.f
+（產生出來的執行檔會被自動命名作 a.out，若已存在 a.out 則舊的會被蓋掉，同時，也會產生 my_program_file.o ） 
+
+gfortran my_program_file1.f my_program_file2.f
+（兩個程式碼檔案一起編，會產生兩個物件檔，並鏈結出一個執行檔 a.out）
+
+gfortran *.f
+（把目錄中所有 *.f 程式碼檔案都作編譯，會產生多個物件檔，最後並鏈結出一個執行檔 a.out）
+
+gfortran -o my_executable.x my_program_file.f
+（產生出來的執行檔會被指定命名作 my_executable.x）
+
+gfortran -o my_executable.x -lMyLib my_program_file.f
+（同上，並且指定額外的程式庫 libMyLib.a 供作鏈結產生可執行檔之用） 
+
+gfortran -o my_executable.x -L/My/Lib/Dir -lMyLib my_program_file.f
+（同上，並且指定搜尋額外程式庫所在之目錄為 /My/Lib/Dir） 
+
+其他有用範例：
+
+gfortran -c my_program_file.f
+（只做編譯來產生物件檔、不作鍊結因此不產生可執行檔）
+
+gfortran -g my_program_file.f
+（啟動可執行檔內建除錯功能，配合 gdb，可進行程式運行步驟上的逐步除錯）
+
+ 
+
+拼組 library 之方法
+
+如果你有很多副程式，自己想把它們集中在一起而形成一包函式庫，則可以使用 ar（archive : 建檔）指令，請注意所有 UNIX 下的函式庫都要命名為 lib####.a 或 lib####.so 的樣式，如下： 
+
+ar rv libMyLib.a my_object.o 
+（把 my_object.o 加入到 libMyLib.a 之中，libMyLib.a 若原本不存在則產生）
+
+ar t libMyLib.a
+（列出這個程式庫中所包含之所有副程式名稱清單）
+
+ 
+
+除錯的方法
+
+除錯一般可使用插入中斷點（比方說印出中間結果）的策略，或是使用較專門的 gdb 除錯工具程式。 
+
+gdb 的機初階使用方法示範：
+
+首先是要以 -g 來編譯程式，如 f77 -g -o my_prog.x my_prog.f ，如此所產生出來的可執行檔 my_prog.x 
+
+gdb my_prog.x <Enter> 就會啟動在 gdb 的監控下執行 my_prog.x 的機制，一開始你會看到有 gdb> 提示的環境界面，在此時程式 my_prog.x 只是被 gdb 載入而尚未開始執行，要打 run 如下 
+
+gdb> run
+
+之後可執行檔會開始如常運行，包含所有 I/O，之後會導致兩種結果，其一是程式正常結束，其二是程式 crash（執行失敗），後者在 gdb 的監控下允許使用者看到更多的資料。
+
+如果你寫的程式是要給參數的，比方說它一般在使用的時候是打成 ./my_prog.x 0.2 0.4 <Enter> ，則在用 gdb my_prog.x 載入之後，要用 gdb> run 0.2 0.4 這樣的方式來跑它。 
+
+gdb> where
+
+一個在 gdb 下 crash 的程式， 我們可以藉由在 gdb 下打 where 賴來列出是當在程式的那一行。這對於除錯是非常有用的。
+
+ 
+
+gdb 的進階功能
+
+gdb > break #
+
+在以 gdb 載入 可執行檔後而未使用 run 之前（直接 run 代表一跑到底），可以用 break # 來預設中斷點 ，其中 # 是原始碼的行號行號。設好中斷點再下 run 之後，gdb 會只執行完 #-1 行而停下來，你則有機會去審視該階段時的各個變數值。
+
+break 後面也可以給副程式名、檔名加行號、記憶體位址，用法請見相關網頁教材資料。 
+
+gdb > step
+
+如果 gdb 是把程式停在中間，則下 step 會向下執行一行。並且印出該行的程式碼內容來提醒你。
+
+gdb > backtrace
+
+打 backtrace 會印出到目前進一步為止主副程式的呼叫層次架構，你可以看到目前是在第幾行、它是在那一個副程式內、它的上層原呼叫程式又是在那一行呼叫它的。它會以主副程式呼叫一路下來有幾層（在 gdb 叫做 frame）把它表現出來，這對於追蹤大而複雜的程式是很有用的。 
+
+gdb > frame
+
+只打 frame 會列出現在的層（越接近目前中斷點的數字越小），後面有加數字的話就會跳到那一層，不同層所會接觸到變數數值結果是不一樣的。（大家回想一下，有可能在主程式裏與副程式裏都有同一個名稱的變數，但其數值是不同的，因此要先確定現在是切換到了在那一層的副程式中，才能進一步探索變數數值上的變化。
+
+gdb > print var_name
+
+印出某個變數 var_name 在當時階段所執行到的結果，這當然是很有用的功能。 
+
+gdb > list
+
+可以每次十行列出原始碼，再下一次則向下再列十行，若後面再帶行號則是以該行為中心印出十行原始碼。 
+
+ 
+
+更多關於 gdb 的用法：
+
+請見 man gdb 
+
+網路上有人寫的教材：
+
+http://www.dirac.org/linux/gdb/（推薦）
+
+http://www.cis.nctu.edu.tw/~is93007/acd.htm
+
+ 
+
+gdb 的圖形介面 ddd 
+
+ 
+
+  
+
+make 指令與 Makefile 檔的使用
+
+想像你有一個大程式，由很多個程式檔案構成，全部編譯後共同鏈結在一起才成為單一的可執行檔，則寫一個普通的 script （其中包含多行命令）來把個別編譯的動作逐一執行並作最後鏈結，似乎是非常恰當的。然而如此做的話，雖然第一次做出 executable 時是全部的程式檔案都需要編譯一次，但之後如果是更動其中一個檔案裏的內容，則其他沒更動到的檔案也要花時間重做一次。這似乎又太沒效率了。或許我們會想，我們只要去看 *.f 的時間有沒有比 *.o 的時間新，如果有，則表示距上次產生 *.o 檔後原始碼 *.f 己經有更動過了，我們只要針對在之前有被改過的檔案重編就好。 
+
+如果有一種 script，能讓我們定義各副程式檔案之間的 "依存關係"，然後有特殊的編譯指令，能根據這個 script 內所記載的 "依存關係"，先後有序地編出執行檔，不僅如此，每當要重新造出執行檔時，還能按照這些依存關係正確地把該重編的部分副程式重新編好，不多也不少。
+
+Mikefile (makefile 全小寫也可以) 這是這樣的 script，而 UNIX 下的 make 指令就是這樣的特殊指令。
+
+網路上的 Makefile 撰寫教學 http://www.study-area.org/cyril/opentools/opentools/makefile.html
+
+ 
+
+automake 工具
+
+automake 教學
+http://netlab.cse.yzu.edu.tw/~armor/columns/automake/automake.htm

@@ -1,0 +1,163 @@
+Location: http://www.linuxtoys.org/multiubuntu/multiubuntu.html
+ 3. Configure a Single-user Multi-head System
+ 4. Modify xorg.conf
+ 5. Modify gdm.conf
+Step 3: Configure a Single-user Multi-head System
+
+At this point we could refer to the earlier article to configure the system
+for multi-user use. However Ubuntu can make this a little easier by detecting
+and configuring the video cards for us. The procedure below describes how to
+do this.
+
+  * Run Synaptic and install the following packages:
+       linux-restricted-modules-2.6.20-15-386
+       nvidia-glx
+    The above will also install a new kernel to satisfy dependencies.
+  * Open a terminal window and run 'sudo nvidia-xconfig'.
+    This converts the /etc/X11/xorg.conf file for use with the new nVidia
+    drivers.
+  * Reboot. The nVidia logo should appear briefly as the system comes up.
+  * Open a terminal window and run 'sudo nvidia-settings'. Select the Display
+    Configuration" and configure each of the system's video heads. (I
+    generally configure all heads for 1024x768 since I know all of my
+    monitors can handle this.)
+  * Select "Enable Xinerama" and then "Save to X Configuration File".
+  * Reboot. This time all the heads should flash the nVidia logo.
+  * Login and note that your mouse can now travel across all the screens.
+
+Step 4: Modify xorg.conf
+
+Most of the system changed needed to build a multi-seat system occur in the
+xorg.conf file. Here are the steps to modify the file.
+
+  * Attach the extra USB mice and keyboards. Test the hardware by moving each
+    mouse. The cursor should move for any movement of any mouse. The same is
+    true of the keyboards. Any key entered on any keyboard should appear on
+    the screen.
+  * Before modifying xorg.conf we need to know the names of the mice and
+    keyboards on the system. You can see the names of the mice with the
+    command:
+    ls /dev/input/mouse*
+    The first mouse, called mouse0, is not really an attached mouse and you
+    can ignore it. The mice name mouse1 and above are the real mice.
+  * You can get the name of the keyboards from the following command:
+    more /proc/bus/input/devices
+    Note the event ID for each keyboard handler.
+
+    I: Bus=0003 Vendor=046e Product=530a Version=0001
+    N: Name="BTC Multimedia USB Keyboard"
+    P: Phys=/input0
+    S: Sysfs=/class/input/input3
+    H: Handlers=kbd event3
+    B: EV=120003
+    B: KEY=7 ff87207ac14057ff febeffdfffefffff fffffffffffffffe
+    B: LED=1f
+
+  * The big difference between a multi-head system and a multi-user system is
+    in the xorg.conf file. Open a terminal window and 'sudo bash' to become
+    root. Do a 'cd /etc/X11/' to change directory to /etc/X11/.
+  * Save your existing version of xorg.conf. If something goes wrong you'll
+    want to be able to use it to test the hardware and to get back to a known
+    working configuration.
+        cp xorg.conf xorg.conf.multihead
+  * You need to tell X11 about each seat on your multi-user system. Each seat
+    has a keyboard, a mouse, a video device, a monitor, a screen, and a
+    layout. Your existing multihead xorg file should have correct entries for
+    all of the devices, monitors, and screens. It will also have samples for
+    the keyboard, mice, and server layout entries. You need to create new
+    entries for the additional keyboards, mice, and layouts.
+  * Open the xorg.conf file with your favorite editor. Locate the keyboard
+    section. Change the driver to 'evdev' and add the device line to the
+    keyboard section. Now copy and paste this section. Edit the new section
+    to give it a new keyboard number and to use the event handler we found in
+    the above steps. Do this for each new keyboard. Sample keyboard sections
+    are shown below:
+
+    Section "InputDevice"
+        # generated from default
+        Identifier     "Keyboard0"
+        Driver         "evdev"
+        Option         "Device" "/dev/input/event1"
+    EndSection
+
+    Section "InputDevice"
+        # generated from default
+        Identifier     "Keyboard1"
+        Driver         "evdev"
+        Option         "Device" "/dev/input/event3"
+    EndSection
+
+  * Do the same kind of update/copy/paste for each of the mice. In each mouse
+    section change the Device to /dev/input/mouseX, where X is one of the
+    values determined by looking at 'ls /dev/input/mouse*'. Sample mouse
+    sections are shown below.
+
+    Section "InputDevice"
+        # generated from default
+        Identifier     "Mouse0"
+        Driver         "mouse"
+        Option         "Protocol" "auto"
+        Option         "Device" "/dev/input/mouse1"
+        Option         "Emulate3Buttons" "no"
+        Option         "ZAxisMapping" "4 5"
+    EndSection
+
+    Section "InputDevice"
+        # generated from default
+        Identifier     "Mouse1"
+        Driver         "mouse"
+        Option         "Protocol" "auto"
+        Option         "Device" "/dev/input/mouse2"
+        Option         "Emulate3Buttons" "no"
+        Option         "ZAxisMapping" "4 5"
+    EndSection
+
+  * The server layout sections associate the different keyboards, mice, video
+    cards, and screens into what we call a "seat". Typically the numbers for
+    the layout, mouse, keyboard and screen all increment with each new seat.
+    Here are the layout sections we use for our two seat system. Your layout
+    sections should be similar.
+
+    Section "ServerLayout"
+        Identifier     "Layout0"
+        Screen      0  "Screen0" 0 0
+        InputDevice    "Keyboard0" "CoreKeyboard"
+        InputDevice    "Mouse0" "CorePointer"
+    EndSection
+
+    Section "ServerLayout"
+        Identifier     "Layout1"
+        Screen      0  "Screen1" 0 0
+        InputDevice    "Keyboard1" "CoreKeyboard"
+        InputDevice    "Mouse1" "CorePointer"
+    EndSection
+
+Step 5: Modify gdm.conf
+
+The final step in setting up your multi-seat Ubuntu PC is to tell gdm, the
+graphical login program, about your additional seats.
+
+  * Become root and the file /etc/gdm/gdm.conf for editing.
+  * Locate the "[servers]" section. On my system it is about 550 lines into
+    the file.
+  * Replace the line "0=Standard" with the lines
+
+    0=Standard0
+    1=Standard1
+
+  * Locate the "[server-Standard]" section.
+  * Replace this section with the following lines
+
+    [server-Standard0]
+    name=Standard server #0
+    command=/usr/X11R6/bin/X -br -audit 0 -nolisten tcp -novtswitch -sharevts -layout Layout0
+    flexible=true
+
+    [server-Standard1]
+    name=Standard server #1
+    command=/usr/X11R6/bin/X -br -audit 0 -nolisten tcp -novtswitch -sharevts -layout Layout1
+    flexible=true
+
+  * Save and close the edit session of /etc/gdm/gdm.conf.
+  * Reboot your computer to switch to your new multi-seat configuration.
+

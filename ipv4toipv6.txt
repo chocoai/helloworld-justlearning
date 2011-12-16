@@ -1,0 +1,260 @@
+ubuntu系统为ppp接口配置IPv6隧道(IPv6-in-IPv4 tunnel)
+2010-03-29 19:36
+
+转自：http://blog.pcware.cn.sixxs.org/it/linux/ppp_ipv6_tunnel.html
+linux最早的IPv6/IPng支持代码始于kernel 2.1.8，November 1996，也算是历史悠久了，而IPv6在1998年8月10日成
+为IETF的草案标准。
+Ubuntu 9.10默认是开启IPv6协议的，也就是说我们的主机是IPv4/IPv6双栈主机。可以通过检查/proc/net/if_inet6
+这个文件是否存在来确定内核是否支持IPv6，如果这个文件不存在，那么你的系统极有可能是通过可加载模块来支持
+IPv6的。虽然kernel是支持IPv6了，但现在的网络条件下，除了教育网直接支持IPv6外，其他网络用户还是无法直接
+访问IPv6网站的，也就是说我们的主机成了IPv6孤岛，只能通过IPv6- in-IPv4隧道协议来访问IPv6资源。
+
+有多种多样的方式来实现这种隧道，这里只介绍其中的一种站内自动隧道寻址协议ISATAP(Intra-Site Automatic
+Tunnel Addressing Protocol)，这是一种点对点隧道协议(point-to-point tunneling)。
+使用ISATAP需要知道ISATAP隧道路由器的IPv4地址，IPv6地址及其网络前缀和本地的IPv4地址。可以使用教育网提供
+的隧道路由器，比如上海交大，下面就以这个隧道路由器为例来设置本地ppp接口。
+IPv6提供了2001:和2002:开头的地址用于IPv6-in-IPv4隧道，ISATAP一般使用2001:开头的IPv6地址.
+建立隧道的脚本build_ipv6_tunnel如下：
+1 #!/bin/bash
+2
+3 ipv4_addr=`ifconfig ppp0 | grep ‘inet addr‘ | cut -d‘:‘ -f 2|cut -d‘ ‘ -f 1`
+4 ip tunnel add sit1 mode sit remote 202.120.58.150 local ${ipv4_addr}
+5 ifconfig sit1 up
+6 ifconfig sit1 add 2001:da8:8000:d010:0:5efe:${ipv4_addr}/64
+7 ip -6 route add ::/0 via 2001:da8:8000:d010::1 metric 1 dev sit1
+ipv4_addr就是本地ppp接口获取的IPv4地址，隧道路由器的IPv4地址为202.120.58.150，IPv6地址为
+2001:da8:8000:d010::1,其IPv6地址网络前缀为2001:da8:8000:d010::/64,而本地IPv6地址的host 部分为0:5efe:$
+{ipv4_addr},这样两部分(64位网络部分和64位主机部分)合并在一起就构成了本地IPv6地址
+2001:da8:8000:d010:0:5efe:${ipv4_addr}/64。这里是静态设置的本地IPv6地址，ISATAP也支持动态配置客户端
+IPv6地址。
+mode sit处的sit是简单互联网转换Simple Internet Transition的缩写，当然接口名字可以随意取，不一定非要叫
+做sit1，但据说不能用sit0,我没测试。
+拆除隧道的脚本delete_ipv6_tunnel如下：
+1 #!/bin/bash
+2
+3 ip -6 route del ::/0 via 2001:da8:8000:d010::1 dev sit1
+4 ip link set sit1 down
+5 ip tunnel del sit1
+将build_ipv6_tunnel置于目录/etc/ppp/ip-up.d/下，delete_ipv6_tunnel置于目录/etc /ppp/ip-down.d/下，就可
+以随ppp0接口的建立和拆除而自动的建立和拆除隧道了。
+现在访问http://www.ipv6.org.sixxs.org,如果看到类似“You are using IPv6 from
+2001:da8:8000:d010:0:5efe:xxxx:xxxx“的信息，说明IPv6已经正常工作了。
+如果能找到Ipv6反向代理，那就可以用IPv6来访问一些平常不能访问的站点了，比如twitter，详见”用 IPv6反向代
+理访问Twitter“
+IPv4 to IPv6隧道配置
+2010-11-22 15:31
+
+IPv6
+   IPv6是“Internet Protocol Version 6”的缩写，它是IETF设计的用于替代现行版本IP协议-IPv4-的下一代IP协议
+。
+　　与IPV4相比，IPV6具有以下几个优势：首先就是网络地址近乎无限，根据这项技术，其网络地址可以达到2的128
+次方个，如果说IPV4的地址总数为一小桶沙子的话，那么IPV6的地址总数就像是地球那么大的一桶沙子。其次就是由
+于每个人都可以拥有一个以上的IP地址，网络的安全性能将大大提高。第三就是数据传输速度将大大提高。IPv6的主
+要优势还体现在以下几方面：提高网络的整体吞吐量、改善服务质量(QoS)、支持即插即用和移动性、更好实现多播
+功能。根据这项技术，如果说IPV4实现的只是人机对话，而IPV6则扩展到任意事物之间的对话，它不仅可以为人类服
+务，还将服务于众多硬件设备，如家用电器、传感器、远程照相机、汽车等，它将是无时不在，无处不在的深入社会
+每个角落的真正的宽带网。
+
+配置
+
+目前使用最多的接入形式是ISATAP隧道接入。具体做法如下
+
+可直接使用IPV6区域所需配置如下(操作系统XP/2003)：
+
+方法一：本地连接－〉属性－〉安装－〉协议－〉Microsoft－〉TCP/IP 版本 6
+
+方法二：点击开始－〉运行，输入ｃｍｄ后回车，调用命令行窗口，输入ipv6 install，如下所示
+
+Microsoft Windows XP [版本 5.1.2600]
+
+(C) 版权所有 1985-2001 Microsoft Corp.
+
+C:\Documents and Settings\Administrator>ipv6 install
+
+Installing...
+
+Succeeded.
+
+完成后在命令行窗口输入ipconfig，正常情况下应当能看到2001:da8为前缀的IPV6地址，如下所示
+
+C:\Documents and Settings\Administrator>ipconfig
+
+Windows IP Configuration
+
+Ethernet adapter 本地连接 2:
+
+       Connection-specific DNS Suffix   . :
+
+       IP Address. . . . . . . . . . . . : 210.34.218.66
+
+       Subnet Mask . . . . . . . . . . . : 255.255.255.224
+
+       IP Address. . . . . . . . . . . . : 2001:da8:e800:da4:d523:c607:f2f2:9c31
+
+       IP Address. . . . . . . . . . . . : 2001:da8:e800:da4:207:e9ff:fe43:c681
+
+       IP Address. . . . . . . . . . . . : fe80::207:e9ff:fe43:c681%6
+
+       Default Gateway . . . . . . . . . : 210.34.218.65
+
+                                           fe80::20c:cfff:fe30:6800%6
+
+如果只能看到fe80::为前缀的IPV6地址，则表示没有可用的IPV6网络，须配置IPV4toIPV6隧道来使用IPV6。
+
+IPv4 to IPv6隧道配置如下：
+
+在命令行窗口下依次输入
+
+netsh
+
+interface ipv6 isatap
+
+set router 210.34.219.13（每个学校不一样，大家可以去学校网络中心查一下）
+
+如下所示：
+
+C:\Documents and Settings\ Administrator >netsh
+
+netsh>interface ipv6 isatap
+
+netsh interface ipv6 isatap>set router 210.34.219.13
+
+完成后在命令行窗口输入ipconfig，如能看到2001:da8为前缀的IPV6地址，则配置成功。
+
+网站
+
+目前，很多高校都有了这种网站，多为视频网站。另外有很多代理服务器，通过他们甚至可以不出校园网直接访问国
+外网站。
+
+视频点播：
+
+　　　　　　上海交大 VOD 测试： video6.sjtu.edu.cn
+
+　　　　　　浙江大学 IPv6 多媒体服务： media.zju6.edu.cn
+
+　　　　　　北京邮电大学 IPv6 视频服务： media6.bupt.edu.cn
+
+　　　　　　吉林大学电视直播： tv.jlu6.edu.cn
+
+　　　　　　吉林大学视频点播： vod.jlu6.edu.cn
+
+　IPv6 主页：
+
+　　　　　　北京大学 Ipv6 ： www.ipv6.pku.edu.cn
+
+　　　　　　中国科技大学： www.ustc6.edu.cn
+
+　　　　　　上海交大 IPv6 试验站： ipv6.sjtu.edu.cn
+
+　　　　　　重庆大学： www.cqu6.edu.cn
+
+　　　　　　兰州大学：兰大首页 (www.lzu6.edu.cn) 和兰大新闻网 (news.lzu6.edu.cn)
+
+　　　　　　东北大学： www.neu6.edu.cn ; search.neu6.edu.cn
+
+　　　　　　复旦： www.fudan6.edu.cn
+
+　　　　　　IPv6 应用门户： v6.fudan.edu.cn
+
+　　　　　　东南大学： www.njnet6.edu.cn
+
+　　　　　　吉林大学： www.jlu6.edu.cn
+
+　　　　　　华中科技大学： www6.hust.edu.cn
+
+　　　　　　IPv6 南京城域实验网： www.njnet6.edu.cn
+
+上海交大，清华大学的配置过程
+
+上交
+
+　　1. ISATAP隧道点IP地址是202.112.26.254
+
+　　用户设置isatap隧道的终结点router为202.112.26.254
+
+　　xp/win2003下设置如下
+
+　　　　　C:\Documents and Settings\Administrator>netsh
+
+　　　　netsh>int
+
+　　　　netsh interface>ipv6
+
+　　　　netsh interface>ipv6>install
+
+　　　　netsh interface ipv6>isatap
+
+　　　　netsh interface ipv6 isatap>set router 202.112.26.254
+
+　　然后 ipconfig后应该看到一个2001:da8:8000:3为前缀的v6地址，hostid为5efe:x.x.x.x，
+
+　　其中x.x.x.x为你的真实的IPV4地址。
+
+　　2. 网络中心6to4隧道点IP地址是202.112.26.246
+
+　　用户设置6to4隧道的终结点relay为202.112.26.246
+
+　　xp/win2003下设置如下
+
+　　　　C:\Documents and Settings\Administrator>netsh
+
+　　　　netsh>int
+
+　　　　netsh interface>ipv6
+
+　　　　netsh interface>ipv6>install
+
+　　　　netsh interface ipv6>6to4
+
+　　　　netsh interface ipv6 6to4>set relay 202.112.26.246 enable
+
+　　然后 ipconfig后应该看到一个2002:xx:xx为前缀的v6地址，hostid亦为xx:xx,
+
+　　其中xx.xx为你的真实的IPV4地址转化成得ipv6地址。
+
+　　自动获得的默认网关是2002:ca70:1af6::ca70:1af6
+
+清华大学
+
+　　有线网络的ISATAP隧道服务器地址是：59.66.4.50
+Windows XP/2003下，可如下设置ISATAP隧道：
+C:\Documents and Settings\Administrator>netsh
+netsh>int
+netsh interface>ipv6
+netsh interface>ipv6>install
+netsh interface ipv6>isatap
+netsh interface ipv6 isatap>set router 59.66.4.50
+完成设置后，通过ipconfig应该可以看到一个 2001:250:f001:f00e为前缀的v6地址，hostid为0:5efe:x.x.x.x，其
+中x.x.x.x为您的真实的IPv4地址。而后即可访问IPv6资源。
+CentOS下建立IPv6 over IPv4隧道
+
+时间: 2011-09-09 - 分类: 榆树网-系统, 榆树网-网络 - 674 views
+
+免费的IPv6隧道可以在he.net上申请，具体可以Google一下。
+
+CentOS下如何设置IPv6 over IPv4隧道呢，系统提供了相应的启动脚本，只需修改相应的配置文件即可。
+
+打开系统的IPv6功能，修改/etc/sysconfig/network文件，增加：
+
+NETWORKING_IPV6=yes
+
+增加隧道及相关配置文件，在Linux系统中，IPv6 over IPv4接口叫sit，通过ifconfig可以看到，系统默认使用了
+sit0，因此我们这里使用sit1，配置文件存放在/etc/sysconfig/network-scripts/ifcfg-sit1,文件不存在，创建即
+可，内容如下：
+
+DEVICE=sit1
+BOOTPROTO=none
+ONBOOT=yes
+IPV6INIT=yes
+IPV6TUNNELIPV4=x.x.x.x #隧道对端的IPv4地址
+IPV6TUNNELIPV4LOCAL=y.y.y.y #本地的IPv4地址
+IPV6ADDR=2::2/64 #隧道本地的IPv6地址
+IPV6_DEFAULTGW=2::1 #默认路由地址，其实就是隧道对端的地址
+
+修改/etc/sysconfig/iptables文件，在相应的位置增加：
+
+-A INPUT -p ipv6 -s x.x.x.x -j ACCEPT
+
+最好放在“-A INPUT -i lo -j ACCEPT”的后面。
+
+重新启动系统就可以测试IPv6了。（或重新启动network、iptables即可）。

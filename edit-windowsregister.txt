@@ -1,0 +1,40 @@
+用REG文件或者REG命令删除、编辑注册表项
+　　[HKEY_CURRENT_USER\Test]                                                                          
+　　"Test1"=-                                                                                         
+　　以上的文件就可以删除键值“Test1”。如果我们要删除“Test”子键，那么我们的REG文件就应该输入以下内容：  
+　　REGEDIT4                                                                                          
+　　[-HKEY_CURRENT_USER\Test]                                                                         
+　　                                                                                                  
+　　如：                                                                                              
+　　                                                                                                  
+　　Windows Registry Editor Version 5.00                                                              
+　　                                                                                                  
+　　[-HKEY_CLASSES_ROOT\CLSID\{669695BC-A811-4A9D-8CDF-BA8C795F261C}]                                 
+　　[-HKEY_CLASSES_ROOT\KBBar.KBBarBand]                                                              
+　　[-HKEY_CLASSES_ROOT\KBBar.KBBarBand.1]                                                            
+　　[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\LocalServices\Parameters]                       
+　　"ServiceDll"=-                                                                                    
+　　[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\LocalServices\Parameters]                       
+　　"ServiceDll"=-                                                                                    
+　　[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet003\Services\LocalServices\Parameters]                       
+　　"ServiceDll"=-                                                                                    
+　　                                                                                                  
+　　                                                                                                  
+　　二、怎样用REG文件添加注册表项                                                                     
+　　                                                                                                  
+　　看一个实例：                                                                                      
+　　[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Hidden\    
+SHOWALL]                                                                                              
+　　"RegPath"="Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"                      
+　　"Text"="@shell32.dll,-30500"                                                                      
+　　"Type"="radio"                                                                                    
+　　"CheckedValue"=dword:00000001                                                                     
+　　"test"=hex:11,10                                                                                  
+　　                                                                                                  
+　　说明：                                                                                            
+　　1、类型为字符串值型“REG_SZ”的（最为常见），直接：                                                 
+　　"值"="数据"            注：如有“\”则替换成“\\”                                                    
+　　2、类型为dword值型“REG_DWORD”的，则在数据前加“dword:”：                                           
+　　"值"="dword:数据"                                                                                 
+　　3、类型为二进制值型“REG_BINARY”的，则在数据前加“hex:”：                                           
+　　"值"="hex:

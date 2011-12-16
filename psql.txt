@@ -1,0 +1,67 @@
+ 1. Login as "postgres" (SuperUser) to start using database:
+
+    # su - postgres
+
+ 2. Create a new database:
+
+    $ createdb mydb
+
+ 3. Drop database:
+
+    $ dropdb mydb
+
+ 4. Access database:
+
+    $ psql mydb
+
+ 5. Get help:
+
+    mydb=# \h
+
+ 6. Quit:
+
+    mydb=# \q
+
+ 7. Read command from file:
+
+    mydb=# \i input.sql
+
+ 8. To dump a database:
+
+    $ pg_dump mydb > db.out
+
+ 9. To reload the database:
+
+    $ psql -d database -f db.out
+
+10. Dump all database:
+
+    # su - postgres
+    # pg_dumpall > /var/lib/pgsql/backups/dumpall.sql
+
+11. Restore database:
+
+    # su - postgres
+    # psql -f /var/lib/pgsql/backups/dumpall.sql mydb
+
+12. Show databases:
+
+    #psql -l
+    or
+    mydb=# \l;
+
+13. Show users:
+
+    mydb=# SELECT * FROM "pg_user";
+
+14. Show tables:
+
+    mydb=# SELECT * FROM "pg_tables";
+
+15. Set password:
+
+    mydb=# UPDATE pg_shadow SET passwd = 'new_password' where usename = 'username';
+
+16. Clean all databases (Should be done via a daily cron):
+
+    $ vacuumdb --quiet --all

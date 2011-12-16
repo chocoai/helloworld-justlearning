@@ -1,0 +1,162 @@
+
+is93007@bsd1:[~]$ gcc -g -o ex1 ex1.c 
+
+gcc是一個命令列解析程式，會去呼叫編譯器來編譯我們的ex1.c，其中加入-g就是告訴gcc要「含入除錯符號資訊」，若是沒有這個選項， 在除錯時就看不到原始程式碼、變數名稱等等，也就無法進行除錯了。-o參數後指定的是編譯後的執行檔名稱，最後是原始碼檔案。這篇文章並不是在介紹gcc，相關的參數就介紹到這。
+下一步，開始除錯。
+
+參數 說明 
+-symbols [file](-s) 讀取檔案中的符號表 
+-exec [file] (-e) 除錯一個執行檔 
+-se [file] 上二者的縮寫  
+-core [file](-c) 讀入一個core dump檔案 
+-pid number (-p) 啟動attach模式，除錯一個執行中的行程。number是目標行程的pid 
+-directory [directory] (-d) 將directory加入原始碼的搜尋路行 
+-readnow (-r) 一次讀取完所有的符號表，這會讓啟動gdb的時間變長，但在執行往後的除錯動作會較快速。 
+
+下列還有部分選擇性的參數，我列出幾個目前用的到的：
+
+-quiet -silent -q 安靜模式，啟動時gdb將不會顯示版權頁。 
+-windows -w 與上一選項相反，這會啟動GUI 
+-nowindows -nw 如果gdb有編入GUI的話，這個選項會關掉它。(誰的gdb這麼豪華…) 
+-cd [directory]  切換工作目錄為directory而不是現在的目錄 
+-tty [device](-t) 指定device 為程式的標準輸出入 
+--args  這個參數要當作命令列的最後一個參數，其後跟隨的參數 都會被視為「欲傳給將除錯的程式的參數」 
+
+當然我們也不一定要在啟動時指定除錯來源。 
+
+(gdb) file ex1
+Reading symbols from ex1...Deprecated bfd_read called at /usr/src/gnu/usr.bin/binutils/gdb/../../../../contrib/gdb/gdb/dbxread.c line 2627 in elfstab_build_psymtabs
+Deprecated bfd_read called at /usr/src/gnu/usr.bin/binutils/gdb/../../../../contrib/gdb/gdb/dbxread.c line 933 in fill_symbuf
+done. 
+
+file指令可以指定要除錯的檔案，功能就與-se一樣，其實這樣指定是比較方便的。在執行程式前，我們可以先指定命令列參數，如同--args參數的效果。
+
+(gdb) show args
+Argument list to give program being debugged when it is started is "".
+
+(gdb) set args Barney is handsome
+(gdb) show args
+Argument list to give program being debugged when it is started is "Barney is handsome".
+(gdb) run
+Starting program: /.amd/home3/is93/is93007/ex1 Barney is handsome
+0 8 29 44 444@@ /.amd/home3/is93/is93007/ex1
+@@ Barney
+@@ is
+@@ handsome 
+Program exited normally.
+
+ 
+
+set args這個命令可以指定我們想要的命令列參數，而show args可以顯示現在的命令列參數是什麼。而run命令可以執行程式。run命令也可以簡寫為r。由於gdb除錯的對象是已經編譯好的執行檔，所以這裡我們不必像VS.NET一樣等半天…由於我們沒有指定任何中斷點，所以程式就一路跑下去跑到結束。如同Ex1的程式碼所述，程式的執行結果成功的印出了命令列的參數。有一點必須注意，gdb傳給程式的命令列參數是程式開始執行前的那一份命令列參數，如果程式已經開始執行，就算用中斷點中斷執行然後 改變命令列參數，也只會在下一次執行時變更才會生效。
+
+break and continue
+
+我們在除錯的過程中，會推測某些程式碼是否出了問題，如果要測試該段程式碼，可以讓程式執行到那區段前暫停，然後我們來測試看看是出了什麼問題。以下是設定中斷點的語法：
+
+參數 說明 
+break [function] 在某函數的進入點設中斷點 
+break +offset | -offset 當程式停止時，在停止位置的前/後第offset行設中斷點 
+break linenum 指定行號設中斷點 
+break filename:linenum 在某source file的第幾行或指定函式設定中斷點 
+break 在下一個要執行的指令設中斷點 
+break [args] if [cond] 當[cond]這個運算式為真，設定中斷點。args可能是上列的任一種情形。 
+tbreak args 只會生效一次的中斷點 
+rbreak re 使用正規運算來找尋可能的函式，並在其進入點設中斷點。 EX:(gdb) rbreak . 這樣每個函式開頭都有中斷點了 
+
+值得一提的是，C++允許overloading，所以直接指定函式名稱有時候gdb無法辨認要把中斷點設在哪。舉例：
+
+int takeout(int i,int j){...}
+
+int takeout(float i,float j){...}
+ 
+
+這時候我們可以設定break takeout(int,int)，這樣就會在上面的函數的進入點設定中斷點。當然假如我們只輸入break takeout，gdb會顯示一個互動示選單顯示所有可能的函式的原型，讓我們挑選要將中斷點設在哪個函式。break的簡寫是b，通常只輸入簡寫方便多了。
+
+如果需要列出程式碼，可以輸入list，這個命令簡寫為l：
+
+(gdb) l
+1 #include<stdio.h>
+2
+3 int main(int argc,char * arg[]){
+4
+5 int a,b,c,d,e,f,i;
+6 a = 0;
+7 b = 8;
+8 c = 29;
+9 d = 44;
+10 e = 444;
+(gdb) list
+11
+12 printf ("%d %d %d %d %d",a,b,c,d,e);
+13
+14
+15
+16 for (i=0;i<argc;i++) printf("@@ %s \n",arg[i]);
+17 return 0;
+18
+19
+20 }
+(gdb)
+ 
+
+以下是list命令的說明。
+
+參數 說明 
+list filename:number 列出某檔案的第幾行，檔案是可省略的。 
+list [function] 列出某函數的程式碼 
+list 繼續印出程式碼 
+list - 印出上一次list的程式碼的前一段程式碼(類似向上翻動) 
+show listsize 顯示現在一次印出幾行 
+set listsize 設定一次印出幾行 
+
+為了測試中斷點，雖然不具除錯意義，我們還是設個中斷點來玩玩吧!。
+
+(gdb) b 8
+Breakpoint 1 at 0x80484b4: file ex1.c, line 8.
+(gdb) info break
+Num Type Disp Enb Address What
+1 breakpoint keep y 0x080484b4 in main at ex1.c:8
+(gdb) r
+Starting program: /.amd/home3/is93/is93007/ex1 
+Breakpoint 1, main (argc=1, arg=0xbfbffaec) at ex1.c:8
+8 c = 29;
+(gdb)
+
+ 
+
+命令info break，info breakpoints的縮寫，最簡可以寫成i b ，可以列出目前所有的中斷點，也可以用來確認中斷點是否成功設置。設置了中斷點且程式停止後，我們就可以使用gdb的流程控制命令來執行程式。
+
+指令 說明 
+continue(c) 繼續執行直到下一個中斷點或結束 
+step(s) 執行一行程式碼。如果碰到函式會跳進函式內部去執行 
+next(n) 執行一行程式碼。不會跳進函式去執行 
+
+值得一提的是，如果step執行到一個函式，但該函式的除錯符號資訊沒有編進執行檔裡的話，那step也不會跳進這個函式裡，而是單純的將它看作一行程式碼(如同next)，比如說是標準函式庫提供的函式，大概都會這樣。
+
+在gdb裡要如何印出變數與運算式的值？用print(p)命令。如果單純的輸入print expr 的話，gdb會自動選擇一個適當的值，但我們也可以自已指定特定的格式。輸入p/?，?是格式字元，所有可選用的格式字元列在下表。
+
+x Hex 
+d 有號整數 
+u 無號整數 
+o 八進位 
+t binary 
+a 位址 
+c 字元 
+f 浮點數 
+
+如果說我希望每次程式停止時都可以看到某些運算式的值呢?這就需要display指令了。display指令的使用方式與print類似，不同的是每次程式被中斷點停下時，就會自動顯示我們用display的運算式。display也有像p/?的用法，格式字串與上面相同。
+
+ 
+
+三.結尾
+
+受限於個人程式功力所限，在這裡只能介紹很有限的功能，其實gdb有很多功能，是VS.NET那類的整合環境除錯器無法做到的，只好請有興趣的再去看gdb的手冊了。由於是開放源碼軟體，gdb的說明文件在線上就能抓的到，相關的網址也羅列於下：
+
+GDB的本站：http://www.gnu.org/software/gdb/
+GDB的官方手冊下載區：http://www.gnu.org/software/gdb/documentation/ 
+
+再來是幾篇比拙作更為完整的Tutorial：
+
+洪朝貴教授的gdb教學：http://www.cyut.edu.tw/~ckhung/b/c/gdb.shtml
+國外的一個gdb除錯示範：http://www-2.cs.cmu.edu/~gilpin/tutorial/ 
+Study-area的除錯教學：http://www.study-area.org/cyril/opentools/opentools/debug.html
