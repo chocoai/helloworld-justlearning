@@ -1,0 +1,22 @@
+ibuffer 的应用：
+先选中(mark) 要查找的 buffer ，按 t 表示 toggle mark, 选中所
+有的。然后安 O (occur) , U (replace) , Q( query replace) 
+输入 I 表示 query replace regexp 
+输入 /c , 然后输入 regexp ，那么就会只显示所有包含regexp 的 buffer 。
+
+关闭所有的 buffer
+按 t 表示 toggle mark, 选中所有的。 
+按 D 表示 mark 的 buffer 打上删除标记。 
+按 x 表示 把有删除标记的 buffer , kill 掉。 
+保存所有的 buffer
+按 S 表示 mark 的 buffer 写入文件。 
+如何 mark buffer
+m , mark 当前行的 buffer , 移动到下行 
+u , m 的逆操作， unmark 
+t , toggle mark 
+* * , umark all 
+/ p 就可以去掉一重过滤。
+/ / 可以去掉所有重过滤。
+
+更新 ibuffer 的内容 , 按 g
+一般我先用 / 的系列命令，过滤掉我不关心的 buffer ，然后 t ，选中所有，用 u 剔除掉我不想要的，然后在用对应的命令操作。

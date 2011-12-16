@@ -1,0 +1,48 @@
+楼主这篇文章里对管理员进入方法有两步还没有说明， 
+1.在如下C:\Documents and Settings\All Users\Application Data\DassaultSystemes文件夹下建立两个名字分别为： 
+CATReferenceSettingPath 
+CATCollectionStandard 
+的两个文件夹。 
+2.在修改快捷方式前要到CATIA的配置文件里添加或者修改如下两项变量： 
+CATReferenceSettingPath=C:\Documents and Settings\All Users\Application Data\DassaultSystemes\CATReferenceSettingPath 
+CATCollectionStandard=C:\Documents and Settings\All Users\Application Data\DassaultSystemes\CATCollectionStandard 
+这样再修改快捷方式，进入才不会报错的。并且修改配置文件后的新配置文件将存放到以上两文件夹里。为系统默认调用配置的地方。 
+分别设计多个零件，然后在产品（装配）中导入。如果某个零件需要
+修改，修改后重新导入即可。亦可在产品装配模块中修改。
+#零件设计
+分割：crate a plane，toggle the arrow direction to decide
+which part should be reserved or trimed.
+#operation with mouse
+middle press:move
+middle and right (left) press : rotate
+middle press and click right (left) once ： zoom
+right click and select property 可以更改透明度。
+if module turns red , click update 
+定义工作中的对象：
+该命令非常有用。使用该命令配合右键菜单中的激活/取消对象，即
+可以对之前的工作进行修改。
+定义工作中的对象 可以让某个部件处于编辑状态并显示
+要显示/隐藏某个部件，必须先使工作中的对象在其后面
+尝试显示/隐藏零件，零件集合体，显示所有xx
+投影工程图时，必须先激活对应的视图
+很多问题的原因是没有真正选中所需要的对象，比如什么不在同一个
+平面，不在一条线上。尤其是有许多点聚集在一起，甚至重合在一
+起，真正要的点被隐藏，导致死活选不中，其实选中的不过是别的点。
+测量：
+捡取点 可以任意位置提取点，即使那里没有点
+选取点 只能选取已经存在的点
+显示相关：
+貌似控制点太多会导致样条线不通过控制点，但是测量显示点到样条
+线的距离是零？需要再要就一下样条线的做法。
+图标消失，可能是显卡驱动的问题。
+选项--> 恢复默认设置
+产品：
+移动 可以选取特定方向（线），特定平面，特定轴
+碰撞检测
+草图：
+构造线
+虚线
+区别
+切出舵面的方法：
+先在两端画出轮廓，轮廓要离翼面一定的距离，如0.3毫米。然后用
+多截面曲面。如果生成的曲面冒出来了，可用控制点限制。

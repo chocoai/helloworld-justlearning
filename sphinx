@@ -1,0 +1,10 @@
+What about CMU Sphinx?
+
+nobody ever seems to realize that there IS an open-source continuous flow speech
+recognition engine out there.
+
+actually there is two
+
+CMU Sphinx-II, which deals with limited domain speech, and
+
+CMU Sphinx-III, which deals with unlimited domain speech for dictation purposes.

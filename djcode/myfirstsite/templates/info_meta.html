@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}META INFORMATION{% endblock %}
+
+{% block content %}
+{% for value in values %}
+<p>{{ value }}</p>
+<!-- <p>{{ values }}</p> -->
+{% endfor %}
+{% endblock %}

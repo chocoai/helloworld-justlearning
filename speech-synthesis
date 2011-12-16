@@ -1,0 +1,60 @@
+Location: http://www.linux-sound.org/speech.html                                    
+Speech Synthesis & Analysis Software
+
+  * CVoiceControl speech recognition system for KDE and X from Daniel Kiecza
+    (replaces his KVoiceControl)
+  * Emacspeak a speech output system for Emacs
+  * Emu "...a collection of software for the creation, manipulation and analysis of
+    speech databases"
+  * Festival
+      + Festival speech synthesis system
+      + Festvox a suite of tools for building synthesized voices for Festival
+      + Flinger a MIDI-to-speech synthesis system based on the Festival package
+      + Flite a light-weight alternative to Festival for voices built using FestVox
+        i
+      + TkFestival nice Tk GUI for Festival
+  * FreeTTS Java-based text to speech synthesis
+  * GVoice adds voice control to Gtk/GNOME applications
+  * IMPSKE GUI for Klatt formant synthesis algorithms
+  * ISIP Speech Recognition Toolkit lists many other interesting speech-to-text
+    tools
+  * Kalman Filtering and Speech Enhancement software and a diploma thesis by Jan
+    Kybic
+  * KPE80 Klatt speech synthesis GUI
+  * KTTS the excellent KDE text-to-speech synthesis system
+  * LiarLiar voice stress detection software
+  * MBROLA
+      + MBROLA easy-to-use CLI speech synthesis project
+      + MBRDICO talking dictionary using MBROLA for speech synthesizer
+  * Open Mind Speech speech recognition for Linux, formerly known as FreeSpeech
+  * Open-Source Speech Recognition Initiative (OSSRI) a new project that intends to
+    "... develop continuous-speech recognition software with command-and-control
+    functionality that runs on Open Source platforms such as Linux"
+  * Praat "...a comprehensive speech analysis, synthesis, and manipulation package"
+    for phoneticians and other sound researchers
+  * Puh Editor "... a tool for collaborative annotation of multimodal spoken
+    language resources", requires the SNACK audio toolkit
+  * Screader a software/hardware screen-reader for the visually impaired
+  * SFS Speech Filing System, excellent set of X-based and command-line tools (see
+    FTP archive for UNIX/Linux versions)
+  * Speakup allows a blind user to hear all output directed to the console,
+    currently supports only the Double Talk internal synthesizer
+  * Speech Links a formidable collection of speech-related WWW, ftp, and newsgroup
+    links
+  * Speex patent-free codec designed especially for speech
+  * Sphinx open-source speech recognition from CMU
+  * Sprachsynthese unter Linux speech synthesis with Linux, an excellent article by
+    Michael Renner (text in German)
+  * Transcriber "...a free tool for segmenting, labeling and transcribing speech",
+    requires the Snack package
+  * VoiceApp "program to visualize sound waves via FFT"
+  * Voxpak is "a GUI for playing, editing, renaming etc. voice and fax messages"
+  * XVoice "..enables continuous speech to text dictation for many X applications"
+  * comp.speech very informative Web page with FAQ
+  * rsynth
+      + rsynth the venerable speech synthesizer, required by many TTS readers
+      + rsynth on SourceForge provides sources under the Artistic License and the
+        GPL
+  * speechd-el Emacs speech output interface from Milan Zamazal
+  * spwave "a speech file editor supporting several sound formats"
+

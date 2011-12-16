@@ -1,0 +1,86 @@
+#locale lang encoding
+/etc/sysconfig/i18n
+#change console colorscheme
+/etc/DIR_COLORS   
+#change console resolve
+grub/menu.list kernel vga=649 
+there must be a file grub/grub.conf
+#part of the /etc/fstab
+/dev/VolGroup00/LogVol01 /                       ext3    defaults        1 1
+LABEL=/boot             /boot                   ext3    defaults        1 2
+/media/centiso/CentOS-5.5-i386-bin-DVD.iso  /media/centiso iso9660 loop,ro,auto 0  0
+/dev/hda2   /media/winxp_D   ntfs     fmask=111   0   0
+#booting slow for nash
+nash is used as a shell for initrd.img,if you don't use initrd.img ,it is useless
+#note the space below
+man N xxoo
+# query if something installed
+rpm -q xxoo
+#dirs stack
+dirs -p ; pushd(add or rotate the stack) ;  popd  
+#c
+static parameter cannot be used by other function,though it is reserved after its mother function stop.
+space<==>32<==>\040
+return should be placed at last,because function exit at return
+%p==>format to print pointers
+only values are transported,nothing else!!!!!!!
+man 3 string==>all string functions.et.string to digit
+#delete 
+:%s///gc   ==>clt+v clt+m
+#gdb
+gdb> where
+#vim
+:g/CD/d
+#auto prerequest
+gcc -MM *.c
+#fonts
+/usr/share/fonts
+fc-cache -fsv
+fc-list :lang=zh-cn(en_US)
+good font :Yahei Consolas Hybrid
+#encoding
+vim : 
+set encoding 
+set fileencodings=GB18030,utf-8,BIG5,latin-1(ascii) 
+set fileencoding=utf-8 
+iconv -f GBK -t UTF-8 file1 -o file2
+enconv -L zh_CN -x UTF-8 filename
+utf8 GBK
+convmv -f UTF-8 -t GBK Cnotest utf8
+*speak
+/etc/profile export DTK_PROGRAM=name of speech server
+<espeak,dtk_exp,outloud,etc>
+%q "this is a text"
+%d
+#shell
+ls -I  \*[mM][Pp]3  | xargs -i  mv -v {} temp/
+ls [!ab]
+history | grep
+#make error
+some variable not defined , error in src/ add include head files ,stdlib.h,stdio.h
+*unzip
+unzip -tq #querry
+unzip -j \*.zip #extract to the same dir
+*rar x *.rar #prefered 
+a file splited into parts, just rar x part1.rar, and let rar
+take the charge.
+*lvm
+I don't have to delete some partions, just add them to the lvm
+physics xxoo, then to the logical xxoo, then expand /
+*xz
+xz --help ; xz -d file.xz
+*ld lib
+-l<xxoo> require lib<xxoo>.so <xxoo>-devel always provide it as
+a soft link
+*bash
+preferable [[ to [ : $() to ``:
+ "$var" to $var # Unquoted, however, it removes tabs and newlines.
+echo hiden means to print a ^j , echo -n put nothing
+*partition table
+因为在 MBR 里面记录了两个重要的东西，分别是∶开机管理程式，与磁碟
+分割表 ( partition table )。mbr space is limited to just four
+patitions,so it supports only 4 primarys. If you want more, make
+three primarys and keep the last(forth)one extended partion . then split
+logical partions with the extended partitions.
+*find files
+locate > whereis > find

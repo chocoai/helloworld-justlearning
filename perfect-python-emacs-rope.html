@@ -1,0 +1,2193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+          "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="verify-v1" content="Y0sEsemwdyJZ+NBh6am5pHx574reTufLItw24QOGQg8=">
+  <link rel="stylesheet" href="/site_media/css/blueprint/screen750.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/site_media/css/blueprint/print750.css" type="text/css" media="print">
+  <!--[if IE]><link rel="stylesheet" href="/site_media/css/blueprint/ie750.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="/site_media/css/mystyle.css">
+  <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.saltycrane.com/feeds/latest/">
+  <link rel="shortcut icon" href="http://saltycrane.s3.amazonaws.com/image/favicon_1.ico" type="image/x-icon">
+  
+  <title>
+  My Emacs Python environment « SaltyCrane Blog
+</title>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1169767-4']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Heading box -->
+    <div class="span-20" id="hd">
+      <div class="span-1">&nbsp;</div>
+      <div class="span-5">
+        <img style="float:left" src="http://saltycrane.s3.amazonaws.com/image/saltycrane_4.png" alt="Saltycrane logo">
+      </div>
+      <div class="span-14 last">
+        <br>
+        <h1 class="heading1" align="left">
+          
+  <a href="/blog/">SaltyCrane Blog</a>
+
+        </h1>
+        <em>Notes on Python, Django, and web development
+          on Ubuntu Linux</em>
+        <br><br>
+        <h2 align="left">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          
+        </h2>
+      </div>
+    </div>
+
+    <!-- Main wrapper -->
+    <div class="span-20" id="main-wrapper">
+    
+  <div class="span-16" id="bd">
+    
+  <div class="postsum">
+
+    <!-- post title -->
+    <h3 class="colored" style="font-weight: normal">My Emacs Python environment</h3>
+  
+    <!-- post metadata -->
+    <div class="post_footer">
+      Date: 2010-05-10&nbsp;&nbsp;|&nbsp;&nbsp;
+      
+        Modified: 2011-04-24&nbsp;&nbsp;|&nbsp;&nbsp;
+      
+
+      Tags: 
+      
+        
+          <a href="/blog/tag/emacs/">emacs</a>, 
+        
+
+      
+        
+          <a href="/blog/tag/notestoself/">notestoself</a>, 
+        
+
+      
+        
+          <a href="/blog/tag/python/">python</a>
+        
+
+      
+
+      
+      
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="/blog/2010/05/my-emacs-python-environment/#comments">
+          15&nbsp;Comments</a>
+      
+      
+    </div>
+
+    <!-- post body -->
+    
+      <h4 id="python-mode">Python mode<a class="sectionlink" title="Section permalink" href="#python-mode">¶</a></h4>
+<p>There are two Python modes: <a href="https://launchpad.net/python-mode">
+<code>python-mode.el</code></a> created by
+  the Python community and
+  <a href="http://www.loveshack.ukfsn.org/emacs/#python.el"><code>python.el</code></a>
+  created by the Emacs
+  community (David Love). The first version of <code>python.el</code>
+  was included in Emacs 22 and an improved version was included in Emacs 23.
+  I am currently using the default <code>python.el</code> included with Emacs 23.
+  Below are some useful commands. For a complete list, open a Python file and
+  run <code>M-x apropos RET python RET</code>
+</p>
+<dl>
+<dt><code>python-shift-left</code>, <code>C-c C-&lt;</code></dt><dd>Decrease
+    indentation of the region</dd>
+<dt><code>python-shift-right</code>, <code>C-c C-&lt;</code></dt><dd>Increase
+    indentation of the region</dd>
+<dt><code>python-switch-to-python</code>, <code>C-c C-z</code></dt><dd>Start
+    (or switch) to a Python shell</dd>
+<dt><code>python-send-buffer</code>, <code>C-c C-c</code></dt><dd>Run the
+    current buffer in the Python interpreter</dd>
+<dt><code>python-send-region</code>, <code>C-c C-r</code></dt><dd>Run the
+    selected code in the Python interpreter</dd>
+<dt><code>python-describe-symbol</code>, <code>C-c C-f</code></dt><dd>Get help
+    on a Python symbol (Better than visiting the slow Python website, right?)</dd>
+</dl>
+<h5>Configuration (<code>~/.emacs</code> changes)</h5>
+<pre>(setq-default indent-tabs-mode nil)    ; use only spaces and no tabs
+(setq default-tab-width 4)</pre>
+<h4 id="ropemacs">Ropemacs<a class="sectionlink" title="Section permalink" href="#ropemacs">¶</a></h4>
+<p><a href="http://rope.sourceforge.net/ropemacs.html">Ropemacs</a>
+  is an Emacs plugin to use <a href="http://rope.sourceforge.net/">Rope</a>,
+  a powerful Python refactoring library.
+  It supports code completion, renaming, and other refactoring.
+  <a href="http://pymacs.progiciels-bpi.ca/">Pymacs</a> is a prerequisite
+  for Ropemacs. Below are some useful commands. For more information,
+  look in the Rope menu.
+</p>
+<dl>
+<dt><code>rope-code-assist</code>, <code>M-/</code></dt><dd>Code completion</dd>
+<dt><code>rope-rename</code>, <code>C-c r r</code></dt><dd>Rename a
+    variable, function, etc.</dd>
+</dl>
+<h5>Installation</h5>
+<ul>
+<li>Install Pymacs (Emacs part)
+    <div class="console"><div class="highlight"><pre><span class="gp">$</span> curl -L https://github.com/pinard/Pymacs/tarball/v0.24-beta2 | tar zx
+<span class="gp">$</span> <span class="nb">cd </span>pinard-Pymacs-016b0bc
+<span class="gp">$</span> make 
+<span class="gp">$</span> mkdir -p ~/.emacs.d/vendor/pymacs-0.24-beta2
+<span class="gp">$</span> cp pymacs.el ~/.emacs.d/vendor/pymacs-0.24-beta2/pymacs.el 
+<span class="gp">$</span> emacs -batch -eval <span class="s1">&#39;(byte-compile-file &quot;~/.emacs.d/vendor/pymacs-0.24-beta2/pymacs.el&quot;)&#39;</span> 
+</pre></div>
+</div>
+</li>
+<li>Install Pymacs (Python part)
+    <div class="console"><div class="highlight"><pre><span class="gp">$</span> sudo pip install https://github.com/pinard/Pymacs/tarball/v0.24-beta2 
+</pre></div>
+</div>
+</li>
+<li>Install Ropemacs and Rope
+    <div class="console"><div class="highlight"><pre><span class="gp">$</span> sudo pip install http://bitbucket.org/agr/ropemacs/get/tip.tar.gz 
+</pre></div>
+</div>
+</li>
+<li>Edit ~/.emacs to use Ropemacs
+    <pre>(add-to-list 'load-path "~/.emacs.d/vendor/pymacs-0.24-beta2")
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)</pre>
+</li>
+</ul>
+<h4 id="autocomplete">Auto Complete Mode<a class="sectionlink" title="Section permalink" href="#autocomplete">¶</a></h4>
+<p><a href="http://cx4a.org/software/auto-complete/">Auto Complete Mode</a>
+  is an extension to make Emacs auto-completion nicer. It creates a drowpdown
+  in the middle of your text. It can use Ropemacs as a backend.
+</p>
+<ul>
+<li>Download, unpack and byte-compile
+    <div class="console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">cd</span> ~/.emacs.d/vendor 
+<span class="gp">$</span> curl http://cx4a.org/pub/auto-complete/auto-complete-1.2.tar.bz2 | tar jx 
+<span class="gp">$</span> <span class="nb">cd </span>auto-complete-1.2 
+<span class="gp">$</span> make byte-compile 
+</pre></div>
+</div>
+</li>
+<li>Edit ~/.emacs
+    <pre>(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.2")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/auto-complete-1.2/dict")
+(ac-config-default)</pre>
+</li>
+</ul>
+<h4 id="yasnippet">Yasnippet<a class="sectionlink" title="Section permalink" href="#yasnippet">¶</a></h4>
+<p><a href="http://code.google.com/p/yasnippet/">YASnippet</a> is a template
+  system inspired by Textmate. <a href="http://www.youtube.com/watch?v=76Ygeg9miao#t=01m47s">
+  Demo on YouTube</a>
+</p>
+<h4 id="flymake-pyflakes-pep8">Code checking option 1: On-the-fly w/ Flymake<a class="sectionlink" title="Section permalink" href="#flymake-pyflakes-pep8">¶</a></h4>
+<a href="http://flymake.sourceforge.net/">Flymake</a> is part of Emacs 23.
+  <a href="http://pypi.python.org/pypi/pyflakes">PyFlakes</a>.
+  <a href="http://pypi.python.org/pypi/pep8">pep8</a>.
+  See also <a href="http://pypi.python.org/pypi/pylint">pylint</a>.
+  <a href="http://stackoverflow.com/questions/1259873/how-can-i-use-emacs-flymake-mode-for-python-with-pyflakes-and-pylint-checking-cod">Reference</a>.
+  Note: <code>flymake-cursor.el</code> is not required, but it makes flymake less obtrusive.
+
+<ul>
+<li>Install PyFlakes and pep8
+    <div class="console"><div class="highlight"><pre><span class="gp">$</span> sudo pip install pyflakes pep8
+</pre></div>
+</div>
+</li>
+<li>Get
+    <a href="http://www.emacswiki.org/emacs/flymake-cursor.el"><code>flymake-cursor.el</code></a>
+    and save it as <code>~/.emacs.d/vendor/flymake-cursor.el</code>.
+  </li>
+<li>Edit <code>~/.emacs</code>:
+    <pre>(add-to-list 'load-path "~/.emacs.d/vendor")
+
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+               'flymake-create-temp-inplace))
+       (local-file (file-relative-name
+            temp-file
+            (file-name-directory buffer-file-name))))
+      (list "pycheckers"  (list local-file))))
+   (add-to-list 'flymake-allowed-file-name-masks
+             '("\\.py\\'" flymake-pyflakes-init)))
+(load-library "flymake-cursor")
+(global-set-key [f10] 'flymake-goto-prev-error)
+(global-set-key [f11] 'flymake-goto-next-error)</pre>
+</li>
+<li>Create <code>pycheckers</code>, make it executable, and put it on your PATH
+    <pre>#!/bin/bash
+
+pyflakes "$1"
+pep8 --ignore=E221,E701,E202 --repeat "$1"
+true</pre>
+</li>
+</ul>
+<h4 id="python-check">Code checking option 2: Manual checking w/ python-check<a class="sectionlink" title="Section permalink" href="#python-check">¶</a></h4>
+<p><a href="http://divmod.org/trac/wiki/DivmodPyflakes">PyFlakes</a> is a Lint-like
+  tool for Python. It is like <a href="http://pychecker.sourceforge.net/">PyChecker</a>,
+  but it is fast. PyFlakes can be run from within Emacs using the default
+  python mode in Emacs23.
+<ul>
+<li>Install PyFlakes
+    <div class="console"><div class="highlight"><pre><span class="gp">$</span> sudo pip install pyflakes
+</pre></div>
+</div>
+</li>
+<li>Edit <code>~/.emacs</code>
+<pre>(setq python-check-command "pyflakes")</pre>
+</li>
+<li>From Emacs, while visiting a Python file, run <code>M-x python-check</code>
+    or <code>C-c C-v</code> or <code>C-c C-w</code>.
+  </li>
+</ul>
+<h4 id="django">Django<a class="sectionlink" title="Section permalink" href="#django">¶</a></h4>
+</p><p>
+<a href="http://code.djangoproject.com/wiki/Emacs">Reference</a>
+</p>
+<ul>
+<li>
+<div class="console"><div class="highlight"><pre><span class="gp">$</span> wget http://ourcomments.org/Emacs/DL/elisp/nxhtml/zip/nxhtml-2.08-100425.zip 
+<span class="gp">$</span> unzip nxhtml-2.08-100425.zip
+<span class="go">    </span>
+</pre></div>
+</div>
+</li>
+<li>
+<pre>(load "~/.emacs.d/nxhtml/autostart.el")
+(setq mumamo-background-colors nil) 
+(add-to-list 'auto-mode-alist '("\\.html$" . django-html-mumamo-mode))
+    </pre>
+</li>
+</ul>
+<h4 id="references">References<a class="sectionlink" title="Section permalink" href="#references">¶</a></h4>
+<ul>
+<li><a href="http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/">
+      EnigmaCurry: Emacs as a powerful Python IDE</a> (<em>2008-03-09</em>)</li>
+<li><a href="http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/">
+      EnigmaCurry: AutoComplete.el : Python Code Completion in Emacs</a> (<em>2009-01-21</em>)</li>
+<li><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/">
+      Lei Chen: Setup Perfect Python Environment In Emacs</a> (<em>2009-01-30</em>)</li>
+<li><a href="http://stackoverflow.com/questions/362522/switching-from-python-mode-el-to-python-el">
+      Stack Overflow: Switching from python-mode.el to python.el</a> (<em>2008-12-12</em>)</li>
+<li><a href="http://stackoverflow.com/questions/750267/python-emacs-completion">
+      Stack Overflow: python emacs completion</a>(<em>2009-04-15</em>)</li>
+<li><a href="http://stackoverflow.com/questions/1259873/how-can-i-use-emacs-flymake-mode-for-python-with-pyflakes-and-pylint-checking-cod">
+      Stack Overflow: How can I use Emacs Flymake mode for python with pyflakes and pylint checking code?</a></li>
+<li><a href="http://jesselegg.com/archives/2010/02/25/emacs-python-programmers-part-1/">
+      Jesse D. Legg: Emacs for Python Programmers: Basics</a> (<em>2010-03-14</em>)</li>
+<li><a href="http://jesselegg.com/archives/2010/03/14/emacs-python-programmers-2-virtualenv-ipython-daemon-mode/">
+      Jesse D. Legg: Emacs for Python Programmers #2: Virtualenv, IPython & Daemon Mode</a>
+    (<em>2010-03-14</em>)</li>
+<li><a href="http://pymacs.progiciels-bpi.ca/pymacs.html#installation">
+      Pymacs installation documentation</a></li>
+<li><a href="http://edward.oconnor.cx/2008/02/ropemacs">
+      Edward O'Connor: ropemacs</a> (<em>2008-02-27</em>)</li>
+<li><a href="http://neuroimaging.scipy.org/site/doc/manual/html/devel/tools/tricked_out_emacs.html#ropemacs">
+      NIPY Documentation: Tricked out emacs for python coding</a></li>
+<li><a href="http://richardriley.net/projects/emacs/dotprogramming">
+      Richard Riley: Emacs programming customisations</a></li>
+<li><a href="http://www.gnu.org/software/emacs/manual/html_mono/flymake.html">
+      Emacs Documentation: Flymake</a></li>
+<li><a href="http://amix.dk/blog/post/19361">
+      amix.dk: Static checking Python code</a></li>
+</ul>
+<h4 id="see-also">See also<a class="sectionlink" title="Section permalink" href="#see-also">¶</a></h4>
+<ul>
+<li><a href="http://www.rwdev.eu/articles/emacspyeng">
+      Emacs Python completion (library)</a></li>
+<li><a href="http://cedet.sourceforge.net/">
+      CEDET (library)</a></li>
+<li><a href="http://blog.doughellmann.com/2009/12/switching-development-contexts-with.html">
+      Doug Hellmann: Switching development contexts <em>[in Emacs]</em> with virtualenvwrapper</a></li>
+<li><a href="http://blog.dreid.org/2010/02/mimicing-source-virtualenvbinactivate.html">
+      Lacking Credibility: Mimicing source virtualenv/bin/activate in Emacs</a></li>
+</ul>
+
+    
+
+  <!-- Related posts -->
+  
+      <h4 id="related">Related posts</h4>
+      <ul>
+      
+        <li class="contents">
+          <a  href="/blog/2011/05/colorized-interactive-git-blame-emacs-vc-annotate/">Colorized, interactive "git blame" in Emacs: vc-annotate</a>
+          <span class="small">
+            <em> — posted 2011-05-28</em>
+          </span>
+        </li>
+      
+        <li class="contents">
+          <a  href="/blog/2010/03/emacs-espresso-mode-jquery/">Emacs espresso-mode for jQuery</a>
+          <span class="small">
+            <em> — posted 2010-03-10</em>
+          </span>
+        </li>
+      
+        <li class="contents">
+          <a  href="/blog/2009/07/notes-c-development-emacs-ubuntu-linux/">Notes on C++ development with Emacs on Ubuntu Linux</a>
+          <span class="small">
+            <em> — posted 2009-07-08</em>
+          </span>
+        </li>
+      
+        <li class="contents">
+          <a  href="/blog/2008/11/creating-remote-server-nicknames-sshconfig/">Creating remote server nicknames with .ssh/config</a>
+          <span class="small">
+            <em> — posted 2008-11-20</em>
+          </span>
+        </li>
+      
+        <li class="contents">
+          <a  href="/blog/2008/11/emacs-notes/">Emacs notes</a>
+          <span class="small">
+            <em> — posted 2008-11-03</em>
+          </span>
+        </li>
+      
+      </ul>
+  
+
+  </div>
+
+  <a name="comments"></a>
+  <!-- Comments -->
+  
+  
+  
+    <div class="postsum">
+    <h3>15 
+      Comments
+
+      &mdash; <span class="small"><a href="/feeds/comments/304/">
+        <img src="http://saltycrane.s3.amazonaws.com/image/icon_feed_orange_14x14_1.png" style="border: 0pt none ; vertical-align: middle;" alt="feed icon">
+        Comments feed for this post</a></span>
+    </h3>
+
+  
+    <div class="acomment">
+      <br>
+      <a name="c11736" href="#c11736">#1</a>
+      <b>
+        
+          Jake
+        
+      </b> commented
+      on 2010-07-16:
+      <p>This has been the best written (and up to date using current packages!) page I've seen so far for ropemacs, python, and emacs.</p>
+<p>Thanks so much.<br />
+</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c13073" href="#c13073">#2</a>
+      <b>
+        
+          <a rel="nofollow" href="http://limist.com/">K</a>
+        
+      </b> commented
+      on 2010-08-06:
+      <p>Very concise and helpful to take python and emacs to the next level, thank you.  Just a note too that Auto Complete mode is now at v1.3 instead of 1.2.</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c13104" href="#c13104">#3</a>
+      <b>
+        
+          <a rel="nofollow" href="http://www.saltycrane.com/blog/">Eliot</a>
+        
+      </b> commented
+      on 2010-08-07:
+      <p>K: Great, I will have to update to Auto Complete 1.3</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c18837" href="#c18837">#4</a>
+      <b>
+        
+          Anders Rønningen
+        
+      </b> commented
+      on 2010-10-22:
+      <p>Works great on my system, except for two things.</p>
+<ol>
+<li>
+<p>Every time I edit a C-file, a warning pops up that flymake is disabled. I'm guessing either load flymake only for python files, or disable warnings.</p>
+</li>
+<li>
+<p>Both warnings and errors use the flymake-errline face. Since the messages most often contain "W:" and "E:", it should be possible to fix this somewhere.</p>
+</li>
+</ol>
+<p>I'll dig more into this, but I posted in case you already have the answers.</p>
+<p>Thanks for the setup :)</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c18846" href="#c18846">#5</a>
+      <b>
+        
+          Anders Rønningen
+        
+      </b> commented
+      on 2010-10-22:
+      <ol>
+<li>was of course trivial:</li>
+</ol>
+<p>(defun anr78/flymake-hook ()
+  ; your flymake-stuff here
+)</p>
+<p>(add-hook 'python-mode-hook 'anr78/flymake-hook)</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c18904" href="#c18904">#6</a>
+      <b>
+        
+          <a rel="nofollow" href="http://www.saltycrane.com/blog/">Eliot</a>
+        
+      </b> commented
+      on 2010-10-22:
+      <p>Anders: Thanks for your comments. I will have to look into #2. I would like to fix this also. Let me know if you figure it out.</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c20524" href="#c20524">#7</a>
+      <b>
+        
+          Anders Rønningen
+        
+      </b> commented
+      on 2010-11-15:
+      <p>Using pylint instead of pyflakes, I have the colors working. The pylint-checker looks like:</p>
+<pre><code>#!/usr/bin/env python
+
+import re
+import sys
+from subprocess import *
+
+p = Popen("pylint --rcfile=pylint.rc -f parseable -r n --disable=W0613,C,R %s" %
+          sys.argv[1], shell = True, stdout = PIPE).stdout
+
+for line in p.readlines():
+    match = re.search("\\[([WE])(, (.+?))?\\]", line)
+    if match:
+        kind = match.group(1)
+        func = match.group(3)
+
+        if kind == "W":
+            msg = "Warning"
+        else:
+            msg = "Error"
+
+        if func:
+            line = re.sub("\\[([WE])(, (.+?))?\\]",
+                          "%s (%s):" % (msg, func), line)
+        else:
+            line = re.sub("\\[([WE])?\\]", "%s:" % msg, line)
+    print line,
+p.close()
+</code></pre>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c20606" href="#c20606">#8</a>
+      <b>
+        
+          <a rel="nofollow" href="http://www.saltycrane.com/blog/">Eliot</a>
+        
+      </b> commented
+      on 2010-11-16:
+      <p>Anders: Thanks for the code.</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c26103" href="#c26103">#9</a>
+      <b>
+        
+          ygneo
+        
+      </b> commented
+      on 2011-02-01:
+      <p>Finally I did python autocompletion as I wanted!! Thanks a lot!</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c33015" href="#c33015">#10</a>
+      <b>
+        
+          Marcio Mazza
+        
+      </b> commented
+      on 2011-05-14:
+      <p>Anders: Since the option --disable doesn't seem to exist anymore I switched the command line to</p>
+<pre><code>p = Popen("pylint --rcfile=pylint.rc -f parseable -r n --disable-msg=W0613 --disable-msg-cat=C,R %s" %
+      sys.argv[1], shell = True, stdout = PIPE).stdout
+</code></pre>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c33627" href="#c33627">#11</a>
+      <b>
+        
+          JU
+        
+      </b> commented
+      on 2011-05-30:
+      <p>Hi, thanks for the code.
+But one problem is my yasnippet doesn't work...</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c34366" href="#c34366">#12</a>
+      <b>
+        
+          Tu
+        
+      </b> commented
+      on 2011-06-18:
+      <p>Thanks a lot. Getting lots of troubles with the other manuals (I'm an Emacs newbie). This guide is concise, easy to follow and works like charm.</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c34379" href="#c34379">#13</a>
+      <b>
+        
+          simplynitaai
+        
+      </b> commented
+      on 2011-06-18:
+      <p>Hi</p>
+<p>Thanks for the tutorial.</p>
+<p>i am having the following error when starting emacs:</p>
+<p>"error: Pymacs helper did not start within 30 seconds"</p>
+<p>It seems i forgot something... Any help would be appreciated. </p>
+<p>i follow your steps up to yasnippet.</p>
+<p>Thanks
+simplynitaai</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c38256" href="#c38256">#14</a>
+      <b>
+        
+          <a rel="nofollow" href="http://emacs.vote-system.com/">AlexS</a>
+        
+      </b> commented
+      on 2011-09-11:
+      <h1>Emacs VS</h1>
+<p>Post some plugins on : 
+<a href="http://emacs.vote-system.com" title="emacs vs">Emacs VS</a></p>
+<p>Thanks !</p>
+    </div>
+  
+    <div class="acomment">
+      <br>
+      <a name="c41749" href="#c41749">#15</a>
+      <b>
+        
+          Ricopan
+        
+      </b> commented
+      on 2011-11-22:
+      <p>This was really great.  Unfortunately I've now moved to python 3 so ... yuck.  Still, any advice on what can be salvaged?  Found pymacs and rope for py3k but no ropemode, ropemacs.  Autocomplete for py3k apparently here http://www.rwdev.eu/articles/emacspyeng.</p>
+    </div>
+  
+  </div>
+  
+
+  <!-- Comment form -->
+  <div class="postsum">
+    <h3>Post a comment</h3>
+    
+
+<form action="/comments/post/" method="POST">
+    <table>
+      <tr>
+        <td class="label"></td>
+        <td class="input">
+          <!-- Hidden fields -->
+          <input type="hidden" name="content_type" value="myblogapp.post" id="id_content_type" />
+          <input type="hidden" name="object_pk" value="304" id="id_object_pk" />
+          <input type="hidden" name="timestamp" value="1322377534" id="id_timestamp" />
+          <input type="hidden" name="security_hash" value="c6ad478ef927a88f0c84edda2d9063f64e06fffb" id="id_security_hash" />
+          <div style="display:none;"><input type="text" name="honeypot" id="id_honeypot" /></div>
+        </td>
+      </tr>
+
+
+      
+      <!-- Non-hidden fields -->
+      <tr>
+        <td class="label"><label class="comment" for="id_name">Name:</label></td>
+        <td class="input"><input id="id_name" type="text" name="name" maxlength="50" /> <span class="info">Required</span></td>
+      </tr>
+      <tr>
+        <td class="label"><label class="comment" for="id_email">Email:</label></td>
+        <td class="input"><input type="text" name="email" id="id_email" /> <span class="info">Required, but not displayed</span></td>
+      </tr>
+      <tr>
+        <td class="label"><label class="comment" for="id_url">Website:</label></td>
+        <td class="input"><input type="text" name="url" id="id_url" /> <span class="info">Optional</span></td>
+      </tr>
+      <tr>
+        <td class="label"><label class="comment" for="id_comment">Comment:</label></td>
+        <td class="input">
+          <textarea id="id_comment" rows="10" cols="40" name="comment"></textarea>
+          <br>
+          <div class="info">
+            Format using 
+            <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>.
+            (No HTML.)
+            <ul>
+              <li>Code blocks: prefix each line by at least 4 spaces or 1 tab (and a blank line before and after)</li>
+              <li>Code span: surround with backticks</li>
+              <li>Blockquotes: prefix lines to be quoted with &gt;</li>
+              <li>Links: &lt;URL&gt;</li>
+              <li>Links w/ description: [description](URL)</li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="label"></td>
+        <td class="input">
+
+          
+          <input type="submit" name="preview" class="submit-preview" value="Preview">
+        </td>
+      </tr>
+    </table>
+</form>
+
+  </div>
+
+
+  </div>
+
+  <div class="span-4 last" id="sidebar">
+    
+        <!-- About -->
+        <div class="sidebox">
+          <h4 class="sidebar">About</h4>
+          <p style="font-size: 77%; line-height: 1.4; margin-bottom: 0;">
+            I'm Eliot and this is my notepad for programming topics such as Python, Django,
+            Ubuntu, Emacs, etc...
+            <a href="/about/"><b>more »</b></a>
+          </p>
+        </div>
+
+        <div class="sidebox">
+          <h4 class="sidebar">Links</h4>
+          <ul class="links">
+            <li class="links">
+              <img src="https://profiles.google.com/c/u/0/favicons?domain=twitter.com"/>
+              <a href="http://twitter.com/saltycrane">Twitter</a>
+            </li>
+            <li class="links">
+              <img src="https://profiles.google.com/c/u/0/favicons?domain=github.com"/>
+              <a href="http://github.com/saltycrane">Github</a>
+            </li>
+            <li class="links">
+              <img src="https://profiles.google.com/c/u/0/favicons?domain=stackoverflow.com"/>
+              <a href="http://stackoverflow.com/users/101911/saltycrane">
+                StackOverflow
+              </a>
+            </li>
+            <li class="links">
+              <img src="https://profiles.google.com/c/u/0/favicons?domain=www.reddit.com"/>
+              <a href="http://www.reddit.com/user/saltycrane/liked/">Reddit</a>
+            </li>
+            <li class="links">
+              <img src="https://profiles.google.com/c/u/0/favicons?domain=youtube.com"/>
+              <a href="http://youtube.com/user/saltycrane">YouTube</a>
+            </li>
+            <li class="links">
+              <img style="position:relative; top:1px;" alt="email icon" src="http://saltycrane.s3.amazonaws.com/image/icon_email_1.gif"/>
+              <a href="/contact/">Email</a>
+            </li>
+            <li class="links">
+              <img alt="feed icon" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_orange_14x14_1.png"/>
+              <a href="/feeds/latest/" rel="alternate" type="application/atom+xml">Atom Feed</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebox">
+          <h4 class="sidebar"  style="font-size: 140%">Search Blog</h4>
+<!-- Google CSE Search Box Begins  -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="014028178632057254796:wquaqrvnjba">
+    <input type="hidden" name="ie" value="UTF-8">
+    <input type="text" name="q" size="13" tabindex=1>
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+<!-- Google CSE Search Box Ends -->
+        </div>
+
+        <div class="sidebox">
+          <h4 class="sidebar">Tags</h4>
+          <ul class="tag">
+          
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/algorithms/" type="application/atom+xml">
+                <img alt="[algorithms feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/algorithms">
+                algorithms</a>
+              <span style="color: grey; font-size: 80%;">(5)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/aws/" type="application/atom+xml">
+                <img alt="[aws feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/aws">
+                aws</a>
+              <span style="color: grey; font-size: 80%;">(9)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/blogproject/" type="application/atom+xml">
+                <img alt="[blogproject feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 90%' href="/blog/tag/blogproject">
+                blogproject</a>
+              <span style="color: grey; font-size: 80%;">(20)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/c_cplusplus/" type="application/atom+xml">
+                <img alt="[c_cplusplus feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/c_cplusplus">
+                c_cplusplus</a>
+              <span style="color: grey; font-size: 80%;">(12)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/cardstore/" type="application/atom+xml">
+                <img alt="[cardstore feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/cardstore">
+                cardstore</a>
+              <span style="color: grey; font-size: 80%;">(8)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/colinux/" type="application/atom+xml">
+                <img alt="[colinux feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/colinux">
+                colinux</a>
+              <span style="color: grey; font-size: 80%;">(2)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/concurrency/" type="application/atom+xml">
+                <img alt="[concurrency feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/concurrency">
+                concurrency</a>
+              <span style="color: grey; font-size: 80%;">(13)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/conkeror/" type="application/atom+xml">
+                <img alt="[conkeror feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/conkeror">
+                conkeror</a>
+              <span style="color: grey; font-size: 80%;">(2)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/core/" type="application/atom+xml">
+                <img alt="[core feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/core">
+                core</a>
+              <span style="color: grey; font-size: 80%;">(2)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/cygwin/" type="application/atom+xml">
+                <img alt="[cygwin feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 90%' href="/blog/tag/cygwin">
+                cygwin</a>
+              <span style="color: grey; font-size: 80%;">(17)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/datastructures/" type="application/atom+xml">
+                <img alt="[datastructures feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 90%' href="/blog/tag/datastructures">
+                datastructures</a>
+              <span style="color: grey; font-size: 80%;">(14)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/datetime/" type="application/atom+xml">
+                <img alt="[datetime feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/datetime">
+                datetime</a>
+              <span style="color: grey; font-size: 80%;">(4)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/decorators/" type="application/atom+xml">
+                <img alt="[decorators feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/decorators">
+                decorators</a>
+              <span style="color: grey; font-size: 80%;">(4)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/django/" type="application/atom+xml">
+                <img alt="[django feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 110%' href="/blog/tag/django">
+                django</a>
+              <span style="color: grey; font-size: 80%;">(40)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/emacs/" type="application/atom+xml">
+                <img alt="[emacs feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 90%' href="/blog/tag/emacs">
+                emacs</a>
+              <span style="color: grey; font-size: 80%;">(22)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/files_directories/" type="application/atom+xml">
+                <img alt="[files_directories feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/files_directories">
+                files_directories</a>
+              <span style="color: grey; font-size: 80%;">(11)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/git/" type="application/atom+xml">
+                <img alt="[git feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/git">
+                git</a>
+              <span style="color: grey; font-size: 80%;">(5)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/hardware/" type="application/atom+xml">
+                <img alt="[hardware feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/hardware">
+                hardware</a>
+              <span style="color: grey; font-size: 80%;">(5)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/install_setup/" type="application/atom+xml">
+                <img alt="[install_setup feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/install_setup">
+                install_setup</a>
+              <span style="color: grey; font-size: 80%;">(8)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/javascript/" type="application/atom+xml">
+                <img alt="[javascript feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/javascript">
+                javascript</a>
+              <span style="color: grey; font-size: 80%;">(3)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/keyboard/" type="application/atom+xml">
+                <img alt="[keyboard feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/keyboard">
+                keyboard</a>
+              <span style="color: grey; font-size: 80%;">(9)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/matplotlib/" type="application/atom+xml">
+                <img alt="[matplotlib feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/matplotlib">
+                matplotlib</a>
+              <span style="color: grey; font-size: 80%;">(5)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/mercurial/" type="application/atom+xml">
+                <img alt="[mercurial feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/mercurial">
+                mercurial</a>
+              <span style="color: grey; font-size: 80%;">(4)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/nginx/" type="application/atom+xml">
+                <img alt="[nginx feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/nginx">
+                nginx</a>
+              <span style="color: grey; font-size: 80%;">(2)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/persistence/" type="application/atom+xml">
+                <img alt="[persistence feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/persistence">
+                persistence</a>
+              <span style="color: grey; font-size: 80%;">(5)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/preferences/" type="application/atom+xml">
+                <img alt="[preferences feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/preferences">
+                preferences</a>
+              <span style="color: grey; font-size: 80%;">(7)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/processes/" type="application/atom+xml">
+                <img alt="[processes feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/processes">
+                processes</a>
+              <span style="color: grey; font-size: 80%;">(4)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/pyqt/" type="application/atom+xml">
+                <img alt="[pyqt feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 90%' href="/blog/tag/pyqt">
+                pyqt</a>
+              <span style="color: grey; font-size: 80%;">(18)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/python/" type="application/atom+xml">
+                <img alt="[python feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 190%' href="/blog/tag/python">
+                python</a>
+              <span style="color: grey; font-size: 80%;">(142)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/ratpoison/" type="application/atom+xml">
+                <img alt="[ratpoison feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/ratpoison">
+                ratpoison</a>
+              <span style="color: grey; font-size: 80%;">(3)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/regexes/" type="application/atom+xml">
+                <img alt="[regexes feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/regexes">
+                regexes</a>
+              <span style="color: grey; font-size: 80%;">(6)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/rsync/" type="application/atom+xml">
+                <img alt="[rsync feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/rsync">
+                rsync</a>
+              <span style="color: grey; font-size: 80%;">(3)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/softwaretools/" type="application/atom+xml">
+                <img alt="[softwaretools feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 90%' href="/blog/tag/softwaretools">
+                softwaretools</a>
+              <span style="color: grey; font-size: 80%;">(17)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/sql/" type="application/atom+xml">
+                <img alt="[sql feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 90%' href="/blog/tag/sql">
+                sql</a>
+              <span style="color: grey; font-size: 80%;">(14)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/ssh/" type="application/atom+xml">
+                <img alt="[ssh feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/ssh">
+                ssh</a>
+              <span style="color: grey; font-size: 80%;">(10)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/subversion/" type="application/atom+xml">
+                <img alt="[subversion feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/subversion">
+                subversion</a>
+              <span style="color: grey; font-size: 80%;">(6)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/twisted/" type="application/atom+xml">
+                <img alt="[twisted feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/twisted">
+                twisted</a>
+              <span style="color: grey; font-size: 80%;">(7)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/ubuntu/" type="application/atom+xml">
+                <img alt="[ubuntu feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 130%' href="/blog/tag/ubuntu">
+                ubuntu</a>
+              <span style="color: grey; font-size: 80%;">(65)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/urxvt/" type="application/atom+xml">
+                <img alt="[urxvt feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/urxvt">
+                urxvt</a>
+              <span style="color: grey; font-size: 80%;">(5)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/vxworks/" type="application/atom+xml">
+                <img alt="[vxworks feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 90%' href="/blog/tag/vxworks">
+                vxworks</a>
+              <span style="color: grey; font-size: 80%;">(25)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/webdev/" type="application/atom+xml">
+                <img alt="[webdev feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/webdev">
+                webdev</a>
+              <span style="color: grey; font-size: 80%;">(5)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="tag">
+              <a href="/feeds/tags/wmii/" type="application/atom+xml">
+                <img alt="[wmii feed]" style="vertical-align:middle;border:0" src="http://saltycrane.s3.amazonaws.com/image/icon_feed_gray_1.png">
+              </a>
+              <a style='font-size: 80%' href="/blog/tag/wmii">
+                wmii</a>
+              <span style="color: grey; font-size: 80%;">(7)</span>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+          
+          </ul>
+        </div>
+
+        <div class="sidebox">
+        <h4 class="sidebar">Archive</h4>
+        <ul class="month">
+          
+          <li class="month">
+            <a href="/blog/2011/">2011</a>
+            <span style="color: grey; font-size: 80%;">(10)</span>
+          </li>
+          
+          <li class="month">
+            <a href="/blog/2010/">2010</a>
+            <span style="color: grey; font-size: 80%;">(25)</span>
+          </li>
+          
+          <li class="month">
+            <a href="/blog/2009/">2009</a>
+            <span style="color: grey; font-size: 80%;">(26)</span>
+          </li>
+          
+          <li class="month">
+            <a href="/blog/2008/">2008</a>
+            <span style="color: grey; font-size: 80%;">(90)</span>
+          </li>
+          
+          <li class="month">
+            <a href="/blog/2007/">2007</a>
+            <span style="color: grey; font-size: 80%;">(107)</span>
+          </li>
+          
+          <li class="month">
+            <a href="/blog/2006/">2006</a>
+            <span style="color: grey; font-size: 80%;">(7)</span>
+          </li>
+          
+        </ul>
+        </div>
+
+        <div class="sidebox">
+          <h4 class="sidebar" style="font-size: 100%">
+            <a href="http://www.google.com/coop/cse?cx=014028178632057254796:xf1fjxbph7q">
+              Search Blogroll</a></h4>
+
+<!-- Google CSE Search Box Begins  -->
+<form action="http://www.google.com/cse" id="cse-search-box2">
+  <div>
+    <input type="hidden" name="cx" value="014028178632057254796:xf1fjxbph7q">
+    <input type="hidden" name="ie" value="UTF-8">
+    <input type="text" name="q" size="13" tabindex=2>
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+<!-- Google CSE Search Box Ends -->
+        </div>
+
+        <div class="sidebox">
+          <h4 class="sidebar">Blogroll</h4>
+              <ul class="month">
+                <li class="month"><a href="http://adam.gomaa.us/blog/">Adam Gomaa</a></li>
+                <li class="month"><a href="http://www.clemesha.org/">Alex Clemesha</a></li>
+                <li class="month"><a href="http://amix.dk/">Amir Salihefendic</a></li>
+                <li class="month"><a href="http://lucumr.pocoo.org/">Armin Ronacher</a></li>
+                <li class="month"><a href="http://www.dabeaz.com/blog/dablog.html">David Beazley</a></li>
+                <li class="month"><a href="http://blog.davidziegler.net/">David Ziegler</a></li>
+                <li class="month"><a href="http://oubiwann.blogspot.com/">Duncan McGreggor</a></li>
+                <li class="month"><a href="http://morethanseven.net/">Gareth Rushgrave</a></li>
+                <li class="month"><a href="http://glyph.twistedmatrix.com/">Glyph Lefkowitz</a></li>
+                <li class="month"><a href="http://neopythonic.blogspot.com/">Guido van Rossum</a></li>
+                <li class="month"><a href="http://blog.ianbicking.org/">Ian Bicking</a></li>
+                <li class="month"><a href="http://jacobian.org/writing/">Jacob Kaplan-Moss</a></li>
+                <li class="month"><a href="http://www.b-list.org/">James Bennett</a></li>
+                <li class="month"><a href="http://jtauber.com/blog/">James Tauber</a></li>
+                <li class="month"><a href="http://noehr.org/">Jesper Noehr</a></li>
+                <li class="month"><a href="http://martyalchin.com/">Marty Alchin</a></li>
+                <li class="month"><a href="http://panela.blog-city.com/">Matt Harrison</a></li>
+                <li class="month"><a href="http://nikolay.com">Nikolay Kolev</a></li>
+                <li class="month"><a href="http://parand.com/say/">Parand Darugar</a></li>
+                <li class="month"><a href="http://lincolnloop.com/blog/">Peter Baumgartner</a></li>
+                <li class="month"><a href="http://www.peterbe.com/">Peter Bengtsson</a></li>
+                <li class="month"><a href="http://rob.cogit8.org/">Rob Hudson</a></li>
+                <li class="month"><a href="http://simonwillison.net">Simon Willison</a></li>
+                <li class="month"><a href="http://www.willmcgugan.com/blog/tech/">Will McGugan</a></li>
+              </ul>
+        </div>
+      
+  </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="span-20" id="ft">
+      Created with <a href="http://www.djangoproject.com/">Django</a> |
+      Hosted by <a href="http://www.slicehost.com/">Slicehost</a>
+    </div>
+  </div>
+
+
+</body>
+</html>

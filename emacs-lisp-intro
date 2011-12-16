@@ -1,0 +1,55 @@
+definition of lisp: 
+Lisp stands for LISt Processing, and the programming
+ language handles _lists_ (and lists of lists) by putting
+ them between parentheses. The parentheses mark the
+ boundaries of the list. Sometimes a list is preceded by a
+ single apostrophe or quotation mark, `''(1) Lists are the
+ basis of Lisp.
+
+`C-u', which is called the `universal argument'and passes an
+argument to the subsequent command.
+
+ In brief, a list is between parentheses, a string is
+between quotation marks, a symbol looks like a word, and a
+number looks like a number.
+
+In the jargon,what you have just done is "evaluate the
+list."
+
+First, it looks to see whether there is a quote before the
+list; if there is, the interpreter just gives us the list.
+On the other hand, if there is no quote, the interpreter
+looks at the first element in the list and sees whether it
+has a function definition. If it does, the interpreter
+carries out the instructions in the function definition.
+Otherwise, the interpreter prints an error message.
+
+
+It always works on the innermost list first. The interpreter
+works on the innermost list first, to evaluate the result of
+that list. The result may be used by the enclosing
+expression.
+Otherwise, the interpreter works left to right,
+from one expression to the next.
+
+
+*.el human readable
+*.elc byte compiled
+
+The function definition is a set of instructions that a
+computer will obey. A value, is something, such as number or
+a name, that can vary (which is why such a symbol is called
+a variable).
+
+What is put in the drawer holding the
+value can be changed without affecting the contents of the drawer
+holding the function definition, and vice-verse.
+
+(this is void)
+     ^---------void variable
+              ^------------------void function
+
+Another way to think about `let' is that it is like a `setq' that is
+temporary and local.  The values set by `let' are automatically undone
+when the `let' is finished.  The setting only affects expressions that
+are inside the bounds of the `let' expression.

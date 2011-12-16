@@ -1,0 +1,48 @@
+C-h m
+C-c c-h
+Functions that are specific to a given mode are prefixed with
+    C-c.
+C-h l (view-lossage)
+"find -name \*~ -mtime +10 | xargs rm"
+C-s M-p
+C-s M-y
+M-l 
+M-u
+M-c
+follow-mode
+cc-mode
+indent
+tab (c-q \t for literal meaning)
+c-m-\ indent-region
+The indent region command is quite handy with the specialized mark
+commands such as C-M-SPC (mark syntactic expression), C-M-h (mark
+function), or C-x h (mark whole buffer).
+overview a mode , for key values functions etc , use c-h f
+f90-mode 
+tags
+you should first tell eamcs where is the tags file by
+command visit-tags-table
+C-h m
+C-c c-h
+Functions that are specific to a given mode are prefixed with
+    C-c.
+C-h l (view-lossage)
+"find -name \*~ -mtime +10 | xargs rm"
+C-s M-p
+C-s M-y
+M-l 
+M-u
+M-c
+follow-mode
+cc-mode
+indent
+tab (c-q \t for literal meaning)
+c-m-\ indent-region
+The indent region command is quite handy with the specialized mark
+commands such as C-M-SPC (mark syntactic expression), C-M-h (mark
+function), or C-x h (mark whole buffer).
+overview a mode , for key values functions etc , use c-h f
+f90-mode 
+tags
+you should first tell eamcs where is the tags file by
+command visit-tags-table

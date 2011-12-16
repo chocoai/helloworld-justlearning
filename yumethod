@@ -1,0 +1,109 @@
+在本文中，我们主要解介绍 Fedora core 4.0 通过软件包管理工具yum来在线安装更新软件；关于apt工具应用，我们会在另外一篇中介绍；
+
+一、 yum 的使用；
+
+有些初学Linux的弟兄可能问，为什么不用系统自带的图形化工具up2date来升级，却要用 yum呢。其实大家用一用就知道了，up2date 真是奇慢无比，而且经常失去响应；造成机器假死的情况。所以我们还是试一试yum ；另外freshrpms.net 可能比官方站更快的更新升级源，也没有理由不用 yum；
+
+1、首先我们要到下面的地址下载与自己系统相对应的版本的 yum；
+
+http://ayo.freshrpms.net/
+
+比如我用的是Fedora core 4.0 就下载如下的包安装；
+[root@localhost beinan]# rpm -ivh freshrpms-release-1.1-1.fc.noarch.rpm
+2、安装软件举例；
+
+比如我要安装能听mp3的 bmp-mp3，只要输入下面的命令行即可，系统就自己工作了；
+[root@localhost beinan]# yum install bmp-mp3
+
+内容全景如下：
+
+[root@localhost beinan]# yum install bmp-mp3
+注：yum优点:软件包依赖关系自行解决，比如上面的，我们可以看到本来我们只安装的是bmp-mp3，结果yum 安装也安装了 id3lib ；bmp
+
+二、yum的一点小用法；
+
+1、查询软件包；
+
+面对成千上万的软件，我们可能无从下手，有时也不知道它的文件名；这时就要用到查询；我们可以用 yum list 来列出yum升级源上的包有文件；然后我们再来查看 info
+有以下几个组合可以用；比如；
+[root@localhost beinan]# yum list |more
+
+加上一个管道 |，然后 more 一下，就能把所有的包分页显示出来。然后按一下空格键就能看下一页了。在显示的软件列表中，会有软件名称、版本、是否安装等；仔细的看一下吧。熟悉了就好了。也没有什么难的。
+
+[root@localhost beinan]# yum list |more
+
+如果想知道软件的详细信息，可能得用上info参数了。比如：
+
+用法：
+[root@localhost beinan]# yum info 软件名
+
+比如：
+
+[root@localhost beinan]# yum info bmp-mp3
+
+在上面的例子中，如果Repo : freshrpms是这样的，表示您的系统没有安装这个软件，如果显示的是：Repo : installed，表示已经安装了。
+
+查询软件包，也可以再加参数 grep ，比如我们想查询升级源上是否有内核的新版本，则我们可以用下面的命令查询；当然您也可以用 [root@localhost beinan]# yum search kernel |more ，也就是yum --help提供的参数，也是一样的；
+[root@localhost beinan]# yum list |grep kernel
+
+我们看一下机器工作的结果，如下：
+
+[root@localhost beinan]# yum list |grep kernel
+上面的确显示出一大堆与内核有关的， installed表示我们的系统已经安装了；
+
+咱们看前一列吧，看一下名字就能猜个差不多；比如 doc 肯定和内核文档有关了；smp是多处理器的内核；其它的我不懂了，请想知道的弟兄用 info来看吧。
+
+比如我们用的机器是单处理器的X86机，想看一下是否有新内核可用。所以咱们试一下下面的这个。看是否已经有了新内核可以升级的；
+[root@localhost beinan]# yum info kernel.i686
+[root@localhost beinan]# yum info kernel.i686
+
+通过上面的信息，我们可以看到 2.6.11的是已经安装了，因为已经显示的是Repo : installed ，下面还有一个Version: 2.6.12 ，告诉我们是Repo : updates-released，看来这个是升级用的了。
+
+所以是否升级就看我们的了。
+
+[root@localhost beinan]# yum update kernel
+
+升级内核全景如下：
+
+[root@localhost beinan]# yum update kernel
+
+是不是升级，只需要在 Is this ok [y/N]:行的后面输入y或者N；y是yes，就是点头同意的意思；N就是摇头No的意思。
+
+对于软件包的查询，还有，比如：
+[root@localhost beinan]# yum list available 列出所有升级源上的包；
+[root@localhost beinan]# yum list updates 列出所有升级源上的可以更新包；
+[root@localhost beinan]# yum list installed 列出已经安装的包；
+
+yum 的命令支持通配符； 比如；
+
+[root@localhost beinan]# yum list mp* |more
+
+如果不加参数的 update 会是什么呢？？
+
+[root@localhost beinan]# yum update
+
+试着运行一下看看？会好长时间，对系统进行全面更新，我们要进行y和N了。
+
+3.移除软件包要用到remove参数；比如；
+
+[root@localhost beinan]# yum remove bmp-mp3
+
+内容全景如下：
+[root@localhost beinan]# yum remove bmp-mp3
+按y就移除了；
+
+三、yum的图形工具；
+
+请参见：《软件在线升级更新yum 图形工具介绍》
+
+四、yum的帮助；
+
+在论坛中有好多，有兴趣的弟兄自己找找看吧；但也不要忘记了自救；呵。。。。
+
+[root@localhost beinan]# yum --help
+
+还有更厉害的帮助；
+[root@localhost beinan]#man yum
+
+yum 使用时候可以用＊来代替没有的字母，比如
+yum erase *wine*

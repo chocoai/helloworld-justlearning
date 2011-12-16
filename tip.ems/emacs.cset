@@ -1,0 +1,241 @@
+Emacs 中自动添加有半边括号的功能
+输入左边的括号，就会自动补全右边的部分.包括(), "", [] , {} , 等等。
+
+在 .emacs 中写
+
+;;             C  mode
+(add-hook 'c-mode-hook 'hs-minor-mode)
+(defun my-c-mode-auto-pair ()
+  (interactive)
+  (make-local-variable 'skeleton-pair-alist)
+  (setq skeleton-pair-alist  '(
+    (?` ?` _ "''")
+    (?\( ?  _ " )")
+    (?\[ ?  _ " ]")
+    (?{ \n > _ \n ?} >)))
+  (setq skeleton-pair t)
+  (local-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "`") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "[") 'skeleton-pair-insert-maybe))
+(add-hook 'c-mode-hook 'my-c-mode-auto-pair)
+
+我折腾了半天，终于搞懂了一些，贴出来和大家分享功能，在写 C 程序的时候写 if( 的时候，就自动变成了 if() 光标停在两个括号之间写 { 的时候，自动变成了
+
+写C程序，输入左大花扩号自动补齐很多东西
+Emacs 中自动添加有半边括号的功能 提到了用 skeleton-insert-pair-maybe 可以自动补齐右花括号，但是这个补齐的功能不强。弱点是:
+
+自动包含 region 的内容。关于 region 的概念，请看这里 , 关于 copy&paste。 
+skeleton-insert-pair-maybe 不能区别注释和字符串中的大花括号 
+例如
+
+ "    {    "
+ /*
+ {
+ */
+
+skeleton-insert-pair-maybe 依然会增加左括号。 例如
+
+     printf("hello");
+
+现在我要写成
+
+     for(i=0;i<100;i++){
+         printf("hello");
+     }
+
+实现用下面的方法, 如下操作: 选择 printf 的那块语句。 也就是大花括号要包含的内容。然后输入
+
+ for(i=0;i<100;i++)<C-u>{
+
+就自动完成功了。选择一大块语句的之后，块首和块尾多余的空行会自动删除。其中的内容会被 indent 。如果不加 &#60;C-u&#62; 那么就和 skeleton-insert-pair-maybe 的功能类似了。配置方法:
+
+ (add-hook 'c-mode-hook 'my-c-mode-hook)
+ (add-hook 'c++-mode-hook 'my-c-mode-hook)
+ (defun my-come-hook ()
+     ;;; .... 其他配置功能
+     (local-set-key (kbd "{") 'skeleton-c-mode-left-brace)
+     ;;; .... 其他配置功能
+     )
+ (defun skeleton-c-mode-left-brace (arg)
+   (interactive "*P")
+   (if  (c-in-literal (c-most-enclosing-brace (c-parse-state)))
+       (self-insert-command 1)
+     ;; auto insert complex things.
+     (let* ((current-line (delete-and-extract-region (line-beginning-position) (line-end-position)))
+            (lines (and arg (mark t) (delete-and-extract-region (mark t) (point))))
+            (after-point (make-marker)))
+       ;;; delete extra blank begin and after the LINES
+       (setq lines (and lines
+                        (with-temp-buffer
+                          (insert lines)
+                          (beginning-of-buffer)
+                          (delete-blank-lines)
+                          (delete-blank-lines)
+                          (end-of-buffer)
+                          (delete-blank-lines)
+                          (delete-blank-lines)
+                          (buffer-string))))
+       (save-excursion
+         (let* ((old-point (point)))
+           (insert (if current-line current-line "")  "{\n")
+           (and lines (insert lines))
+           (move-marker after-point (point))
+           (insert "\n}\n")
+           (indent-region old-point (point) nil)))
+       (goto-char after-point)
+       (c-indent-line)
+       )))
+
+skeleton 和 abbrev 配合使用的技巧
+我这里给一个例子，大家可以自己的扩展功能。
+
+需求：我每次写一个小的 c 程序的时候，都要写
+
+int main ( int argc, char * argv[])
+{
+     return 0;
+}
+
+很烦，希望有自动实现的功能
+
+做法：
+
+在 .emacs 中写 
+(define-skeleton skeleton-c-mode-main-func
+  "generate int main(int argc, char * argc[]) automatic" nil
+  "int main (int argc, char * argc[]) \n{\n"
+  > _  "\n" > "return 0;"
+  "\n}")
+(define-abbrev-table 'c-mode-abbrev-table '(
+    ("main" "" skeleton-c-mode-main-func 1)
+    ))
+
+打开一个 新的 c 文件，写入 main &lt;SPC&gt; 自动扩展开来。 
+批量indent 所有子目录下的 C 源程序
+通过修改 wcy-c-file-pattern , 可以过滤任何文件,如
+
+("\.py$") for python
+("\.pl$" "\.pm$") for perl
+("\.el$" ) for elisp
+
+源程序如下:
+
+(defun wcy-filter ( func list)
+  (if  list
+      (let ((head (car list))
+            (tail (cdr list)))
+        (if  (funcall func head)
+            (cons head (wcy-filter func tail))
+          (wcy-filter func tail)))
+      nil))
+(defun wcy-indent-func (file)
+  (save-excursion
+    (find-file file)
+    (indent-region 1 (point-max) nil)
+    (write-file file)
+    (kill-buffer (current-buffer))))
+(setq wcy-c-file-pattern '( "\.c$" "\.cc$" "\.h$" ))
+(defun wcy-list-all-c-file-in-subdirectories (&optional path)
+  (interactive "DInput the directory:\n")
+  (let ((files (wcy-filter (lambda (f)
+                       (or (file-directory-p f)
+                           (and(file-regular-p f)
+                               (file-writable-p f)
+                               (wcy-filter  (lambda (s)
+                                          (string-match s f))
+                                        wcy-c-file-pattern))))
+                     (directory-files path t "^[^.]"))))
+  (apply 'append (mapcar (lambda (f)
+                    (funcall (if (file-directory-p f)
+                                 'indent-all-c-file-in-subdirectories
+                               'list)
+                             f))
+                  files))))
+
+(mapc 'wcy-indent-func
+      (wcy-list-all-c-file-in-subdirectories "~/tmp/testident/"))
+
+快速 include 一个系统头文件
+输入 inc 然后会提示输入文件名称.
+
+;; 安装 abbrev
+(mapc
+ (lambda (mode)
+   (define-abbrev-table mode '(
+                               ("inc" "" skeleton-include 1)
+                               )))
+ '(c-mode-abbrev-table c++-mode-abbrev-table))
+
+;; 输入 inc , 可以自动提示输入文件名称,可以自动补全.
+(define-skeleton skeleton-include
+  "generate include<>" ""
+  > "#include <"
+  (completing-read "Include File:"
+                   (mapcar #'(lambda (f) (list f ))
+                           (apply 'append
+                                  (mapcar
+                                   #'(lambda (dir)
+                                       (directory-files dir))
+                                   (list "/usr/include"
+                                         "/usr/local/include"
+                                         "/usr/include/g++-3")))))
+  ">")
+
+下面的这段代码的也许更加有用，当你发呆的时间超过 4 秒以上，头文件的文件名称自动加一个下划线，在上面按回车，可以打开这个文件。
+
+(defvar wcy-c/c++-hightligh-included-files-key-map nil)
+(if wcy-c/c++-hightligh-included-files-key-map
+    nil
+  (setq wcy-c/c++-hightligh-included-files-key-map (make-sparse-keymap))
+  (define-key wcy-c/c++-hightligh-included-files-key-map (kbd "<RET>") 'find-file-at-point))
+
+(defun wcy-c/c++-hightligh-included-files ()
+  (interactive)
+  (when (or (eq major-mode 'c-mode)
+            (eq major-mode 'c++-mode))
+    (save-excursion
+      (goto-char (point-min))
+      ;; remove all overlay first
+      (mapc (lambda (ov) (if (overlay-get ov 'wcy-c/c++-hightligh-included-files)
+                             (delete-overlay ov)))
+            (overlays-in (point-min) (point-max)))
+      (while (re-search-forward "^#include[ \t]+[\"<]\\(.*\\)[\">]" nil t nil)
+        (let* ((begin  (match-beginning 1))
+               (end (match-end 1))
+               (ov (make-overlay begin end)))
+          (overlay-put ov 'wcy-c/c++-hightligh-included-files t)
+          (overlay-put ov 'keymap wcy-c/c++-hightligh-included-files-key-map)
+          (overlay-put ov 'face 'underline))))))
+;; 这不是一个好办法，也可以把它加载到 c-mode-hook or c++-mode-hook 中。
+(setq wcy-c/c++-hightligh-included-files-timer (run-with-idle-timer 4 t 'wcy-c/c++-hightligh-included-files))
+如何使用 etags 浏览源代码
+首先用下面的命令生成 TAGS 文件
+
+find . | grep '\.h$\|\.cc\$' | etags -include -
+
+如果你记不住上面的命令，那么可以写一个 elisp 代码帮你。 
+(defun wcy-create-c-tags( dir)
+  (interactive "DProject Root Directory:")
+  (let ((default-directory dir))
+    (shell-command "find . | grep -e '\\.cpp$\\|\\.h$\\|\\.c$' | etags -")))
+
+`M-. TAG <RET>' 
+跳到第一个 TAG 的定义处。 
+`C-u M-.' 
+如果刚刚用过 M-. , 那么查找下一个定义处。 
+`C-u - M-.' 
+回到上一个定义处。 
+`C-M-. PATTERN <RET>' 
+按正则表达式搜索 TAG 的定义。 
+`C-u C-M-.' 
+如果刚刚用过了 C-M-. , 那么查找下一个。 
+`C-x 4 . TAG <RET>' 
+和 M-. 类似， 不过在另一个窗格显示。(`find-tag-other-window'). 
+`C-x 5 . TAG <RET>' 
+和 M-. 类似， 不过在另一个窗框显示。(`find-tag-other-frame'). 
+`M-*' 
+回到开始查找 TAG 的地方。 
+M-x visit-tags-table 
+用来选择 TAGS 文件，就是 etags 程序生成的文件。 
+

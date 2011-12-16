@@ -1,0 +1,74 @@
+`{ COMMANDS }' A group of commands to be triggered by
+     address-range. 
+#life time of pattern space
+Unless special commands (like `D') are used, the pattern
+space is deleted between two cycles.
+The hold space keeps its data between cycles (see commands
+`h', `H', `x', `g', `G' to move data between both buffers).
+#sed scripts
+Warning: if the first two characters of the `sed' script are
+`#n',then the `-n' (no-autoprint) option is forced.
+#sed -n
+no print(sed default print each line no matter edited,you
+can use p to force print a line).To sed a -n option from
+within your sed script file , use #n at the first line.
+#read and write file
+# r filename
+# w filename
+`\%REGEXP%'
+     (The `%' may be replaced by any other single character.)
+     This also matches the regular expression REGEXP, but allows one to
+     use a different delimiter than `/'.
+`D' Delete text in the pattern space up to the first
+     newline. 
+     If any text is left, restart cycle with the
+     resultant pattern space (without reading a new line of
+     input), otherwise start a normal new cycle.
+
+`N' Add a newline to the pattern space, then append the next
+     line of input to the pattern space. 
+     If there is no more input then `sed' exits without
+     processing any more commands.
+
+`P' Print out the portion of the pattern space up to the
+     first newline.
+
+`h' Replace the contents of the hold space with the contents
+     of the pattern space.
+
+`H' Append a newline to the contents of the hold space, and
+     then append the contents of the pattern space to that
+     of the hold space.
+
+`g' Replace the contents of the pattern space with the
+     contents of the hold space.
+
+`G' Append a newline to the contents of the pattern space,
+     and then append the contents of the hold space to that
+     of the pattern space.
+
+`x' Exchange the contents of the hold and pattern spaces.
+`: LABEL'
+`t LABEL' if there has been a successful `s'ubstitution.
+`b LABEL' Unconditionally branch to LABEL.
+`#'
+     [No addresses allowed.]
+
+     The `#' character begins a comment; the comment continues until
+     the next newline.
+`q [EXIT-CODE]'
+     This command only accepts a single address.
+`d'
+     Delete the pattern space; immediately start next cycle.
+`p'
+     Print out the pattern space (to the standard output).  This
+     command is usually only used in conjunction with the `-n'
+     command-line option.
+
+`n'
+     If auto-print is not disabled, print the pattern space, then,
+     regardless, replace the pattern space with the next line of input.
+     If there is no more input then `sed' exits without processing any
+     more commands.
+'='
+display line number

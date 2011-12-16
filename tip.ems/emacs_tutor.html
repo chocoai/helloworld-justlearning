@@ -1,0 +1,1931 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.4: http://docutils.sourceforge.net/" />
+<title>Emacs指南</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:Date: $Date$
+:Revision: $Revision$
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin-left: 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eeeeee }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+tt.docutils {
+  background-color: #eeeeee }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="emacs">
+<h1 class="title">Emacs指南</h1>
+<div class="contents topic">
+<p class="topic-title first"><a id="id1" name="id1">索引</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id2" id="id39" name="id39">基础知识</a><ul>
+<li><a class="reference" href="#id3" id="id40" name="id40">缓冲区</a></li>
+<li><a class="reference" href="#id4" id="id41" name="id41">信息栏</a></li>
+<li><a class="reference" href="#id5" id="id42" name="id42">按键描述</a></li>
+<li><a class="reference" href="#id6" id="id43" name="id43">回显区</a></li>
+<li><a class="reference" href="#id7" id="id44" name="id44">内部命令</a></li>
+<li><a class="reference" href="#id9" id="id45" name="id45">Emacs命令行</a></li>
+<li><a class="reference" href="#id10" id="id46" name="id46">Emacs终端</a></li>
+<li><a class="reference" href="#id11" id="id47" name="id47">Emacs文件管理器</a></li>
+<li><a class="reference" href="#id12" id="id48" name="id48">区块选择</a></li>
+<li><a class="reference" href="#id13" id="id49" name="id49">中止执行</a></li>
+<li><a class="reference" href="#id14" id="id50" name="id50">基本配置</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id15" id="id51" name="id51">帮助系统</a></li>
+<li><a class="reference" href="#id16" id="id52" name="id52">基本操作</a></li>
+<li><a class="reference" href="#id17" id="id53" name="id53">数字参数</a></li>
+<li><a class="reference" href="#id18" id="id54" name="id54">基础编辑</a><ul>
+<li><a class="reference" href="#id19" id="id55" name="id55">浏览</a></li>
+<li><a class="reference" href="#id20" id="id56" name="id56">编辑</a></li>
+<li><a class="reference" href="#id21" id="id57" name="id57">区块编辑</a></li>
+<li><a class="reference" href="#id22" id="id58" name="id58">搜索和替换</a></li>
+<li><a class="reference" href="#id23" id="id59" name="id59">其它</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id24" id="id60" name="id60">窗格和缓冲区管理</a></li>
+<li><a class="reference" href="#id25" id="id61" name="id61">寄存器管理</a></li>
+<li><a class="reference" href="#id26" id="id62" name="id62">书签管理</a></li>
+<li><a class="reference" href="#shell" id="id63" name="id63">Shell模式</a></li>
+<li><a class="reference" href="#id27" id="id64" name="id64">宏</a><ul>
+<li><a class="reference" href="#id28" id="id65" name="id65">定义与运行</a></li>
+<li><a class="reference" href="#id29" id="id66" name="id66">宏轮环</a></li>
+<li><a class="reference" href="#id30" id="id67" name="id67">命名与保存</a></li>
+<li><a class="reference" href="#id31" id="id68" name="id68">宏编辑器</a></li>
+<li><a class="reference" href="#id32" id="id69" name="id69">询问执行</a></li>
+<li><a class="reference" href="#id33" id="id70" name="id70">计数器</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id34" id="id71" name="id71">文件管理</a><ul>
+<li><a class="reference" href="#id35" id="id72" name="id72">使用帮助</a></li>
+<li><a class="reference" href="#id36" id="id73" name="id73">查看</a></li>
+<li><a class="reference" href="#id37" id="id74" name="id74">标记</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id38" id="id75" name="id75">扩展管理</a></li>
+<li><a class="reference" href="#guns" id="id76" name="id76">Guns</a></li>
+<li><a class="reference" href="#web" id="id77" name="id77">web</a></li>
+<li><a class="reference" href="#ftp" id="id78" name="id78">ftp</a></li>
+</ul>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id39" id="id2" name="id2">基础知识</a></h1>
+<blockquote>
+<p>Emacs是一个架构在编辑器上的集成环境，除了最基本的编辑功能，还可以完成文件管理、终端模拟、浏览网页、收发邮件、编译程序等工作。</p>
+<p>Emacs使用Elisp语言进行配置和扩展，它本身也可以作为Elisp解释器使用。</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+Emacs的界面主要由三部分构成：<em>信息栏</em>、<em>回显区</em>(echo)、<em>缓冲区</em>(buffer)</blockquote>
+<div class="section">
+<h2><a class="toc-backref" href="#id40" id="id3" name="id3">缓冲区</a></h2>
+<blockquote>
+<p>缓冲区(buffer) 类似于常规编辑器的文字编辑区。Emacs并不直接对文件进行修改，而是读取文件的内容并显示在缓冲区中，在收到保存的指令后才将修改写入文件。</p>
+<p>缓冲区名称通常为它所读取文件的文件名。</p>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id41" id="id4" name="id4">信息栏</a></h2>
+<blockquote>
+<p>在缓冲区之下为状态栏，类似于这种形式</p>
+<pre class="literal-block">
+-U:**  emacs_tutor.rst   (24,0)   (reST)----7:55下午---------------
+</pre>
+<p>显示当前缓冲区的状态，例如是否已保存、缓冲区名称、光标位置、主模式名称……</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+标题栏也可以显示一部分信息，并且可以自由定义。</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id42" id="id5" name="id5">按键描述</a></h2>
+<blockquote>
+<p>Emacs的功能键，通常为组合键。例如</p>
+<blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="29%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Emacs</td>
+<td>实际按键</td>
+<td>功能</td>
+</tr>
+<tr><td>C-f</td>
+<td>Ctrl+f</td>
+<td>光标前进一格</td>
+</tr>
+<tr><td>C-b</td>
+<td>Ctrl+b</td>
+<td>光标后退一格</td>
+</tr>
+<tr><td>C-d</td>
+<td>Ctrl+d</td>
+<td>删除一个字符</td>
+</tr>
+<tr><td>C-a</td>
+<td>Ctrl+a</td>
+<td>回到行首</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Emacs对按键的描述方式中， <strong>-</strong> 之前的一个字符为修饰键，表示按住该键，再按 <strong>-</strong> 后面的键。</p>
+<p>例如： <tt class="docutils literal"><span class="pre">C-a</span></tt> 表示按住 <em>Ctrl</em> 再按 <em>a</em> 键。 Emacs对其它一些特殊按键的描述</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>C-</strong></dt>
+<dd><p class="first last">按住Ctrl键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>M-</strong></dt>
+<dd><p class="first last">按住Meta键。在PC上，Meta键通常对应 <em>Alt</em> 键。也可以按一次 <em>ESC</em> 键(Windows下对应 <em>WIN</em> 键)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>C-M-</strong></dt>
+<dd><p class="first last">同时按住Ctrl键和Meta键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>S-</strong></dt>
+<dd><p class="first last">Shift键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>s-</strong></dt>
+<dd><p class="first last">Linux下对应 <em>WIN*</em> 键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>RET</strong></dt>
+<dd><p class="first last">回车键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>TAB</strong></dt>
+<dd><p class="first last">Tab键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>ESC</strong></dt>
+<dd><p class="first last">Esc键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>SPC</strong></dt>
+<dd><p class="first last">空格键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>DEL</strong> <em>Backspace</em></dt>
+<dd><p class="first last">退格键</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Delete</strong></dt>
+<dd><p class="first last">删除键</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>在后面的部分中，将统一使用Emacs对按键的描述方式。</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p>Emacs十分强大，上面的组合键，远不能涵盖Emacs的功能于万一。除基本的编辑功能键外，其它功能多使用 <strong>按键序列</strong>： 连续的按下多组快捷键</p>
+<p>例如： <tt class="docutils literal"><span class="pre">C-x</span> <span class="pre">C-c</span></tt> 表示先按下 <em>C-x</em> ，再按下 <em>C-c</em> 。也就是 <em>Ctrl+x</em> 后，再 <em>Ctrl+c</em> (退出Emacs)</p>
+<p>接下来 <strong>C-h t</strong> ，进入 《Emacs 快捷指南》</p>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id43" id="id6" name="id6">回显区</a></h2>
+<blockquote>
+<p><strong>C-x h</strong> （先按<em>Ctrl+x</em> 再按<em>h</em>)后，您会发现状态栏和编辑器底部之间的区域出现 <tt class="docutils literal"><span class="pre">Mark</span> <span class="pre">set</span></tt> 字样。同时，整个缓冲区的内容都被选中。</p>
+<p>它是一个迷你缓冲区(minibuffer)，叫作回显区(echo area)，提示您正在进行的操作，比如 <tt class="docutils literal"><span class="pre">Mark</span> <span class="pre">set</span></tt>(设定标记)</p>
+<p>如果一个按键序列没有完成，却停止了输入。大约两秒后，回显区会显示已输入部分，以免您忘记。千万不要以为是Emacs反应迟钝：）</p>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id44" id="id7" name="id7">内部命令</a></h2>
+<blockquote>
+<p><strong>C-h k</strong> 后，回显区提示</p>
+<pre class="literal-block">
+Describe key (or click or menu item):
+</pre>
+<p>接着 <em>C-x h</em> ，您会发现，缓冲区被水平分割为两个。另一个名为 <strong>*help*</strong> 缓冲区中显示的内容为</p>
+<pre class="literal-block">
+C-x h runs the command mark-whole-buffer
+   which is an interactive compiled Lisp function in `simple.el'.
+It is bound to C-x h, &lt;menu-bar&gt; &lt;edit&gt; &lt;mark-whole-buffer&gt;.
+(mark-whole-buffer)
+
+Put point at beginning and mark at end of buffer.
+You probably should not use this function in Lisp programs;
+it is usually a mistake for a Lisp function to use any subroutine
+that uses or sets the mark.
+
+[back]
+</pre>
+<div class="line-block">
+<div class="line">第一行说明了 <strong>C-x h</strong> 运行的命令为 <em>mark-whole-buffer</em></div>
+<div class="line">第二行说明了该命令由 <em>simple.el</em> 这个扩展提供，绑定到 <em>C-x h</em> 、 <em>菜单栏-编辑-标记全部缓冲区</em> 、 和命令 <em>mark-whole-buffer</em></div>
+<div class="line">第三行介绍了这个命令的行为： 在文档末尾设置一个标记，并把光标点移动到文档起始。</div>
+</div>
+<div class="note">
+<p class="first admonition-title"><a id="id8" name="id8">Note</a></p>
+<p>光标点假定光标为插入式（竖线），位置在覆盖式光标(方块)的左侧。</p>
+<p class="last">事实上，Emacs中的相关判定以光标点为准！方块形光标只是为了减少视觉疲劳：）</p>
+</div>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<strong>Emacs使用命令进行处理，快捷键只是一种发送命令的方法！</strong></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p>一般情况下，我们用不到这么详细的说明，而且英文看起来也比较吃力。您可以使用 <strong>C-h c</strong> 以简洁模式查看说明。 只在回显区显示键位和它执行的命令：</p>
+<pre class="literal-block">
+C-x h runs the command mark-whole-buffer
+</pre>
+<p>通常这就足够了。</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+如果您知道一个命令，而不知道它绑定到什么键上，您可以使用 <strong>C-h w</strong> ，也就是命令 <em>Where-is</em></blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id45" id="id9" name="id9">Emacs命令行</a></h2>
+<blockquote>
+<p>由于Emacs太过强大，内部命令恒河沙数，根本不可能有同样数量的快捷键位来绑定它们！</p>
+<p>对于没有绑定的命令，可以使用 <em>命令行</em> 执行！</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>M-x</strong> (Alt+x) 开启命令行，回显区显示为 <tt class="docutils literal"><span class="pre">M-x</span></tt> ，然后输入 <tt class="docutils literal"><span class="pre">newline</span></tt></p>
+<p>这个命令默认绑定在回车键，所以它和回车键的作用一样为 <em>换行</em></p>
+<p><tt class="docutils literal"><span class="pre">C-h</span> <span class="pre">w</span> <span class="pre">newline</span></tt> 结果是： <tt class="docutils literal"><span class="pre">newline</span> <span class="pre">is</span> <span class="pre">on</span> <span class="pre">RET</span></tt></p>
+<div class="tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">命令行中，可以使用 <strong>TAB</strong> 补全，使用 <strong>M-p</strong> 上翻， <strong>M-n</strong> 下翻</p>
+</div>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+在后面的部分中，统一使用 <strong>M-x command</strong> 来表示 <strong>内部命令 command</strong> ；内部命令以 <em>(command)</em> 的形式写到配置文件中，当然配置文件稍稍复杂一点，很少直接这么写：）</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id46" id="id10" name="id10">Emacs终端</a></h2>
+<blockquote>
+<p><strong>M-x shell</strong> 激活Emacs终端。可以在Emacs终端中使用外部命令。</p>
+<p>需要注意的是，Emacs终端是哑终端，一些类型的输出不能够正确显示。</p>
+<p>在Emacs终端中使用 <strong>exit</strong> 命令退出。</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>M-!</strong> (Alt+Shift+1)临时执行一条外部命令，并输出在名为 <strong>*Shell Command Output*</strong> 的缓冲区中  (M-x shell-command)</p>
+<p><strong>C-u M-!</strong> (Ctrl+u Alt+Shift+1)临时执行一条外部命令，并输出到光标位置。</p>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id47" id="id11" name="id11">Emacs文件管理器</a></h2>
+<blockquote>
+<p><strong>C-x d</strong>   进入Dired列表模式</p>
+<p><strong>C-x C-d</strong> 获取文件列表（简洁）</p>
+<p><strong>C-x C-f</strong> 打开文件，输入路径为打开目录</p>
+<p>详细介绍见 <a class="reference" href="#id34">文件管理</a></p>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id48" id="id12" name="id12">区块选择</a></h2>
+<blockquote>
+<p>很多时候，我们需要选中缓冲区中的某一部分内容。和大多数程序一样，您可以在被选择区块的起始点按下左键，移动鼠标，在结束点释放左键，这部分区块便被选中。</p>
+<p>这种方式效率并不高，而且一些场合并没有鼠标支持，例如控制台或者远程登录。</p>
+<p>事实上，Emacs进行区块选择的方法，是设置一个标记，标记到<a class="reference" href="#id8">光标点</a>之间的部分将被选中。</p>
+<p>标记的位置为 <strong>M-x set-mark-command</strong> 时，<a class="reference" href="#id8">光标点</a>所处的位置。</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><em>M-x set-mark-command</em> 是设置标记的内部命令，默认绑定在 <strong>C-SPC</strong> 键上。</p>
+<p>如果使用输入法，这个键位多半是切换输入法的快捷键。键盘指令会先被输入法拦截下来，而无法发送到Emacs。</p>
+<p>当然也可以使用 <strong>M-&#64;</strong> 来设定标记。不过 <em>M-&#64;</em> 原绑定为 <em>M-x mark-word</em> ，虽然差不太多，但有时并不好用；况且对于一个常用的命令来讲， <em>M-&#64;</em> 键位的难度太高了……</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p>Emacs的键位中，几乎没有默认绑定在 <em>WIN</em> 键上的命令，不妨利用一下：）</p>
+<p>在Emacs的用户配置文件 <strong>~/.emacs</strong> 中添加如下内容：</p>
+<pre class="literal-block">
+;; WIN+Space 设置标记
+(global-set-key (kbd &quot;s-SPC&quot;) 'set-mark-command)
+</pre>
+<p>重启Emacs，或者在 <em>~/.emacs</em> 文件的缓冲区中执行命令 <strong>M-x eval-buffer</strong> ，便可以使配置文件立即生效：）</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p id="c-z">在某些类型的终端中，WIN键不起作用，建议使用命令。或者绑定到 <strong>C-z</strong> (Ctrl+z)</p>
+<pre class="literal-block">
+;; （在注释里说明原命令和绑定，是一个良好的习惯）
+;; C-z 设置标记 ;;  C-z:M-x iconify-or-deiconify-frame:C-z,C-x C-z
+(global-set-key (kbd &quot;C-z&quot;) 'set-mark-command)
+</pre>
+<p><strong>C-z</strong> ，原为 <em>M-x iconify-or-deiconify-frame</em> 键为: <em>C-z</em>, <em>C-x C-z</em> 。绑定后，仍可以使用 <strong>C-x C-z</strong> 挂起Emacs。</p>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id49" id="id13" name="id13">中止执行</a></h2>
+<blockquote>
+<p>如果想放弃一个命令，可以使用 <strong>C-g</strong> (<em>M-x keyboard-quit</em>)打断。</p>
+<p>当然了，建议您使用快捷键 <em>C-g</em> ，因为这时 <em>M-x</em> 通常是没有效果的</p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>ESC ESC ESC</strong> (<em>M-x keyboard-escape-quit</em>)可以从一些交互命令中退出。</p>
+<p>例如从 <em>询问替换</em> <em>M-x query-replace</em> 中退出。</p>
+<p>如果 <em>C-g</em> 不能搞定，这时多半需要连按三次 <em>ESC</em></p>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id50" id="id14" name="id14">基本配置</a></h2>
+<blockquote>
+<p>您已经知道了，Emacs的配置文件为 <strong>~/.emacs</strong> 。配置文件中，以 <strong>;</strong> 起始到行末的部分为注释。</p>
+<p>让我们些简单配置一下：</p>
+<pre class="literal-block">
+;;========================================
+;; 外观设置
+;;========================================
+
+;;禁用工具栏
+(tool-bar-mode nil)
+
+;;禁用菜单栏，F10 开启关闭菜单
+(menu-bar-mode nil)
+
+;;禁用滚动栏，用鼠标滚轮代替
+;;(scroll-bar-mode nil)
+
+;;禁用启动画面
+(setq inhibit-startup-message t)
+
+;;========================================
+;; 键绑定
+;;========================================
+
+;; C-z 设置标记 ;;  C-z:M-x iconify-or-deiconify-frame:C-z,C-x C-z
+(global-set-key (kbd &quot;C-z&quot;) 'set-mark-command)
+
+;;F10显示/隐藏菜单栏 ;; M-x menu-bar-open
+;;(global-set-key (kbd &quot;F10&quot;) 'menu-bar-mode)
+
+;;WIN+s进入Shell ;; M-x shell
+(global-set-key (kbd &quot;s-s&quot;) 'shell)
+;;(define-key ctl-x-map &quot;\M-s&quot; 'shell)
+
+;;WIN+space 设置标记
+(global-set-key (kbd &quot;s-SPC&quot;) 'set-mark-command)
+
+;;========================================
+;; 缓冲区
+;;========================================
+
+;;设定行距
+(setq default-line-spacing 4)
+
+;;页宽
+(setq default-fill-column 60)
+
+;;缺省模式 text-mode
+(setq default-major-mode 'text-mode)
+
+;;设置删除纪录
+(setq kill-ring-max 200)
+
+;;以空行结束
+(setq require-final-newline t)
+
+
+;;语法加亮
+(global-font-lock-mode t)
+
+;;高亮显示区域选择
+(transient-mark-mode t)
+
+;;页面平滑滚动， scroll-margin 3 靠近屏幕边沿3行时开始滚动，可以很好的看到上下文。
+(setq scroll-margin 3
+scroll-conservatively 10000)
+
+;;高亮显示成对括号，但不来回弹跳
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+
+;;鼠标指针规避光标
+(mouse-avoidance-mode 'animate)
+
+;;粘贴于光标处，而不是鼠标指针处
+(setq mouse-yank-at-point t)
+
+;;========================================
+;; 回显区
+;;========================================
+
+;;闪屏报警
+(setq visible-bell t)
+
+;;使用 y or n 提问
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;;锁定行高
+(setq resize-mini-windows nil)
+
+;;递归minibuffer
+(setq enable-recursive-minibuffers t)
+
+;;========================================
+;; 状态栏
+;;========================================
+
+;;显示时间
+(display-time)
+;;时间格式
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+(setq display-time-interval 10)
+
+;;显示列号
+(setq column-number-mode t)
+
+;;标题栏显示 %f 缓冲区完整路径 %p 页面百分数 %l 行号
+(setq frame-title-format &quot;%f&quot;)
+
+
+;;========================================
+;; 编辑器设定
+;;========================================
+
+;;不生成临时文件
+;;(setq-default make-backup-files nil)
+
+;;只渲染当前屏幕语法高亮，加快显示速度
+(setq lazy-lock-defer-on-scrolling t)
+(setq font-lock-support-mode 'lazy-lock-mode)
+(setq font-lock-maximum-decoration t)
+
+;;将错误信息显示在回显区
+(condition-case err
+    (progn
+    (require 'xxx) )
+  (error
+   (message &quot;Can't load xxx-mode %s&quot; (cdr err))))
+
+;;使用X剪贴板
+(setq x-select-enable-clipboard t)
+;;设定剪贴板内容格式    适应Firefox
+(set-clipboard-coding-system 'ctext)
+</pre>
+</blockquote>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id51" id="id15" name="id15">帮助系统</a></h1>
+<blockquote>
+<p>使用Emacs的过程中，您随时可以获取帮助</p>
+<dl class="docutils">
+<dt><em>M-x help-with-tutorial</em></dt>
+<dd><strong>C-h t</strong> Emacs快捷指南</dd>
+<dt><em>M-x info-emacs-manual</em></dt>
+<dd><strong>C-h r</strong> Emacs使用手册</dd>
+<dt><em>M-x info</em></dt>
+<dd><strong>C-h i</strong> 在线帮助</dd>
+</dl>
+<p>其它</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="47%" />
+<col width="37%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>C-h a</td>
+<td>M-x apropos-command</td>
+<td>搜索命令</td>
+</tr>
+<tr><td>C-h f</td>
+<td>M-x describe-function</td>
+<td>函数说明</td>
+</tr>
+<tr><td>C-h v</td>
+<td>M-x describe-variable</td>
+<td>变量说明</td>
+</tr>
+<tr><td>C-h k</td>
+<td>M-x describe-key</td>
+<td>键绑定说明</td>
+</tr>
+<tr><td>C-h c</td>
+<td>M-x describe-key-briefly</td>
+<td>键绑定说明</td>
+</tr>
+<tr><td>C-h w</td>
+<td>M-x where-is</td>
+<td>查找键绑定</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>使用帮助时，可能会分割出其它窗格。 <strong>C-x 1</strong> 关闭其它窗格 详见 <a class="reference" href="#id24">窗格和缓冲区管理</a></li>
+</ul>
+</blockquote>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id52" id="id16" name="id16">基本操作</a></h1>
+<blockquote>
+<p>针对文件及编辑器的一些操作，绝大多数软件中，这类操作都安排在 <em>文件</em> 菜单里面。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="36%" />
+<col width="32%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><strong>C-x C-c</strong></td>
+<td>M-x save-buffers-kill-emacs</td>
+<td>保存退出</td>
+</tr>
+<tr><td><strong>C-x C-z</strong></td>
+<td>M-x iconify-or-deiconify-frame</td>
+<td>挂起（最小化）</td>
+</tr>
+<tr><td colspan="3"></td>
+</tr>
+<tr><td><strong>C-x C-f</strong></td>
+<td>M-x find-file</td>
+<td>打开文件、目录</td>
+</tr>
+<tr><td><strong>C-x C-r</strong></td>
+<td>M-x find-file-read-only</td>
+<td>以只读模式打开</td>
+</tr>
+<tr><td><strong>C-x i</strong></td>
+<td>M-x insert-file</td>
+<td>插入文件</td>
+</tr>
+<tr><td colspan="3"></td>
+</tr>
+<tr><td><strong>C-x C-s</strong></td>
+<td>M-x save-buffer</td>
+<td>保存</td>
+</tr>
+<tr><td><strong>C-x s</strong></td>
+<td>M-x save-some-buffers</td>
+<td>询问，保存所有未保存的缓冲区</td>
+</tr>
+<tr><td><strong>C-x C-w</strong></td>
+<td>M-x write-file</td>
+<td>另存为文件</td>
+</tr>
+<tr><td colspan="3"></td>
+</tr>
+<tr><td><strong>C-x RET f &lt;coding&gt; RET</strong></td>
+<td>略……</td>
+<td>以指定编码保存文件</td>
+</tr>
+<tr><td></td>
+<td>M-x revert-buffer</td>
+<td>恢复到原始状态</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id53" id="id17" name="id17">数字参数</a></h1>
+<blockquote>
+<dl class="docutils">
+<dt>Emacs中可以使用 <em>Ctrl+u</em> 向命令传递参数。</dt>
+<dd>例如用数字作为参数，指定命令运行的次数</dd>
+<dt><strong>C-u &lt;#&gt; &lt;command&gt;</strong></dt>
+<dd>M-x universal-argument （通用参数）</dd>
+</dl>
+<p>例如：</p>
+<pre class="literal-block">
+C-u 10 C-f               向前10个字符
+C-u 10 M-x forward-char
+</pre>
+<dl class="docutils">
+<dt><strong>M-&lt;#&gt; &lt;command&gt;</strong></dt>
+<dd>negative-argument （负参数）</dd>
+<dt><strong>M-[1-9]</strong> 快速参数</dt>
+<dd>digit-argument （数字参数）</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id54" id="id18" name="id18">基础编辑</a></h1>
+<blockquote>
+<dl class="docutils">
+<dt>几乎所有编辑器都具有的基础功能。</dt>
+<dd>这里只是一个列表，更详细的介绍，请参阅《Emacs 快捷指南》 <strong>C-h t</strong></dd>
+<dt>使用Readline控件的程序，例如 <em>bash</em> ；以及其它使用Emacs风格键绑定的程序，也使用基本相同的功能键。</dt>
+<dd>如果熟悉 <em>bash</em> 的快捷键，这些绑定您一定驾轻就熟：）</dd>
+</dl>
+</blockquote>
+<div class="section">
+<h2><a class="toc-backref" href="#id55" id="id19" name="id19">浏览</a></h2>
+<blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="15%" />
+<col width="15%" />
+<col width="29%" />
+<col width="29%" />
+</colgroup>
+<tbody valign="top">
+<tr><td></td>
+<td>向前</td>
+<td>向后</td>
+<td>向下</td>
+<td>向上</td>
+</tr>
+<tr><td>字符</td>
+<td><strong>C-f</strong></td>
+<td><strong>C-b</strong></td>
+<td><strong>C-n</strong></td>
+<td><strong>C-p</strong></td>
+</tr>
+<tr><td>单词</td>
+<td><strong>M-f</strong></td>
+<td><strong>M-b</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>行</td>
+<td><strong>C-a</strong></td>
+<td><strong>C-e</strong></td>
+<td colspan="2">移动到行首或行尾，不能跨行</td>
+</tr>
+<tr><td>句</td>
+<td><strong>M-a</strong></td>
+<td><strong>M-e</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>段落</td>
+<td><strong>M-{</strong></td>
+<td><strong>M-}</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>缓冲区</td>
+<td><strong>M-&lt;</strong></td>
+<td><strong>M-&gt;</strong></td>
+<td colspan="2">移动到缓冲区起始或结束</td>
+</tr>
+<tr><td colspan="5"></td>
+</tr>
+<tr><td>卷屏</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><strong>C-v</strong></td>
+<td><strong>M-v</strong></td>
+</tr>
+<tr><td colspan="5"></td>
+</tr>
+<tr><td colspan="5"></td>
+</tr>
+<tr><td>行号</td>
+<td><strong>M-g g</strong></td>
+<td><strong>M-g M-g</strong></td>
+<td>M-x goto-line</td>
+<td>按行号跳转</td>
+</tr>
+<tr><td>字符位置</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>M-x goto-char</td>
+<td>按字符跳转</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p>其它：</p>
+<dl class="docutils">
+<dt><strong>C-M-l</strong> <em>M-x reposition-window</em></dt>
+<dd>将当前行卷至页面中部</dd>
+<dt><strong>C-l</strong> <em>M-x recenter</em></dt>
+<dd>刷新页面，将将当前行卷至页面中部 （使用数字参数指定行）</dd>
+<dt><strong>M-r</strong>  <em>M-x move-to-window-line</em></dt>
+<dd>移动光标至页面中间的行 （使用数字参数指定行）</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id56" id="id20" name="id20">编辑</a></h2>
+<blockquote>
+<p><strong>删除</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="11%" />
+<col width="21%" />
+<col width="30%" />
+<col width="32%" />
+</colgroup>
+<tbody valign="top">
+<tr><td></td>
+<td colspan="2">向前</td>
+<td colspan="2">向后</td>
+</tr>
+<tr><td>字符</td>
+<td><strong>C-d</strong></td>
+<td>M-x delete-char</td>
+<td><strong>DEL</strong></td>
+<td>M-x delete-backward-char</td>
+</tr>
+<tr><td>单词</td>
+<td><strong>M-d</strong></td>
+<td>M-x kill-word</td>
+<td><strong>C-Delete</strong> / <strong>M-DEL</strong></td>
+<td>M-x backward-kill-word</td>
+</tr>
+<tr><td colspan="5"></td>
+</tr>
+<tr><td>行</td>
+<td colspan="2">光标至行末</td>
+<td colspan="2"><strong>C-k</strong>   M-x kill-line</td>
+</tr>
+<tr><td></td>
+<td colspan="2">整行</td>
+<td colspan="2"><strong>C-S-backspace</strong>   M-x kill-whole-line</td>
+</tr>
+<tr><td></td>
+<td colspan="2">按表达式删除</td>
+<td colspan="2"><strong>C-M-k</strong>  M-x kill-sexp</td>
+</tr>
+<tr><td>区块</td>
+<td colspan="2"><strong>C-w</strong></td>
+<td colspan="2">M-x kill-region</td>
+</tr>
+<tr><td>空白</td>
+<td colspan="2">删除连续空格</td>
+<td colspan="2">M-x delete-horizontal-space</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>上表中 <strong>DEL</strong> 实际按键为 <em>Backspace</em> ，PC中只有 <em>Delete</em> 键，而没有 <em>DEL</em> 键，Emacs把 <em>Backspace</em> 映射为 <em>DEL</em></p>
+<p><em>backspace</em> 实际按键也为 <em>Backspace</em></p>
+<p class="last">类似的，Emacs把PC的 <em>Enter</em> 键映射为 <em>RET</em> ; 而 <em>RET</em> 实际为 <em>C-m</em></p>
+</div>
+<p>可能您注意到了，Emacs进行删除时有两种处理方法， <strong>delete</strong> 和 <strong>kill</strong></p>
+<dl class="docutils">
+<dt><em>kill</em></dt>
+<dd>比较类似于 <em>剪切</em> ，剪切掉的内容被依次放入 <em>剪切轮环</em> <strong>kill-ring</strong> ，可以召回。</dd>
+<dt><em>delete</em></dt>
+<dd>就是 <em>删除</em> 了，删除掉的内容并不能召回。但是可以通过 <em>M-x undo</em> 撤消删除。</dd>
+</dl>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>复制</strong></p>
+<dl class="docutils">
+<dt><strong>M-w</strong> <em>M-x kill-ring-save</em></dt>
+<dd>将内容放入 <em>剪切轮环</em> <strong>kill-ring</strong></dd>
+</dl>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>粘贴</strong></p>
+<dl class="docutils">
+<dt><strong>C-y</strong> <em>M-x yank</em></dt>
+<dd>从 <em>剪切轮环</em> <strong>kill-ring</strong> 中召回最后一次放入的内容</dd>
+<dt><strong>M-y</strong> <em>M-x yank-pop</em></dt>
+<dd><p class="first">从 <em>剪切轮环</em> <strong>kill-ring</strong> 中按后进先出的顺序，依次召回</p>
+<ul class="last simple">
+<li>这个命令只能在 <em>M-x yank</em> 或者 <em>M-x yank-pop</em> 之后使用。也就是说，只能 <em>C-y</em> 后 <em>M-y</em> ， <em>M-y</em> 可以连续多次。</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>撤消</strong></p>
+<dl class="docutils">
+<dt><strong>C-/</strong> <em>M-x undo</em></dt>
+<dd>撤消之前的修改（<a class="reference" href="#id19">浏览</a>部分的操作不可撤消）。</dd>
+</dl>
+<p><strong>C-_</strong> <em>M-x undo</em></p>
+<dl class="docutils">
+<dt><strong>C-x u</strong>  <em>M-x advertised-undo</em></dt>
+<dd><em>advertised-unde</em> 是 <em>undo</em> 命令的一个别名</dd>
+</dl>
+<ul class="simple">
+<li>为了减少 undo 的次数，每插入20个字符，视为一个 undo 的单位。</li>
+</ul>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>重做</strong></p>
+<dl class="docutils">
+<dt><strong>C-g M-x undo</strong></dt>
+<dd>例如 <tt class="docutils literal"><span class="pre">C-g</span> <span class="pre">C-/</span></tt> ，撤消上一次的 <em>M-x undo</em> 。</dd>
+</dl>
+<ul>
+<li><p class="first">如果需要更多的 <em>redo</em> ，需要安装 <strong>redo.el</strong> 扩展</p>
+<dl class="docutils">
+<dt>并在配置文件中添加如下内容</dt>
+<dd><pre class="first last literal-block">
+;;---------- redo
+;; 读取扩展
+(require 'redo)
+;; 设置Redo的键绑定
+(global-set-key ( kbd &quot;C-.&quot;) 'redo)
+</pre>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id57" id="id21" name="id21">区块编辑</a></h2>
+<blockquote>
+<p>关于区块的选择，可以参考 <a class="reference" href="#id12">区块选择</a></p>
+<dl class="docutils">
+<dt>需要补充的是，完成区块选择时，实际定义了两种区块 ：</dt>
+<dd><p class="first">下面用 <tt class="docutils literal"><span class="pre">-</span></tt> 表示普通字符，用 <tt class="docutils literal"><span class="pre">X</span></tt> 表示被选中的字符。下面两个例子中，标记和光标点的位置相同。</p>
+<p><strong>连续区块</strong>为标记和光标点之间连续的区块:</p>
+<pre class="literal-block">
+---XXXXXXXX
+XXXXXXXXXXX
+XXXXXXXXXXX
+XXXXXXXX---
+</pre>
+<p><strong>矩形区块</strong>为标记和光标点之间矩形的区块:</p>
+<pre class="literal-block">
+---XXXXX---
+---XXXXX---
+---XXXXX---
+---XXXXX---
+</pre>
+<ul class="last">
+<li><p class="first">连续区块能够高亮显示，而矩形区块则是隐含的。</p>
+<p>下面例子，选中的矩形区块，与第一个例子相同。前面为 <em>左上-右下</em> 选择，现在为 <em>左下-右上</em> 选择</p>
+<pre class="literal-block">
+--------XXX
+XXXXXXXXXXX
+XXXXXXXXXXX
+XXX--------
+</pre>
+</li>
+</ul>
+</dd>
+</dl>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="39%" />
+<col width="47%" />
+</colgroup>
+<tbody valign="top">
+<tr><td colspan="3">连续区块</td>
+</tr>
+<tr><td>C-SPC</td>
+<td>M-x set-mark-command</td>
+<td>在光标点处设置标记</td>
+</tr>
+<tr><td>C-&#64;</td>
+<td>同上</td>
+<td>建议使用 <a class="reference" href="#c-z">C-z</a></td>
+</tr>
+<tr><td>M-&#64;</td>
+<td>M-x mark-word</td>
+<td>在单词结尾处设置标记</td>
+</tr>
+<tr><td>M-h</td>
+<td>M-x mark-paragraph</td>
+<td>选中段落</td>
+</tr>
+<tr><td></td>
+<td>M-x mark-end-of-sentence</td>
+<td>在句末设置标记</td>
+</tr>
+<tr><td>C-x h</td>
+<td>M-x mark-whole-buffer</td>
+<td>整个缓冲区</td>
+</tr>
+<tr><td>C-x C-x</td>
+<td>M-x exchange-point-and-mark</td>
+<td>交换标记和光标点</td>
+</tr>
+<tr><td colspan="3"></td>
+</tr>
+<tr><td>C-w</td>
+<td>M-x kill-region</td>
+<td>剪切区块</td>
+</tr>
+<tr><td>M-w</td>
+<td>M-x kill-ring-save</td>
+<td>复制区块</td>
+</tr>
+<tr><td>C-y</td>
+<td>M-x yank</td>
+<td>粘贴区块</td>
+</tr>
+<tr><td>M-y</td>
+<td>M-x yank-pop</td>
+<td>轮环粘贴</td>
+</tr>
+<tr><td colspan="3">矩形区块</td>
+</tr>
+<tr><td>C-x r k</td>
+<td>M-x kill-rectangle</td>
+<td>删除矩形区块</td>
+</tr>
+<tr><td>C-x r y</td>
+<td>M-x yank-rectangle</td>
+<td>粘贴上一次删除的矩形区块</td>
+</tr>
+<tr><td>C-x r t</td>
+<td>M-x string-rectangle</td>
+<td>用指定字符填充</td>
+</tr>
+<tr><td>C-x r o</td>
+<td>M-x open-rectangle</td>
+<td>用空格插入</td>
+</tr>
+<tr><td>C-x r c</td>
+<td>M-x clear-rectangle</td>
+<td>用空格填充</td>
+</tr>
+<tr><td colspan="3"></td>
+</tr>
+<tr><td>C-x r r</td>
+<td>M-x copy-rectangle-to-register</td>
+<td>拷贝到寄存器中</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><strong>C-x r y</strong> 粘贴时，召回的矩形区块，左上角对齐光标点</li>
+</ul>
+<ul>
+<li><dl class="first docutils">
+<dt>矩形区块的标记和光标点，水平位置相同时，矩形区块是一条垂线。</dt>
+<dd><ul class="first last simple">
+<li>插入时，可直接使用 <strong>C-x r t</strong> 填充这条垂线，后两条命令根本用不到</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<ul class="simple">
+<li>矩形区块经过的行，如果行尾在区块左侧，则行尾和区块之间的部分将强制填充。</li>
+</ul>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id58" id="id22" name="id22">搜索和替换</a></h2>
+<blockquote>
+<p>Emacs中，默认使用 <strong>增量搜索</strong> ：在搜索对话模式中输入关键词的同时，Emacs就开始进行搜索，随着关键字的输入，不断的缩小搜索范围</p>
+<p>而传统的非增量搜索，则是关键词输入后，再进行搜索。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="52%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr><td colspan="3">增量搜索</td>
+</tr>
+<tr><td>C-s</td>
+<td>M-x isearch-forward</td>
+<td>向前增量搜索</td>
+</tr>
+<tr><td>C-r</td>
+<td>M-x isearch-backward</td>
+<td>向后增量搜索</td>
+</tr>
+<tr><td>C-M-S</td>
+<td>M-x isearch-forward-regexp</td>
+<td>正则表达式向前增量搜索</td>
+</tr>
+<tr><td>C-M-r</td>
+<td>M-x isearch-backward-regexp</td>
+<td>正则表达式向后增量搜索</td>
+</tr>
+<tr><td colspan="3">询问替换</td>
+</tr>
+<tr><td>M-%</td>
+<td>M-x query-replace</td>
+<td>询问替换</td>
+</tr>
+<tr><td>C-M-%</td>
+<td>M-x query-replace-regexp</td>
+<td>正则表达式询问替换</td>
+</tr>
+<tr><td colspan="3">搜索</td>
+</tr>
+<tr><td></td>
+<td>M-x search-forward</td>
+<td>向前搜索</td>
+</tr>
+<tr><td></td>
+<td>M-x search-backward</td>
+<td>向后搜索</td>
+</tr>
+<tr><td></td>
+<td>M-x search-forward-regexp</td>
+<td>正则表达式向前搜索</td>
+</tr>
+<tr><td></td>
+<td>M-x search-backward-regexp</td>
+<td>正则表达式向后搜索</td>
+</tr>
+<tr><td colspan="3">替换</td>
+</tr>
+<tr><td></td>
+<td>M-x replace-string</td>
+<td>替换</td>
+</tr>
+<tr><td></td>
+<td>M-x replace-regexp</td>
+<td>正则表达式替换</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>增量搜索时，关键词会被一直保留。可以直接进行下一次搜索</li>
+<li>下一次增量搜索，如果之前进行了其它操作，则需要连续两次命令（快捷键），才能召回关键词。<ul>
+<li>因为这种情况下，您很有可能是希望以其它关键词进行搜索</li>
+<li>同样的，没有搜索到关键词时，第一次取消，您可以重新输入关键词，连续取消两次才能取消这次搜索</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><strong>C-g</strong> 取消搜索，回到搜索前的位置</li>
+<li><strong>RET</strong> 结束搜索，停在当前位置<ul>
+<li>我倾向于使用方向键 <em>C-b</em> 结束搜索。拼音文字中，使用 <em>M-b</em> 或者 <em>M-DEL</em> 最好</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>可以选中区块后，在区块内进行替换</li>
+</ul>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id59" id="id23" name="id23">其它</a></h2>
+<blockquote>
+<p><strong>插入控制字符</strong></p>
+<p>使用 <strong>C-q</strong> ，可以在缓冲区插入一个控制字符。例如 <em>C-q C-m</em> = <tt class="docutils literal"><span class="pre">^M</span></tt></p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>文本换位</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="22%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>字符</td>
+<td>C-t</td>
+<td>M-x transpose-chars</td>
+</tr>
+<tr><td>单词</td>
+<td>M-t</td>
+<td>M-x transpose-words</td>
+</tr>
+<tr><td>行</td>
+<td>C-x C-t</td>
+<td>M-x transpose-lines</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>将TAB字符转换为空格</strong></p>
+<p>选中需要转换的区域， <em>M-x untabify</em></p>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<p><strong>对齐文本块</strong></p>
+<p>选中需要对齐的区域， <em>M-x indent-region</em></p>
+</blockquote>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id60" id="id24" name="id24">窗格和缓冲区管理</a></h1>
+<blockquote>
+<p><strong>多窗格</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="32%" />
+<col width="53%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>C-x 2</td>
+<td>M-x split-window-vertically</td>
+<td>分隔出两个垂直窗格，水平分隔线</td>
+</tr>
+<tr><td>C-x 3</td>
+<td>M-x split-window-horizontally</td>
+<td>分隔出两个水平窗格，垂直分隔线</td>
+</tr>
+<tr><td>C-x 1</td>
+<td>M-x delete-other-window</td>
+<td>只保留当前窗格</td>
+</tr>
+<tr><td>ESC ESC ESC</td>
+<td>M-x keyboard-escape-quit</td>
+<td>同上</td>
+</tr>
+<tr><td>C-x 0</td>
+<td>M-x delete-window</td>
+<td>关闭当前窗格</td>
+</tr>
+<tr><td>C-x o</td>
+<td>M-x other-window</td>
+<td>在下一个窗格中激活光标</td>
+</tr>
+<tr><td>C-M-v</td>
+<td>M-x scroll-other-window</td>
+<td>向下卷动下一个窗格，使用负参数可以向上卷动</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>下一个窗格</em> 垂直分隔，则先左后右；水平分隔，则先上后下。如果窗格还有子窗格，则先遍历其子窗格后，再遍历其它窗格，以此递归。</li>
+</ul>
+</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<dl class="docutils">
+<dt><strong>多缓冲区</strong></dt>
+<dd>Emacs中，打开新的缓冲区，原有缓冲区并不会关闭</dd>
+</dl>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="42%" />
+<col width="37%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>C-x C-b</td>
+<td>M-x list-buffers</td>
+<td>查看缓冲区列表</td>
+</tr>
+<tr><td>C-x b</td>
+<td>M-x switch-to-buffer</td>
+<td>切换到其它缓冲区</td>
+</tr>
+<tr><td>C-x k</td>
+<td>M-x kill-buffer</td>
+<td>关闭当前缓冲区</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p class="first">切换到其它缓冲区时，默认上一次使用的缓冲区。尽量用 <em>TAB</em> 补全</p>
+</li>
+<li><p class="first">使用多窗格时，缓冲区操作只对当前窗格有效</p>
+</li>
+<li><p class="first">建议使用 <strong>ibuffer.el</strong> 这个扩展。 Emacs自带，在配置文件中添加如下语句</p>
+<pre class="literal-block">
+;;========== ibuffer
+(require 'ibuffer)
+(global-set-key ( kbd &quot;C-x C-b &quot;)' ibuffer)
+</pre>
+</li>
+<li><p class="first">这一个缓冲区列表的扩展效果稍差，不过还不错。Emacs自带</p>
+<pre class="literal-block">
+;;CRM bufer list
+(global-set-key &quot;\C-x\C-b&quot; 'electric-buffer-list)
+</pre>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id61" id="id25" name="id25">寄存器管理</a></h1>
+<blockquote>
+<p>寄存器用于存贮内容，在需要时取出，插入缓冲区。</p>
+<p>Emacs的寄存器使用<strong>单个字符</strong>命名，可以存贮两种内容 ：</p>
+<p><strong>光标位置和窗口状态</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="42%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>C-x r SPC &lt;寄存器名&gt;</td>
+<td>M-x point-to-register</td>
+<td>存贮光标位置</td>
+</tr>
+<tr><td>C-x r w &lt;寄存器名&gt;</td>
+<td>M-x window-configuration-to-register</td>
+<td>保存当前窗口状态</td>
+</tr>
+<tr><td>C-x r f &lt;寄存器名&gt;</td>
+<td>M-x frame-configuration-to-register</td>
+<td>保存所有窗口状态</td>
+</tr>
+<tr><td>C-x r j &lt;寄存器名&gt;</td>
+<td>M-x jump-to-register</td>
+<td>光标跳转</td>
+</tr>
+<tr><td>C-x j &lt;寄存器名&gt;</td>
+<td>略……</td>
+<td>同上</td>
+</tr>
+</tbody>
+</table>
+<p><strong>文本和数字</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>C-x r s &lt;寄存器名&gt;</td>
+<td>M-x copy-to-register</td>
+<td>将连续区块拷贝到寄存器中</td>
+</tr>
+<tr><td>C-x r r &lt;寄存器名&gt;</td>
+<td>M-x copy-rectangle-to-register</td>
+<td>将矩形区块拷贝到寄存器中</td>
+</tr>
+<tr><td>C-u &lt;数字&gt; C-x r n &lt;寄存器名&gt;</td>
+<td>M-x number-to-register</td>
+<td>将数字拷贝到寄存器中</td>
+</tr>
+<tr><td>C-x r i &lt;寄存器名&gt;</td>
+<td>M-x insert-register</td>
+<td>在缓冲区中插入寄存器内容</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p class="first">M-x view-register    查看寄存器内容</p>
+</li>
+<li><p class="first"><strong>M-x list-registers</strong>   查看寄存器列表</p>
+</li>
+<li><p class="first">寄存器中的矩形区块，以矩形区块的方式插入到缓冲区中。 见 <a class="reference" href="#id21">区块编辑</a></p>
+</li>
+<li><p class="first">也可以将文件插入到寄存器中 <strong>(set-register ?&lt;寄存器名称&gt; '(file . &lt;文件名&gt;))</strong> ，示例</p>
+<pre class="literal-block">
+M-x lisp-interaction-mode 进入交互模式，输入如下Lisp代码：
+(set-register ?e '(file . &quot;~/.emacs&quot;))&lt;光标&gt;移动此外， C-j 求值。
+M-x list-registers 查看寄存器列表，多了寄存器 e ： Register e contains the file &quot;~/.emacs&quot;.
+</pre>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id62" id="id26" name="id26">书签管理</a></h1>
+<blockquote>
+<p>Emacs可以在当前位置创建一个书签，以便能够快速的返回。</p>
+<dl class="docutils">
+<dt>与存储光标位置的寄存器略有不同</dt>
+<dd><ul class="first last simple">
+<li>书签可以使用单词来命名，而不限于一个字符。起一个容易记住的名字</li>
+<li>退出Emacs后，书签不会消失，下次还可以使用</li>
+</ul>
+</dd>
+</dl>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="42%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>C-x r m &lt;name&gt;</td>
+<td>M-x bookmark-set</td>
+<td>设置书签</td>
+</tr>
+<tr><td>C-x r b &lt;name&gt;</td>
+<td>M-x bookmark-jump</td>
+<td>跳转到书签</td>
+</tr>
+<tr><td>C-x r l</td>
+<td>M-x bookmark-bmenu-list</td>
+<td>书签列表</td>
+</tr>
+<tr><td></td>
+<td>M-x bookmark-delete</td>
+<td>删除书签</td>
+</tr>
+<tr><td></td>
+<td>M-x bookmark-load</td>
+<td>读取存储书签文件</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><p class="first">书签默认存储在 <strong>~/.emacs.bmk</strong> 文件中</p>
+</li>
+<li><p class="first">在配置文件中，可以设置书签存储的文件</p>
+<pre class="literal-block">
+;; 书签文件的路径及文件名
+(setq bookmark-default-file &quot;~/.emacs.d/.emacs.bmk&quot;)
+
+;; 同步更新书签文件 ;; 或者退出时保存
+(setq bookmark-save-flag 1)
+</pre>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id63" id="shell" name="shell">Shell模式</a></h1>
+<blockquote>
+<p><strong>M-x shell</strong> 进入Shell模式，可以完成一些简单的工作。不过有些情况下，输出会有一些问题</p>
+<p>事实上，这是Emacs自带的终端。它与 <em>bash</em> 和 <em>sh</em> 的兼容比较好，而 <em>fish</em> 之类比较现代的Shell，在Emacs终端里的效果则很差</p>
+<p>需要注意的是， <em>readline-bash</em> 的绑定 <strong>C-p</strong> <strong>C-n</strong> ，在Emacs终端需要使用 <strong>M-p</strong> <strong>M-n</strong> 。其它的键绑定，也以Emacs为准</p>
+</blockquote>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id64" id="id27" name="id27">宏</a></h1>
+<blockquote>
+记录一系列的操作，在需要的时候，运行一遍</blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<dl class="docutils">
+<dt>例如给一个单词加 <tt class="docutils literal"><span class="pre">&quot;</span></tt> ，可以分解为以下操作:</dt>
+<dd><div class="first last line-block">
+<div class="line">M-b 移动到词首</div>
+<div class="line">&quot;</div>
+<div class="line">M-f 移动到词尾</div>
+<div class="line">&quot;</div>
+</div>
+</dd>
+</dl>
+<p>如果要给一个词加上 <tt class="docutils literal"><span class="pre">&quot;</span></tt> ，只要定位到这个词，运行上面的宏就可以了。</p>
+<p>当然，这只是最简单的宏。结合正则表达式进行匹配，以宏进行操作，可以完成许多复杂的操作</p>
+</blockquote>
+<div class="section">
+<h2><a class="toc-backref" href="#id65" id="id28" name="id28">定义与运行</a></h2>
+<blockquote>
+<dl class="docutils">
+<dt><strong>C-x (</strong>  <em>M-x kmacro-start-macro</em>    <strong>F3</strong>  <em>M-x kmacro-start-macro-or-insert-counter</em></dt>
+<dd>开始录制宏</dd>
+<dt><strong>C-x )</strong>  <em>M-x kmacro-end-macro</em></dt>
+<dd>结束录制</dd>
+<dt><strong>F4</strong> <em>M-x kmacro-end-or-call-macro</em></dt>
+<dd>播放刚录制的宏； 如果正在录制宏， <em>F4</em> 为结束录制。</dd>
+<dt><strong>C-x e</strong>  <em>M-x kmacro-end-and-call-macro</em></dt>
+<dd>播放宏</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id66" id="id29" name="id29">宏轮环</a></h2>
+<blockquote>
+<p>与 <em>剪切轮环</em> 类似，Emacs中也有 <em>宏轮环</em> 的概念： 当一个新的宏被定义，原有的宏并不消失，只是在宏轮环中的位置被挤到后面。</p>
+<dl class="docutils">
+<dt><strong>C-x C-k</strong></dt>
+<dd><p class="first">进入宏轮环，以下的操作可以在宏轮环中连续进行，例如：</p>
+<p class="last"><em>C-x C-k C-p C-p C-k C-k C-k C-n C-n C-k C-p C-k C-d</em></p>
+</dd>
+<dt><strong>C-x C-k C-n</strong>  <em>M-x kmacro-cycle-ring-next</em></dt>
+<dd>在宏轮环中下翻一个宏</dd>
+<dt><strong>C-x C-k C-p</strong>  <em>M-x kmacro-cycle-ring-previous</em></dt>
+<dd>在宏轮环中上翻一个宏</dd>
+<dt><strong>C-x C-k C-d</strong>  <em>M-x kmacro-delete-ring-head</em></dt>
+<dd>在宏轮环中删除一个宏</dd>
+<dt><strong>C-x C-k C-k</strong>  <em>M-x kmacro-end-or-call-macro-repeat</em></dt>
+<dd>直接运行宏轮环中当前的宏</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id67" id="id30" name="id30">命名与保存</a></h2>
+<blockquote>
+<dl class="docutils">
+<dt><strong>C-x C-k n &lt;name&gt;</strong>  <em>M-x kmacro-name-last-macro</em></dt>
+<dd>命名最后一个宏</dd>
+<dt><strong>C-x C-k b</strong>  <em>M-x kmacro-bind-to-key</em></dt>
+<dd>绑定最近的一个宏。 （执行时需要 <em>C-x C-k</em> 作为按键序列的前缀）</dd>
+<dt><strong>M-x insert-kbd-macro</strong></dt>
+<dd><p class="first">使用Lisp代码在缓冲区中插入宏定义</p>
+<ul class="last simple">
+<li>保存为文件，使用 <em>M-x load-file</em> 加载</li>
+<li>保存到配置文件中，启动时加载</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id68" id="id31" name="id31">宏编辑器</a></h2>
+<blockquote>
+<dl class="docutils">
+<dt><strong>C-x C-k C-e</strong>  <em>M-x kmacro-edit-macro</em></dt>
+<dd>使用宏编辑器打开最后一个宏</dd>
+<dt><strong>C-x C-k e</strong>   <em>M-x edit-kbd-macro</em></dt>
+<dd>编辑指定名称的宏</dd>
+<dt><strong>C-x C-k l</strong>   <em>M-x kmacro-edit-lossage</em></dt>
+<dd>编辑将最后100步键盘操作（不能包含鼠标操作）</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id69" id="id32" name="id32">询问执行</a></h2>
+<blockquote>
+<dl class="docutils">
+<dt><strong>C-x q</strong> <em>M-x kbd-macro-query</em></dt>
+<dd>在播放宏时，将进行询问确认</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id70" id="id33" name="id33">计数器</a></h2>
+<blockquote>
+<p>记录宏的执行次数</p>
+<dl class="docutils">
+<dt><strong>C-x C-k C-i</strong>    <em>M-x kmacro-insert-counter</em></dt>
+<dd>将宏计数器的数值插入缓冲区</dd>
+<dt><strong>C-x C-k C-c</strong>  <em>M-x kmacro-set-counter</em></dt>
+<dd>为宏计数器设置一个数值</dd>
+<dt><strong>C-x C-k C-a</strong>   <em>M-x kmacro-add-counter</em></dt>
+<dd>给宏计数器添加一个前缀参数</dd>
+<dt><strong>C-x C-k C-f</strong>    <em>M-x kmacro-set-format</em></dt>
+<dd>给宏计数器指定一个将要插入的特殊值</dd>
+</dl>
+</blockquote>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id71" id="id34" name="id34">文件管理</a></h1>
+<blockquote>
+<p>Emacs提供了 <em>Dired</em> 模式来管理文件系统，并且允许使用多个缓冲开启多个 <em>Dired</em> 。您可以使用以下命令进入：</p>
+<dl class="docutils">
+<dt><strong>C-x d</strong> <em>M-x dired</em></dt>
+<dd>进入Dired列表模式</dd>
+<dt><strong>C-x C-d</strong> <em>M-x list-directory</em></dt>
+<dd>获取文件列表（简洁）</dd>
+<dt><strong>C-x C-f</strong> <em>M-x find-file</em></dt>
+<dd>打开文件，没有文件名则打开目录</dd>
+</dl>
+</blockquote>
+<div class="section">
+<h2><a class="toc-backref" href="#id72" id="id35" name="id35">使用帮助</a></h2>
+<blockquote>
+<dl class="docutils">
+<dt><strong>?</strong> <em>M-x dired-summary</em></dt>
+<dd>简单帮助 （回显区）</dd>
+<dt><strong>h</strong> <em>M-x describe-mode</em></dt>
+<dd>模式帮助</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id73" id="id36" name="id36">查看</a></h2>
+<blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="34%" />
+<col width="36%" />
+</colgroup>
+<tbody valign="top">
+<tr><td></td>
+<td>向下</td>
+<td>向上</td>
+</tr>
+<tr><td>文件</td>
+<td>n</td>
+<td>p</td>
+</tr>
+<tr><td></td>
+<td>C-n</td>
+<td>C-p</td>
+</tr>
+<tr><td></td>
+<td>SPC</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>目录</td>
+<td>&gt;</td>
+<td>&lt;</td>
+</tr>
+<tr><td>已标记</td>
+<td>M-}</td>
+<td>M-{</td>
+</tr>
+<tr><td>刷新</td>
+<td>M-G</td>
+<td><em>M-x revert-buffer</em></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id74" id="id37" name="id37">标记</a></h2>
+<p>m                  标记文件，下移一行 [p]
+u                  去掉标记，下移一行 [p]
+U                  去掉缓冲中所有的标记
+M-Backspace        去掉缓冲中所有的某个标记，缺省为 * 标记
+Backspace          并去掉上一行标记，并上移一行 [p]
+t                  标记/未标记互换
+D                  删除所有标记的文件/目录 [*]</p>
+<p>d                  设置“删除标记”（字符D），并且光标下移一行 [p]
+x                  删除用 d 标记的文件/目录</p>
+<p>~                  将缓冲中备份文件做删除标记 [u]
+&amp;                  没用的文件，做删除标记
+#                  将缓冲中自动保存的文件做删除标记 [u]
+.                  按备份文件版本，将备份文件做删除标记 [u]</p>
+<p>% g                标记所有“含有”regexp 的文件 [u]</p>
+<p>* *                标记所有可执行文件 [u]
+* .                标记所有同扩展名文件 [ux]
+* /                标记所有目录 [u]
+* &#64;                标记所有符号连接 [u]
+* c                改变标记的符号
+% d                通过匹配 regexp 标记删除
+% m                通过匹配 regexp 标记 [u]</p>
+<dl class="docutils">
+<dt>M-(                通过 sexp 标记 [x]</dt>
+<dd><p class="first">比如 (&gt; size 1024) 标记所有大于 1k 的文件；
+(and (&gt; size 2048) (equal uid &quot;spr&quot;)) 标记所有大于 2k 的用户 spr 的文件。
+可用的变量有：</p>
+<blockquote class="last">
+inode [整数值] 文件的 inode；
+s     [整数值] 以块为单位的文件大小；
+size  [整数值] 以字节为单位的文件大小；
+nlink [整数值] 以连接到文件的个数；
+uid   [字符串] 用户名；
+gid   [字符串] 用户组名；
+time  [字符串] buffer 中的时间串；
+mode  [字符串] 权限模式串，比如 &quot;-rw-r--r--&quot;；
+name  [字符串] 文件名；
+sym   [字符串] 连接指向的文件名。</blockquote>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id75" id="id38" name="id38">扩展管理</a></h1>
+<p>主模式</p>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id76" id="guns" name="guns">Guns</a></h1>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id77" id="web" name="web">web</a></h1>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id78" id="ftp" name="ftp">ftp</a></h1>
+<p>x</p>
+</div>
+</div>
+</body>
+</html>

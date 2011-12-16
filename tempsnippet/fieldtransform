@@ -1,0 +1,13 @@
+#define "${1:mydefine$(upcase yas/text)}"
+#define "${2:$$(upcase yas/text)}"
+<div align="${3:$$(yas/choose-value '("right" "center" "left"))}">
+
+</div>
+\section{${4:"Titel der Tour"}}%
+\index{$4}%
+\label{${5:"waiting for reftex-label call..."$(unless yas/modified-p (reftex-label nil 'dont-insert))}}%
+
+${6:$(make-string (string-width text) ?\=)}
+${6:Title}
+${6:$(make-string (string-width text) ?\=)}
+<div${7:id="${8:some_id}"}>$0</div>

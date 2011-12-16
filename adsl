@@ -1,0 +1,224 @@
+Fedora网络配置工具system-config-network介绍
+
+文章来源ChinaItLab 作者佚名更新时间2006-1-10 保存本文保存本文推荐给好友推荐给好友收
+藏本页收藏本页
+欢迎进入Linux社区论坛，与200万技术人员互动交流 >>进入
+本文主要介绍Fedora Core 系统中的网络配置工具system-config-network，帮助初学者如何学
+会配置网络，以及如何设置非路由adsl拔号等；
+
+操作环境：Fedora Core 4.0 ；
+
+一、配置网络的工具system-config-network；
+
+1、Fedora Core 网络配置工具system-config-network
+
+本工具分为图形模式和文本命令模式
+
+[root@localhost beinan]# rpm -qa |grep system-config-network
+system-config-network-tui-1.3.26-1 注：这个是图形化的工具；
+system-config-network-1.3.26-1 注：这个是文本化的工具；
+
+首先查询一下看是否已经安装好这个软件包，如果没有安装，从安装盘中找出这两个包安装上
+；
+
+[root@localhost beinan]#rpm -ivh system-config-network*
+
+图形化工具主要是通过如下命令调用：
+[root@localhost beinan]# /usr/bin/internet-druid
+[root@localhost beinan]# /usr/bin/neat
+[root@localhost beinan]# /usr/bin/neat-control 注：网络设置控制器；是图形化的
+[root@localhost beinan]# /usr/bin/system-config-network-druid
+[root@localhost beinan]# /usr/bin/system-control-network
+[root@localhost beinan]# /usr/sbin/internet-druid 注：这个是配置internet的工具；
+[root@localhost beinan]# /usr/sbin/neat 注：neat 是配置网络的工具，包含量配置
+internet的工具比如ADSL等；
+[root@localhost beinan]# /usr/sbin/system-config-network-druid 注：是neat的一部份
+[root@localhost beinan]# /usr/sbin/system-config-network-gui 注：同neat
+
+文本模式的调用：和图形界面的差不多；
+
+[root@localhost beinan]# /usr/bin/system-config-network
+[root@localhost beinan]# /usr/bin/system-config-network-cmd
+[root@localhost beinan]# /usr/sbin/neat-tui
+[root@localhost beinan]# /usr/sbin/system-config-network
+[root@localhost beinan]# /usr/sbin/system-config-network-cmd
+[root@localhost beinan]# /usr/sbin/system-config-network-tui
+
+其实您用neat 工具，足可以把网络配置起来，这是图形界面的；如果您想用text模式来配置，
+应该用 system-config-network-tui；
+
+2、如何用图形化网络配置工具；
+
+[root@localhost beinan]#neat
+
+在这里您可以添加网卡，也可以编辑现有的网络设备；也可以添加adsl的拔号等；看以下一系
+列的图；
+
+[2006011011]
+
+您可以点击［新建］来添加设备；比如网卡和ADSL等；
+
+[2006011011] [2006011011]
+
+如果您是通过路由器或者其它机器上网，并且是DHCP自动获取IP的，您可以选择DHCP；如果您
+是通过pppoe拔号上网的，您可以指定网卡的IP；但不要设置网关；
+
+[2006011011] [2006011011]
+
+[2006011011]
+
+配置ADSL的用户名和密码：网络提供商应该给了；比如电信、网通或者铁通，至于提供商的名
+称可以我们自己来随便设置一个就行；用户名和密码要确保正确的；
+
+[2006011011] [2006011011] [2006011011]
+
+配置好后，我们要先保存，然后激活您添加的设备；这一过程都是极为简单的；
+
+二、一些与网络配置相关的文件和命令；
+
+1、如果您在命令行下启动网络服务，应该是：
+[root@localhost beinan]# /etc/init.d/network start
+[root@localhost beinan]# /etc/init.d/network restart
+
+2、网卡的配置文件在 /etc/sysconfig/network-scripts 目录中；比如eth0的配置文件是由
+neat 添加网卡后生成的，文件是ifcfg-eth0；
+
+3、网卡是不是被支持；
+
+首先要学会用lspci -v ，查看网卡芯片组信息；用modprobe 内核驱动模块名来加载网卡驱动
+；如果您的系统安装完成后找不到网卡，可能就要自己来modprobe 模块，或者自己安装网卡驱
+动；
+
+内核的硬件设备模块存放在 /lib/modules/内核版本号，用tab键补齐就能看到了/kernel/
+drivers/
+比如我的系统内核网卡驱动模块存放在 /lib/modules/2.6.11-1.1369_FC4/kernel/drivers/
+net/
+
+用 lsmod 来查看是不是已经加载了驱动；如果没有就用 modprobe 命令来加载，比如加载8139
+网卡驱动：
+
+[root@localhost beinan]# modprobe 8139too
+
+应该查看 /etc/modprobe.conf ；
+比如我用的是8139的网卡，应该在 /etc/modprobe.conf 中有一行；
+
+alias eth0 8139too
+
+如果有第二个网卡eth0，还是要加一行；alias eth1 8139too ；当然与您的网卡芯片有关，
+8139芯片组的网卡，就是内核对应的驱动模块 8139too支持；
+
+4、ifconfig 和ifup ifdown 的应用
+
+[root@localhost beinan]# ifconfig eth0 on 注：激活网卡eth0
+[root@localhost beinan]# ifconfig eth9 down 注：断开网卡eth0
+[root@localhost beinan]# ifup eth0 注：激活网卡eth0
+[root@localhost beinan]# ifdown eth0 注：激活网卡eth0
+[root@localhost beinan]# ifconfig -a 注：看是否激活了网络设备；
+
+ifconfig 还能配置网卡的IP等；是一个命令行的配置工具；以后介绍；
+
+5、adsl 拔号软件命令行配置工具rp-pppoe；（如果您的ADSL不带路由功能，可以用rp-pppoe
+来拔号）
+
+注：用neat 完全可以实现此添加adsl拔号上网的功能，请看前面的图；
+
+如果您用的是usb接口的ADSL ，要先把驱动安装上，对USB ADSL的支持Linux是有点麻烦；如果
+是乙太口的，所有的都支持；adsl如果是用pppoe 拔号的也可以用 adsl-setup 来配置；
+
+当然您要把网卡的IP配置好，然后再来设置ADSL配置；
+
+比如您的网卡eth0可以设置成
+
+ip:192.168.0.1
+netmask:255.255.255.0
+
+网关不要配置：
+
+然后来运行adsl-setup
+
+[root@LinuxSir02 root]# adsl-setup
+Welcome to the ADSL client setup. First, I will run some checks on
+your system to make sure the PPPoE client is installed properly...
+LOGIN NAME
+Enter your Login Name (default root): ADSL提供商给的用户名，写在这里
+INTERFACE
+Enter the Ethernet interface connected to the ADSL modem
+For Solaris, this is likely to be something like /dev/hme0.
+For Linux, it will be ethX, where 'X' is a number.
+(default eth0): eth0这是ADSL通过第一台机器的第一张网卡eth0提供上网
+Do you want the link to come up on demand, or stay up continuously?
+If you want it to come up on demand, enter the idle time in seconds
+after which the link should be dropped. If you want the link to
+stay up permanently, enter 'no' (two letters, lower-case.)
+NOTE: Demand-activated links do not interact well with dynamic IP
+addresses. You may have some problems with demand-activated links.
+Enter the demand value (default no):在这里按一下回车就行了。
+DNS
+Please enter the IP address of your ISP's primary DNS server.
+If your ISP claims that 'the server will provide dynamic DNS addresses',
+enter 'server' (all lower-case) here.
+If you just press enter, I will assume you know what you are
+doing and not modify your DNS setup.
+Enter the DNS information here: 202.96.134.133 这是DSN，最好用你本地电信给的
+Please enter the IP address of your ISP's secondary DNS server.
+If you just press enter, I will assume there is only one DNS server.
+Enter the secondary DNS server address here: 202.96.168.68这是第二个DNS，也是电信给
+的。
+PASSWORD
+Please enter your Password:在这里把 ADSL提供商给的密码写上
+Please re-enter your Password:确认密码
+USERCTRL
+Please enter 'yes' (two letters, lower-case.) if you want to allow
+normal user to start or stop DSL connection (default yes): yes
+FIREWALLING
+Please choose the firewall rules to use. Note that these rules are
+very basic. You are strongly encouraged to use a more sophisticated
+firewall setup; however, these will provide basic security. If you
+are running any servers on your machine, you must choose 'NONE' and
+set up firewalling yourself. Otherwise, the firewall rules will deny
+access to all standard servers like Web, e-mail, ftp, etc. If you
+are using SSH, the rules will block outgoing SSH connections which
+allocate a privileged source port.
+The firewall choices are:
+0 - NONE: This script will not set any firewall rules. You are responsible
+for ensuring the security of your machine. You are STRONGLY
+recommended to use some kind of firewall rules.
+1 - STANDALONE: Appropriate for a basic stand-alone web-surfing workstation
+2 - MASQUERADE: Appropriate for a machine acting as an Internet gateway
+for a LAN
+Choose a type of firewall (0-2): 2
+Start this connection at boot time
+Do you want to start this connection at boot time?
+Please enter no or yes (default no):yes
+** Summary of what you entered **
+Ethernet Interface: eth0
+User name: ADSL用户名
+Activate-on-demand: No
+Primary DNS: 202.96.134.133
+Secondary DNS: 202.96.168.68
+Firewalling: MASQUERADE
+User Control: yes
+Accept these settings and adjust configuration files (y/n)?y
+
+激活 adsl拔号；用 ifup ppp0 或者 adsl-start ；
+[root@localhost beinan]# adsl-start
+
+6、resolv.conf 文件；
+
+/etc/resolv.conf 文件，只访问要是用来解析域名的；如果您只能ip访问或者能ping 通IP ，
+但不能域名访问，请编辑这个件；如果您是通过DHCP自动获取IP的，这个文件不用改动；
+
+如果您是指定IP的，可能忘记了加DNS，要在这个文件添加上，这个文件的内容类似如下的：
+
+nameserver 202.96.128.68
+nameserver 202.96.134.188
+nameserver 211.64.144.130
+nameserver 202.96.134.133
+
+resolv.conf 内容，每行以 nameserver 开头，然后加上DNS，最好找一个自己城市的DNS，上
+面的这些也是可以用的；复制上去就行了；
+
+后记：
+
+只是简单的介绍了一下，有时间我好好整理一篇关于网络配置工具的详细介绍性的；祝大家好
+运；

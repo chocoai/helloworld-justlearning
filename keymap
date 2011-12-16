@@ -1,0 +1,18 @@
+xmodmap -pke | grep -i tab
+xmodmap -pke | grep -i grave
+
+上面两条命令分别找到 tab 和 ~ 两个键对应的keycode,比如，在我的系统上是：
+
+keycode  23 = Tab ISO_Left_Tab Tab ISO_Left_Tab
+和
+keycode  49 = grave asciitilde grave asciitilde
+
+你的系统上对应的keycode可能略有不同。 如果你的xmodmap没有Tab的定义，也没关系，用xev也能找到keycode，然后创建一个 ~/.Xmodmaprc 文件，内容为
+
+keycode 49 = Tab ISO_Left_Tab Tab ISO_Left_Tab
+keycode 23 = grave asciitilde grave asciitilde
+
+就是把标准的结果互换一下，然后保存 ~/.Xmodmaprc
+在命令行下 xmodmap ~/.Xmodmaprc，就行了
+
+注意，我这里tab对应keycode 23, ~对应49，你的不一定是这样的，可以用xev来识别。 

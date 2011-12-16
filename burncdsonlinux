@@ -1,0 +1,516 @@
+Skip to main content
+IBM®
+
+  • Country/region
+  • [ select ]
+
+Search in: [All of dW        ] Search for:[                    ][Search]
+
+  • Home
+  • Solutions
+  • Services
+  • Products
+  • Support & downloads
+  • My IBM
+
+  • developerWorks
+  • Linux
+  • Technical library
+
+Burning CDs on Linux
+
+mkisofs and cdrecord at the command line make it all possible
+
+Carla Schroder (dworks@bratgrrl.com), Principal, Tux Computing
+Carla Schroder is a freelance PC tamer, administering Linux and Windows systems for small businesses and writing how-tos
+for real people. Carla discovered computers and high-tech around 1994, and is living proof that self-taught middle-aged
+persons make fine computer gurus. You can reach her at dworks@bratgrrl.com.
+
+Summary:  Linux offers powerful, flexible tools for creating CDs. You can create disks that are readable on almost any
+platform and create .iso files for download and distribution.
+
+Tag this!
+
+Date:  23 Apr 2003
+Level:  Introductory
+Activity:  17649 views
+Comments:   [circle]* 
+
+Burning CDs from the command line on any platform can be mysterious and vexing, and this is certainly true on Linux.
+However, the commands and terminology are similar enough across platforms that it's useful to learn how to write CDs on
+Linux. A lot of Linux software is distributed via .iso images, so if you know how to burn your own CDs, you can download
+the .isos to create your own installation disks.
+
+CD-writing programs are available for both Linux and Windows, but the Linux versions are more powerful and versatile
+than their Windows cousins. In this article, we'll look at mkisofs and cdrecord, the workhorses of Linux CD recording.
+mkisofs creates a pre-mastered image, to generate an ISO9660/JOLIET/HFS hybrid filesystem. It both creates and populates
+a filesystem. Unlike other data storage media such as hard drives and floppy drives, a filesystem on CD is not first
+created, then populated with data. There is only one chance with a CD-R: formatting it first would create a disk with an
+empty filesystem. cdrecord records data on Orange Book CD-R/RWs, which is pretty much all of them.
+
+With newfangled technology like CD recording, newer versions of these programs are best. mkisofs and cdrecord should
+both be 1.10 or newer. The latest version of cdrecord, version 2.0, has been renamed cdrtools. To find the versions
+installed on your machine, type:
+
+$ cdrecord --version
+
+and
+
+$ mkisofs --version
+
+For those who are new to the world of recordable CDs, here are a few things worth knowing before we press on:
+
+  • CD-R: CD-Recordable. These are WORM (Write Once, Read Many).
+  • CD-RW: CD-Rewritable. These are WMRM (Write Many, Read Many).
+  • CD-Rs are universal and should be readable in any CD-ROM drive.
+  • CD-RWs should be readable in all contemporary drives. A drive must be "multiread" to be able to read CD-R and CD-RW
+    disks. Older drives are troublesome. Retire that old 4x drive and buy a new one; it's not worth the irritation.
+  • Commercial CDs are pressed, not burned with a laser.
+  • Which CD-R/RW drives are best? Visit the usual hardware reviewers for advice.
+
+And, a few terms related to file formats:
+
+  • Yellow Book: Physical format for data CDs
+  • Orange Book: Physical format for recordable CDs:
+      □ Part I: CD-MO (Magneto-Optical)
+      □ Part II: CD-WO (Write-Once; includes "hybrid" spec for PhotoCD)
+      □ Part III: CD-RW (Re-writable)
+  • ISO-9660: The old file layout standard, allowing only 8.3 filenames
+  • Rock Ridge: Extensions to ISO-9660 allowing long filenames and UNIX-style symlinks; preserves all file attributes,
+    such as ownership and permissions. UNIX file attributes are not displayed when the disk is read on a Windows system.
+  • Joliet: Microsoft extension to the ISO 9660 filesystem that allows Unicode characters to be used in filenames, as
+    well as long filenames. It also creates truncated filenames for MS-DOS compatibility (these weird-looking things:
+    FILENA~1.TXT). It allows filenames up to 64 characters, including spaces, and is readable by Windows 95 or later,
+    and Macintosh computers running the Joliet Volume Access extension. Macs will not read Joliet file names longer than
+    31 characters.
+  • El Torito: Bootable CD-ROM format specification
+  • HFS (Hierarchical File System): Native file system used by Macintosh
+  • Multisession: Allows adding files over time, rather than during a single session. For a disk to be readable, the
+    session must be "closed." However, this prevents adding more files to the disk. Multisession links the individual
+    sessions and update the disk's table of contents so that it appears as a single directory.
+  • CD-UDF (Universal Disk Format): Industry-standard incremental packet-writing filesystem
+
+A brief word on UDF: UDF means being able to drop files directly onto the disk. Currently, this is done at the software
+level. Reading the disk requires the software used to create it. UDF is in the works to be added to the Linux kernel,
+probably 2.6. CD drives need CD-MRW circuitry ("CD Mount Rainier ReWrite"; don't ask me how they choose these names) for
+this to work, so it will be a feature of new drives. When this is implemented, copying files to CD-R/RW will be as easy
+as copying to a floppy disk, and the disks will be universally readable. This is touted as yet another replacement for
+the venerable 3.5" diskette. We'll see. (See Resources for a link to more information on Mount Rainier.)
+
+Linux SCSI emulation adventures
+
+Use either an IDE/ATAPI or SCSI CD writer if you can. Parallel port interface is a horrid kluge asking for trouble, and
+USB drives are slow. Neither is well-supported in Linux (although you might have better luck with the newer USB 2.0
+drives).
+
+IDE/ATAPI drives, which are the most common, need a bit of tweaking to work. So, what happens if cdrecord shows no
+drives configured? To check, type this:
+
+$ cdrecord -scanbus
+
+If it displays your CD-RW drive (see Burning the disk, below), you can skip most of this section, although you might
+want to skim through anyway for your own information.
+
+Linux uses a SCSI emulation subsystem, so IDE/ATAPI CD-writers need compatibility drivers. If there is a CD-ROM and a
+CD-R/RW on the same PC, both need to use the ide-scsi pseudo device driver to enable copying disks. There is no downside
+to using the SCSI emulation on a CD-ROM; it will work just the same; only the name will change. Depending on your
+particular flavor of Linux, the drive designation will change from something like /dev/cdrom0, or /dev/hdc, to /dev/scd0
+(see Table 1 for a list of IDE/ATAPI device names).
+
+
+Table 1. IDE/ATAPI device names
+┌────────┬─────────────────────────────────────────────────┐
+│ Name   │ Device                                          │
+├────────┼─────────────────────────────────────────────────┤
+│ hda    │ IDE bus/connector 0 master device               │
+├────────┼─────────────────────────────────────────────────┤
+│ hdb    │ IDE bus/connector 0 slave device                │
+├────────┼─────────────────────────────────────────────────┤
+│ hdc    │ IDE bus/connector 1 master device               │
+├────────┼─────────────────────────────────────────────────┤
+│ hdd    │ IDE bus/connector 1 slave device                │
+└────────┴─────────────────────────────────────────────────┘
+
+To find drives on your system, type:
+
+$ dmesg | grep '^hd.:'
+
+hda: IBM-DTLA-305020, ATA DISK drive
+hdb: TOSHIBA DVD-ROM SD-M1202, ATAPI CD/DVD-ROM drive
+hdc: LITE-ON LTR-24102B, ATAPI CD/DVD-ROM drive
+hda: 40188960 sectors (20577 MB) w/380KiB Cache, CHS=2501/255/63, UDMA(66)
+
+Most modern Linuxes come with the SCSI emulation already compiled into the kernel:
+
+$ locate ide-scsi.o
+
+/lib/modules/2.4.19/kernel/drivers/scsi/ide-scsi.o
+
+If your system does not have this, you'll have to compile it into your kernel. That is way too big a subject for this
+wee article, so please see Resources (it's not hard, when you know how).
+
+You'll need to edit two text files to configure the system to use the ide-scsi driver. The first is /etc/modules.conf
+(in Debian, /etc/modules). My system has a CD-ROM and CD-R/RW drive, hdb and hdc. Add these lines to /etc/modules.conf
+(or /etc/modules) using values appropriate for your system:
+
+ide-cd ignore=\"hdb hdc\"
+ide-scsi
+
+By default, the IDE subsystem claims all ATA devices for its own, so the ignore line enables the SCSI subsystem to grab
+both the CD-R/RW and CD-ROM.
+
+Next, edit the configuration file for your bootloader, GRUB or LILO. For LILO users, add the following to the end of
+lilo.conf:
+
+append="hdb=ide-scsi"
+append="hdc=ide-scsi"
+
+For GRUB users, add the following to /etc/grub.conf (or in Debian, /boot/grub/menu.lst) at the end of the kernel line:
+
+hdb=scsi hdc=scsi
+
+Now reboot and verify that it has loaded:
+
+$ lsmod
+
+This will return a long list; look for ide-scsi.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Back to top
+
+Creating an .iso file
+
+Once you've selected the files you want to copy, writing to a CD consists of two steps: creating an .iso with mkisofs,
+then burning to disk with cdrecord. Use the following to create the .iso file:
+
+$ mkisofs -o test.iso -Jrv -V test_disk /home/carla/
+
+In this example:
+
+  • -o names the new .iso image file (test.iso)
+  • -J uses Joliet naming records, for Windows compatibility
+  • -r uses Rock Ridge naming conventions for UNIX/Linux compatibility, and makes all files publicly readable
+  • -v sets verbose mode, for a running commentary as the image is created
+  • -V provides a volume ID (test_disk); this is the disk name that shows up in Windows Explorer
+  • Last in the list are the files selected for packaging into the .iso (everything in /home/carla/)
+
+Now, mount the .iso for verification; I like to create a test directory:
+
+$ mkdir /test_iso
+$ mount -t iso9660 -o ro,loop=/dev/loop0 test.iso /test_iso
+
+Look at the directory contents; all your files should be there and readable. If they are not, the image is bad, and if
+you burn it onto a disk, you'll end up creating a coaster.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Back to top
+
+Burning the disk
+
+Writing the image to disk is easy as pie. First find the SCSI address of your CD-R/RW:
+
+$ cdrecord -scanbus
+
+Cdrecord 1.10 (i686-pc-linux-gnu) Copyright (C) 1995-2001 Jrg Schilling
+Linux sg driver version: 3.1.24
+Using libscg version 'schily-0.5'
+scsibus0:
+0,0,0 0) 'TOSHIBA ' 'DVD-ROM SD-M1202' '1020' Removable CD-ROM
+0,1,0 1) 'LITE-ON ' 'LTR-24102B ' '5S54' Removable CD-ROM
+0,2,0 2) *
+0,3,0 3) *
+0,4,0 4) *
+0,5,0 5) *
+0,6,0 6) *
+0,7,0 7) *
+
+The first three numbers for each item refer to SCSI bus, device ID, and LUN (Logical Unit Number), respectively. (The
+fourth number is the device ID again.) cdrecord wants these three numbers. In this example, the CD recorder is 0,1,0.
+Anything on SCSI bus 0 can be shortened to 1,0, leaving off the first 0. This is a common convention. Additional buses,
+if any, must be specified -- no shortcuts.
+
+Now write to disk:
+
+$ cdrecord -v -eject speed=8 dev=0,1,0 test.iso
+
+In this example:
+
+  • -v is verbose
+  • -eject ejects the disk when finished
+  • -speed specifies write speed (8)
+  • -dev is the device number (0,1,0) obtained from cdrecord -scanbus
+  • Last is the name of the image being burned (test.iso)
+
+This is a simple, serviceable way to create disks for public distribution, as it creates a disk that can be read on any
+Windows or Linux system. mkisofs alone is good for creating .isos for download, and mkisofs is capable of creating
+filesystems for many platforms. Please see mkisofs man pages for more information.
+
+On a fast machine with lots of memory, you can get away with doing low-CPU-intensive tasks during recording, but it is
+better to do nothing else during a burn. The laser is not capable of stopping and then picking up where it left off, so
+any interruptions are fatal.
+
+cdrecord will try to run the recorder at its highest speed, so it is not necessary to specify a speed, but let
+experience be your guide. Specifying slower speeds is useful for correcting errors and buffer underruns. Newer drives
+with "burn-proof" technology (the opposite of what it's supposed to do; again, who comes up with these names?) are not
+plagued by buffer underruns as older drives are.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Back to top
+
+Copy disk
+
+To directly copy from the source disk to the recordable disk, use this command:
+
+$ cdrecord -v dev=0,1,0 speed=4 -isosize /dev/scd0
+
+This command directly streams the contents of the CD-ROM, /dev/scd0, to the CD recorder, dev=0,1,0. Don't do this on an
+old, slow machine. Direct copying is fast, but more error-prone. It is better to first copy the source disk to a hard
+drive, then copy from the hard drive to the CD recorder:
+
+$ mount /cdrom
+$ dd if=/dev/scd0 of=/tmp/diskfile.iso
+$ cdrecord dev=0,1,0 speed=8 fs=8m -v -eject -dummy /tmp/diskfile.iso
+
+Notice a couple of new options, fs=8m and -dummy. fs=8m defines the size of the ring buffer: the bigger the better, up
+to a point. Remember, interruptions are fatal; fs=8m creates a large enough buffer to keep the recorder working if
+something slows down the data transfer. If 8 MB isn't enough, you might need a better PC. On the other hand, more than 8
+MB is not necessarily better, as the operating system can waste time reloading the MMU (Memory Management Unit) tables.
+The default is 4 MB.
+
+-dummy is a marvelous option for doing a dry run before risking an actual disk. The recorder does everything with the
+laser turned off, giving the user a chance to catch errors before committing them to disk.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Back to top
+
+Multisession
+
+CDs are built with sessions, and sessions are divided into tracks. On a single-session disk, there is a lead-in, a
+single TOC (table of contents), the data, and a lead-out, which finalizes the disk and prevents further recording on the
+disk. mkisofs links the separate sessions together. Creating multisession disks may be easier with GUI programs like
+X-CD-Roast or KonCD, but here's how command-line commandos do it.
+
+The first time you record a session on a disk, use the -multi switch in cdrecord:
+
+$ cdrecord -v -eject speed=8 dev=0,1,0 -multi test.iso
+
+The disk will be fixated in a manner that makes it readable and open for adding more data. To add more sessions to this
+disk, mkisofs needs to know the starting and ending sector numbers, which you can find like this:
+
+$ cdrecord dev=0,1,0 -msinfo
+0,27139
+
+Be sure to have the disk you are adding data to in the CD recorder. Then add two new switches, -C and -M:
+
+$ mkisofs -o test2.iso -Jr -V Session2 -C 0,27139 -M 0,1,0 /files/path/
+
+Or better, let the command shell do the work:
+
+$ mkisofs -o test2.iso -Jr -V Session2 -C `cdrecord dev=0,1,0 -msinfo` -M 0,1,0 /files/path/
+
+Multisession CD drives read the last session written. This command takes the TOC from the last session and combines it
+into the new TOC. For the last session on the disk, omit the -multi option.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Back to top
+
+Conclusion
+
+CD writing in Linux is powerful and versatile. CD recorders can be shared over networks and used in automated backups;
+mkisofs and cdrecord also work with DVDs. Although there are many good graphical front ends, complete functionality is
+at the command line.
+
+
+Resources
+
+  • Find more information on Mount Rainier at mt-rainier.org.
+
+  • The Linux Kernel HowTo is a guide to compiling, upgrading, and troubleshooting Linux on x86.
+
+  • The "Super quick guide to compiling a kernel" offers a good refresher if compiling the Linux kernel is something you
+    need to do.
+
+  • Andy McFadden's CD-Recordable FAQ answers countless CD-R questions, both general and specific.
+
+  • For a specialized and highly useful Linux distribution on a single, bootable CD-ROM, read about Knoppix in "Knoppix
+    gives bootable, one-disk Linux" (developerWorks, February 2003).
+
+  • If you're just getting started with Linux, "Basic tasks for new Linux developers" (developerWorks, January 2003)
+    shows how to log in/out, mount/unmount CDs, and open shell windows, among other tasks.
+
+  • For a complete listing of CD-ROM and CD-RW drives for IBM personal computing systems, go to the Storage Accessories
+    and Upgrades page.
+
+  • Find more resources for Linux developers in the developerWorks Linux zone.
+
+
+About the author
+
+Carla Schroder is a freelance PC tamer, administering Linux and Windows systems for small businesses and writing how-tos
+for real people. Carla discovered computers and high-tech around 1994, and is living proof that self-taught middle-aged
+persons make fine computer gurus. You can reach her at dworks@bratgrrl.com.
+
+Comments
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 
+
+Back to top
+
+Trademarks  |  My developerWorks terms and conditions
+
+Close [x]
+
+Help: Update or add to My dW interests
+
+What's this?
+
+This little timesaver lets you update your My developerWorks profile with just one click! The general subject of this
+content (AIX and UNIX, Information Management, Lotus, Rational, Tivoli, WebSphere, Java, Linux, Open source, SOA and Web
+services, Web development, or XML) will be added to the interests section of your profile, if it's not there already.
+You only need to be logged in to My developerWorks.
+
+And what's the point of adding your interests to your profile? That's how you find other users with the same interests
+as yours, and see what they're reading and contributing to the community. Your interests also help us recommend relevant
+developerWorks content to you.
+
+View your My developerWorks profile
+
+Return from help
+
+Close [x]
+
+Help: Remove from My dW interests
+
+What's this?
+
+Removing this interest does not alter your profile, but rather removes this piece of content from a list of all content
+for which you've indicated interest. In a future enhancement to My developerWorks, you'll be able to see a record of
+that content.
+
+View your My developerWorks profile
+
+Return from help
+
+static.content.url=http://www.ibm.com/developerworks/js/artrating/
+SITE_ID=1
+Zone=Linux, Open source
+ArticleID=11309
+ArticleTitle=Burning CDs on Linux
+publish-date=04232003
+author1-email=dworks@bratgrrl.com
+author1-email-cc=
+
+Table of contents
+
+*
+
+  • Linux SCSI emulation adventures
+  • Creating an .iso file
+  • Burning the disk
+  • Copy disk
+  • Multisession
+  • Conclusion
+  • Resources
+  • About the author
+  • Comments
+
+Local resources
+
+[spot-danube]
+
+  • IBM Innovation Center - 中国: 上海
+  • developerWorks 中国
+  • 软件下载资源中心
+  • dW Live! 技术讲座
+  • 精品教程
+
+My developerWorks community
+
+Interact, share, and communicate with developers worldwide.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  • My Home
+  • Profiles
+  • Groups
+  • Blogs
+  • Bookmarks
+  • Activities
+  • Spaces
+  • Forums
+  • Wikis
+  • Podcasts
+  • Exchange
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+My developerWorks overview
+
+Tags
+
+Help
+Use the search field to find all types of content in My developerWorks with that tag.
+
+Use the slider bar to see more or fewer tags.
+
+Popular tags shows the top tags for this particular content zone (for example, Java technology, Linux, WebSphere).
+
+My tags shows your tags for this particular content zone (for example, Java technology, Linux, WebSphere).
+
+Use the search field to find all types of content in My developerWorks with that tag. Popular tags shows the top tags
+for this particular content zone (for example, Java technology, Linux, WebSphere). My tags shows your tags for this
+particular content zone (for example, Java technology, Linux, WebSphere).
+
+Search all tags[                 ] submit search
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Popular article tags | 
+My article tagsSkip to tags list
+
+Popular article tags | 
+My article tags
+
+Skip to tags list
+
+Dig deeper into Linux on developerWorks
+
+  • Overview
+  • New to Linux
+  • Downloads and products
+  • Open source projects
+  • Technical library (articles, tutorials, training, and more)
+  • Forums
+  • Events
+
+Create a dynamic Ajax-based Web app
+
+Now even better
+
+With WebSphere Application Server Feature Pack for Web 2.0, get a rich set of components that let you easily and more
+efficiently build powerful Ajax-based applications.
+
+Special offers
+
+Cognos 8 BI online trial
+
+Open Source shining aspects and limitations
+
+Smarter products Live virtual event with Grady Booch
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+More offers
+
+  • About IBM
+  • Privacy
+  • Contact
+  • Terms of use
+

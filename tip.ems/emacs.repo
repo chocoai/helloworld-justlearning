@@ -1,0 +1,71 @@
+;;一般设置
+(setq x-select-enable-clipboard t);支持emacs和外部程序的粘贴
+(setq frame-title-format "zhan@%b");在标题栏提示你目前在什么位置。
+;;;设置标题栏显示文件的完整路径名
+(setq frame-title-format
+   '("%S" (buffer-file-name "%f"
+    (dired-directory dired-directory "%b"))))
+;;增加一个prefix
+(define-prefix-command 'ctl-/-map)
+(global-set-key (kbd "C-/") 'ctl-/-map)
+;;编程相关的
+(setq tab-width 4 indent-tabs-mode nil);设置Tab换为4个空格,不用Tab进行排版
+(show-paren-mode t);显示括号匹配
+;subdirs.el===file break point===
+(defun my-add-subdirs-to-load-path (dir)
+(let ((default-directory (concat dir "/")))
+  (setq load-path (cons dir load-path))
+  (normal-top-level-add-subdirs-to-load-path)))
+
+(my-add-subdirs-to-load-path "D:/in/Emacs/myemacs/packages")
+;customFunction.el===file break point===
+; 多句的编写的小方法====================
+;;多句的编写的小方法
+
+;;; 这个忘了是从哪个地方弄来的，在保存~/.emacs文件自动编译为.elc文件
+;;;;目前只是对~/.emacs有效，其余的*.el文件还没有去弄，以后有空我会改的
+;;;;小知识：由于配置文件越来越大，你的*.el配置文件最好都编译为*.elc文件，这样在启动emacs速度会有很大的提升
+(defun autocompile nil
+  "compile itself if ~/.emacs"
+  (interactive)
+  (if (string= (buffer-file-name) (concat default-directory ".emacs"))
+      (byte-compile-file (buffer-file-name))))
+(add-hook 'after-save-hook 'autocompile)
+;;新建一行，不管光标在哪
+(defun zl-newline nil
+  "open new line belowe current line"
+  (interactive)
+  (end-of-line)
+  (newline))
+(global-set-key [S-return] 'zl-newline);绑定Shift-回车
+;;本行上面新建一行，不管光标在哪
+(defun zl-newline-up nil
+  "open new line up current line"
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (backward-char))
+(global-set-key [C-S-return] 'zl-newline-up);绑定Ctrl-shift-回车
+;elMode.el===file break point===
+;;; emacs模式的大纲模式
+(add-hook 'emacs-lisp-mode-hook
+     (function (lambda ()
+              (setq outline-regexp ";+ ")
+            (outline-minor-mode)
+            (hide-body)
+               )))
+;orgMode.el===file break point===
+;; org mode
+(require 'org-install)
+
+;outlineMode.el===file break point===
+;; 大纲模式
+;;添加键绑定
+(add-hook 'outline-minor-mode-hook
+    (function (lambda ()
+        (global-set-key (kbd "C-/ s") 'show-subtree)
+        (global-set-key (kbd "C-/ d") 'show-branches)
+        (global-set-key (kbd "C-/ h") 'hide-subtree)
+        (global-set-key (kbd "C-/ j") 'hide-leaves)
+        (global-set-key (kbd "C-/ k") 'hide-sublevels)
+        ())))

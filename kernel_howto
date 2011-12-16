@@ -1,0 +1,726 @@
+主页
+
+  • LinuxSir.Org 首页
+  • 本站首页
+  • 新闻
+  • 文档
+  • 资源
+  • 搜索
+  • 论坛
+  • 贡献者
+  • 关于
+
+主页
+
+编译内核操作流程 ──为新手指南
+
+Posted 九月 3rd, 2005 by beinan
+
+  • Fedora
+  • Redhat
+  • 基础入门
+
+作者：北南南北
+来自：LinuxSir.Org
+提要：编译内核主要是通过内核实现某些功能，比如iptables 需要内支持；所有的硬件的支持也是通过内核实现的；本文只是简单
+的给初学者讲一下编译内核的流程；
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+正文
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+一、为什么要编译内核；
+
+有时我们为了实现某些功能，比如对iptables的防火墙有些需要内核支持；还有实现一些硬件的支持等，这时我们需要重编内核；
+
+
+二、内核源码版本的选择；
+
+如果发行版本提供内核源码，最好还是用发行版本提供的；比如Fedora 4.0 提供了很多版本的内核源码；我们安装好后，他自带的
+配置文件大多能满足我们的需要，对于新手来说，根据自带的内核的配置文件.config ，我们也能学到一点如何配置内核。也没有
+什么难的，熟能生巧罢了；
+
+如果从 kernel.org 下载最新稳定版本的内核也是可以的；
+
+
+三、内核源码安装或解压；
+
+对于Fedora Core 4.0 来说，内核源码是放在 /usr/src/kernels 目录中；如果通过在线升级内核，也是放在这个目录中；如果您
+的系统中的 /usr/src/kernels/ 中没有内容，说明您没有安装内核的源码包 kernel-devel 软件包；
+
+您可以通过软件包管理器来补装，请参考《Fedora / Redhat 软件包管理指南》
+
+如果您用Fedora Core 4.0 ，我建议您在保留老内核的基础上，在线下载最新版本的内核 kerenl-devel 和对应版本的 kernel 或
+者从 kernel.org 下载，有时可能新的kerenl 已经解决了您所面对的问题，这时就没有必要编译内核了；
+
+如果您是通过在线安装的内核源码包，比如通过 apt+synaptic 或者yum 安装的，内核源码会被放到/usr/src/kernel 下的目录中
+，您要进入相对应的目录进行编译；
+
+在线更新软件包，请参考《Fedora / Redhat 软件包管理指南》，推荐 apt+synaptic 工具；
+
+如果您是是下载kernel 和kernel-devel 的rpm 包，可以通过来安装；
+[root@localhost beinan]# rpm -ivh kernel*.rpm
+
+如果您是从kernel.org 下载的类似 linux-2.6.13.tar.bz2 或者 linux-2.6.13.tar.gz的，您要把下载下来的文件移到 /usr/src
+目录中解压；然后进入解压的目录中进行配置和编译；
+[root@localhost beinan]# mv linux-2.6.13.tar.bz2
+[root@localhost beinan]# cd /usr/src/
+[root@localhost src]# tar jxvf linux-2.6.12.3.tar.bz2
+
+提示：本文以linux-2.6.12.3为例，其实通过发行版的升级版的kernel-devel 和从kernel.org 下载下来的差不多，大同小异；不
+同的是通过在线升级的rpm格式的内核源码包，有配置文件.config 可以参考；安装到的目的地是/usr/src/kernel 对FC 4.0来说；
+如果您要高编译和配置内核，
+
+
+四、内核的配置；
+
+
+1、进入目录执行 make mrproper ，对于从 kernel.org 下载而来的tar.bz格式的源码包；
+
+[root@localhost src]# cd linux-2.6.12.3/
+[root@localhost linux-2.6.12.3]#
+[root@localhost src]# cd linux-2.6.12.3/
+[root@localhost linux-2.6.12.3]# make mrproper
+[root@localhost linux-2.6.12.3]# make menuconfig
+
+对于Fedora Core 4.0 ，如果您是通过在线安装的 kernel和kernel-devel 新版本的包，比如是2.6.12-1.1398_FC4-i686，你可以
+直进入 /usr/src/kernel/相应的目录中直接执行 make menuconfig ；利用发行版本提供的 .config 来配置，这样方便点。不要
+make mrproper ，否则.config 就没有了；这也是为什么要用发行版本提供的内核源码升级包的原因；
+
+其它配置和安装大同小异；模仿总可以吧；
+
+
+2.简要的配置内核；
+
+进入配置内核的配置模式后，我们可能一无所知，看下面；
+
+内核配置有两种方法，一种是直接置入内核 * ；另一种是编成模块 M ；两种方法各有优点；直接编入内核的，比如设备的启动，
+不再需要加载模块的这一过程了；而编译成模块，则需要加载设备的内核支持的模块；但直接把所有的东西都编入内核也不是可行
+的，内核体积会变大，系统负载也会过重。我们编内核时最好把极为重要的编入内核；其它的如果您不明白的，最好用默认。
+
+
+1）移动键盘上下左右键，按Enter 进入一个目录。把指针移动到Exit就退出当前目录到上级目录；
+
+2）针对自己机器存在的问题进行修改，比如大内存的支持；
+
+选择自己机器的CPU；
+
+移动键盘到 Processor type and features ---> ，然后按ENTER进入；
+找到 Processor family (Pentium-Pro) ---> 按ENTER进入；
+
+进入后我们发现有好多CPU的型号可选；一般的情况下要根据
+bash-3.00# cat /proc/cpuinfo 输出的信息来选，比如我们的是Celeron （P4）一代的，应该选如下的，当然默认的 486也是可以
+正常运行的，既然我们重编一次内核，就得选中对应型号的，也许性能有所提高呢；
+Processor family (Pentium-4/Celeron(P4-based)/Pentium-4 M/Xeon)
+
+对大内存支持；如果内存是1G或者1G以上，但小于4G的，就要选4G支持；如果超过4G的，要选64G的支持；
+
+High Memory Support (4GB) --->
+
+(X) 4GB
+( ) 64GB
+
+还有比如声卡等硬件，需要我们一步一步的查看；如果有不明之处，就要按 [shift]+？的组合键来查看说明。一般的情况下，
+2.6.x的内核会根据机器的情况自动配出一个文件，只需要我们来查看一下，把重要的地方改改就行了；
+
+再举个例子：比如我现在所用的声卡是intel ac97的，我应该怎么配置呢？
+
+首先要知道自己的声卡的芯片组，我们要通过lspci -v 来查看；
+[root@localhost beinan]#lspci -v
+
+只查看声卡的，应该用如下的方法：
+[root@localhost beinan]# lspci -v |grep audio
+00:1f.5 Multimedia audio controller: Intel Corp. 82801DB (ICH4) AC'97 Audio Controller (rev 03)
+
+通过上面的输出，我们知道这台机器用的是intel AC97声卡；所以我们要特别注意AC97的配置；
+
+找到 Device Drivers ---> Sound --->
+<M> Sound card support 声卡的支持，这个是一定要选中的吧；
+<M> Advanced Linux Sound Architecture 对声卡支持的ALSA驱动的支持；
+下面有OSS驱动，只是一部份。如果想用OSS的驱动更全的，可以去买；其它的就看如下的选吧；
+<M> Sequencer support
+<M> Sequencer dummy client
+<M> OSS Mixer API
+<M> OSS PCM (digital audio) API[*] OSS Sequencer API
+<M> RTC Timer support[*] Verbose printk
+[ ] Debug
+
+大多是默认的就好，如果您不知道是做什么用的，或者怎么用；
+
+然后我们再向下看有
+Generic devices ---> 进入里面
+<M> Dummy (/dev/null) soundcard
+<M> Virtual MIDI soundcard
+<M> MOTU MidiTimePiece AV multiport MIDI
+<M> UART16550 serial MIDI driver
+<M> Generic MPU-401 UART driver
+ISA devices ---> 如果您用ISA声卡就在这里面选；
+PCI devices ---> 如果您用PCI声卡，就在这里面选，集成声卡也在这里；
+USB devices ---> 这是USB声卡内核支持选项；我有一个这样的声卡，但没有试过；
+PCMCIA devices ---> 这是PCMCIA声卡的选项，我还没有看过这样的声卡呢；如果您有，就在这里面动动手吧。
+
+因为我用的是Intel 集成的声卡，所以要在PCI中选择，我们在中可以看到有两个与INTEL有关的；
+<M> Intel/SiS/nVidia/AMD/ALi AC97 Controller 这个才是Intel AC97声卡的；
+< > Intel/SiS/nVidia/AMD MC97 Modem (EXPERIMENTAL) 这个是机器集成的INTEL猫的蜂鸣器的；
+
+因为我发现如果把猫的蜂鸣器的驱动也选上，可能造成两个冲突。所以只能选上面的那个；
+
+我们再回到 Open Sound System ---> 中看看，与我用的声卡是不是有关的？
+<M> Open Sound System (DEPRECATED)
+<M> Intel ICH (i8xx) audio support
+<M> OSS sound modules
+<M> Loopback MIDI device support
+<M> Microsoft Sound System support
+
+我们也可以看到Open Sound System中也有好多的声卡驱动，大家根据前面的lspci -v 来选择吧。
+
+
+3）对于操作系统所采用的文件系统的支持要编入内核，最好不要编成模块；（重要）
+
+比如我的Fedora core 4.0 所采用的文件系统用的是ext3 ，所以我要把它直接编入内核；好处是不受模块丢失或者损坏而不能启动
+系统；而有时您把系统所采用的文件系统编译成模块，出现VFS错误，也有这方面的事，可能是您没有把ext3加入到相应的加载模块
+的配置文件中，所以我们为了减少麻烦，把风险降到最低，还是要直接置入内模的好；
+File systems --->
+<*> Ext3 journalling file system support
+[*] Ext3 extended attributes
+[*] Ext3 POSIX Access Control Lists
+[*] Ext3 Security Labels
+
+如果您还有其它的硬盘分区要读取，比如是reiserfs、ext2、fat、fat32、ntfs等，这样的可以编成模块来支持；
+
+再举一例：如果您的的操作系统用的是reiserfs的文件系统，当然就要把reiserfs的直接编入内核，其它的可以编成模块来支持了
+；
+
+
+4）对于硬盘及RAID的支持，要直接编入内核；
+
+比如ATA、SATA、SCSI及RAID的支持直接内核支持；有时编完内核后，启动时不能识别硬盘和RAID，大多事情出在这里；Slackware
+中在这方面有的是模块支持，我们可以把它由模块M改成内核*来支持；如果您不明白，就按默认进行；SATA的硬盘的支持除了选中
+SATA的支持、IDE设备的支持以外，还要选中SCSI的支持；
+
+5）对于咱们所没有的设备，可以在内核中不选，熟能生巧罢了；
+
+比如我没有ISDN设备，所以就把ISDN去掉；
+ISDN subsystem --->
+< > Linux telephony support
+
+如果您没有1394的设备，当然可以把1394的支持也去掉；等等。。。。。。。
+
+如果您有USB的设备，要把USB方面好好看看；比如大家常用的移动硬盘；USB猫等，还有扫描仪等；
+
+内核配置就说这么多吧，太多了，我也说不清楚，水平有限啊；
+
+配置好后先要保存
+
+Save Configuration to an Alternate File
+
+出来一个
+
+Enter a filename to which this configuration ，should be saved as an alternate. Leave blank to abort.
+.config
+
+按回车就行了，这样就保存住了；
+
+然后退出 Exit ，这时也会出现保存；
+
+如果你想把.config保存起来，可以再复制一份到安全一点的目录，以备后用；
+
+五、编译内核；
+
+[root@localhost linux-2.6.12.3]# make
+[root@localhost linux-2.6.12.3]# make modules_install
+
+这样就编译好了，并把模块也安装在了 /lib/modules目录中了，请看：
+[root@localhost linux-2.6.12.3]# ls /lib/modules/
+
+2.6.11-1.1369_FC4   2.6.12.3
+
+
+六、安装内核及配置grub或lilo ；
+
+
+1、复制bzImage等相关文件，并创建initrd文件；
+
+[root@localhost linux-2.6.12.3]# cp arch/i386/boot/bzImage /boot/vmlinuz-2.6.12.3
+[root@localhost linux-2.6.12.3]# cp System.map /boot/System.map-2.6.12.3
+[root@localhost linux-2.6.12.3]# cd /boot
+[root@localhost linux-2.6.12.3]# /sbin/mkinitrd initrd-2.6.12.3.img   2.6.12.3
+
+我们把编译出来的bzImage，拷入到/boot目录，拷贝成 vmlinuz-2.6.12.3；
+并且用 mkinitrd 来创建imitrd-xxx.img 文件，其中xxx为内核的版本号，是通过查看 /lib/modules来版本来对应的，我们是编译
+出来的是 2.6.12.3，所以就运行上面的命令创建，创建的出来的是initrd-2.6.12.3.img ；不创建这个文件，有时是启动不起来的
+，比如提示VFS错误等；
+
+
+2、查看系统引导管理器grub或者lilo的配置文件。
+
+如果想要让新内核能让系统引导管理器grub和lilo的菜单上能看得到，必须改 grub.conf或者lilo.conf，但我们必须保留老内核的
+在grub和lilo的启动菜单，毕竟我们编内核不能百分百的成功，对不对？？安全第一吧；
+
+我只说grub的，我没有lilo，也不会用。所以咱们还是GRUB吧，FC 4 系统引导管理器是 GRUB，所以我们谈谈GRUB的设置；
+
+查看 /etc/grub.conf；
+
+比如我的grub.conf的内容是这样的；
+
+# grub.conf generated by anaconda
+#
+# Note that you do not have to rerun grub after making changes to this file
+# NOTICE:  You do not have a /boot partition.  This means that
+#          all kernel and initrd paths are relative to /, eg.
+#          root (hd0,7)
+#          kernel /boot/vmlinuz-version ro root=/dev/hda8
+#          initrd /boot/initrd-version.img
+#boot=/dev/hda
+default=0
+timeout=5
+#splashimage=(hd0,7)/boot/grub/splash.xpm.gz
+#hiddenmenu
+title Fedora Core (2.6.11-1.1369_FC4)
+        root (hd0,7)
+        kernel /boot/vmlinuz-2.6.11-1.1369_FC4 ro root=LABEL=/ rhgb quiet
+        initrd /boot/initrd-2.6.11-1.1369_FC4.img
+title WinXP
+        rootnoverify (hd0,0)
+        chainloader +1
+
+我们要把老内核的启动保留下来，以防不测，我们只加入新的内核的启动；所以我加上这样一段；
+
+title Fedora Core (2.6.12.3)
+root (hd0,7)
+kernel /boot/vmlinuz-2.6.12.3 ro root=LABEL=/ rhgb quiet
+initrd /boot/initrd-2.6.12.3.img
+
+咱们再来看一下改过后的配置文件；
+
+# grub.conf generated by anaconda
+#
+# Note that you do not have to rerun grub after making changes to this file
+# NOTICE:  You do not have a /boot partition.  This means that
+#          all kernel and initrd paths are relative to /, eg.
+#          root (hd0,7)
+#          kernel /boot/vmlinuz-version ro root=/dev/hda8
+#          initrd /boot/initrd-version.img
+#boot=/dev/hda
+default=0
+timeout=5
+#splashimage=(hd0,7)/boot/grub/splash.xpm.gz
+#hiddenmenu
+
+title Fedora Core (2.6.12.3)
+        root (hd0,7)
+        kernel /boot/vmlinuz-2.6.12.3 ro root=LABEL=/ rhgb quiet
+        initrd /boot/initrd-2.6.12.3.img
+
+
+title Fedora Core (2.6.11-1.1369_FC4)
+        root (hd0,7)
+        kernel /boot/vmlinuz-2.6.11-1.1369_FC4 ro root=LABEL=/ rhgb quiet
+        initrd /boot/initrd-2.6.11-1.1369_FC4.img
+title WinXP
+        rootnoverify (hd0,0)
+        chainloader +1
+
+然后重新启动机器，如果出现VFS错误，可能就是我写重要的那个地方出了错误；
+
+注意：如果重新启用内核后，原来安装的显示卡驱动，比如 NVIDIA和ATI的驱动还要重新安装；
+
+后记：
+
+为写声卡及其其它硬件设备的安装教程做准备，重写此文档；并更正一些错误；
+
+附录：
+
+1、《内核管理概述》
+2、《Fedora / Redhat 软件包管理指南》
+3、内核主站：http://kernel.org
+
+  • 要发表评论，请先登录或注册
+
+我按照你着篇文章操作的
+
+On 十二月 15th, 2006 Anonymous (未验证) says:
+
+我按照你着篇文章操作的，
+装的是fc6,内核是2.6.18-1.2798.fc6-i586，
+只是在内核目录中make menuconfig
+做了一些配置，然后就make了，
+但是出现了错误，如下：
+[root@localhost 2.6.18-1.2798.fc6-i586]# make
+scripts/kconfig/conf -s arch/i386/Kconfig
+CHK include/linux/version.h
+CHK include/linux/utsrelease.h
+HOSTCC scripts/genksyms/genksyms.o
+HOSTCC scripts/genksyms/lex.o
+HOSTCC scripts/genksyms/parse.o
+HOSTLD scripts/genksyms/genksyms
+CC scripts/mod/empty.o
+MKELF scripts/mod/elfconfig.h
+HOSTCC scripts/mod/file2alias.o
+HOSTCC scripts/mod/modpost.o
+HOSTCC scripts/mod/sumversion.o
+HOSTLD scripts/mod/modpost
+make[1]: *** 没有规则可以创建“init/built-in.o”需要的目标“init/main.o”。停止。
+make: *** [init] 错误 2
+请问是哪里出错了？
+
+  • 要发表评论，请先登录或注册
+
+fc6 编译出错
+
+On 二月 6th, 2007 Fedorar says:
+
+fc6 的源代码包不完整，你需要去下载个完整的就ok了。
+
+  • 要发表评论，请先登录或注册
+
+怎么回事亚 make menuconfig错误
+
+On 四月 23rd, 2006 freeman says:
+
+在fc5下的内核源码包，按步骤到这一步出错，用gcc4.10
+[root@localhost linux-2.6.16.1]# make mrproper
+[root@localhost linux-2.6.16.1]# make menuconfig
+HOSTCC scripts/basic/fixdep
+HOSTCC scripts/basic/split-include
+HOSTCC scripts/basic/docproc
+HOSTCC scripts/kconfig/conf.o
+HOSTCC scripts/kconfig/kxgettext.o
+HOSTCC scripts/kconfig/mconf.o
+SHIPPED scripts/kconfig/zconf.tab.c
+SHIPPED scripts/kconfig/lex.zconf.c
+SHIPPED scripts/kconfig/zconf.hash.c
+HOSTCC scripts/kconfig/zconf.tab.o
+HOSTLD scripts/kconfig/mconf
+HOSTCC scripts/kconfig/lxdialog/checklist.o
+在包含自 scripts/kconfig/lxdialog/checklist.c：24 的文件中:
+scripts/kconfig/lxdialog/dialog.h:31:20: 错误：curses.h：没有那个文件或目录
+In file included from scripts/kconfig/lxdialog/checklist.c:24:
+scripts/kconfig/lxdialog/dialog.h:128: 错误：expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘_ _attribute__’ before ‘use_colors’
+scripts/kconfig/lxdialog/dialog.h:129: 错误：expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘_ _attribute__’ before ‘use_shadow’
+scripts/kconfig/lxdialog/dialog.h:131: 错误：expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘_ _attribute__’ before ‘attributes’
+scripts/kconfig/lxdialog/dialog.h:143: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/dialog.h:146: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/dialog.h:147: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/dialog.h:148: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/dialog.h:149: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/dialog.h:151: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/checklist.c:31: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/checklist.c:59: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/checklist.c:95: 错误：expected ‘)’ before ‘*’ token
+scripts/kconfig/lxdialog/checklist.c: 在函数 ‘dialog_checklist’ 中：
+scripts/kconfig/lxdialog/checklist.c:117: 错误：‘WINDOW’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:117: 错误：(即使在一个函数内多次出现，每个未声明的标识符在其
+scripts/kconfig/lxdialog/checklist.c:117: 错误：所在的函数内只报告一次。)
+scripts/kconfig/lxdialog/checklist.c:117: 错误：‘dialog’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:117: 错误：‘list’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:117: 警告：逗号表达式的左操作数不起作用
+scripts/kconfig/lxdialog/checklist.c:117: 警告：语句不起作用
+scripts/kconfig/lxdialog/checklist.c:121: 警告：隐式声明函数 ‘endwin’
+scripts/kconfig/lxdialog/checklist.c:122: 警告：隐式声明函数 ‘fprintf’
+scripts/kconfig/lxdialog/checklist.c:122: 警告：隐式声明与内建函数 ‘fprintf’ 不兼容
+scripts/kconfig/lxdialog/checklist.c:122: 错误：‘stderr’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:140: 错误：‘COLS’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:141: 错误：‘LINES’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:143: 警告：隐式声明函数 ‘draw_shadow’
+scripts/kconfig/lxdialog/checklist.c:143: 错误：‘stdscr’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:145: 警告：隐式声明函数 ‘newwin’
+scripts/kconfig/lxdialog/checklist.c:146: 警告：隐式声明函数 ‘keypad’
+scripts/kconfig/lxdialog/checklist.c:146: 错误：‘TRUE’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:148: 警告：隐式声明函数 ‘draw_box’
+scripts/kconfig/lxdialog/checklist.c:148: 错误：‘attributes’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:149: 警告：隐式声明函数 ‘wattrset’
+scripts/kconfig/lxdialog/checklist.c:150: 警告：隐式声明函数 ‘mvwaddch’
+scripts/kconfig/lxdialog/checklist.c:152: 警告：隐式声明函数 ‘waddch’
+scripts/kconfig/lxdialog/checklist.c:156: 警告：隐式声明函数 ‘print_title’
+scripts/kconfig/lxdialog/checklist.c:159: 警告：隐式声明函数 ‘print_autowrap’
+scripts/kconfig/lxdialog/checklist.c:166: 警告：隐式声明函数 ‘subwin’
+scripts/kconfig/lxdialog/checklist.c:190: 警告：隐式声明函数 ‘print_item’
+scripts/kconfig/lxdialog/checklist.c:194: 警告：隐式声明函数 ‘print_arrows’
+scripts/kconfig/lxdialog/checklist.c:197: 警告：隐式声明函数 ‘print_buttons’
+scripts/kconfig/lxdialog/checklist.c:199: 警告：隐式声明函数 ‘wnoutrefresh’
+scripts/kconfig/lxdialog/checklist.c:201: 警告：隐式声明函数 ‘doupdate’
+scripts/kconfig/lxdialog/checklist.c:204: 警告：隐式声明函数 ‘wgetch’
+scripts/kconfig/lxdialog/checklist.c:211: 错误：‘KEY_UP’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:211: 错误：‘KEY_DOWN’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:221: 错误：‘FALSE’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:222: 警告：隐式声明函数 ‘scrollok’
+scripts/kconfig/lxdialog/checklist.c:223: 警告：隐式声明函数 ‘wscrl’
+scripts/kconfig/lxdialog/checklist.c:233: 警告：隐式声明函数 ‘wrefresh’
+scripts/kconfig/lxdialog/checklist.c:283: 警告：隐式声明与内建函数 ‘fprintf’ 不兼容
+scripts/kconfig/lxdialog/checklist.c:284: 警告：隐式声明函数 ‘delwin’
+scripts/kconfig/lxdialog/checklist.c:288: 错误：‘KEY_LEFT’ 未声明 (在此函数内第一次使用)
+scripts/kconfig/lxdialog/checklist.c:289: 错误：‘KEY_RIGHT’ 未声明 (在此函数内第一次使用)
+make[2]: *** [scripts/kconfig/lxdialog/checklist.o] 错误 1
+make[1]: *** [menuconfig] 错误 2
+make: *** [menuconfig] 错误 2
+[root@localhost linux-2.6.16.1]# echo $SHELL
+/bin/bash
+
+  • 要发表评论，请先登录或注册
+
+请问：FC4内核编译问题
+
+On 十二月 9th, 2006 Fedorar says:
+
+参考文件:
+《编译内核操作流程--为新手指南》
+《linux学习笔记--驱动》基于FC5
+我使用的是FC4(kernel-2.6.11.1369_FC4-i686)
+我在
+http://download.fedora.redhat.com/pub/fedora/linux/core/4/
+上下载升级包:
+kernel-2.6.17-1.2142_FC4.src.rpm和kernel-2.6.17-1.2142_FC4.i686.rpm
+还有工具module-init-tools-3.1-3.src.rpm
+把他们复制到/usr/src目录下,
+按照"操作流程"中说的:
+然后执行命令:rpm -ivh kernel-2.6.17-1.2142_FC4.i686.rpm
+#rpm -ivh kernel-2.6.17-1.2142_FC4.src.rpm
+顺便问一下:这两个文件都是什么啊,是不是用第一个就可以了呢?和操作流程中的kernel-devel和kernel是什么关系呢?
+然后就安装工具:rpm -ivh module-init-tools-3.1-3.src.rpm
+这样就算把工具安装了吗,好像还没做完也,它被安装到什么地方了呢,怎么用呢?
+接下来我按照"学习笔记"中的做法操作,
+#cd /usr/src/redhat/SPECS
+#rpmbuild -bp --target i686 kernel-2.6.spec
+#cd ..
+#cd BUILD
+#ls kernel-2.6.17
+kernel-2.6.17目录下只有两个文件夹(linux-2.6.17.i686和vanilla),比"学习笔记"中讲的要少三个文件:Config.mk xen
+xen-vanilla;
+然后进入/usr/src/redhat/BUILD/kernel-2.6.17/linux-2.6.17.i686
+按"学习笔记"中说的这就是linux的内核树了,我对linux还不太了解,就想直接用make编译,按照"学习笔记"讲的也是可以编译的,这
+个过程就像按照"操作流程"中讲的不做配置(我想都用默然配置)直接编译内核;
+#make 但报错如下:
+CC fs/read_write.o
+CC fs/file_table.o
+CC fs/buffer.o
+CC fs/bio.o
+fs/bio.c: 在函数 ‘bio_alloc_bioset’ 中：
+fs/bio.c:169: 警告：‘idx’ may be used uninitialized in this function
+CC fs/super.o
+CC fs/block_dev.o
+CC fs/char_dev.o
+CC fs/stat.o
+CC fs/exec.o
+CC fs/pipe.o
+CC fs/namei.o
+CC fs/fcntl.o
+CC fs/ioctl.o
+CC fs/readdir.o
+CC fs/select.o
+fixdep: inclu: No such file or directory
+make[1]: *** [fs/select.o] 错误 2
+make: *** [fs] 错误 2
+[root@localhost linux-2.6.17.i686]#
+我的操作过程中哪些地方出错了呢?
+重新用#make编译，错误还不同，如下：
+CC [M] drivers/block/ub.o
+LD drivers/block/aoe/built-in.o
+CC [M] drivers/block/aoe/aoeblk.o
+CC [M] drivers/block/aoe/aoechr.o
+CC [M] drivers/block/aoe/aoecmd.o
+CC [M] drivers/block/aoe/aoedev.o
+CC [M] drivers/block/aoe/aoemain.o
+CC [M] drivers/block/aoe/aoenet.o
+LD [M] drivers/block/aoe/aoe.o
+LD drivers/block/paride/built-in.o
+CC [M] drivers/block/paride/paride.o
+CC [M] drivers/block/paride/aten.o
+CC [M] drivers/block/paride/bpck.o
+cc1: 编译器内部错误：段错误
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See for instructions.
+The bug is not reproducible, so it is likely a hardware or OS problem.
+make[2]: *** [drivers/block/paride/bpck.o] 错误 1
+make[1]: *** [drivers/block/paride] 错误 2
+make: *** [drivers] 错误 2
+[root@localhost linux-2.6.17.i686]#
+这是怎么回事呢？？
+
+另外能介绍一下/usr/src/kernels和redhat文件夹下的目录吗？
+另外我安装FC4后kernels目录下是22.4M的内容,是内核树吗,编译也不能通过,为什么呢?
+根据这两周的了解,module-init-tools还要安装的,我前段安装过3.0版的,是在kernel.org上下的,这次的3.1版我用过rpm命令还要
+安装吗;另外有文档(编译内核全过程中)提示说还要安装modutils-2.4.21-23.src.rpm,在FC4下,我没安装上去,不安装可以吗;他说
+的环境是redhat9升级到2.6?
+我前几天在kernel.org上下linux-2.6.11.12.tar.bz2配置后,编译也是出错,第一次的错误和这次好象一样,然后我又编译,又提示有
+关I2C的错误,但我确认过,我没有选择Device Drivers中有关I2C的内容.
+[root@localhost linux-2.6.11.12]# make bzImage
+SYSMAP System.map
+SYSMAP .tmp_System.map
+AS arch/i386/boot/setup.o
+LD arch/i386/boot/setup
+OBJCOPY arch/i386/boot/compressed/vmlinux.bin
+GZIP arch/i386/boot/compressed/vmlinux.bin.gz
+LD arch/i386/boot/compressed/piggy.o
+LD arch/i386/boot/compressed/vmlinux
+OBJCOPY arch/i386/boot/vmlinux.bin
+BUILD arch/i386/boot/bzImage
+Root device is (253, 0) Boot sector 512 bytes.
+Setup is 5471 bytes.
+System is 1662 kB
+Kernel: arch/i386/boot/bzImage is ready
+
+[root@localhost linux-2.6.11.12]# make modules
+CC [M] fs/ext3/acl.o
+CC [M] fs/ext3/xattr_security.o
+LD [M] fs/ext3/ext3.o
+CC [M] fs/jbd/transaction.o
+CC [M] fs/jbd/commit.o
+CC [M] fs/jbd/recovery.o
+CC [M] fs/jbd/checkpoint.o
+CC [M] fs/jbd/revoke.o
+CC [M] fs/jbd/journal.o
+LD [M] fs/jbd/jbd.o
+CC [M] drivers/i2c/i2c-core.o
+In file included from drivers/i2c/i2c-core.c:29:
+include/linux/i2c.h:58: 错误：数组元素的类型不完全
+include/linux/i2c.h:197: 错误：数组元素的类型不完全
+drivers/i2c/i2c-core.c: 在函数 ‘i2c_transfer’ 中：
+drivers/i2c/i2c-core.c:594: 错误：实参 2 的类型不完全
+drivers/i2c/i2c-core.c: 在函数 ‘i2c_master_send’ 中：
+drivers/i2c/i2c-core.c:620: 错误：实参 2 的类型不完全
+drivers/i2c/i2c-core.c: 在函数 ‘i2c_master_recv’ 中：
+drivers/i2c/i2c-core.c:649: 错误：实参 2 的类型不完全
+make[2]: *** [drivers/i2c/i2c-core.o] 错误 1
+make[1]: *** [drivers/i2c] 错误 2
+make: *** [drivers] 错误 2
+[root@localhost linux-2.6.11.12]#
+
+  • 要发表评论，请先登录或注册
+
+求助
+
+On 十二月 13th, 2006 月半湾 says:
+
+我的linux的内核原来是linux-2.4.20-8的,后面我重新下载了一个内核2.6.10,在编译完成后,我用mkinitrd创建了一个
+initrd-2.6.10.img的文件，但是没有写内容进去，然后在grub.conf中添加了:
+title linux(2.6.10)
+root (hd0,7)
+kernel /boot/vmlinuz-2.6.10 ro root=LABEL=/ rhgb quiet
+initrd /boot/initrd-2.6.10，
+原来的没有动,只是在后面按原来的增加了上面这个,
+后面重启后，根本就进不了linux,而且grub启动菜单里没有我新安装的linux内核菜单,选择原来的linux2.4.20-8后，一直进不了，
+提示initrd /boot/initrd-2.6.10，File not find，please press any key to continue，按了任意键之后又进入了grub启动系统
+选择菜单，请问这是怎么回事呢？我要修改grub.conf根本不知道怎么修改，都不进不了系统，有什么办法能进入原来的系统内核呢
+？请问一下,这个问题有什么解决办法呢,
+
+  • 要发表评论，请先登录或注册
+
+linux学习笔记－驱动
+
+On 十二月 9th, 2006 Fedorar says:
+
+linux论坛 » 程序设计 » linux学习笔记－驱动（1）原创
+http://bbs.linuxmine.com/archiver/tid-3705.html
+如能解答，深表感谢！！
+我从开始看驱动的信息至少有两周了，现在知道流程了，又遇到这样的问题，头疼！！
+
+  • 要发表评论，请先登录或注册
+
+求救
+
+On 十二月 9th, 2006 young45 says:
+
+俺为这个问题困顿两周了,帮帮俺吧!!!
+
+  • 要发表评论，请先登录或注册
+
+安装ncurses-devel
+
+On 五月 19th, 2006 Fedorar says:
+
+rpm -ivh ncurses-devel-5.5-19.i386.rpm
+就可以了
+
+  • 要发表评论，请先登录或注册
+
+入门必读
+
+  • 什么是Fedora
+  • Fedora 4.0安装手册
+  • Fedora 下载及说明
+  • 软件包管理
+  • 用户管理
+  • 硬件管理
+  • 内核管理
+   
+    重要资讯
+
+      □ 本站公告
+      □ 新闻事件
+      □ 本站论坛
+      □ 贡献者
+   
+    导航
+
+      □ 注册/登录
+      □ 新闻聚合器
+   
+    论坛快讯
+
+      □ ntfs-3g的安装和配置
+      □ 简易WWW服务器的架设
+      □ 软RAID 0的技术概要及实现 v0.1b (正在修订之中)
+      □ Raid的学习和基础知识 v0.1b
+      □ rsync 服务器架设方法 v0.1b （正在修订中）
+    更多
+   
+    新进会员
+
+      □ qq66789253
+      □ xiayu
+      □ emuccc
+      □ wincoin.guojx
+      □ laughme2000
+   
+    在线用户
+
+    目前共有 1 位用户和 1 位游客在线。
+
+    在线用户
+
+      □ qq66789253
+   
+    基础知识
+
+      □ 安装配置
+      □ 基础入门
+      □ 硬件解决
+      □ 软件管理
+      □ 重要资源
+   
+    软件应用
+
+      □ 桌面环境
+      □ 网络工具
+      □ 图形图像
+      □ 音乐视频
+      □ 软件其它
+   
+    最新评论
+
+      □ 急！！！！！！请插入第二张光盘再继续
+        2 周 5 天前
+      □ 猫哥，请教一下：
+        3 周 1 天前
+      □ 解决了
+        3 周 4 天前
+      □ 请问为什么按下ctrl alt f1 不能进入命令模式?
+        3 周 5 天前
+      □ 安装wingrb0206.exe出错
+        8 周 3 天前
+      □ 为什么网站不能搜索啊?
+        9 周 2 天前
+      □ Fedora安装完成后，XP进不了了
+        17 周 6 天前
+      □ 求助thinkpad r400 744511c在fedora中无线网卡安装
+        18 周 1 天前
+      □ Solaris SPARC 引导过程已进行重新设计
+        24 周 5 天前
+      □ 个问题
+        25 周 12 小时前
+    LinuxSir.Org 小组 | © 2002-2007 Fedora,CentOS,Redhat 学习小组 | Powered By Drupal
+    本站属于LinuxSir.Org子站，转帖时请加来源，谢谢！

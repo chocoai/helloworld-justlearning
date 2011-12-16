@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}test temp{% endblock %}
+
+{% block content %}
+<p>here there.</p>
+<form action="/search/" method="get">
+  <input type="text" name="q">
+  <input type="submit" value="Search 搜索">
+</form>
+{% endblock %}

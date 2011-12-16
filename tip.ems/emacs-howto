@@ -1,0 +1,242 @@
+shell Ctrl-c Ctrl-o 清除输出:cat echo .etc.
+* SEARCHING
+ C-s for forward search, and C-r reverse search.
+c-h k c-s for more information about serach
+c-x c-x exchange mark and point
+c-h i d m auctex
+m-\ delete horizontal  space
+    **M-r**  *M-x move-to-window-line*
+     **M-{**      **M-}**   section
+C-x C-w**                  M-x write-file
+C-x i                    M-x insert-file
+c-x 2 split window
+c-/ c-g redo
+m-0 switch-buffer
+c-o newline
+m-x load-file .emacs
+c-x c-e excute a command line
+c-x k kill buff
+	C-l	Clear screen and redisplay all the text,
+		 moving the text around the cursor
+		 to the center of the screen.
+	M-a	Move back to beginning of sentence
+	M-e	Move forward to end of sentence
+ C-u 8 C-v scrolls the screen by 8 lines.
+ C-u 8 * to insert ********.
+* WINDOWS
+>> Move the cursor to this line and type C-u 0 C-l.
+	M-<Delback>  kill the word immediately before the cursor
+	M-d	     kill the next word after the cursor
+The command for yanking is C-y.  
+ M-y If you M-y enough times, you come back to the starting point .
+	C-x s     Save some buffers
+replace string
+        M-x repl s<Return>changed<Return>altered<Return>.
+
+>> Type C-M-v to scroll the bottom window.
+>> Type C-x 4 C-f followed by the name of one of your files.
+If you are REALLY lost,type C-h ? 
+>> Type C-h c C-p.
+>> Type C-h k C-p.
+   C-h f	Describe a function.  You type in the name 
+of the function.
+>> Try typing C-h f previous-line<Return>.
+   This displays all the information Emacs has about the
+   function which implements the C-p command.
+>> Type C-h a keyword <Return>.
+This displays in another window a list of all M-x commands with "file"
+in their names.  You will see character-commands like C-x C-f listed
+beside the corresponding command names such as find-file.
+   C-h i	Read On-line Manuals (a.k.a. Info).  This command puts
+		you into a special buffer called `*info*' where you
+		can read on-line manuals for the packages installed on
+		your system.  Type m emacs <Return> to read the Emacs
+		manual.  If you have never before used Info, type ?
+		and Emacs will take you on a guided tour of Info mode
+		facilities.  Once you are through with this tutorial,
+		you should consult the Emacs Info manual as your
+		primary documentation.
+
+
+* MORE FEATURES
+---------------
+
+1You can learn more about Emacs by reading its manual, either as a book
+or on-line in Info (use the Help menu or type F10 h r).  Two features
+that you may like especially are completion, which saves typing, and
+dired, which simplifies file handling.
+Dired enables you to list files in a directory (and optionally its
+subdirectories), move around that list, visit, rename, delete and
+otherwise operate on the files.  Dired is described in Info in the
+Emacs manual in the node called "Dired".
+在C/C++代码中操作
+M-a     移动到当前语句的开始
+M-e     移动到当前语句的末尾
+
+C-M-a   移动到当前函数的开始
+C-M-e   移动到当前函数的结尾
+
+M-q     若光标在注释文本中间，则进行段落重排，保留缩进和前导字符
+
+C-M-h   把光标放在当前函数开头，把文本块标记放在函数结尾，
+        即把函数整个选作为一个文本块。
+
+C-c C-q 对整个函数进行缩进
+C-x h   选定整个buffer，  然后C-M-\可以对代码进行重新排版
+
+C-c C-u 移动到当前预处理条件的开始位置
+C-c C-p 移动到上一个预处理条件
+C-c C-n 移动到下一个预处理条件
+
+M-;     对当前行进行注释
+C-x C-x 快速返回移动前的光标位置
+
+C-c C-c 对一块代码进行注释；取消注释用命令 uncomment-region
+
+M-{     上一个段落
+M-}     下一个段落
+C-M-v   另一个窗口下卷一个屏幕
+C-M-V   另一个窗口上卷一个屏幕
+M-h     标记整个段落
+C-x C-p 标记整个页面
+C-x h   标记整个缓冲区
+replace-string  查找替换光标后所有的内容
+M-%     查询替换操作
+
+对于M-%，需要注意的是其相关的一些操作： 
+
+SPACE或y    用新字符串替换原来的，并进入下一个位置
+DEL或n      不替换，进入下一个位置
+.          在当前位置做替换后退出查询－替换操作
+,          替换，并显示替换情况（再按空格或y进入下一个位置）
+!          对后面的内容全部进行替换，不再提问
+^          返回上一个替换了的位置
+RETURN或q   退出查询替换操作
+C-r        进入递归编辑状态
+C-w        删除此处内容并进入递归编辑状态（好进行其他修改）
+M-C-c      退出递归编辑状态，继续完成查询－替换操作
+C-]        退出递归编辑状态和查询替换操作
+
+正则表达式查找与替换
+C-M-s Return      向前查找正则表达式
+C-M-r Return      反向查找正则表达式
+
+C-M-s       向前递归查找正则表达式
+C-M-r       反向递归查找正则表达式
+
+query-replace-regexp  查询-替换正则表达式
+replace-regexp    无条件替换正则表达式（慎用）
+
+Emacs中的register
+在多个文件中逛的时候，我们常常需要快速切换到先前访问的某个位置。因此，我们需要把文件及其光标位置暂时存放在某个地方。 
+
+在Emacs中，我们可以使用register暂时性保存这些信息。 
+
+将当前光标所在位置保存入一个register中： 
+
+C-x r SPACE + register名（一个字符，比如a吧）
+
+然后我们就可以到处瞎逛，若要回到保存的register a位置，我们可以输入： 
+
+C-x r j a
+
+挺好用的吧:) 
+
+如果你记性和我一样不好，恐怕会常常想看看自己保存了哪些register，我们可以输入： 
+
+M-x view-register    查看某一个register
+M-x list-registers   查看所有的register
+
+其实我常用的就是以上功能，为了使笔记稍微完整一点，下面开始Copy 《GNU Emacs Manual》的相关章节： 
+
+在下面，我们使用r来命名所有的register： 
+
+Save Positions in Registers
+C-x r SPC r
+    Save position of point in register r (point-to-register). 
+C-x r j r
+    Jump to the position saved in register r (jump-to-register).
+
+Saving Text in Registers
+C-x r s r
+    Copy region into register r (copy-to-register). 
+C-x r i r
+    Insert text from register r (insert-register). 
+M-x append-to-register RET r
+    Append region to text in register r. 
+M-x prepend-to-register RET r
+    Prepend region to text in register r.
+
+Saving Rectangles in Registers
+C-x r r r
+    Copy the region-rectangle into register r (copy-rectangle-to-register). With numeric argument, delete it as well. 
+C-x r i r
+    Insert the rectangle stored in register r (if it contains a rectangle) (insert-register).
+
+Saving Window Configurations in Registers
+C-x r w r
+    Save the state of the selected frame's windows in register r (window-configuration-to-register). 
+C-x r f r
+    Save the state of all frames, including all their windows, in register r (frame-configuration-to-register).
+
+Keeping Numbers in Registers
+C-u number C-x r n r
+    Store number into register r (number-to-register). 
+C-u number C-x r + r
+    Increment the number in register r by number (increment-register). 
+C-x r g r
+    Insert the number from register r into the buffer.
+
+Etags
+建立Etags文件：
+在代码目录中运行etags -R 
+
+如果要向现有tags表中添加，则运行etags -a 
+
+访问Tag文件：
+M-x visit-tags-table 
+
+常用热键
+M-. 访问tag C-u M-.访问下一个tag M-* 返回 
+
+Emacs 中的 GNU-Serv
+常常使用console的人往往也改不了这么个习惯，就是进了X就开个终端，然后在里头埋头干活，看到什么文件想修改就vi一把。我也是这个习惯。vi比emacs启动快多了。 
+
+GNU-Serv改变了这个情形。 
+
+首先要安装gnu-serv这个包，在我的机器上apt-get install gnu-serv就可以了。 
+
+接下来修改.emacs文件 
+
+  (require 'gnuserv)
+  (gnuserv-start)
+
+接下来修改.bashrc文件 
+
+  alias e='gnuclient'
+
+这样，在终端下就可以通过 e foo来编辑foo文件了，它会自动关联到已经打开的emacs中。 
+
+更强大的功能在于，你还可以在远程执行gnuclinet，在本机编辑文件后自动存放到远程机器上。 
+
+Emacs中的bookmark
+将当前页面加入bookmark 
+
+  M-x bookmark-set
+
+修改.bashrc，将list-bookmarks绑定到F9上 
+
+  (global-set-key [(f9)] 'list-bookmarks)
+
+这样，就可以通过F9键访问书签了。 
+
+我常用的键绑定
+F2  寻找wiki
+F3  进入dired模式
+F4  进入eshell模式
+F12 t   进入todo模式
+F12 c   访问Calendar模式
+F12 p   在当前页添加Planner
+F12 g   查阅当天的plan
+F12 r   添加笔记
+F9  列出bookmarks

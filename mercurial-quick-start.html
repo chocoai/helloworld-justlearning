@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="icon" href="/hgicon.png" type="image/png"><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+<title>QuickStart - Mercurial</title>
+<script type="text/javascript" src="/moin-static/common/js/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin-static/modernized/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="/moin-static/modernized/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="/moin-static/modernized/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="/moin-static/modernized/css/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin-static/modernized/css/msie.css">
+<![endif]-->
+
+
+
+
+
+<link rel="Start" href="/wiki/Mercurial">
+<link rel="Alternate" title="Wiki Markup" href="/wiki/QuickStart?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/wiki/QuickStart?action=print">
+<link rel="Search" href="/wiki/FindPage">
+<link rel="Index" href="/wiki/TitleIndex">
+<link rel="Glossary" href="/wiki/WordIndex">
+<link rel="Help" href="/wiki/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+<div id="header">
+
+<form id="searchform" method="get" action="/wiki/QuickStart">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput">Search:</label>
+<input id="searchinput" type="text" name="value" value="" size="20"
+    onfocus="searchFocus(this)" onblur="searchBlur(this)"
+    onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search">
+<input id="titlesearch" name="titlesearch" type="submit"
+    value="Titles" alt="Search Titles">
+<input id="fullsearch" name="fullsearch" type="submit"
+    value="Text" alt="Search Full Text">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<div id="logo"><a href="/wiki/Mercurial"><img src="http://www.selenic.com/hg-logo/logo-droplets-50.png" width=50 height=60 border=0 alt="Mercurial" style="margin-right: 1em"></a></div>
+<div id="username"><a href="/wiki/QuickStart?action=login" id="login" rel="nofollow">Login</a></div>
+<h1 id="locationline">
+
+<span id="pagelocation"><a class="backlink" href="/wiki/QuickStart?action=fullsearch&amp;value=linkto%3A%22QuickStart%22&amp;context=180" rel="nofollow" title="Click to do a full-text search for this title">QuickStart</a></span>
+</h1>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="/wiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="/wiki/FindPage">FindPage</a></li><li class="wikilink"><a href="/wiki/HelpContents">HelpContents</a></li><li class="current"><a href="/wiki/QuickStart">QuickStart</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+
+<ul class="editbar"><li><a href="/wiki/QuickStart?action=login" rel="nofollow">Edit</a></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/wiki/QuickStart?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/wiki/QuickStart?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/wiki/QuickStart">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><span class="anchor" id="line-2"></span><p class="line867">
+<h1 id="Quick_Start">Quick Start</h1>
+<span class="anchor" id="line-3"></span><span class="anchor" id="line-4"></span><p class="line874">An introduction for the impatient. <span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span><p class="line867"><div class="table-of-contents"><p class="table-of-contents-heading">Contents<ol><li>
+<a href="#Setting_a_username">Setting a username</a></li><li>
+<a href="#Working_on_an_existing_Mercurial_project">Working on an existing Mercurial project</a></li><li>
+<a href="#Setting_up_a_new_Mercurial_project">Setting up a new Mercurial project</a></li><li>
+<a href="#Clone.2C_commit.2C_merge">Clone, commit, merge</a></li><li>
+<a href="#Exporting_a_patch">Exporting a patch</a></li><li>
+<a href="#Network_support">Network support</a></li><li>
+<a href="#See_also">See also</a></li></ol></li></ol></div> <span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span><p class="line867">
+<h2 id="Setting_a_username">1. Setting a username</h2>
+<span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><p class="line862">The first thing you should do is set the username Mercurial will use for commits. It's best to configure a proper email address in <em><tt class="backtick">~/.hgrc</tt></em> <sup><a href="#fnref-d97ae0dea7dc3b585dc0556a05e77fe3dd23dfd6" id="fndef-d97ae0dea7dc3b585dc0556a05e77fe3dd23dfd6-0">1</a></sup> (or on a Windows system in <em><tt class="backtick">%USERPROFILE%\Mercurial.ini</tt></em>) by creating it and adding lines like the following: <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span><p class="line867"><span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span><pre><span class="anchor" id="line-1"></span>[ui]
+<span class="anchor" id="line-2"></span>username = John Doe &lt;john@example.com&gt;</pre><span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span><p class="line867">
+<h2 id="Working_on_an_existing_Mercurial_project">2. Working on an existing Mercurial project</h2>
+<span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span><p class="line862">If you have a URL to a browsable project <a href="/wiki/Repository">repository</a> (for example <a class="http" href="http://selenic.com/hg">http://selenic.com/hg</a>), you can grab a copy like so: <span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span><p class="line867"><span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span><pre><span class="anchor" id="line-1-1"></span>$ hg clone http://selenic.com/hg mercurial-repo
+<span class="anchor" id="line-2-1"></span>real URL is http://www.selenic.com/hg/
+<span class="anchor" id="line-3"></span>requesting all changes
+<span class="anchor" id="line-4"></span>adding changesets
+<span class="anchor" id="line-5"></span>adding manifests
+<span class="anchor" id="line-6"></span>adding file changes
+<span class="anchor" id="line-7"></span>added 9633 changesets with 19124 changes to 1271 files
+<span class="anchor" id="line-8"></span>updating to branch default
+<span class="anchor" id="line-9"></span>1084 files updated, 0 files merged, 0 files removed, 0 files unresolved</pre><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span><p class="line862">This will create a new directory called <em><tt class="backtick">mercurial-repo</tt></em>, grab the complete project history, and check out the most recent <a href="/wiki/ChangeSet">changeset</a> on the default branch. <span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span><p class="line862">The '<tt class="backtick">summary</tt>' command  will summarize the state of the <a href="/wiki/WorkingDirectory">working directory</a>. Command names may be abbreviated, so entering just '<tt class="backtick">hg&nbsp;sum</tt>' is enough: <span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><p class="line867"><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span><pre><span class="anchor" id="line-1-2"></span>$ hg sum
+<span class="anchor" id="line-2-2"></span>parent: 9632:16698d87ad20 tip
+<span class="anchor" id="line-3-1"></span> util: use sys.argv[0] if $HG is unset and 'hg' is not in PATH
+<span class="anchor" id="line-4-1"></span>branch: default
+<span class="anchor" id="line-5-1"></span>commit: (clean)
+<span class="anchor" id="line-6-1"></span>update: (current)</pre><span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><p class="line862">Here <tt>commit:&nbsp;(clean)</tt> means that there no <a href="/wiki/LocalModifications">local changes</a>, <tt>update:&nbsp;(current)</tt> means that the checked out files (in the working directory) are updated to the newest revision in the repository. <span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span><p class="line867">
+<h2 id="Setting_up_a_new_Mercurial_project">3. Setting up a new Mercurial project</h2>
+<span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><p class="line874">You'll want to start by creating a repository in the directory containing your project: <span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><p class="line867"><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><pre><span class="anchor" id="line-1-3"></span>$ cd project/
+<span class="anchor" id="line-2-3"></span>$ hg init           # creates .hg</pre><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><p class="line862">Mercurial will look for a file named <em><tt class="backtick">.hgignore</tt></em> <sup><a href="#fnref-50ac91238d745636f167f38c9fe9160b237ab024" id="fndef-50ac91238d745636f167f38c9fe9160b237ab024-1">2</a></sup> in the root of your repository which contains a set of glob patterns and regular expressions to ignore in file paths. Here's an example <em><tt class="backtick">.hgignore</tt></em> file: <span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><p class="line867"><span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><pre><span class="anchor" id="line-1-4"></span>syntax: glob
+<span class="anchor" id="line-2-4"></span>*.orig
+<span class="anchor" id="line-3-2"></span>*.rej
+<span class="anchor" id="line-4-2"></span>*~
+<span class="anchor" id="line-5-2"></span>*.o
+<span class="anchor" id="line-6-2"></span>tests/*.err
+<span class="anchor" id="line-7-1"></span>
+<span class="anchor" id="line-8-1"></span>syntax: regexp
+<span class="anchor" id="line-9-1"></span>.*\#.*\#$</pre><span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span><p class="line862">Test your <em><tt class="backtick">.hgignore</tt></em> file with '<tt class="backtick">status</tt>': <span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><pre><span class="anchor" id="line-1-5"></span>$ hg status         # show all non-ignored files</pre><span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><p class="line862">This will list all files that are not ignored with a '?' flag (not tracked). Edit your '<tt class="backtick">.hgignore</tt>' file until only files you want to track are listed by status. You'll want to track your .hgignore file too! But you'll probably not want to track files generated by your build process. Once you're satisfied, schedule your files to be added, then commit: <span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><p class="line867"><span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><pre><span class="anchor" id="line-1-6"></span>$ hg add            # add those 'unknown' files
+<span class="anchor" id="line-2-5"></span>$ hg commit         # commit all changes into a new changeset, edit changelog entry
+<span class="anchor" id="line-3-3"></span>$ hg parents        # see the currently checked out revision (or changeset)</pre><span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span><p class="line874">To get help on commands, simply run: <span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><p class="line867"><span class="anchor" id="line-87"></span><span class="anchor" id="line-88"></span><pre><span class="anchor" id="line-1-7"></span>$ hg help</pre><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span><p class="line867">
+<h2 id="Clone.2C_commit.2C_merge">4. Clone, commit, merge</h2>
+<span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span><p class="line867"><span class="anchor" id="line-93"></span><span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span><span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span><span class="anchor" id="line-104"></span><pre><span class="anchor" id="line-1-8"></span>$ hg clone project project-work    # clone repository
+<span class="anchor" id="line-2-6"></span>$ cd project-work
+<span class="anchor" id="line-3-4"></span>$ &lt;make changes&gt;
+<span class="anchor" id="line-4-3"></span>$ hg commit
+<span class="anchor" id="line-5-3"></span>$ cd ../project
+<span class="anchor" id="line-6-3"></span>$ &lt;make other changes&gt;
+<span class="anchor" id="line-7-2"></span>$ hg commit
+<span class="anchor" id="line-8-2"></span>$ hg pull ../project-work   # pull changesets from project-work
+<span class="anchor" id="line-9-2"></span>$ hg merge                  # merge the new tip from project-work into our working directory
+<span class="anchor" id="line-10"></span>$ hg parents                # see the revisions that have been merged into the working directory
+<span class="anchor" id="line-11"></span>$ hg commit                 # commit the result of the merge</pre><span class="anchor" id="line-105"></span><span class="anchor" id="line-106"></span><p class="line867">
+<h2 id="Exporting_a_patch">5. Exporting a patch</h2>
+<span class="anchor" id="line-107"></span><span class="anchor" id="line-108"></span><p class="line867"><span class="anchor" id="line-109"></span><span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span><span class="anchor" id="line-112"></span><pre><span class="anchor" id="line-1-9"></span>(make changes)
+<span class="anchor" id="line-2-7"></span>$ hg commit
+<span class="anchor" id="line-3-5"></span>$ hg export tip    # export the most recent commit</pre><span class="anchor" id="line-113"></span><span class="anchor" id="line-114"></span><p class="line867">
+<h2 id="Network_support">6. Network support</h2>
+<span class="anchor" id="line-115"></span><span class="anchor" id="line-116"></span><p class="line867"><span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span><span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span><span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span><span class="anchor" id="line-123"></span><span class="anchor" id="line-124"></span><span class="anchor" id="line-125"></span><span class="anchor" id="line-126"></span><span class="anchor" id="line-127"></span><span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span><pre><span class="anchor" id="line-1-10"></span># clone from the primary Mercurial repo
+<span class="anchor" id="line-2-8"></span>$ hg clone http://selenic.com/hg/
+<span class="anchor" id="line-3-6"></span>$ cd hg
+<span class="anchor" id="line-4-4"></span>
+<span class="anchor" id="line-5-4"></span># pull new changesets from an existing other repo into the repository (.hg)
+<span class="anchor" id="line-6-4"></span>$ hg pull http://selenic.com/hg/
+<span class="anchor" id="line-7-3"></span>
+<span class="anchor" id="line-8-3"></span># export your current repo via HTTP with browsable interface on port 8000
+<span class="anchor" id="line-9-3"></span>$ hg serve -n "My repo"
+<span class="anchor" id="line-10-1"></span>
+<span class="anchor" id="line-11-1"></span># push changesets to a remote repo with SSH
+<span class="anchor" id="line-12"></span>$ hg push ssh://user@example.com/hg/</pre><span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span><p class="line867">
+<h2 id="See_also">7. See also</h2>
+<span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span><ul><li><p class="line891"><a href="/wiki/BeginnersGuides">Beginner's guides</a> <span class="anchor" id="line-134"></span></li><li><p class="line862">A basic <a href="/wiki/Tutorial">tutorial</a> <span class="anchor" id="line-135"></span></li><li><p class="line891"><a href="/wiki/ManPages">Manual pages</a> <span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span></li></ul><p class="line867"><hr /><p class="line874"> <span class="anchor" id="line-138"></span><span class="anchor" id="line-139"></span><p class="line867"><a href="/wiki/QuickStartDe">Deutsch</a>, <a href="/wiki/FrenchQuickStart">Français</a>, <a href="/wiki/BrazilianPortugueseQuickStart">Português</a>, <a href="/wiki/ThaiQuickStart">ภาษาไทย</a>, <a href="/wiki/ChineseQuickStart">中文</a>, <a href="/wiki/JapaneseQuickStart">日本語</a> <span class="anchor" id="line-140"></span><div class="footnotes"><ol><li><p><a id="fnref-d97ae0dea7dc3b585dc0556a05e77fe3dd23dfd6"></a><span class="anchor" id="line-1-1"></span><a class="http" href="http://www.selenic.com/mercurial/hgrc.5.html">http://www.selenic.com/mercurial/hgrc.5.html</a>  (<a href="#fndef-d97ae0dea7dc3b585dc0556a05e77fe3dd23dfd6-0">1</a>)</li><li><p><a id="fnref-50ac91238d745636f167f38c9fe9160b237ab024"></a><span class="anchor" id="line-1-2"></span><a class="http" href="http://www.selenic.com/mercurial/hgignore.5.html">http://www.selenic.com/mercurial/hgignore.5.html</a>  (<a href="#fndef-50ac91238d745636f167f38c9fe9160b237ab024-1">2</a>)</li></ol></div><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" lang="en" dir="ltr">QuickStart  (last edited 2011-01-08 18:10:20 by <span title="YuyaNishihara @ pa2361d.tkyea101.ap.so-net.ne.jp[115.162.54.29]"><a href="/wiki/YuyaNishihara" title="YuyaNishihara @ pa2361d.tkyea101.ap.so-net.ne.jp[115.162.54.29]">YuyaNishihara</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><a href="/wiki/QuickStart?action=login" rel="nofollow">Edit</a></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/wiki/QuickStart?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/wiki/QuickStart?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/wiki/QuickStart">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+</body>
+</html>
+

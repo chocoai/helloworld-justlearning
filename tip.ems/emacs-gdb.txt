@@ -1,0 +1,194 @@
+在emacs中用gdb调试c/c++还是很方便的，不过一直以来用惯了vc6，按起gud默认的按键来说确实不很方便，所以就作了一些按键映射来模仿vc6的调试： 
+
+(setq gdb-many-windows t)
+(global-set-key [f5] 'gdb)
+(global-set-key [C-f5] 'gud-run)
+(global-set-key [S-f5] 'gud-cont)
+(global-set-key [f7] 'compile)
+(global-set-key [f8] 'gud-print)
+(global-set-key [C-f8] 'gud-pstar)
+(global-set-key [f9] 'gud-break)
+(global-set-key [C-f9] 'gud-remove)
+(global-set-key [f10] 'gud-next)
+(global-set-key [C-f10] 'gud-until)
+(global-set-key [S-f10] 'gud-jump)
+(global-set-key [f11] 'gud-step)
+(global-set-key [C-f11] 'gud-finish)
+用上面的配置，emacs中: 
+
+在c/c++-mode中按f７,就会调用make编译程序。 
+在c/c++-mode中按f5,就会进入gdb调试。 
+打开gdb后在源代码buffer中按f9设置断点，相当于gdb中的break。 
+按Ctrl+f9就可以删除断点，相当于gdb中的delete。 
+在gdb buffer中，按Ctrl+f5就开始执行程序，相当于gdb中的run。 
+断点之后，可以按f10单步执行，相当于gdb中的next。 
+把光标移动到某处按Ctrl+f10，会一直执行光标位置，相当于gdb的until。 
+把光标移动到某处按Shift+f10，会jump到光标位置，下一次会从光标处执行。 
+也可以按f11单步执行，不过f11会进入函数内部，相当于gdb中的step。 
+按Ctrl+f11可以跳出当前函数，相当于gdb中的finish。 
+在断点处按Shift+f5继续执行程序，相当于gdb中的continue。 
+在变量上按f8会输出变量的值，相当于gdb的print。 
+在变量上按Ctrl+f8会打印出指针对应的值。 
+可是用上面的配置和vc6还是有一些地方不太一样，主要有： 
+
+vc6中是用f9来切换断点，而不是设置两个键来分别设置和删除断点。 
+上面按键中的f5/C-f5/S-f5在vc中统一用f5，会根据当前状态自动选择。 
+vc6中按Shift+f5可以中止当前调试，而gud中只能输入命令quit。 
+可惜在gud中我没找到和上面这三个对应的方法，所以经过几天的折腾，我自己写了几个函数，首先是(gdb-or-gud-go)，这个函数会自动判断gdb是否已启动，如果没启动就调用(gdb)启动，否则就调用(gud-go)，(gud-go)会根据程序是否在运行来决定执行(gud-run)还是(gud-cont)： 
+
+(defun gdb-or-gud-go ()
+  "If gdb isn't running; run gdb, else call gud-go."
+  (interactive)
+  (if (and gud-comint-buffer
+           (buffer-name gud-comint-buffer)
+           (get-buffer-process gud-comint-buffer)
+           (with-current-buffer gud-comint-buffer (eq gud-minor-mode 'gdba)))
+      (gud-call (if gdb-active-process "continue" "run") "")
+    (gdb (gud-query-cmdline 'gdb))))
+然后是(gud-break-remove)，这个函数会根据当前行是否设置了断点来决定设置或删除断点： 
+
+(defun gud-break-remove ()
+  "Set/clear breakpoin."
+  (interactive)
+  (save-excursion
+    (if (eq (car (fringe-bitmaps-at-pos (point))) 'breakpoint)
+        (gud-remove nil)
+      (gud-break nil))))
+最后是(gud-kill)，本来一开始我是想用(gud-call)向gdb发送"quit"命令来退出gdb，可是在运行的时候发送quit，gdb会询问是否退出，必须回答y才能真正退出，这样显得有点麻烦。而在gdb的菜单中提供了一个Kill命令其实是可以退出gdb的，所以我模仿kill的代码写了(gud-kill)来直接杀死调试进程： 
+
+(defun gud-kill ()
+  "Kill gdb process."
+  (interactive)
+  (with-current-buffer gud-comint-buffer (comint-skip-input))
+  (kill-process (get-buffer-process gud-comint-buffer)))
+其实上面这些函数主要是模仿gdb-ui.el中的某些函数写出来的，有了这些函数，我就可以把f5绑定到(gdb-or-gud-go)，把Shift-f5绑定到(gud-kill)，把f9绑定到(gud-break-remove)： 
+
+(global-set-key [f5] 'gdb-or-gud-go)
+(global-set-key [S-f5] 'gud-kill)
+(global-set-key [f9] 'gud-break-remove)
+这样，先按f5会启动gdb，再按f5因为调试没运行就会执行(gud-run)，遇到断点再按f5则会调用(gud-cont)。 
+
+按Shift+f5就会终止当前的调试。 
+
+在源代码行上就会根据当前行上是否有断点来确实设置或删除断点。 
+
+最终的配置文件如下： 
+
+(require 'gdb-ui)
+(defun gdb-or-gud-go ()
+  "If gdb isn't running; run gdb, else call gud-go."
+  (interactive)
+  (if (and gud-comint-buffer
+           (buffer-name gud-comint-buffer)
+           (get-buffer-process gud-comint-buffer)
+           (with-current-buffer gud-comint-buffer (eq gud-minor-mode 'gdba)))
+      (gud-call (if gdb-active-process "continue" "run") "")
+    (gdb (gud-query-cmdline 'gdb))))
+(defun gud-break-remove ()
+  "Set/clear breakpoin."
+  (interactive)
+  (save-excursion
+    (if (eq (car (fringe-bitmaps-at-pos (point))) 'breakpoint)
+        (gud-remove nil)
+      (gud-break nil))))
+(defun gud-kill ()
+  "Kill gdb process."
+  (interactive)
+  (with-current-buffer gud-comint-buffer (comint-skip-input))
+  (kill-process (get-buffer-process gud-comint-buffer)))
+(setq gdb-many-windows t)
+(global-set-key [f5] 'gdb-or-gud-go)
+;; (global-set-key [S-f5] '(lambda () (interactive) (gud-call "quit" nil)))
+(global-set-key [S-f5] 'gud-kill)
+(global-set-key [f7] '(lambda () (interactive) (compile compile-command)))
+(global-set-key [f8] 'gud-print)
+(global-set-key [C-f8] 'gud-pstar)
+(global-set-key [f9] 'gud-break-remove)
+;; (global-set-key [f9] 'gud-break)
+;; (global-set-key [C-f9] 'gud-remove)
+(global-set-key [f10] 'gud-next)
+(global-set-key [C-f10] 'gud-until)
+(global-set-key [S-f10] 'gud-jump)
+(global-set-key [f11] 'gud-step)
+(global-set-key [C-f11] 'gud-finish)
+
+
+本文来自CSDN博客，转载请标明出处：http://blog.csdn.net/meteor1113/archive/2009/12/05/4948000.aspx;;;; CC-mode配置  http://cc-mode.sourceforge.net/(require 'cc-mode)(c-set-offset 'inline-open 0)(c-set-offset 'friend '-)(c-set-offset 'substatement-open 0);;;;根据后缀判断所用的mode;;;;注意：我在这里把.h关联到了c++-mode(setq auto-mode-alist   (append '(("\\.h$" . c++-mode)) auto-mode-alist));;;;我的C/C++语言编辑策略(defun my-c-mode-common-hook()  (setq tab-width 4 indent-tabs-mode nil)  ;;; hungry-delete and auto-newline  (c-toggle-auto-hungry-state 1)  ;;按键定义  (define-key c-mode-base-map [(control \`)] 'hs-toggle-hiding)  (define-key c-mode-base-map [(return)] 'newline-and-indent)  (define-key c-mode-base-map [(f7)] 'compile)  (define-key c-mode-base-map [(f8)] 'ff-get-other-file)  (define-key c-mode-base-map [(meta \`)] 'c-indent-command);;  (define-key c-mode-base-map [(tab)] 'hippie-expand)  (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)  (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)  ;;预处理设置  (setq c-macro-shrink-window-flag t)  (setq c-macro-preprocessor "cpp")  (setq c-macro-cppflags " ")  (setq c-macro-prompt-flag t)  (setq hs-minor-mode t)  (setq abbrev-mode t)  (setq tab-width 4 indent-tabs-mode nil))(add-hook 'c-mode-common-hook 'my-c-mode-common-hook);;;;我的C++语言编辑策略(defun my-c++-mode-hook()  (setq tab-width 4 indent-tabs-mode nil)  (c-set-style "stroustrup");;  (define-key c++-mode-map [f3] 'replace-regexp))(add-hook 'c++-mode-hook 'my-c++-mode-hook);;;;C/C++语言启动时自动加载semantic对/usr/include的索引数据库(setq semanticdb-search-system-databases t)  (add-hook 'c-mode-common-hook          (lambda ()            (setq semanticdb-project-system-databases                  (list (semanticdb-create-database                           semanticdb-new-database-class                           "/usr/include")))));;;;我的Java语言编辑策略(defun my-java-mode-hook()  (setq tab-width 4 indent-tabs-mode nil))(add-hook 'java-mode-hook 'my-java-mode-hook);;;; Python Mode设置(add-to-list 'load-path "/home/caole/lib/emacs-lisp/python-mode-1.0")(require 'python-mode);;(require 'pycomplete)(require 'doctest-mode);;;; 注释配置(load-file "/home/caole/lib/emacs-lisp/gnome-doc.el")
+(global-linum-mode t)   
+;;设置自动缩进   
+(setq indent-tabs-mode nil)   
+(setq default-tab-width 8)   
+(setq tab-width 8)   
+(setq tab-stop-list ())   
+;;设置C语言风格   
+(add-hook 'c-mode-hook 'linux-c-mode)   
+(setq imenu-sort-function 'imenu--sort-by-name)   
+(defun linux-c-mode()   
+(define-key c-mode-map [return] 'newline-and-indent)   
+(interactive)   
+(c-set-style "K&R")   
+(c-toggle-hungry-state)   
+(setq c-basic-offset 4)   
+(imenu-add-menubar-index)   
+(which-function-mode)   
+)   
+;;取消警告声音   
+(setq visible-bell nil)   
+;;设置颜色主题   
+(require 'color-theme)   
+(color-theme-charcoal-black)   
+;;设置默认字体   
+(set-default-font "Bitstream Vera Sans Mono-16")   
+;;支持 emacs 和外部程序的粘贴   
+(setq x-select-enable-clipboard t)   
+;;取消滚动条   
+(scroll-bar-mode nil)   
+;;显示列号   
+(column-number-mode t)   
+;;高亮显示选择区域   
+(setq-default transient-mark-mod t)   
+(transient-mark-mode t)   
+;;括号匹配显示   
+(show-paren-mode t)   
+;;隐藏工具栏   
+(tool-bar-mode -1)   
+;;隐藏菜单栏   
+(menu-bar-mode -1)   
+;;语法高亮   
+(global-font-lock-mode t)   
+;;关闭启动画面   
+(setq inhibit-startup-message t)   
+;;全屏设置[F11]   
+(global-set-key [f11] 'my-fullscreen)   
+;;全屏   
+(defun my-fullscreen ()   
+  (interactive)   
+  (x-send-client-message   
+   nil 0 nil "_NET_WM_STATE" 32   
+   '(2 "_NET_WM_STATE_FULLSCREEN" 0))   
+)   
+;;启动时全屏   
+(my-fullscreen)   
+(defun m-eshell-hook ()   
+;;设置EShell   
+;;define control p, control n and the up/down arrow    
+;;转到上一条匹配命令   
+(define-key eshell-mode-map [(control p)] 'eshell-previous-matching-input-from-input)   
+;;转到上一条匹配命令   
+(define-key eshell-mode-map [(control n)] 'eshell-next-matching-input-from-input)   
+;;删除已输入命令   
+(define-key eshell-mode-map [(control u)] 'eshell-kill-input)   
+(define-key eshell-mode-map [up] 'previous-line)   
+(define-key eshell-mode-map [down] 'next-line)   
+)    
+(add-hook 'eshell-mode-hook 'm-eshell-hook)   
+(put 'scroll-left 'disabled nil)   
+;;;;向左右滚动的命令激活：C-x < 和 C-x >   
+(put 'scroll-left 'disabled nil)   
+;;配置一下shell的颜色   
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)   
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)   
+(setq ansi-color-for-comint-mode t)   
+(setq frame-title-format "%n%F  %b");在窗口的标题栏上显示文件名称  
+
+本文来自CSDN博客，转载请标明出处：http://blog.csdn.net/printc/archive/2009/07/26/4381422.aspx

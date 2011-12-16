@@ -1,0 +1,137 @@
+Emacs 中的查找
+最基本的东西
+C-s 开始正向查找 
+C-r 开始方向查找 
+在查找模式下的一些操作
+下面的操作都是先按 C-s 或者 C-r 后，进入 Incremental Search Mode 之后的操作。
+
+C-r , C-s ， 分别是向前查找和向后查找当前输入的内容。 
+C-w 查找光标除所在的单词 
+C-w 还可以和上面介绍的 C-s C-r 配合使用。C-s 进入 Incremental Search Mode. 然后输入 void f 然后光标会停留在一个 void f 的单词上，也许是 void far ，然后用 C-s 或者 C-r 找到某个 void f 的地方，然后 C-w 就可以把 f 后面的单词补全了。
+
+C-y 把光标所在位置到行尾的部分作为查找内容 
+和 C-w 类似，只不过输入的不是一个单词，而是整整一行。
+
+M-y 把 kill ring 中的东西输入为当前要查找的内容 
+M-c 切换大小写敏感。 
+M-r 切换是普通查找还是正则表达式查找。 
+M-e 编辑要查找的内容 
+Incremental Search 会随着用户的输入不断的改变光标的位置，有的时候很讨厌，那么就可以 M-e 编辑要查找的内容，然后按 Enter 回到 Incremetal Search 。
+
+M-n M-p 浏览查找历史纪录 
+可以查找以前查找过的内容。
+
+C-q C-j 查找多行文字。 
+如果你要的查找的内容是多行文字，也就是说，查找内容中含有换行字符 C-j 但是， Enter 键又作为结束查找的操作，一按 Enter 就退出了查找模式了。那么 C-q C-j 可以解决这个问题。 可以查看 如何输入特殊的控制字符 。
+
+用 Nonincremental Search 查找
+如果不习惯 Incremetal Search 的方式，那么可以 C-s <RET> ，也就是按了 C-s 之后，马上按一个回车，就用 Nonincremental Search 的方式查找，这种查找方式和普通的编辑器几乎一样。
+
+使用 moccur 在所有打开的文件内查找
+本来 M-x occur 可以在一个 buffer 的查找某一个正则表达式。 moccur 提供更加强大的功能。安装了 moccur 之后 ，如果进入 incremetal 查找功能，除了上面介绍的一些功能，有多了两个新的功能。下面的操作都是先按 C-s 或者 C-r 后 进入 Incremental Search Mode 之后的操作。
+
+M-o, 小写的 o , 列出来当前 buffer 内的所有查找内容 
+M-O, 大写的 O , 列出来所有打开的 buffer 中出现的查找内容。 
+安装 moccur 的方法。下载 color-moccur.el， 然后按照文件头的提示或者参考 Emacs 安装一个扩展包的方法
+
+在多个文件中查找
+find-dired
+运行外部命令 find , 产生文件列表，然后进入 dired 模式。
+
+find-grep-dired
+运行外部命令 find，用 grep 过滤文件， ls 产生目录列表，然后进入 dired 模式，这样列出所有包含某些字符的文件列表。可以使用 dired-do-query-replace-regexp 在文件列表中查找并替换。可以递归所有子目录。可以用各种条件过滤文件，详细可以查看 find 命令的帮助。
+
+grep
+在当前目录中查找指定的 regexp 。
+
+grep-find
+运行 find , grep ，然后产生类似于 compile 的结果，可以查看哪些文件在什么地方包含了匹配了指定的 regexp 。用 C-x ` 浏览结果。可以递归所有子目录。，详细可以查看 find 命令的帮助。
+
+dired-do-query-replace-regexp
+在任何 dired 模式下，对于所有带有标记的文件进行查找替换。
+
+替换
+在 transient mode 下，如果 region 是激活状态下，那么就调用 query-replace-selection , 这个函数和 query-replace 几乎完全一样，不同的是， query-replace-selection 用当前选择的 region 作为被替换的部分，而不是等用户输入。
+
+(defun query-replace-selection (to-string &optional delimited start end)
+  "query reqlace the current selection in transient mark mode."
+  (interactive (list
+                (read-from-minibuffer (format "Query replace %s with: "
+                                              (buffer-substring (point) (mark)))
+                                      nil nil nil
+                                      query-replace-to-history-variable
+                                      (buffer-substring (point) (mark))
+                                      t)
+                nil nil nil
+                ))
+  (perform-replace (buffer-substring (point) (mark)) to-string t nil delimited nil nil start end))
+(wcy-define-2bind-transient-mode
+ wcy-query-replace-or-query-replace-selection
+ 'query-replace-selection
+ 'query-replace)
+(global-set-key (kbd "M-%") 'wcy-query-replace-or-query-replace-selection)
+ 
+
+wcy-define-2bind-transient-mode 的定义参见 其他编辑技巧 中的 C-w 部分。
+
+;; 在 C-s 进入 incremental search 的时候， 按 M-i ， 替换当前查找内容
+(define-key isearch-mode-map (kbd "M-i") 'isearch-query-replace-current)
+(defun isearch-query-replace-current ()
+  "replace current searching string."
+  (interactive)
+  (let ((case-fold-search isearch-case-fold-search)
+        (from-string isearch-string))
+    (if (not isearch-success)
+        (message "search string not found")
+      (progn
+       (isearch-exit)
+       (goto-char (min (point) isearch-other-end)))
+      ;;(isearch-abort)
+      (perform-replace
+       from-string
+       (read-from-minibuffer (format "Query replace %s with: "
+                                     from-string)
+                             from-string nil nil
+                             query-replace-to-history-variable
+                             from-string
+                             t)
+       t ; query flag
+       isearch-regexp
+       nil))))
+
+;; 进入 incremental search mode 之后，有些命令可以根据光标所在位置补全要查找内容，
+;; 例如 C-w 可以补全一个词。但是如果按多了 C-w 就不能回退了，而且不能精确定位，
+;; 下面的键绑定重新定义了一些常用的光标移动命令，根据光标移动，自动补齐查找内容，
+;; 例如 C-f 自动补齐光标处的一个字符。
+(define-key isearch-mode-map (kbd "C-e") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "C-a") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "M-e") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "M-a") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "C-M-e") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "C-M-a") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "C-f") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "C-b") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "M-f") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "M-b") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "C-M-f") 'isearch-move-point)
+(define-key isearch-mode-map (kbd "C-M-b") 'isearch-move-point)
+(defun isearch-move-point ()
+  (interactive)
+  (when isearch-success
+    (save-excursion
+      (let ((overriding-terminal-local-map nil)
+            (old-point (or isearch-other-end (point))))
+        (call-interactively (key-binding (this-command-keys)))
+        (setq isearch-string (buffer-substring-no-properties  old-point
+                                                              (point))
+              isearch-message
+              (mapconcat 'isearch-text-char-description
+                         isearch-string "")
+              ;; Don't move cursor in reverse search.
+              isearch-forward (cond
+                               ((< old-point (point)) t)
+                               ((> old-point (point)) nil)
+                               ((= old-point (point)) isearch-forward))
+              )))
+    (isearch-search-and-update)))
+

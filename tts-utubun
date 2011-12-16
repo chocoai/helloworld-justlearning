@@ -1,0 +1,117 @@
+Location: http://forum.ubuntu.org.cn/viewtopic.php?f=121&t=251904&view=previous     
+  * Blog
+  * Paste
+  * Ubuntu
+  * Wiki
+  * Linux
+  * Forum
+
+[                               ] [搜索] 
+* 登录   * 注册                                                              * FAQ
+
+论坛首页 » 软件使用 » Wine及其分支                                                 
+                                                                                   
+当前时区为 UTC + 8 小时                                                            
+
+在910下读小说，wine NeoSpeech
+
+发表新帖 回复这个主题  分页： 1 / 1  [ 3 篇帖子 ]                                  
+  打印预览                                                 上一个主题 | 下一个主题 
+        作者                                      内容                             
+1 楼  xindex           文章标题 : 在910下读小说，wine NeoSpeech                    
+                      帖子发表于 : 2010-01-12 15:52                                
+头像                  由于比较喜欢用电脑听小说，以前一直在win下，但是总希望能在    
+                      linux下解决问题。说实在的，我在win下就只有这一个任务了。     
+                      首先                                                         
+注册: 2007-01-01      在ubuntu 9.10上通过源安装wine。                              
+12:28                 然后安装了NeoSpeech Lily库。运行                             
+帖子: 67              代码:                                                        
+                      ~/.wine/dosdevices/c:/Program Files/VW/VT/Lily/M16-SAPI5/lib/
+                      ttsapp_unicode.exe                                           
+                                                                                   
+                      发现不能执行。但是                                           
+                      代码:                                                        
+                      ~/.wine/dosdevices/c:/Program Files/VW/VT/Lily/M16-SAPI5/lib/
+                      UserDicChi.exe                                               
+                                                                                   
+                      可以运行。阅读词汇是可以用的。                               
+                      于是认为NeoSpeech是可以用的。但是没有可用的软件。安装        
+                      smartread也不行。                                            
+                      于是google了一下，在google上找了一下linux tts。找到了Using   
+                      TextAloud in Linux。（今天上午baidu被黑了，要不就用baidu了。 
+                      估计baidu还不一定能找到这个呢。）                            
+                      按照说明在wine下安装了SAPI 5点击下载                         
+                      代码:                                                        
+                      wine msiexec /i Microsoft-English-TTS-51.msi                 
+                                                                                   
+                      wineboot                                                     
+                      这回打开~/.wine/dosdevices/c:/Program Files/VW/VT/Lily/      
+                      M16-SAPI5/lib/ttsapp_unicode.exe，居然能用了。高兴呀。       
+
+                      :em11 :em11                                                  
+                                                                                   
+                      图片                                                         
+                      在百度上找个地方放上了。                                     
+                                                                                   
+                      ps:wine要设置为winme。                                       
+
+                      最后由 xindex 编辑于 2010-01-12 18:32，总共编辑了 2 次       
+
+页首                   用户资料发送Email                                           
+                                                                                   
+_                                                                                  
+2 楼  O_O_BOT          文章标题 : Re: 在910下读小说，wine NeoSpeech                
+                      帖子发表于 : 2010-01-12 16:00                                
+头像                  irc <wowoto> say: 不错.还行.                                 
+
+注册: 2009-05-20      _________________                                            
+19:32                 irc 聊天室                                                   
+帖子: 2398            ubuntu-cn 的irc 频道为                                       
+                      irc.ubuntu.com 8001 #ubuntu-cn                               
+                      UTF8编码可用 irssi xchat pidgin weechat 登录                 
+                      http://webchat.freenode.net/?channels=ubuntu-cn              
+                      irc://irc.freenode.net/ubuntu-cn                             
+
+页首                   用户资料发送Email                                           
+                                                                                   
+_                                                                                  
+3 楼  lucifer591       文章标题 : Re: 在910下读小说，wine NeoSpeech                
+                      帖子发表于 : 2010-01-13 0:28                                 
+头像                  直接用本站上传图片百度无法外链 :em01                         
+
+注册: 2009-07-12      _________________                                            
+18:49                 代码:                                                        
+帖子: 347             ╭━━灬╮╭━━∞╮ .（                                              
+地址: 北京            ┃⌒ ⌒┃┃⌒ ⌒┃ (の)                                              
+                      ┃┃ ┃┃┃━ ━┃ ╱）                                               
+                      〇━━━〇〇━━━〇                                               
+
+页首                   用户资料发送Email                                           
+                                                                                   
+_                                                                                  
+                 显示帖子 : [全部帖子] 排序 [发表时间] [升序] [GO]                 
+发表新帖 回复这个主题  分页： 1 / 1  [ 3 篇帖子 ]                                  
+
+论坛首页 » 软件使用 » Wine及其分支                                                 
+                                                                                   
+当前时区为 UTC + 8 小时                                                            
+
+在线用户                                                                           
+                                                                                   
+正在浏览此版面的用户：crazydevil 和 8 位游客                                       
+
+                                                           您不能在这个版面发表主题
+                                                           您不能在这个版面回复主题
+                                                           您不能在这个版面编辑帖子
+                                                           您不能在这个版面删除帖子
+                                                           您不能在这个版面提交附件
+
+                                        前往 : [Wine及其分支                 ] [GO]
+本站点为公益性站点，用于推广开源自由软件，由 DiaHosting VPS 和 BurstNet VPS 提供服
+务。
+我们认为：软件应可免费取得，软件工具在各种语言环境下皆可使用，且不会有任何功能上的
+差异；
+人们应有定制和修改软件的自由，且方式不受限制，只要他们自认为合适。
+Powered by phpBB © 2000, 2002, 2005, 2007 phpBB Group
+简体中文语系由 PHPBB中文翻译小组维护制作
+

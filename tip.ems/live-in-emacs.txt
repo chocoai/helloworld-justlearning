@@ -1,0 +1,209 @@
+
+在Emacs 中添加Appointment
+这个主要是添加约会和提醒用的，首先修改.emacs文件打开约会提醒功能。 
+
+(setq appt-issue-message t)
+
+然后可以通过appt-add添加新的约会提醒，到时间Emacs就会弹出窗口提醒。如果这期间要取消约会，那么可以通过appt-delete删除。 
+
+Calendar和Diary
+Calendar是配合Diary进行行程安排的，两者配合可以用于规划比较长远的事情。 
+
+我已经把Calendar模式绑定到了F8上，以下列举几个常用的命令： 
+
+.  跳回当天
+o  跳到某一个月
+g  这一系列命令表示goto，可以跳到指定的某一天。
+   g d   跳到某年某月某日
+   g c   跳到某年某星期的星期几
+   g C   跳到阴历的某一天
+p  这一系列命令表示print，例如p C显示显示当前的阴历日期
+i  这一系列命令表示插入行程安排
+   i d   加入当前这一天的行程安排，类似还有m w y
+   i w   跳到某个星期的星期一，按下i w可以加入每个星期都必须做的事情
+   i a   跳到某天，按下i a可以加入周年纪念日
+
+好习惯应该是经常打开calendar，跳到某天，按下d就可以显示这一天的行程安排。 
+
+Emacs 中的 To-Do Mode
+To-do可以用来做日程安排，todo，done，top分别表示要完成的事情，已完成的事情，和优先事情。 
+
+首先要修改.emacs文件 
+
+  (setq todo-file-do "~/.emacs.d/todo-do")
+
+  (setq todo-file-done "~/.emacs.d/todo-done")
+
+  (setq todo-file-top "~/.emacs.d/todo-top")
+
+下面是一些快捷操作 
+
+i    加入一个条目
+
+e    编辑条目
+
+k    删除条目
+
++/-  在不同category之间切换
+
+j    跳转到不同的category
+
+f    对已完成的事情进行归档，并可以进行评论。
+
+如果按i想把条目归入新档时出现错误，可以用todo-add-category加入 
+
+想要添加什么事情，随手就可以通过F5进入todo-mode，按寻找一个category，按I添加一个新的entry。完成之后再切换到todo去，按下d或者f删除entry。每个星期可以通过bookmark访问一下done文件，顿时觉得生活过得好充实。 
+
+todo部分转载自coda@newsmth。 
+
+用planner安排日程
+这里有篇不错的入门文档一、二。 
+
+安装planner
+在我的机器上只需要 apt-get install planner-el即可，非Debian的系统也不麻烦。 
+
+接下来要配置.emacs文件。 
+
+;;;planner
+(require 'planner)
+(global-set-key (kbd "<f12> p") 'planner-create-task-from-buffer)
+(setq planner-publishing-directory "~/document/wiki/diary/plan")
+;;;;Start planner together with Calendar
+(planner-calendar-insinuate)
+(setq planner-calendar-show-planner-files t)
+
+常用快捷键
+查询任务
+M-x plan      查询所有未完成的工作
+M-x planner-goto-today        查询当天未完成的工作
+
+添加任务         C-c C-t或者M-x planner-create-task-from-buffer
+
+标记任务完成     C-c C-x或者M-x planner-update-task   
+
+修改任务描述     M-x planner-edit-task-description
+
+重新安排一个任务   C-c C-c
+
+重新安排多个任务   区域选定后M-x planner-copy-or-move-task
+
+Change a plan of task     M-x planner-replan-task
+
+Delete a task             M-x planner-delete-task
+
+Reordering task    M-p 升序  M-n 降序
+
+修改优先级         C-M-p 提升；C-M-n 降低
+
+以下是从info中复制过来的
+Ideas for using planner more effectively: 
+
+Add `(plan)' to the end of your `~/.emacs' so that you are reminded about your tasks every day. 
+Bind useful functions to shortcut keys and get used to creating tasks and notes from anywhere. 
+Think about how you plan your day and look for ways to improve it. Ask the mailing list for tips. 
+Browse the rest of this manual, the source code, and other resources on the Net for tidbits you can use. 
+Have fun! 
+Useful functions outside planner buffers: 
+
+`planner-create-task-from-buffer' 
+`remember' 
+`planner-goto-today' 
+`planner-goto' 
+`plan' 
+Useful functions inside planner buffers: 
+
+`C-c C-t' (`planner-create-task-from-buffer') 
+`C-c C-x' (`planner-task-done') 
+`M-x planner-edit-task-description' 
+`C-c C-c' (`planner-copy-or-move-task'), `M-x planner-copy-or-move-region' 
+`M-x planner-replan-task' 
+`M-x planner-delete-task' 
+(`planner-raise-task') and (`planner-lower-task') 
+(`planner-raise-task-priority') and (`planner-lower-task-priority'), 
+`planner-replan-note' 
+`planner-update-note' 
+生活在Emacs中!
+
+    本文将给我带来无限方便的Emacs 的一些使用技巧. 也许会向读者灌输一些偏激的RMS(Richard Stallman, 就是教主和精神领袖)的思想. 随着不断深入学习和使用,我将不断更新本文. 这里感谢所有给我 提供Emacs帮助的朋友(名字我没有列, 但相信你们可以感受到我的心), 也希望此文能帮助一些后来人, 我就满足了.
+
+    使用Emacs 的缺点是, 你会患上 Emacs "综合症", 上瘾, 在没有Emacs 的电脑前感到痛苦,觉得世界暗了下来. 说明: Emacs是为每天使用八小时以上计算机的人(不包括专业电脑打字员,银行窗口操作员,传呼台小姐等)或非常喜爱电脑的人设计的, 一般人是不太会喜欢的. 所有程序员都喜欢 Emacs 是不可能的, 涉及个人爱好等多方面原因, 但某种意义上讲,一个大学或研究所(公司无所谓)只有"非常少数"的学生和程序员知道和使用 Emacs, 那也是一种悲哀!!
+
+    这是一种生活方式, 一种信仰, 一种文化. 你会逐渐排斥非Emacs的别的东西. 就象基督教和伊斯兰教一样. 她博大精深, 渊源流长, 甚至和我本人同岁(1974年有其最初模样). 只可惜我硕士(自动化专业, 热爱电脑)毕业前竟然不知其大名. 有多少人和我也一样, 某种意义上讲, 这是我国计算机教育的悲哀. 我们显然成了某几个商业公司的培训机器, 没有看到计算机科学的真正所在.
+
+   1. 我原来自己作了个超文本文件, 相当于日历, 作为电脑屏幕壁纸,用于提醒自己的日程安排. 感觉不够可视 化. 现在我删除了这个文件, 因为Emacs 的 Calendar 很方便地完成了我的要求. 所有将来有事的日子都会 加亮显示. 我每天一到电脑前必然先Emacs, 原来设置为自动调calendar, 后来又改为按F3 调出它. 另外,不 知你相不相信, 这个Calendar能告诉你你想知道的任意一天天安门前升国旗的准确时间. 只要
+你告诉她经纬 度等信息. 够酷吧!!
+
+   2. 我用AucTeX 写 TEX 文件, 配合outline-minor-mode,bibtex-modne 和 reftex-mode 感觉相当舒服, 在文档 中穿梭有种飞的感觉, 那隐藏和折叠的功能象变魔术一样. 要说快的话, 这个肯定最快, 象别的集成工具去 菜单上找东西, 黄瓜菜都凉了, 比如 C-c C-e 两三个键就可以输入一个(begin{} end{})公式环境, 连标签 label也 同时可以输入. AucTeX其中还有一个神奇的功能就是区域编译, 如果你 的文章很长很长, 新输入一 个公式, 想马上看看效果, 只要选中这个公式, 按C-c C-r就会只编译这个公式. 对于老想编译看结果但又怕浪费 时间的人, 这可是好东西. 使用Emacs, 就要相信神奇!!
+
+   3. 我的所有网页也是用Emacs 写的, 虽然不是所谓所见所得工具, 但非常快. 一键(甚至不按键, 存盘时自动上 传到服务器, 神不知鬼不觉.)就可以上传到服务器.
+
+   4. 我把经常访问的几个文件(如我的读书笔记等)在Emacs "挂了号",比如只要我一按F5, 就会调出笔记来修改 或阅读. 我把经常访问的网址写入一个HTML 文件(现改为Wiki文件,因为简单好写), 一按F6就调出来,然后在相应网址击鼠标或回车就可以访问相应的地址.
+
+   5. 我的科技图形用MetaPost 写, 当然也在Emacs 中编辑, 按一个快捷键就能预览结果, 非常方便。
+Emacs 中也 有Meta方式来支持MetaPost 文件的编辑. 不过使用metapost, 关键还是要用你的大脑, 谁也帮不了, 要不用 别的"集成式"或"傻瓜式"工具.
+
+   6. 英文文本或TEX 文件, 可以用ispell 拼写检查, 还有一个flyspell-mode, 边输入就能检查, 方便极了.
+
+   7. 我的个人网页用CVS 管理, Emacs 作为其前端, 更为重要的是, 我的操作系统是日文, 在普通命令行下diff 两个汉字文本当然是乱码, 借助Emacs, 完美地解决了问题. 我的网页文件放在本地, 用CVS管理( 主要是玩和 感觉一下CVS). 每次更新后我要上传到服务器. 原来用cutftp.exe.按一堆按钮. 后来在Emacs 的Eshell 中 拷贝或dired 的 dired-do-copy.都需要动手输入服务器上的目标目录, 比较讨厌. 后来的完美的方法是:
+    (global-set-key [(f12)] 'UpMeToCn)
+    (defun UpMeToCn()
+    "Upload me to the ftp /cn"
+    (interactive)
+      (copy-file buffer-file-name "/li@133.62.153.5:/home/li/public_html/Cn" 
+t))
+
+      按F12就把当前编辑的文件上传了. 我激动得跳了起来. (我发邮件问过这个问题,可能是太简单了, 没人回答, 后来自己解决了.) 如果你连这一个键都懒的按, 可以将这个函数加到存盘的Hook上去, 每次存盘时就上传. 或者十分钟上传一次, 都是可以的, 看各人喜好了!
+
+   8. 我要经常备份我的文件, 为了不重复也不漏掉, 用Emacs 的 Ediff精确比较硬盘和光盘上的对应目录, 只备 份改过的和新的东西.
+
+   9. 我经常收到或下载来各种编码的文件, 中文简繁,日文EUC/Shift-JIS, Unix/dos/mac 等, Emacs 中自如阅读 和转换。
+
+10. 我的控制C程序中分为仿真和实验两块, 用宏定义SIMU 来区别, 以前苦恼的是经常在仿真时改了实验部分的 代码, 使用了Emacs 的hide-ifdef-mode, 仿真时将实验部分的代码隐去, 再没有发生类似错误,
+而且程序 显得短多了, 头脑也清晰多了.
+
+11. Emacs 中有一款五子棋游戏gomoku, 我从来没有赢过它. 也难怪,RMS 的老巢MIT 是人工智能的圣地. 当然这个游戏并非他本人所写. 有人说是第一个人工智能的产物, 不无道理, 因为 LISP 语言本身就是人工智能 的语言, 表面上 Emacs "非常难使用", 但实际上她非常人性化, 比如你可以以字母, 单词, 句, 段落, 全文等 为步长移动光标. 面对不同格式的文件有不同的界面和菜单等,
+
+12. 有时想数一篇文章或一段有几个单词, word-counter.el 提供了这样的功能, 对应TeX 文件有 tex-wcount.el.
+
+13. 我日文输入速度慢, 有时平假名和片假名的切换慢, Emacs 竟也提供了这样的功能, 比如把选定部分变为片 假名等很多功能. 而且 LEIM 的日文输入做的非常好, 不象中文拼音不能输入词组. 当然这与半田(Handa)先生有关.
+
+14. 我有时需要直接读写远程服务器上自己的网页文件, 这一点Emacs也当然能做到, 就象编辑本地文件一样, 根本感觉不到"先下载,然后改写,再上传"的过程. Emacs 原本就是专为Hacker而设计的. 更为重要的是, 由于我的操作系统是日文,如果对方的服务器里的目录和文件名是中文的话,只有在这里才能看到其真面目. 关键 时候真是管用, 否则你根本不知那是什么目录, 无从下手.
+
+15. 最近Wiki 火了一把, Emacs 自然不会缺席, Emacs-wiki 模式独成一派, 耳目一新. 可以方便地把wiki文件转变(Publish)成HTML文件等,也可以以多种方式浏览. 让我差点把以前的全部个人HTML笔记变成Wiki 格式, 新的笔记当然就会使用她了(唯一的缺憾是windows版的Emacs 多少有些不完美).
+
+16. 使用Emacs, 尤其是象我一样的中国人, 就意味着你最好好好学学英语,甚至日语(Mule是日本的半田Handa先生主要开发的.Emacs靠MULE处理汉语. 日本对这些方面有着很深很细的积累, 想学? 请先学日语!). 以便和别 人交流, 向别人请教. (顺便说几句闲话,日本和美国的区别在于, 美国提出高深的新理论, 日本潜心细致学习, 然后作成仪器卖. 就象Fuzzy控制, 神经网络, 浑沌控制等都是如此, 日本的"细"和"小"是很历害的, 汽车, 笔记本电脑也都是这样. 我经常看见天津夏利汽车大小的推土机骑在小水沟上挖泥, 非常可爱. 大家伙可能德国的 也不 错. 真该好好解读一下这两个二战战败国的神奇重建). 我就曾冒昧地给Shenghui ZHU(GNUS 维护者,中 国人), 和Jason (NTEmacs 维护者, 他 可也会日语啊!) 发Mail请教过, 并得到了指点. 真的感谢他们. (我是在广泛查找和网上提问没有找到答案的情况下 才冒昧直接发邮件的, 一般的问题最好不要直接发问,高手都很忙啊!)但实在没有实力和勇气向RMS 提问, 以他 的性格, 面对象
+我等小辈提的弱智问题(千万别和他提微软,Windows),估计答复是"I hopesomebody will answer your question". 我也从来没有拒绝过任何一位直接给我发邮件讨论的朋友( 如果有那么一两个的话, 当然前提是要简单明确, 不是象"我的电脑死机了,怎么办"这样笼统的问题, 或感觉是让我代替做作业!).
+
+17. Emacs 就意味着你要维护着一个自己的.emacs 文件. 某种意义下,这个文件越大, Emacs越贴近你自己,就象 你的宠物一样, 也意味着你的水平越高. 难怪网上那么多高手把自己的.emacs文件公布了出来. 这个文件太 长时, 最好字节编译一下, 如下的代码可以在你每次修改该文件后存盘时自动编译. 该办法可以用来处理前面 说的自动上传文件.
+    (add-hook 'after-save-hook (lambda () (mapcar (lambda (file)
+          (setq file (expand-file-name file)) (when (string= file
+          (buffer-file-name)) (save-excursion (byte-compile-file
+          file)))) '("~/.emacs" "~/.gnus.el" "~/.wl"))))
+
+      想让修改过的 .emacs 文件马上生效, 可以用 M-xeval-current-buffer. 不过, 有一点, 如果你先定义了一 个变量, 后注释掉, 用该办法的话, 那个变量还起作用. 原因显然易见.
+
+18. Emacs 还有一位心理医生, 没事的时候可以和她聊两句, 挺逗的,象真的一样, 都是人工智能的产物.
+
+19. 有一种功能能当你存盘时自动更新第一行中的时间戳, 有时很有用.我还从网上搞了几个函数, 可以在文章 的任何地方随时插入当前时刻, 也很方便. 本网页下面的更新时间原来就是这样改变的. 但是这样还是不爽,因为我老得去手动插入. 不要紧, 有个宏包, html-helper-mode.el, 将这个时间放在特殊的注释语句内, 每 次保存时就会自动更新. 再也不用去操心了. 也可以自己写, 挂hooks在保存上,如下. 享受Emacs的快乐吧.
+    (add-hook 'write-file-hooks (function (lambda ()
+      (set-lastmodified-tag) )))
+
+    (defun set-lastmodified-tag () "Insert current date after
+     Last Modified: (interactive) (let ((tostr (concat "Last
+     Modified: " (current-time-string) "."))) (save-excursion
+     (goto-char (point-min)) (while (re-search-forward "\\Last
+     Modified:\\([A-Za-z0-9: ]*\\)?\\." nil t) (replace-match
+     tostr nil t)))))
+
+20. 键盘宏的功能很好. 你可以将自己的一连串键盘操作录制成键盘宏,经常使用的还可以起个名字保存到文件 中, 象函数一样使用. 比如, 你可以将如下一连串动作起个名字GoHome: 存盘, 关闭所有Buffer, 看看日历明天有什么安排, 然后退出Emacs, 甚至关机(这个我没有试过.) 放到.emacs文件中, M-x GoHome 就会执行 这一系列动作. 比如前面的AucTeX,编译时要按C-c C-c 再按回车, 我讨厌多按这一下回车, 就编了个键盘 宏并设置F9为快捷键, 按F9 自动 pdflatex 文件.
+
+21. 玩Emacs, 你一定要有坚定的信念. 当你经常做某件事或为某事感到困惑, 一定要想到你的问题别人早就碰到 并解决了, 你需要的只是找到这个答案. Emacs 的事还是要Emacs自己解决, 肯定能解决, 顶多是时间问题. 比如, 关于文件备份的问题, 如果你不要备份, 不太安全. 象我这样谨慎的人肯定会要备份文件. 要吧, 会在你当前目录生成很多以~为扩展名的文件. 比较讨厌, 我就专门稿了个批处理去清理它们. 实际上Emacs 可以重定向所有备份文件到一个临时目录中去. 你可以定期清理. 放心, 不同目录下的相同文件也不会搞混 了. 还有类似版本管理的功能. 偷笑去吧!
+
+22. 很多人不习惯Emacs的快捷键, 说记不住. 实际上你可以任意定义它们. 还有嫌菜单少,按钮少, 实际上菜单 也可以任意填加. 只不过你可以设想, 当你的桌面全是菜单和按钮的时候, 你在哪里工作啊?! 这是很惨的事啊!! 熟练的Emacs用户根本没有菜单, 更别说按钮. 全窗口都是工作空间, 够酷吧.
+
+23. 使用 Emacs 的人几乎用不着鼠标, 对笔记本用户来说最合适了, 台式机用户也不用在一堆书和资料下去找那 可爱的鼠标了.
+
+24.
+25. 待续 .....
+
+25. 待续 .....

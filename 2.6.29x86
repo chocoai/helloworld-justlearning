@@ -1,0 +1,629 @@
+      笔记：制作基于X86架构最简配置并且不需要initrd的linux kernel
+目标：
+使用linux-2.6.29.4 kernel源码包和原系统rootfs,编译基于X86架构最简配置而且不需要
+initrd能正常启动的kernel
+
+软件编译环境：
+linux-2.6.29.4 kernel源码包, ubuntu 9.04, 使用原系统的root file system（EXT3)
+硬件配置：
+thinkpad SL400 2743NCC
+(CPU:CORE 2 Duo T5870@2.00GHz, ICH9M 2port SATA IDE硬盘接口)
+制作过程关键点：
+1.硬盘和文件系统驱动是系统启动加载rootfs所必需，所以必须编译进KERNEL。
+  文件系统选项配置比较简单，选择1.File systems->Ext3 journalling file system support（支持
+EXT3）,
+   2.File systems->Dnotify support,3.File systems->Inotify file change notification support,
+   2,3选项如果不选，重启后键盘不能使用。是否可以修改启动脚本来加载键盘驱动，有待验证。
+硬盘驱动的选择理由如下：
+  X86的南桥连接相对低速设备（SATA/USB设备，PCI声卡等），北桥连接相对高速设备（RAM,AGP/PCI显卡
+），
+  南桥和北桥以前使用PCI总线相连（现在有所变化），PCI位于SATA/USB设备的上方，所以必须将Bus
+options->PCI support
+  编译进kernel.
+  SCSI接口被linux硬盘驱动（包含SATA硬盘）所采用，所以必须将SCSI device support->SCSI disk
+support编译进kernel.
+  硬盘接口是SATA ICH9 ，所以将Serial ATA...->Intel ESB,ICH..., SATA support编译进kernel.
+2.Packet socket,Unix domain sockets, PF_KEY sockets必须编译进kernel,因为进程间通信需要使用
+socket,否则会kernel panic
+3.根据我的硬件环境，Processor family当然选Core 2/newer Xeon
+4.Linux可执行文件格式是ELF，所以选kernel support for ELF binaries
+5.启动时，我们不要initrd,所以不选Initial RAM filesystem and RAM disk (.../initrd)...
+6.启动后，键盘是必须的，因为没有initrd,所以将键盘驱动相关选项编译进kernel.
+HID Devices->Generic HID support;keyboards->XT keyboard.
+是否可以将键盘相关选项编译进MODULES，在启动脚本加载键盘驱动，需要以后实验。
+7.启动后，希望动态加载/卸载USB设备，所以将USB下的UHCI,EHCI选项选为编译进MODULE
+
+实验结果生成的.config见附件。附件x86-defconfig.tar要用tar -xvf解压，并将.config放在linux
+kernel源码根目录下。
+
+[ 本帖最后由 swangwu 于 2009-11-15 13:43 编辑 ]
+
+[zip]
+
+    x86-defconfig.tar (30 KB)
+   
+    下载次数:23
+
+    2009-11-15 13:37
+   
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+顶部
+2楼发表于 2009-11-15 09:16 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+哇哇，王者胜利归来，真是努力，膜拜下努力精神，并谢谢分享
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+顶部
+3楼发表于 2009-11-15 13:57 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2.File systems->Dnotify support,3.File systems->Inotify file change notification support,
+   2,3选项如果不选，重启后键盘不能使用。是否可以修改启动脚本来加载键盘驱动，有待验证。
+硬盘驱动的选择理由如下：
+
+键盘不能使用和2，3两个选项应该没多大关系！                                               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+__________________________________
+MaxWit嵌入式Linux魔鬼训练营
+     www.maxwit.com
+
+___________________________________
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+顶部
+4楼发表于 2009-11-15 14:35 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ENABLE THE BLOCK LAYER 中的 SUPPORT FOR LARGE BLOCK DEVICE很重要的,我机器上不选的话,系统起不
+来.你没选,建意你选上
+有个问题想请教一下:
+我自己编译KERNEL的时,我KERNEL SUPPORT FOR ELF BINARES没选 ,系统起不来,但是我从我朋友那COPY了
+一个.CONFIG,里面没选KERNEL SUPPORT FOR ELF BINARES ,但是我用他的.CONFIG系统却能起来 ,不知道为
+什么 ?
+真是迷惑![em11]
+下面是我朋友的.CONFIG,大家帮帮忙,三克油.
+
+[zip]
+
+    x86_defconfig.gz (8.27 KB)
+   
+    下载次数:5
+
+    2009-11-15 14:35
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+顶部
+5楼发表于 2009-11-15 14:35 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+lasting
+
+nitrd,所以将键盘驱动相关选项编译进kernel.
+HID Devices->Generic HID support;  该项配置分别使能了人机接口
+keyboards->XT keyboard.
+但是 ,并不是必需编译进内核的 ,也可以以模块形式边译 ,然后在开机起动的脚本中进行将对应的模块载
+入内存
+
+我 asus a8 .config
+
+
+有人知linux 下有没有设备管理器啊 ?
+~
+
+[ 本帖最后由 paocaka 于 2009-11-15 14:38 编辑 ]
+
+[zip]
+
+    lasting_config.gz (20 KB)
+   
+    下载次数:4
+
+    2009-11-15 14:35
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+
+
+
+
+
+
+顶部
+6楼发表于 2009-11-15 14:49 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+QUOTE:
+原帖由 swangwu 于 2009-11-15 03:09 发表 [back]
+2.File systems->Dnotify support,3.File systems->Inotify file change notification support,
+   2,3选项如果不选，重启后键盘不能使用。是否可以修改启动脚本来加载键盘驱动，有待验证。
+
+
+个人认为这两句话有误.
+首先,不能确定你所说的键盘是笔计本内置键盘,还是USB键盘.
+如果是USB键盘,且不用initrd,应把将USB下的UHCI,EHCI选项编译进内核，这样可以支持USB1.1协议和
+USB2.0协议的设备，因为如果这两个选项编译为模块，不用initrd,内核并不会调用这两个模块，系统启动
+后并不会识别USB设备。
+
+其次，将USB下的UHCI,EHCI选项编译进内核，还需要HID Device设备驱动，因为如果不将键盘驱动编译进
+内核，不用initrd的话，需要手动添加键盘驱动模块，但系统启动后又无法输入（没有键盘驱动），这就
+引发了“鸡生蛋，蛋生鸡”的问题，所以将HID Devices->Generic HID support及USB Human Interface
+Device (full HID) support选项编译进内核，但这样还是不够的，还必须将input device support ->
+Event interface 编译进内核，这样USB鼠标与USB键盘就可以正常使用。
+如果是内置键盘，我的HP笔记本上不加键盘驱动，也可以输入，这一点一直不理解，希望高人指点。
+
+最后，Inotify file change notification support这个选项是文件修改通知，键盘不能使用主要是系统
+没加载驱动，与文件修改通知并无关系。
+以上是我个人理解，如果理解有误，请高人指点：）                                               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+顶部
+7楼发表于 2009-11-15 14:52 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+偶也说说
+
+南桥和北桥以前使用PCI总线相连（现在有所变化），PCI位于SATA/USB设备的上方，所以必须将Bus
+options->PCI support
+  编译进kernel.
+
+PCI是南桥与各个控制器的总线而南桥和北桥的总线是PCI-E所以应该把 Bus options->PCI Express
+support也编译进kernel                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+
+
+
+
+顶部
+8楼发表于 2009-11-15 15:04 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+对LZ的补充   
+         2.Packet socket,Unix domain sockets, PF_KEY sockets必须编译进kernel,因为进程间通信需
+要使用socket,否则会kernel panic
+这些选项不加 kernel panic 情况并不会出现,只是不能进入图型界面.
+
+我用的是 linux-2.6.29的 kernel源码包 .
+工作平台是Ubuntu 9.10 ,使用原系统的root file system（EXT4)
+
+硬件信息:
+CPU:CORE 2 Duo T8600
+IDE interface: Intel Corporation ICH9M/M-E 2 port SATA IDE Controller
+
+主要配制选项:
+General setup  --->
+     
+Support for paging of anonymous memory (swap)                    
+     
+System V IPC                                  //许多上层应用会用到的
+
+Enable loadable module support  --->                 //此选项不加,配制选项就不能用 M 选项
+      
+   Module unloading                             //可以把 modules 换出内存
+
+-*- Enable the block layer  --->
+      
+   Support for large block devices and files       //支持大的硬盘
+
+Processor type and features  --->                      //跟据我的硬件设制的  
+
+Bus options (PCI etc.)  --->
+      
+PCI support                                  //必需的
+
+Executable file formats / Emulations  --->
+      
+Kernel support for ELF binaries                //  Kernel 所支持的可执行文件格式
+
+-*- Networking support  --->
+       --- Networking support   
+               <*> Packet socket                       //不选这些 ,不能进入图型界面.       
+                               
+                       
+   Packet socket: mmapped IO                                 
+                       <*> Unix domain sockets                                          
+                       <*> PF_KEY sockets                                               
+                       
+TCP/IP networking  
+
+Device Drivers  --->  
+      
+Block devices  --->                        
+                        <*>   Loopback device support                                 
+                        <*>     Cryptoloop Support
+                         //不选这个不能够读cd
+      SCSI device support  --->                       
+                         <*> SCSI disk support  
+      <*> Serial ATA (prod) and Parallel ATA (experimental) drivers  -->
+                          
+   ATA SFF support   
+                          <*>   Intel ESB, ICH, PIIX3, PIIX4 PATA/SATA support  
+
+       //IDE interface: Intel Corporation ICH9M/M-E 2 port SATA IDE Controller (rev 03)
+       // 跟据上面配制的
+       Graphics support  --->   
+                           <*> /dev/agpgart (AGP Support)  --->  
+                                                       <*>   Intel 440LX/BX/GX, I8xx and
+E7x05 chipset support                                      
+      
+HID Devices  --->        
+                            <*>   USB Human Interface Device (full HID) support   
+                            //人机交互我的USB鼠标要用到                                     
+             
+      
+USB support  --->  
+                            <*>   Support for Host-side USB   
+                            <*>     EHCI HCD (USB 2.0) support                               
+                                  
+                            <*>     UHCI HCD (most Intel and VIA) support  
+                             //跟据 lspci
+                             //USB Controller: Intel Corporation 82801I (ICH9 Family) USB
+UHCI Controller #3 (rev 03)
+                             // USB Controller: Intel Corporation 82801I (ICH9 Family) USB2
+EHCI Controller #1 (rev 03)
+                             //我的USB鼠标要用到
+       Input device support  --->  
+                             <*>   Event interface
+                              // USB鼠标要用到
+                             -*-   Keyboards  --->  
+                                                    <*>   XT keyboard
+                                                     //健盘要用到
+File systems  --->
+        <*>   The Extended 4 (ext4) filesystem   //我的文件系统是 ext4                      
+    
+        
+   Enable ext4dev compatibility                              
+        
+   Ext4 extended attributes                                   
+        
+   Ext4 POSIX Access Control Lists                           
+        
+   Ext4 Security Labels
+        
+   Dnotify support                    // 文件修改通知                                    
+        
+   Inotify file change notification support                    
+        
+   Inotify support for userspace   
+        Partition Types  --->  
+                     
+Advanced partition selection
+                     
+   PC BIOS (MSDOS partition tables) support   
+        Pseudo filesystems  --->   
+                        
+Virtual memory file system support (former shm fs)  //不加这些看不一些设备文件           
+                        
+   Tmpfs POSIX Access Control Lists
+
+[ 本帖最后由 469412293 于 2009-11-15 15:41 编辑 ]
+
+[unknown]
+
+    x86_defconfig.bz2 (6.48 KB)
+   
+    下载次数:2
+
+    2009-11-15 15:04
+   
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+顶部
+9楼发表于 2009-11-15 16:10 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+首先,楼主关于你的第一点说得有点笼统1.File systems->Ext3 journalling file system support（支持
+EXT3）因为有些人用的EXT4的文件系统应此此处选則因应該根据自己的文件系统来进行选择建議把EXT3和
+EXT4都选上.
+其次  关于你的 2.File systems->Dnotify support,3.File systems->Inotify file change
+notification support,
+               2,3选项如果不选，重启后键盘不能使用。是否可以修改启动脚本来加载键盘驱动，有待
+验证。
+
+根据实践表明以上兩者与键盘是否能使用并无直接关联.
+
+再次 XT keyborad应该是正好被楼主的键盘適用吧因为我的键盘并不需要此驱动.
+
+第四,Enable the block layer 下面的 Support for large block devices and files 最好也选上因为现
+在的硬盘都比较大,选上该选项可支持大分区.
+
+[zip]
+
+    x86_defconfig.tar (30 KB)
+   
+    下载次数:4
+
+    2009-11-15 16:10
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+《开源时代》有奖读者大调查| 顶级linux与嵌入式,50000年薪起 | 《开源时代》2010年第一期！ | 2010
+数据库技术大会报名啦
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+顶部
+10楼发表于 2009-11-15 16:55 | 只看该作者
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+dman发现了几个个BUG
+
+王大虾你的系统不好跑啊!!! System V IPC 都没怎么跑系统啊！！这个是进程间通信用的！！
+
+另外你的系统虚拟内存都不支持  virtual memoty file system support!!!
+
+tmpfs POSIX Access Control LIsts
+
+小弟在这另外付上一个适合ubuntu 9.10的 965芯片组的一个小系统如有错误  欢迎请指点！！
+

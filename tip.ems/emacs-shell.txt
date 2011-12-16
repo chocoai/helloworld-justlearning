@@ -1,0 +1,302 @@
+Ctrl-h k 
+Ctrl-h w 
+Ctrl-h a 
+Ctrl-h v 
+Ctrl-h i 
+最大不同处如下： 
+使用 `` Ctrl-h a'' 所键入的子字串，并不限於指令的第一个字元, 而 `` Ctrl-h w'' 则必需以指令的第一个字为起始字。 使用 `` Ctrl-h a''，可给予指令中任何位置的子字串。 
+`` Ctrl-h a'' 无法使用 completion，而 `` Ctrl-h w'' 可使用 completion。
+`` Ctrl-h a'' 主要的目的是当使用者无法正确的键入指令的 第一个字元时，可以借此将所有包含使用者记得的部份子字串 的指令都列举出来。 
+Emacs 的 info 使用说明
+Ctrl-h i 
+ESC-x info 。 
+h 
+不知如何使用 info 模式者，可在进入 info 模式後，使用 info 的线上 辅助说明。欲使用 info 的线上辅助说明，只要在进入 info 模式後，键入 ``h'' 即可。此不只是一个线上辅助说明，还是一个教学指引。跟随著它的说 明，即可明了如何使用 info 模式. 
+d 
+``Ctrl-h i'' 指令，会先进入 info 树状结构的根部。任何情况下， 可键入 ``d'' 回到此根部。 
+? 
+想知所有与 info 有关的指令，只要键入 ``?''，就可以得知所有 指令的全貌。 
+q 
+欲离开 info，只要键入 ``q'' ，就可以离开 info 而回到先前的 缓冲区。 
+m Texinfo< Return > 
+这一个指令是用来使用 info 的 Menu Item。使用的方法如下： 
+键入 ``m'' 。 
+键入所欲参考的文件名称，也可使用 completion 的功能来简化输入的工作。 
+键入 RET。 
+何为 Menu Item 会再解释。 
+
+在这五个指令之下的是，此结点可以使用的 Menu Item。 使用者可以直接至所要参考的 Menu 之下，键入 ``RET''。此时， info 会将此 Menu 的相关文件显示在萤幕上。 使用 info 除了以上的指令之外，还有几个必需知道的指令。 现介绍如下： 
+n 
+将结点移至下一个与此结点相连的结点。 
+p 
+将结点移至上一个与此结点相连的结点。 
+u 
+将结点移至上一层的结点。 
+m 
+以上结点间移动的指令，必需结点间有相连接的关系。 若想做跨越的移动，这几个指令是无法做到的。此时，必需透过 Menu 来做夸越结点的文件阅读。 使用 Menu 的方式有二： 
+``mTexinfo'' 
+这种使用 menu 的方法，在进入 info 的第一个画面就可以看到了。 此方法由三件事共同组成： 
+m 键入 m 是使用 menu 的指令。 
+Texinfo 键入 m 时，minibuffer 会出现 
+menu item: 此时，可在其後输入所欲阅　的文件名称。所以，Texinfo 意 指文件的名称。此时，就可以键入画面上以 ``*'' 为开头 的名称。如果是刚进入 info ，可使用的 Texinfo 名称有： Info、 Emacs、 VIP、 Forms、 GNUS、 CL、 Gcc、 Cpp、 Makeinfo、 Info-stnd、 Texi、 Hyperbole、 Octave 
+RET 
+待文件名称输入完毕後，要按下 RET ，以告知系统文件名称已经 输入完成了，可以开始执行的动作了。 
+直接键入 ``RET'' 
+如果在阅　某一个结点时，文件中出现以 ``* Menu:'' 为首的 文字，就表示此列以下若有以 ``*'' 为开头的列，均为一个 可以使用的 Menu Item 。此时，可以直接键入 ``RET'' 参考 另一个结点的文件。 
+使用 Menu 有些条件，就是所要使用的 Menu，必需在此结点 的文件中有明列出来的才可以使用。要使用其它结点的 Menu， 必需先到有要使用的 Menu 的结点，才可以使用它的 Menu。 Menu 有其一定的结构。所有 Menu 的第一列，都是以 `` Menu:'' 为开端。如下所示： * Menu: The list of major topics begins on the next line. 此列之後的所有列，只要以 `` *'' 为开始的列，就表示一个可以 使用的 item。 Menu Item 的表示法如下所述： * Info: (info). Documentation browsing system. 它主要由四个部份主成： 
+
+* 
+每一个 Menu Item 都是以 ``*'' 为开头。 
+Subtopic: 
+``*'' 之後就是 Subtopic 的名称，再加上一个 ``:''。 info 就是根据此 Subtopic 找到所对应的结点名。此例子的 Subtopic 的名称就是 ``Info''。 如果要以指令 ``m'' 的方式， 使用Menu Item 所要给予的 Texinfo 的名称就是此 Subtopic 的名称。 
+node name 
+在 Subtopic : 之後就是所使用的结点名。一般为了使用上 的方便，会尽可能的使用相同的 Subtopic 和结点的名称。 若二者的名字相同时，在Subtopic 後的结点名会省略而以 两个 ``:''表示之。如 ``* Info::''。 
+node description 
+结点後面的内容是选择性，它主要是用来概略描述此结点。 
+l 
+如果想要回到前一个（last）所参考过的结点，可以使用指令 l 一步一步的往回走。 
+b 
+指令 b 可以使游标移至文件的最前端。 
+SPC 
+若文件太长可键入空白键（ SPC）来卷动萤幕。 
+Ctrl-g 
+任何时候想要取消所键入的指令，可键入 Ctrl-g 
+Emacs 的整合环境
+前面不断的强调，EMACS 不只提供一个编辑的环境，而提供一个整合的工作环境。所以，在未进入本文的正题－ EMACS 的编辑环境之前，先对 EMACS 的工作环境做一个简介。
+EMACS 所能提供的工作环境如下
+
+EMACS 可执行 Shell 的指令。 
+　 
+EMACS 可做为 Directory Editor（Dired）。 
+　 
+EMACS 可以编辑、编译及除错程式。 
+　 
+EMACS 具有编辑其它 host 上档案的能力。 
+　 
+EMACS 可以列印档案。 
+　 
+EMACS 具有年历、日记的功能（Calendar、Diary）。 
+　 
+EMACS 具有读 Man Page 的能力。 
+　 
+EMACS 可以收发电子邮件（Mail、Rmail）。 
+　 
+EMACS 可以阅读网路上的电子布告栏（GNUS）。 
+　 
+EMACS 具有 version control 的功能 
+　 
+EMACS 对於档案的处理，具有 Outline 的能力。 
+　 
+EMACS 具有资料库的处理能力。 
+　 
+EMACS 可以提供电子计算机的功能。 
+　 
+EMACS 提供了娱乐的环境（game），让工作者可以暂时放下工作的压力。 
+　 
+由以上的分析可知，只要进入 EMACS  的工作环境，就可以在
+其下完成所有的工作。所以 EMACS 的理想，是离开 EMACS 
+就是离开电脑工作的时候，因为它的最终目标，就是要完成一个
+以编辑器为轴心的作业系统。
+EMACS 所提供的这些功能，都是先唤起代表此功能的
+模式mode， EMACS　的模式，分成主要模式 major mode
+与次要模式minor mode。每一次只能使用一个主要模式，
+而且必须要的。但一个主要模式可以搭配一个以上的次要模式。
+现在就来简述 EMACS 工作环境的功能，至於如何使用这些 EMACS
+的工作环境，本文就不多做介绍。
+
+
+--------------------------------------------------------------------------------
+
+如何在 Emacs 中执行 Shell 的指令
+在 EMACS 中有两种执行 shell 指令的方法：一种是进入shell command mode， 另一种是进入 shell mode。二者都可以执行 shell 的指令， 其最大不同之处是，进入 shell mode 的状态，执行 shell 指令的同时，仍可以切换到其它模式处理别的工作，但如果使用 shell command mode，就必须等指令执行完後才可以做其它的事。 使用 shell command mode 时，使用者在萤幕的最下方 输入欲执行的指令， EMACS 会开启一个名为 ``*Shell command output*'' 的视窗，将 shell 指令执行的结果显示在此视窗中.shell mode 则是执行一个 subshell，其输入与输出都是透过同一个缓冲区，所以输入与输出是在同一个地方，它不似 shell command mode， 指令输入与结果的显示在不同的地方。 shell command mode 又可以有两种模式，一种就是很单纯的执行一个 shell 的指令；另一种是对某一特定区域的资料执行 shell 的指令。 shell command mode 容许 执行後的结果，直接输入到目前所使用的工作区内。有了如此的功能，使用者可以很轻易的将 shell 指令执行的结果，直接放入适当的位置，而不需另外从事剪贴的工作。 要如何使用 EMACS 所提供的 shell 功能呢？以下是最基本 的方法，至於高阶的用法则请自行参考 GNU EMACS所提供的 ``GNU Emacs Manual'' 。 
+shell command mode 
+
+ESC-!（shell-command） 
+唤起 shell command mode。 
+ESC- （shell-command-on-region） 
+针对某一特定区域执行shell command mode 的 shell 指令。 
+(特定区域，是指缓冲区的某一范围(region)而言，所以此指令只是 针对缓冲区的某一部分运作的资料，) 
+Ctrl-u ESC-! 与 Ctrl-u ESC- 在 ESC 前加上 Ctrl-u ，可以将 shell 指令执行的结果，输出到 游标所在的位置。 
+shell mode 
+ESC-x shell\indexESC-x shell 是唤起 shell mode的指令。 
+
+--------------------------------------------------------------------------------
+
+有关目录的编辑方法
+Dired 是专门针对目录来运作的编辑功能。进入Dired mode 後， EMACS 会根据使用者所指定的目录来列出其下的档案及次目录，此时可根据需要EMACS 对这些档案及次目录作些运作。 EMACS 所提供可操作 Dired 的种类如下： 
+可阅读、编辑 Dired 所列举出来的档案 
+操作 Dired 下的档案 
+(a)在 Dired 可以删除（delete）档案 此功能可以很容易的将EMACS 的备份档（其档名以 ~结尾）、 暂存档（档名在两个 # 中间）或具某一特殊档名模式的档案 删除。
+(b) 档案的拷贝
+
+(c) 档名的更新
+
+(d) 改变档案的 mode 
+
+(e) 改变 gid、uid 
+
+(f) 档案的列印
+
+(g) 档案的压缩、解压缩
+
+(h) 载入、编绎 EMACS 的 LISP file
+
+(i) 可产生 hard links 与 symbolic links
+
+(j) 可将档名换成大写或小写的英文字母
+
+可在 Dired 中执行 shell 的指令 
+可使用 UNIX 的 diff 指令比较档案间的异同 
+可隐藏次目录 
+可使用 find 的公用程式来寻找档案 
+以上所列举的就是Dired的功能,有人说它类似 PC 上的 PCTOOLS，
+读者是否有相同的感觉呢？
+
+进入 Dired 模式的方法很简单，只要键入 
+``ESC-x dired''即可。此时的  minibuffer 会显示出如下
+的文字：
+Dired (directory):
+
+``:'' 之後是目前所在的目录，此时可以修改目录名。确定所要使用的目录，按下 RET 後，系统会另开启一个视窗来显示此目录下的所有档案。之後就可以对这些档案做运作。 Dired 所使用 的缓冲区是一个唯读（read-only）的缓冲区，所以 mode line 会出现二个 %% 来表示其为唯读的状态。如果要缓冲区的唯读状态改为可读，可以键入Ctrl-x Ctrl-q 的指令，将缓冲区的状态改变。运作此缓冲区有其特别的方法，因此对此缓冲区做编辑并无实质上的作用。以下就介绍运作 Dired 的方法： 
+
+在 Dired 中删除档案 
+Dired 最基本的指令，就是将要删除的档案做上旗标（flag）之後， 再将有旗标的档案删除。 
+d 
+将游标移至所欲删除的档案列，键入 d。此列的最前方会出现 D，这就是删除的旗标。此时的游标会移至此列的下一列。 
+u 
+若想放弃已定好的旗标，可以键入 u 使萤幕上的 D 消失。 
+x 
+键入指令 d 只是将要删除的档案先做上旗标，并未真正执行 删除的动作。只有键入 x 才会将所有做上旗标的档案删除。 执行删除档案之前，会先询问是否真要删除的意见。此时如果 回答 ``yes''则执行删除的动作，若回答 ``no'' 不执行删除的动作， 但旗标依然存在著。 
+在 Dired 中将多个档案同时做上旗标 
+
+-# 
+键入 #，系统会自动将所有的自动储存的档案（auto-save file） 做上删除的旗标。 
+~ 
+键入 ~，系统会自动将所有的备份档（backup file）做上删除 的旗标。 
+%d regexp RET 
+将所有适合的 regular expression 档案做上删除的旗标。 
+所有做上旗标的档案要执行删除的动作，都必需执行指令 x。 
+在 Dired 中访问档案 
+
+f（dired-find-file） 
+如果想要访问目前游标所在列的档案，只要在此列上键入 f 即可。 此时，档案的内容会显示在原先显示 Dired 缓冲区的视窗上。 使用此方法访问档案，就如同以 Ctrl-x Ctrl-f 访问档案一样。 
+o（dired-find-file-other-window） 
+此方法也是用来访问档案，但与键入 f 有些不同之处。键入 o 後，所访问的档案会出现在另一个视窗上而游标也会移至 所访问的视窗，显示 Dired 缓冲区的视窗并未消失在萤幕上。 
+Ctrl-o（dired-display-file） 
+此方法与键入 o 雷同，二者不同之处在於键入 Ctrl-o 後所访问的档案会出现在另一个视窗上，但游标不会移至所访问 档案的视窗，依然留在显示 Dired 缓冲区的视窗上。 
+v（dired-view-file） 
+此指令仅供流　档案之用，因为以此而开启的档案是唯读档案。 
+将 Dired 的档案做上标记 
+m（dired-mark） 
+将目前游标所在的档案做上标记 ``*''。如果给予数值引数， 则做上标记的档案数目会依所给予的数目而定。 
+*（dired-mark-exectables） 
+将所有的可执行档（executable files）做上标记 ``*，若给予 数值引数。则会将所有做上标记的可执行档的标记取消（unmark）。 
+@（dired-mark-symlinks） 
+将所有的 symbolic files 做上标记 ``*，若给予数值引数。则会将 所有做上标记的 symbolic files 档的标记取消(unmark）。 
+/（dired-mark-directories） 
+将所有为目录的档名，但除了 ``.'' 与 ``..'' 之外， 均做上标记 ``* 。若给予数值引数，则会将所有做上标记的 目录名称的标记取消（unmark）。 
+ESC-DEL markchar（dired-unmark-all-files） 
+消除所有以字元（character）（ markchar） 做为标记的记号。 如果给予数值引号，则在消除每一个记号时，会询问是否要 消除记号。 回答 ``y'' 则表示要将记号消除，回答 ``n'' 则表示 不要消除已做好的记号。若此时键入 !，则表示消除其余的记号 不再询问意见。 
+c old new（dired-change-marks） 
+使用此指令，可将原本以 old 为标记的记号，换成以 new 为标记的记号。 
+%m regexp RET（dired-mark-files-regexp） 
+可使用regular expression ，将具有某一类型的档案做上标记。 
+在 Dired 中的运作方式，有几件事情必需注意： 
+
+如果给予指令数值引数 n 时，此时指令所运作的档案是从 目前游标所在的档案起往後算 n 个档案（包括游标所在的档案）。 如果给予负数的数值，则往游标所在处之前算 n 个档案（包括 游标所在的档案）。 
+如果不给予任何的数值引数，则指令的运作范围会以做了 标记的档案为主。 
+　 
+如果不给予数值引数也不对任何档案做标记，则指令只对 目前游标所在列的档案运作。 
+　 
+所有运作 Dired 缓冲区的指令都是大写的英文字母，所有的 指令都是使用minibuffer 来接收所需的讯息。 
+　 
+以下就是运作 Dired 缓冲区的指令： 
+
+C new RET （dired-do-copy） 
+拷贝档案。若有多个档案同时要拷贝，则引数 new 代表 档案所要拷贝到的目录。若只拷贝一个档案，可利用此引数 new 将档案从新命名。 
+R new RET （dired-do-rename） 
+更换档名。若有多个档案同时要换档名，则引数 new 代表档案 换名称後所要放置的目录。若只有一个档案，此引数 new 代表更换的档名。当档名更换完毕， Dired 缓冲区的档案名称 会自动跟著更换。 
+H new RET （dired-do-hardlink） 
+将档案标上 hard links 的标记。引数 new 代表 hard links所要连接 的目录。若只有一个连接时，此引数 new 代表连结的名称。 
+S new RET （dired-do-symlink） 
+将档案标上 symbolic links 的标记。引数 new 代表 symbolic links 所要连接的目录。若只有一个连接时，此引数 new 代表连结的名称。 
+M midespec RET （dired-do-chmod） 
+更改特定档案的模式（mode，permission bits）。此程式使用 chmod 的程式，所以 式适用的引数。 
+G newgroup RET （dired-do-chgrp） 
+改变特定档案的团体（group）为新的团体（ newgroup）。 
+O newowner RET （dired-do-chown） 
+改变特定档案的拥有者（owner）为新的拥有者（ owner）。 
+P command RET （dired-do-print） 
+列印特定的档案，可利用 minibuffer 输入列印的指令 command。 
+Z （dired-do-compress） 
+压缩或反压缩特定的档案。如果档案已被压缩则将其反压缩， 反之则将档案压缩。 
+L （dired-do-load） 
+载入特定的 EMACS Lisp 档案。 
+B （dired-do-byte-compile） 
+位元编译（byte compile）特定的 EMACS Lisp 档案。 
+Dired 在编辑远方档案与使用 ftp 的用法 使用 EMACS 的远方编辑或使用 EMACS 来做 ftp 时，若只 给予目录名，系统会进入 Dired 的模式。此时可使用运作 Dired 缓冲区的指令来操作所要的档案。至於何为远方的编辑会在下一节 中讨论。 
+
+--------------------------------------------------------------------------------
+
+如何编辑远方机器上的档案
+EMACS 除了提供了一般编辑器所具有的功能之外，它还提供了一般编辑器所有的功能，那就是编辑远方 host 的档案。 EMACS 编辑远方 host 的档案，是使用了 ftp 的技巧，将所欲编辑 的档案 ftp 到目前的 host 上，待编辑完毕再以相同的技巧，把档案 ftp 传回远方的 host 而已。往昔要编辑远方的档案只有两种做法，一是签入（login）到档案所在的 host 去，另一种就是以 ftp 的方法将档案先传回目前所在的地方，修改完後再 ftp 回去。 Remote Editing 也可以用到 ``anonymous ftp'' 上，它可以进入 远方的目录下，使用者即可根据需要挑选要 ftp 的档案。 使用 remote editing 的方法非常简单，在键入 `` Ctrl-x Ctrl-f'' 後， 再根据语法给予适当档名， EMACS 就会处理自行 ftp 远方 host 上的档案，其语法如下： Find file:/host:filename host 是指远方 host 的名称， filename 是指存放在远方 host 的档案。例如： Find file:/user1@gate.sinica.edu.tw :.login 就是编辑 host 为 ``gate.sinica.edu.tw'' 的机器，而使用者为 ``user1''，档案的名称为 ``.login'' 的档案。 
+
+--------------------------------------------------------------------------------
+
+程式的编辑,编译与测试
+EMACS 是一个整合的环境，在提供程式编辑的同时，自然会提供一个可供程式执行的环境。以下就要谈谈 EMACS 可以为程式 撰写者提供那些服务。 EMACS 对於不同的语言提供不同的编辑模式。 EMACS 提供的服务有程式内缩的安排、括号对应的提示、程式注解的安排、游标移动的方式与程式的删除等等。基本上，EMACS 是提供一个 撰写程式的格式，只是此格式可根据使用者的需要而自行设计。 EMACS 选择适合的语言模式，是根据所编辑的档案名称附名来判断的。如附名为 .c 的 C 语言程式，EMACS 会自动给予 C 语言模式，而不需使用者自行处理。EMACS 提供的程式语言模式有 LISP、SCHEME、C、C++、FORTRAN、MAKEFILE、AWK、 PERL、ICON 与 MUDDLE 等。编辑好的程式可以直接进入 EMACS 的编译模式，不需离开 EMACS 到 UNIX 的 shell 下进行编译的动作。进入 EMACS 的 编译模式很简单，只要键入 ``ESC-x compile'' 即可。 EMACS 预设的编译指令是 make ，执行 ESC-x compile指令的结果如下所示：
+compile command: make -k 若要使用其它的编译器，只需在 ``compile command :'' 的後面给予适当的编译指令即可，此指令与在 UNIX shell 下使用编译的 方法完全相同。 除了编辑、编译之外，程式撰写者还需要的功能是 Debugger 的提供。EMACS 也提供了此项的服务。 EMACS 提供了四种 debugger，分别为 gdb、dbx、xdb 与 sdb，使用者可根据需来选择合适的 debugger。此处，只将使用 debugger 的指令列举如下： 
+
+ESC-x gdb RET file RET 
+　 
+ESC-x dbx RET file RET 
+　 
+ESC-x xdb RET file RET 
+　 
+ESC-x sdb RET file RET 
+　 
+如何在 Emacs 中列印文件
+除了以上的功能外， EMACS 还提供了列印的功能。 EMACS 的列印可针对个整缓冲区或某部份的区域列印，其相关的指令如下： 
+ESC-x print-buffer 
+列印整个缓冲区的内容。EMACS 处理此工作的方法是先使用 shell 的 pr 指令，而後再使用 shell 的 lpr 列印指令。 
+ESC-x lpr-buffer 
+此指令与上一个指令相似，只是不透过 pr 而直接使用 lpr。 
+ESC-x print-region 
+与 ESC-x print-buffer 相似，唯一不同之处在於，此指令只列印 部份的区域。 
+ESC-x lpr-region 
+与 ESC-x lpr-buffer 相似，唯一不同之处在於此，指令只列印 部份的区域。 
+
+--------------------------------------------------------------------------------
+
+在 Emacs 中如何收发信件
+在 EMACS 众多的整合功能中，信件收发的功能自然是不可或缺的。 EMACS 对电子邮件的设计却与一般的电子邮件系统背道而驰，它是在以编辑为前提的条件下来提供电子邮件的子系统；换言之，电子邮件为以编辑器为主导的一个子功能。 EMACS 所提供的电子邮件系统分成二个部份，一部分为发送信件（ mail），另一部为收取信件（ rmail）；收取信件的同时也能发送信件，它的作法是使用发送信件的功能将信件发送出去。 EMACS 读取电子邮件，是将作业系统存放电子邮件的档案拷贝至 EMACS 自己的档案中，此档案名为 RMAIL， EMACS 在读取信件时会至此档（RMAIL）中读取所要的信件。 EMACS 如此设计档案的读取有它的理由，其理由如下： 
+作业系统存放电子邮件的格式不一，读取电子邮件的软体 也是变化万千。EMACS 的 RMAIL 就是要将如此复杂的事情简单化。 
+RMAIL 记录了信件所有的相关资料，但作业系统所提供的 信件档案，并未有做如此详细的记录。 
+一般作业系统为了要确保信件读取时的安全性，必需经由 一套繁杂的方法来保障信件读取的安全以及资料的不流失。 EMACS 的 RMAIL 所采取的措失就是既安全又简单。 RMAIL 的方法是，先把存於系统内的信件读出後，再拷贝至 RMAIL 的 档案内，待一切就绪才将存在系统内的信件删掉。如此作的好处 是，即使系统当掉只会使信件多做一份拷贝，也不会有流失信件 的事件发生。 
+EMACS 对於发送信件与读取信件提供了许多有用的 操作功能，读者可自行参考相关手册，此处只告诉读者如何 进入送信件与读信件的模式： 
+ESC-x mail （发送信件） 
+ESC -x rmail (读取信件） 
+
+--------------------------------------------------------------------------------
+
+其它与 Emacs 相关的工作环境
+EMACS 除了提供以上种种的工作环境境，还有其它的环境可以运用 ，现在让我们一一道来。 
+The Calendar and the Diary 
+EMACS 的 CalendAr与一般的月历功能相似 。 Diary 更可以适时提醒使用者该注意的事情。 进入 Calendar 的方法如下： ESC-x calendar Diary 的使用可以在进入 calendar 的模式中後，再来设定相关的资料。 
+Reading Man Page from EMACS 
+阅读 manual page 的方法非常简单，其用法如下： ESC-x manual-entry RET unix-command-name RET 
+Reading News with GNUS 
+读送网路新闻为现今交换电脑资讯的重要媒体与管道， GNU EMACS 也提供了此一子系统，称为 GNUS. EMACS 的 GNUS 是将 ``.newsrc'' 档的内容显示出来，它的内容 包括所有被订阅的(subscribe）的 newsgroups，以及未被阅读的 文章。在 GNUS 中还可以看到或隐藏未被订阅的 newsgroups， 并可以再订阅未订阅的 newsgroup 或取消订阅某一个newsgroup。 当然 GNUS 也提供了可游走於各 newsgroups 间的指令。在 EMACS 中使用 GNUS这一个子系统只需键入如下的指令即可。 ESC-x gnus RET 
+version control 
+管理原始档案（source files）也是EMACS 所提供了服务项目之一。 功能。 version control 是一个套装软体，它可以记录一个原始档案 (source file）所有改变的版本（multipe versions），它保留所有 改变的记录且存放於一个档案中，对於每一版本重复的部份只会 保留一分记录。version control 也会 记录每一版本被创造、谁创造 了它等等的相关资料。目前 EMACS 是透过 VC，来使用作业系统 所提供的 RCS 或 SCCS 的 version control 软体。若作业系统提供 RCS， EMACS 会先使用 RCS，若无 RCS 则会使用 SCCS。 EMACS 允许使用者自行决定使用 RCS 或 SCCS 的 version control。 透过 EMACS 的 VC，所能使用的 version control 的功能并不多， 它只提供最基本的 version control 的功能，但确是最常为人使用的 功能。若想使用 SCCS 或 RCS 所提供的所有功能，就必须进入 EMACS 的 shell mode 中了。以下就来简介 EMACS version control 的功能。EMACS 的 VC 提供的功能如下： 
+将档案注册於 version control 之下。 
+可将注册的档案从 version control 的控制中取出与放入。 
+放入 version control 的每一个版本都可以随时取出。 
+可比较任一版本间的异同。 
+可将一组相关的档案，置於 version control 之下。 
+可自行设计标头（version header），此标头可置於 version control 下的档案中。 
+至於其它的 version control 功能，则必需进入 EMACS 的 shell 中直接使用 RCS 或 SCCS。例如，将数个版本合并、使用 help 协助使用 version control 等的功能，就从 EMACS 所提供的 VC 得到解答。 
+
+Outline Mode 
+以 editor 为基石的 EMACS 当然少不了制作文章大纲的功能。 EMACS 的大纲模式（outline mode）可以使文章的部份主体 暂时隐藏起来，只呈现文章的大纲部份。如此一来，吾人不需 维护一套为本文，另一套为大纲部份的两套系统了。因为， 制作本文的同时就已经隐含了大纲的部份了。 
+前面已经将 EMACS 可以做的事以及它的特质都做了简要的介绍。 以下就开始讨论 EMACS 的基本要素 － 编辑功能。

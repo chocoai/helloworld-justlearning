@@ -1,0 +1,122 @@
+dired mode 的几个简单有用的扩展功能
+dired mode 的原则
+dired mode 下的很多操作都是针对带有 * 标记的文件，或者后面连续 N 个文件，或者是当前文件。这样标记文件就很重要，所以才有很多命令用于标记文件。这种思路类似于 Windows 的选择操作，先选择一些对象，然后再实施动作。 
+用正则表达式操作文件
+``% R FROM <RET> TO <RET>'' 改变文件名称 
+``% C FROM <RET> TO <RET>'' 拷贝文件 
+``% H FROM <RET> TO <RET>'' 硬连接文件 
+``% S FROM <RET> TO <RET>'' 符号连接文件 
+例如 : 输入 % m ，可以标记所有名称匹配某个正则表达式的文件输入 % R ，然后根据提示输入 \(.*\)\.txt ，作为 FROM ，再根据提示输入 \1.doc 作为 TO ，就会把所有选定的文件中的文件的后缀扩展名称从 txt 变成 doc .
+
+排序功能
+把下面的代码，加入到 .emacs 中 。
+
+(add-hook 'dired-mode-hook (lambda ()
+  (interactive)
+  (make-local-variable  'dired-sort-map)
+  (setq dired-sort-map (make-sparse-keymap))
+  (define-key dired-mode-map "s" dired-sort-map)
+  (define-key dired-sort-map "s"
+              '(lambda () "sort by Size"
+                (interactive) (dired-sort-other (concat dired-listing-switches "S"))))
+  (define-key dired-sort-map "x"
+              '(lambda () "sort by eXtension"
+                 (interactive) (dired-sort-other (concat dired-listing-switches "X"))))
+  (define-key dired-sort-map "t"
+              '(lambda () "sort by Time"
+                 (interactive) (dired-sort-other (concat dired-listing-switches "t"))))
+  (define-key dired-sort-map "n"
+              '(lambda () "sort by Name"
+                 (interactive) (dired-sort-other (concat dired-listing-switches ""))))))
+
+s s 按照文件大小排序。 
+s x 按照文件扩展名排序。 
+s t 按照文件访问时间排序。 
+s b 按照文件名称的字母顺序排序。 
+目录在前面
+Windows 的文件管理器可以把目录优先排在前面。把下面的代码放在你的 .emacs 中，可以实现这个功能。
+
+(defun sof/dired-sort ()
+  "Dired sort hook to list directories first."
+  (save-excursion
+    (let (buffer-read-only)
+      (forward-line 2) ;; beyond dir. header
+      (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
+  (and (featurep 'xemacs)
+       (fboundp 'dired-insert-set-properties)
+       (dired-insert-set-properties (point-min) (point-max)))
+  (set-buffer-modified-p nil))
+(add-hook 'dired-after-readin-hook 'sof/dired-sort)
+
+C-x C-j 打开当前文件的所在目录
+我不知道在哪里看到的文章上讲 C-x C-j 可以用 dired mode 打开正在编辑的文件的所在目录，但是我的版本的 Emacs 居然没有这个快键，而且这个键没有绑定任何命令。于是我就自己加了一段代码实现这个功能。
+
+;; C-x C-j open the directory of current buffer
+(global-set-key (kbd "C-x C-j")
+                (lambda ()
+                  (interactive)
+                  (if (buffer-file-name)
+                      (dired default-directory))))
+
+快速打开父目录
+用 M-&lt;up&gt; 打开父目录。
+
+(add-hook 'dired-mode-hook (lambda ()
+  (interactive)
+  (define-key dired-mode-map (kbd "<M-up>" )
+    'dired-up-directory)
+  (define-key dired-mode-map (kbd "ESC <up>" ) 'dired-up-directory)
+
+我发现在 console 下 ALT + &lt;up&gt; 键实际是 ESC &lt;up&gt; 但是在GUI却是 M-&lt;up&gt; ，
+
+过滤掉你不想看到的文件
+  (setq dired-omit-extensions '("CVS/" ".o" "~" ".bin" ".lbin"
+                                ".fasl" ".ufsl" ".a" ".ln" ".blg"
+                                ".bbl" ".elc" ".lof" ".glo" ".idx"
+                                ".lot" ".fmt" ".tfm" ".class" ".fas" ".lib" ".x86f"
+                                ".sparcf" ".lo" ".la" ".toc" ".log" ".aux" ".cp" ".fn" ".ky" ".pg"
+                                ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs"
+                                ".idx" ".lof" ".lot" ".glo" ".blg" ".bbl" ".cp" ".cps" ".fn" ".fns" ".ky"
+                                ".kys" ".pg" ".pgs" ".tp" ".tps" ".vr" ".vrs"))
+
+用来定义你不想看到的文件的扩展名，然后就可以 M-o 过滤掉你不想看到的文件。 再按一次 M-o 就可以看到所有的文件。
+
+还可以用 M-x dired-omit-expunge 用来 regexp 过滤文件。
+
+(add-hook 'dired-mode-hook (lambda ()
+  (interactive)
+  (define-key dired-mode-map (kbd "/")  'dired-omit-expunge)))
+
+搜索文字
+% g dired-mark-files-containing-regexp :: 标记所有包含某个正则表达式的文件。
+
+对于 find 命令的接口
+Unix 系统下的 find 命令可以做各种各样的查找，M-x find-dired 可以提供 find 命令的接口，把find 命令的结果作为一个虚拟的 dir ，用 dired mode 显示，所有 dired 的操作依然有用。这是很有用的，例如，遍历子目录下的的所有 .cc 文件，然后在这些文件中查找并替换，首先M-x find-dired 过滤出所有 .cc 文件，产生一个虚拟的 dired ，然后运行 M-x dired-do-query-replace-regexp 。还有很多其他操作。
+
+对于 Windows 用户，隐藏掉不需要的信息。
+(defvar wcy-dired-mode-hide-column-regex
+  "^\\s-\\{2\\}[drwx-]\\{10\\}\\s-+[0-9]+\\s-+\\sw+\\s-+\\sw+"
+  "doc")
+(defun wcy-dired-mode-hide-column ()
+  (interactive)
+  (when (eq major-mode 'dired-mode)
+    (save-excursion
+      (save-match-data
+        (goto-char (point-min))
+        (while (re-search-forward wcy-dired-mode-hide-column-regex nil t nil)
+          (let ((o (make-overlay (match-beginning 0) (match-end 0))))
+            (overlay-put o 'invisible t)
+            (overlay-put o 'id 'wcy-dired-mode-hide-column)))))))
+
+(defun wcy-dired-mode-show-column ()
+  (interactive)
+  (when (eq major-mode 'dired-mode)
+    (mapc (lambda (o)
+            (if (eq (overlay-get o 'id) 'wcy-dired-mode-hide-column)
+                (delete-overlay o)))
+          (overlays-in (point-min) (point-max)))))
+;; 注意和 (add-hook 'dired-after-readin-hook 'sof/dired-sort) 的冲突要保证
+;; dired-after-readin-hook 中 wcy-dired-mode-hide-column 在 sof/dired-sort 之后
+(when (eq system-type 'windows-nt)
+  (add-hook 'dired-after-readin-hook 'wcy-dired-mode-hide-column t nil))
+
